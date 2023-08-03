@@ -1,0 +1,52 @@
+{
+  "name": "yike-design-react",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "prepare": "husky install",
+    "eslint": "npx eslint --ext .ts,.tsx . --fix",
+    "stylelint": "npx stylelint --aei .less,.css,.scss . --fix",
+    "lint": "eslint . && stylelint .",
+    "lint:fix": "pnpm run eslint && pnpm run stylelint",
+    "new": "tsx ./scripts/new-component.ts",
+    "docs:dev": "pnpm --filter @yike-design/react-docs dev",
+    "release": "standard-version",
+    "preinstall": "npx only-allow pnpm"
+  },
+  "devDependencies": {
+    "@commitlint/config-conventional": "^17.6.7",
+    "@types/node": "^20.4.5",
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "@typescript-eslint/eslint-plugin": "^6.2.1",
+    "@typescript-eslint/parser": "^6.2.1",
+    "commitlint": "^17.6.7",
+    "eslint": "^8.46.0",
+    "eslint-config-prettier": "^8.9.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-react": "^7.33.1",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.3",
+    "postcss-less": "^6.0.0",
+    "prettier": "^3.0.0",
+    "standard-version": "^9.5.0",
+    "stylelint": "^15.10.2",
+    "stylelint-config-standard": "^34.0.0",
+    "stylelint-order": "^6.0.3",
+    "tsx": "^3.12.7",
+    "typescript": "^5.1.6"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix"
+    ],
+    "*.{css,less}": [
+      "stylelint --fix"
+    ]
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}

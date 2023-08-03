@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --yike-border-color: #E8E8E8;
+    --fontcolorm: rgb(30 32 37 / 80%);
+}
+
+:root.dark {
+    --yike-border-color: #33353B;
+}
+
+body {
+    font-family: Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
+    background: #fff;
+}
