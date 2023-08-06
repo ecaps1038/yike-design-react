@@ -16,7 +16,5 @@ yike-design 前端 UI 框架 React 版本
 
 如果您有想开发的组件或者基建任务，可以直接@`yike`进行讨论，或者直接在群里交流，我们也会及时去看到的。
 
-接下来如果您开始着手开发工作，请阅读下面的 CONTRIBUTING.md
-
-[CONTRIBUTING.md](https://github.com/ecaps1038/yike-design-react/blob/main/CONTRIBUTING.md)
+接下来如果您开始着手开发工作，请阅读 [CONTRIBUTING.md](https://github.com/ecaps1038/yike-design-react/blob/dev/CONTRIBUTING.md) 
 
