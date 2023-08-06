@@ -1,12 +1,12 @@
 {
-  "cSpell.words": [
-    "dumi",
-    "inputnumber",
-    "inputtag",
-    "stylelint",
-    "Typegraphy",
-    "yike",
-    "yikedesign"
-  ],
-  "css.lint.unknownAtRules": "ignore"
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll.prettier": true,
+    "source.fixAll.stylelint": true
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "eslint.codeActionsOnSave.mode": "all",
+  "cSpell.words": ["inputnumber", "inputtag", "stylelint", "Typegraphy", "yike", "yikedesign"]
 }

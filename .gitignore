@@ -21,5 +21,6 @@ svg-icon
 es 
 lib
 dist
+.next
 # test
 coverage

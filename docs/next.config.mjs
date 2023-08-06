@@ -1,11 +1,10 @@
-import mdx from '@next/mdx'
-import { resolve } from 'path'
-import remarkDemo from 'remark-demo-plugin'
-import { existsSync, mkdirSync, rmSync } from 'fs'
+import mdx from '@next/mdx';
+import { resolve } from 'path';
+import remarkDemo from 'remark-demo-plugin';
 
-const __dirname = new URL('.', import.meta.url).pathname
+const __dirname = new URL('.', import.meta.url).pathname;
 
-const YIKE_DEMO_PATH = resolve(__dirname, 'node_modules', 'yike')
+const YIKE_DEMO_PATH = resolve(__dirname, 'node_modules', 'yike');
 
 // if (existsSync(YIKE_DEMO_PATH)) {
 //   rmSync(YIKE_DEMO_PATH, { recursive: true })
@@ -15,17 +14,17 @@ const YIKE_DEMO_PATH = resolve(__dirname, 'node_modules', 'yike')
 
 const withMDX = mdx({
   options: {
-    remarkPlugins: [remarkDemo]
-  }
-})
+    remarkPlugins: [remarkDemo],
+  },
+});
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   env: {
-    YIKE_DEMO_PATH
+    YIKE_DEMO_PATH,
   },
   pageExtensions: ['ts', 'tsx', 'md', 'mdx'],
-}
+  transpilePackages: ['@yike-design/react'],
+};
 
-
-export default withMDX(nextConfig)
+export default withMDX(nextConfig);

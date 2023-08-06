@@ -9,10 +9,8 @@
   "trailingComma": "es5",
   "bracketSpacing": true,
   "bracketSameLine": false,
-  "arrowParens": "always",
+  "arrowParens": "avoid",
   "proseWrap": "preserve",
   "htmlWhitespaceSensitivity": "css",
-  "endOfLine": "lf",
-  "singleAttributePerLine": true,
-  "parser": "typescript"
+  "singleAttributePerLine": true
 }

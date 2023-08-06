@@ -1,0 +1,12 @@
+# bundle
+es
+lib
+dist
+.next
+node_modules
+
+# config file
+*.html
+*config.*js
+.eslintrc.cjs
+.stylelintrc.cjs
