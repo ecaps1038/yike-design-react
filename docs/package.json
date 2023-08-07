@@ -19,10 +19,14 @@
     "eslint-config-next": "13.4.12",
     "next": "13.4.12",
     "postcss": "8.4.27",
+    "react-copy-to-clipboard": "^5.1.0",
+    "react-syntax-highlighter": "^15.5.0",
     "remark-demo-plugin": "workspace:^",
     "tailwindcss": "3.3.3"
   },
   "devDependencies": {
-    "@total-typescript/ts-reset": "^0.4.2"
+    "@total-typescript/ts-reset": "^0.4.2",
+    "@types/react-copy-to-clipboard": "^5.0.4",
+    "@types/react-syntax-highlighter": "^15.5.7"
   }
 }
