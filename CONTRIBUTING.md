@@ -8,7 +8,7 @@
 
 1. 推荐先 fork 项目并基于此仓库进行操作
 2. 克隆 fork 后的项目到本地 `git clone https://github.com/xxxxxx/yike-design-react.git`
-3. 切换至 monorepo-dev 分支 `git checkout monorepo-dev`
+3. 切换至 dev 分支 `git checkout dev`
 4. 安装依赖：`pnpm i`
 5. 启动开发服务器：`npm run docs:dev`
 6. 在浏览器中访问：`http://localhost:3000`
@@ -34,9 +34,9 @@ git remote add upstream https://github.com/ecaps1038/yike-design-react.git
 每当你准备开始一个新的功能开发或提交 PR 前，请先从主仓库拉取最新的代码并合并到仓库的对应分支。
 
 ```sh
-git checkout -b monorepo-dev
+git checkout -b dev
 git fetch upstream
-git merge upstream/monorepo-dev
+git merge upstream/dev
 ```
 
 ### 创建需求分支
