@@ -1,0 +1,15 @@
+@mixin element-size($variant, $value) {
+  @if & {
+    &-#{$variant} {
+      height: $value;
+    }
+  }
+}
+
+@mixin element-shape($variant, $value) {
+  @if & {
+    &-#{$variant} {
+      border-radius: $value;
+    }
+  }
+}
