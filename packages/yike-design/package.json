@@ -1,6 +1,5 @@
 {
   "name": "@yike-design/react",
-  "private": true,
   "version": "0.0.0",
   "type": "module",
   "main": "./lib/yike-design.umd.cjs",

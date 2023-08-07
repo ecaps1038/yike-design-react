@@ -1,8 +1,5 @@
-
 const Space = () => {
-  return (
-    <div>Space</div>
-  )
-}
+  return <div>Space</div>;
+};
 
-export default Space
+export default Space;

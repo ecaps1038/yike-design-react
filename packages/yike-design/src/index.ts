@@ -1,4 +1,2 @@
-import Button from './components/Button'
-import Space from './components/Space'
-
-export { Button, Space }
+export * from './components/Button';
+export * from './components/Space';

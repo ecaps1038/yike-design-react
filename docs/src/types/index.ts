@@ -1,4 +1,3 @@
-import LeftAside from '@/components/LeftAside'
+import type LeftAside from '@/components/LeftAside';
 
-
-export type LeftAsideItems = Parameters<typeof LeftAside>[0]['items']
+export type LeftAsideItems = Parameters<typeof LeftAside>[0]['items'];

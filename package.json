@@ -1,5 +1,4 @@
 {
-  "name": "yike-design-react",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -24,25 +23,30 @@
     "commitlint": "^17.6.7",
     "eslint": "^8.46.0",
     "eslint-config-prettier": "^8.9.0",
-    "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-react": "^7.33.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-unused-imports": "^3.0.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.3",
     "postcss-less": "^6.0.0",
     "prettier": "^3.0.0",
     "standard-version": "^9.5.0",
     "stylelint": "^15.10.2",
+    "stylelint-config-recess-order": "^4.3.0",
     "stylelint-config-standard": "^34.0.0",
+    "stylelint-less": "^1.0.8",
     "stylelint-order": "^6.0.3",
     "tsx": "^3.12.7",
     "typescript": "^5.1.6"
   },
   "lint-staged": {
-    "*.{ts,tsx}": [
-      "eslint --fix"
+    "*.{js,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
     ],
     "*.{css,less}": [
-      "stylelint --fix"
+      "stylelint --fix",
+      "prettier --write"
     ]
   },
   "dependencies": {

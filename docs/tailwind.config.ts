@@ -1,4 +1,4 @@
-import { Config } from 'tailwindcss'
+import type { Config } from 'tailwindcss';
 
 const config: Config = {
   content: [
@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       letterSpacing: {
-        title: '36px'
+        title: '36px',
       },
       colors: {
         nav: '#2b5aed',
@@ -21,10 +21,10 @@ const config: Config = {
       },
       backgroundColor: {
         asideLink: '#1572ff1a',
-      }
+      },
     },
   },
   plugins: [],
-}
+};
 
-export default config
+export default config;
