@@ -1,0 +1,15 @@
+@mixin elevation-level-none {
+  box-shadow: none;
+}
+
+@mixin elevation-level-1 {
+  box-shadow: 0 6px 6px -2px rgb(0 0 0 / 12%);
+}
+
+@mixin elevation-level-2 {
+  box-shadow: 0 4px 16px rgb(0 0 0 / 16%);
+}
+
+@mixin elevation-level-3 {
+  box-shadow: 0 4px 48px rgb(0 0 0 / 12%);
+}
