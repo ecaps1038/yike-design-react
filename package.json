@@ -10,6 +10,7 @@
     "lint:fix": "pnpm run eslint && pnpm run stylelint",
     "new": "tsx ./scripts/new-component.ts",
     "docs:dev": "pnpm --filter @yike-design/react-docs dev",
+    "docs:build": "pnpm --filter @yike-design/react-docs build",
     "release": "standard-version",
     "preinstall": "npx only-allow pnpm",
     "postinstall": "pnpm --filter remark-demo-plugin build",
