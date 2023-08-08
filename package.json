@@ -10,9 +10,13 @@
     "lint:fix": "pnpm run eslint && pnpm run stylelint",
     "new": "tsx ./scripts/new-component.ts",
     "docs:dev": "pnpm --filter @yike-design/react-docs dev",
+    "docs:build": "pnpm --filter @yike-design/react-docs build",
     "release": "standard-version",
     "preinstall": "npx only-allow pnpm",
-    "postinstall": "pnpm --filter remark-demo-plugin build && pnpm --filter @yike-design/react build"
+    "postinstall": "pnpm --filter remark-demo-plugin build",
+    "cli:dev": "pnpm --filter @yike-design/cli dev",
+    "cli:build": "pnpm --filter @yike-design/cli build",
+    "build": "pnpm --filter @yike-design/react build"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^17.6.7",
@@ -21,6 +25,7 @@
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.2.1",
     "@typescript-eslint/parser": "^6.2.1",
+    "@yike-design/cli": "workspace:*",
     "commitlint": "^17.6.7",
     "eslint": "^8.46.0",
     "eslint-config-prettier": "^8.9.0",

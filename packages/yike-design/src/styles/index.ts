@@ -1,1 +1,1 @@
-import './theme/light.scss';
+import './theme/index.scss';

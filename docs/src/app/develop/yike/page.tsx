@@ -1,9 +1,5 @@
-import React from 'react'
-
 const YiKeDevPage = () => {
-  return (
-    <div>YiKeDevPage</div>
-  )
-}
+  return <div>YiKeDevPage</div>;
+};
 
-export default YiKeDevPage
+export default YiKeDevPage;

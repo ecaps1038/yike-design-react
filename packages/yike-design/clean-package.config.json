@@ -1,0 +1,17 @@
+{
+  "replace": {
+    "exports": {
+      ".": {
+        "import": "./dist/es/index.js",
+        "require": "./dist/cjs/index.js",
+        "types": "./dist/es/index.d.ts"
+      },
+      "style": "./dist/es/styles/index.js"
+    },
+    "files": ["dist"],
+    "main": "./dist/cjs/index.js",
+    "module": "./dist/es/index.js",
+    "unpkg": "./dist/yike.umd.js",
+    "typings": "./dist/es/index.d.ts"
+  }
+}

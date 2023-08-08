@@ -4,7 +4,7 @@ import remarkDemo from 'remark-demo-plugin';
 
 const __dirname = new URL('.', import.meta.url).pathname;
 
-const YIKE_STYLE_PATH = resolve(__dirname, 'node_modules', '@yike-design/react/lib/style.css');
+// const YIKE_STYLE_PATH = resolve(__dirname, 'node_modules', '@yike-design/react/lib/style.css');
 
 const YIKE_DEMO_PATH = resolve(__dirname, 'node_modules', 'yike');
 
@@ -17,8 +17,17 @@ const withMDX = mdx({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   env: {
-    YIKE_STYLE_PATH,
+    // YIKE_STYLE_PATH,
     YIKE_DEMO_PATH,
+  },
+  distDir: 'dist',
+  output: 'export',
+  cleanDistDir: true,
+  images: {
+    unoptimized: true,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
   },
   pageExtensions: ['ts', 'tsx', 'md', 'mdx'],
   transpilePackages: ['@yike-design/react'],

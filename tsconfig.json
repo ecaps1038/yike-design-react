@@ -6,7 +6,8 @@
     "lib": ["esnext", "dom"],
     "strict": true,
     "allowJs": false,
-    "noEmit": true,
+    "noEmit": false,
+    "declaration": true,
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "resolveJsonModule": true,
@@ -20,7 +21,7 @@
     "removeComments": true,
     "forceConsistentCasingInFileNames": true,
     "jsx": "preserve",
-    "jsxImportSource": "react",
+    "jsxImportSource": "react"
   },
   "exclude": ["**/dist/**", "**/node_modules/**"]
 }

@@ -2,32 +2,30 @@
   "name": "@yike-design/react",
   "version": "0.0.0",
   "type": "module",
-  "main": "./lib/yike-design.umd.cjs",
-  "module": "./lib/yike-design.js",
+  "module": "./src/index.ts",
   "exports": {
     ".": {
-      "import": "./lib/yike-design.js",
-      "require": "./lib/yike-design.umd.cjs"
-    }
+      "import": "./src/index.ts"
+    },
+    "./style": "./src/styles/index.ts"
   },
   "files": [
-    "lib"
+    "src"
   ],
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "build": "yike build --bundle",
+    "prepack": "clean-package",
+    "postpack": "clean-package restore"
   },
+  "clean-package": "./clean-package.config.json",
   "peerDependencies": {
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0"
   },
+  "dependencies": {
+    "@babel/runtime": "^7.22.6"
+  },
   "devDependencies": {
-    "@vitejs/plugin-react": "^4.0.3",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.3",
-    "vite": "^4.4.5",
-    "vite-plugin-dts": "^3.4.0"
+    "clean-package": "^2.2.0"
   }
 }
