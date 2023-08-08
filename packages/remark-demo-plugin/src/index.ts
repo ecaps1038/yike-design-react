@@ -1,8 +1,7 @@
 import type { Node } from 'unist';
-import { resolve } from 'path';
+import path, { relative } from 'path';
 import type { Transformer } from 'unified';
 import { visit } from 'unist-util-visit';
-import { existsSync, mkdirSync, writeFileSync } from 'fs';
 
 export interface MDASTCode extends Node {
   lang?: string;
@@ -10,20 +9,34 @@ export interface MDASTCode extends Node {
   value: string;
 }
 
-let index = 0;
+interface Options {
+  component: string;
+  onResolve: (file: string, id: string, source: string) => void;
+}
 
-export default function rehypeDemoPlugin(): Transformer {
+export default function rehypeDemoPlugin({ component, onResolve }: Options): Transformer {
   return (tree, file) => {
-    const dirPath = resolve(file.cwd, 'node_modules/yike');
-    existsSync(dirPath) || mkdirSync(dirPath);
+    let index = 0;
+    const currentFile = file.history[0];
+    const parsed = path.parse(relative(file.cwd, currentFile));
+    const currentDir = `${parsed.dir}/${parsed.name}`.split('/').join('-');
+    // ast has no pre element
     visit(tree, 'code', (node: MDASTCode) => {
       if (node.lang === 'tsx' && !node.meta) {
-        const current = `yike-demo-${index++}`;
-        writeFileSync(resolve(dirPath, `${current}.tsx`), node.value, 'utf-8');
+        const current = `${currentDir}-${index++}`;
+        onResolve(file.history[0], current, node.value);
         node.data = {
-          hName: 'YiKeDemo',
+          hName: component,
           hProperties: {
-            id: current,
+            lang: node.lang,
+            path: current,
+          },
+        };
+      } else if (node.meta === 'pure') {
+        node.data = {
+          hProperties: {
+            lang: node.lang,
+            pure: true,
           },
         };
       }
