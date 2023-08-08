@@ -17,6 +17,7 @@ jobs:
         with:
           node-version: 18
           cache: 'pnpm'
+          cache-dependency-path: '**/package-lock.json'
 
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
