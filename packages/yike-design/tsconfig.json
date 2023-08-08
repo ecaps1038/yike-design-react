@@ -2,8 +2,12 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "useDefineForClassFields": true,
-    "allowImportingTsExtensions": true,
+    "declaration": true,
+    "isolatedModules": false,
+    "rootDir": ".",
+    "paths": {
+      "@yike-design/cli": ["../../packages/cli/src"]
+    }
   },
-  "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": ["src"]
 }

@@ -2,32 +2,28 @@
   "name": "@yike-design/react",
   "version": "0.0.0",
   "type": "module",
-  "main": "./lib/yike-design.umd.cjs",
-  "module": "./lib/yike-design.js",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/es/index.js",
+  "types": "./dist/es/index.d.ts",
+  "unpkg": "./dist/yike.umd.js",
   "exports": {
     ".": {
-      "import": "./lib/yike-design.js",
-      "require": "./lib/yike-design.umd.cjs"
+      "import": "./dist/es/index.js",
+      "require": "./dist/cjs/index.js",
+      "types": "./dist/es/index.d.ts"
     }
   },
   "files": [
-    "lib"
+    "dist"
   ],
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "build": "yike build --bundle"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0"
   },
-  "devDependencies": {
-    "@vitejs/plugin-react": "^4.0.3",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.3",
-    "vite": "^4.4.5",
-    "vite-plugin-dts": "^3.4.0"
+  "dependencies": {
+    "@babel/runtime": "^7.22.6"
   }
 }
