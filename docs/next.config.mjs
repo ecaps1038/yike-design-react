@@ -4,9 +4,6 @@ import remarkDemo from 'remark-demo-plugin';
 
 const __dirname = new URL('.', import.meta.url).pathname;
 
-const isProd = process.env.NODE_ENV === 'production';
-const REPO_NAME = 'yike-design-react';
-
 // const YIKE_STYLE_PATH = resolve(__dirname, 'node_modules', '@yike-design/react/lib/style.css');
 
 const YIKE_DEMO_PATH = resolve(__dirname, 'node_modules', 'yike');
@@ -32,8 +29,6 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  basePath: isProd ? `/${REPO_NAME}` : '',
-  assetPrefix: isProd ? `/${REPO_NAME}/` : '',
   pageExtensions: ['ts', 'tsx', 'md', 'mdx'],
   transpilePackages: ['@yike-design/react'],
 };
