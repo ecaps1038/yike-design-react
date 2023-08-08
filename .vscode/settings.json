@@ -10,5 +10,8 @@
   "eslint.codeActionsOnSave.mode": "all",
   "css.lint.unknownAtRules": "ignore",
   "stylelint.validate": ["css", "less", "scss"],
-  "cSpell.words": ["inputnumber", "inputtag", "stylelint", "Typegraphy", "yike", "yikedesign"]
+  "cSpell.words": ["inputnumber", "inputtag", "stylelint", "Typegraphy", "yike", "yikedesign"],
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

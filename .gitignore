@@ -24,3 +24,6 @@ dist
 .next
 # test
 coverage
+
+# docs demo
+.yike 
