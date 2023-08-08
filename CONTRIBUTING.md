@@ -125,12 +125,14 @@ PR 将由具备权限的贡献者 CR 后进行 merge，若提交的功能影响�
 
 ```
 - components
-  |- Button                 # Button 组件目录
-  |  |- Button.scss         # Button 样式文件
+  |- button                 # Button 组件目录
+  |  |-style
+       |- index.scss
+  |    |- Button.scss         # Button 样式文件
+  |    |- ButtonGroup.scss    # ButtonGroup 样式文件
   |  |- Button.tsx          # Button 代码文件
-  |  |- ButtonGroup.scss    # ButtonGroup 样式文件
   |  |- ButtonGroup.tsx     # ButtonGroup 代码文件
-  |  `- index.ts            # 组件入口文件
+  |  `- index.tsx            # 组件入口文件
   |- ...
 ```
 
