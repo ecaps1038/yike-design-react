@@ -1,5 +1,3 @@
-import type React from 'react';
-
 import DemoCode from './DemoCode';
 import Previewer from './Previewer';
 
@@ -9,8 +7,8 @@ interface YiKeDemoProps {
   code: string;
 }
 
-const YiKeDemo: React.FC<YiKeDemoProps> = async ({ lang, code, path }) => {
-  const { default: Demo } = await import(`@yike-demo/${path}`);
+const YiKeDemo = async ({ lang, code, path }: YiKeDemoProps) => {
+  const { default: Demo } = await import(`@yike-demo/${normalizePath(path)}`);
 
   return (
     <div className="mt-3">
@@ -24,3 +22,8 @@ const YiKeDemo: React.FC<YiKeDemoProps> = async ({ lang, code, path }) => {
 };
 
 export default YiKeDemo;
+
+// simple normalize path for windows
+function normalizePath(path: string) {
+  return path.replaceAll('\\', '/');
+}
