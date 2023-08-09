@@ -2,6 +2,7 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
+  "packageManager": "pnpm@8.6.10",
   "scripts": {
     "prepare": "husky install",
     "eslint": "npx eslint --ext .ts,.tsx . --fix",
@@ -20,6 +21,7 @@
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^17.6.7",
+    "@types/fs-extra": "^11.0.1",
     "@types/node": "^20.4.5",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
@@ -32,6 +34,7 @@
     "eslint-plugin-react": "^7.33.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-unused-imports": "^3.0.0",
+    "fs-extra": "^11.1.1",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.3",
     "postcss-less": "^6.0.0",
