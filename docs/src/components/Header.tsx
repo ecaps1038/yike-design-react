@@ -38,6 +38,14 @@ const Header = () => {
         >
           组件
         </Nav>
+        <a
+          className="text-sm"
+          target="_blank"
+          href="https://github.com/ecaps1038/yike-design-react"
+          rel="noreferrer"
+        >
+          Github
+        </a>
         {/* todo: github theme login */}
       </div>
     </header>
