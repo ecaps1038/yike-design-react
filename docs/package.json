@@ -21,7 +21,7 @@
     "postcss": "8.4.27",
     "react-copy-to-clipboard": "^5.1.0",
     "react-syntax-highlighter": "^15.5.0",
-    "remark-demo-plugin": "workspace:^",
+    "@yike-design/remark-demo-plugin": "workspace:^",
     "tailwindcss": "3.3.3"
   },
   "devDependencies": {

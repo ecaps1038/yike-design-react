@@ -13,5 +13,8 @@
   "cSpell.words": ["inputnumber", "inputtag", "stylelint", "Typegraphy", "yike", "yikedesign"],
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }

@@ -1,5 +1,5 @@
 {
-  "name": "remark-demo-plugin",
+  "name": "@yike-design/remark-demo-plugin",
   "version": "0.0.1",
   "description": "",
   "type": "module",

@@ -14,7 +14,7 @@ interface Options {
   onResolve: (file: string, id: string, source: string) => void;
 }
 
-export default function rehypeDemoPlugin({ component, onResolve }: Options): Transformer {
+export default function remarkDemoPlugin({ component, onResolve }: Options): Transformer {
   return (tree, file) => {
     let index = 0;
     const currentFile = file.history[0];
