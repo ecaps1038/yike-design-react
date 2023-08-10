@@ -10,7 +10,12 @@ const Layout: React.FC<React.PropsWithChildren<LayoutProps>> = ({ items, childre
   return (
     <div className="h-full flex">
       <LeftAside items={items} />
-      <div className="h-full flex-grow px-14 py-6 overflow-y-auto">{children}</div>
+      <div
+        id="yike-doc-container"
+        className="h-full flex-grow overflow-y-auto pr-36 scroll-smooth relative"
+      >
+        <article className="px-14 py-6">{children}</article>
+      </div>
     </div>
   );
 };

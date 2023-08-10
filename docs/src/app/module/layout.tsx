@@ -48,11 +48,7 @@ const ComponentsLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
     },
   ];
 
-  return (
-    <Layout items={items}>
-      <div className="max-w-[800px]">{children}</div>
-    </Layout>
-  );
+  return <Layout items={items}>{children}</Layout>;
 };
 
 export default ComponentsLayout;

@@ -1,52 +1,50 @@
 import Link from 'next/link';
 import Image from 'next/image';
+
 import Nav from './Nav';
 import logo from '@/assets/logo.svg';
+
+const navigators = [
+  { base: 'design', href: '/design/yike', text: '设计' },
+  { base: 'develop', href: '/develop/yike', text: '开发' },
+  { base: 'module', href: '/module/button', text: '组件' },
+];
 
 const Header = () => {
   return (
     <header className="h-[60px] px-[30px] flex items-center border-b border-yike flex-shrink-0">
-      <div className="flex">
+      <div className="flex items-center">
         <Image
           width={32}
           src={logo}
           alt="logo"
         />
         <Link
-          className="text-lg font-bold ml-3"
+          className="text-lg font-semibold ml-3"
           href="/"
         >
           Yike Design React
         </Link>
       </div>
+      {/* TODO: search */}
       <div className="flex ml-auto gap-10">
-        <Nav
-          base="design"
-          href="/design/yike"
-        >
-          设计
-        </Nav>
-        <Nav
-          base="develop"
-          href="/develop/yike"
-        >
-          开发
-        </Nav>
-        <Nav
-          base="module"
-          href="/module/button"
-        >
-          组件
-        </Nav>
-        <a
+        {navigators.map(nav => (
+          <Nav
+            {...nav}
+            key={nav.base}
+          />
+        ))}
+        <Link
           className="text-sm"
           target="_blank"
           href="https://github.com/ecaps1038/yike-design-react"
           rel="noreferrer"
         >
+          {/* TODO: text to icon */}
           Github
-        </a>
-        {/* todo: github theme login */}
+        </Link>
+        {/* TODO: theme */}
+        {/* TODO: login */}
       </div>
     </header>
   );

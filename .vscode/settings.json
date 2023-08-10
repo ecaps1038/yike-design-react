@@ -9,6 +9,7 @@
   "typescript.tsdk": "node_modules/typescript/lib",
   "eslint.codeActionsOnSave.mode": "all",
   "css.lint.unknownAtRules": "ignore",
+  "scss.lint.unknownAtRules": "ignore",
   "stylelint.validate": ["css", "less", "scss"],
   "cSpell.words": ["inputnumber", "inputtag", "stylelint", "Typegraphy", "yike", "yikedesign"],
   "[typescriptreact]": {

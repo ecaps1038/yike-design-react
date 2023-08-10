@@ -14,7 +14,7 @@
     "docs:build": "pnpm --filter @yike-design/react-docs build",
     "release": "standard-version",
     "preinstall": "npx only-allow pnpm",
-    "postinstall": "pnpm --filter @yike-design/remark-demo-plugin build",
+    "postinstall": "pnpm --filter @yike-design/remark-demo build",
     "cli:dev": "pnpm --filter @yike-design/cli dev",
     "cli:build": "pnpm --filter @yike-design/cli build",
     "build": "pnpm --filter @yike-design/react build"

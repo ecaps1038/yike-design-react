@@ -3,7 +3,7 @@ import Image from 'next/image';
 import sign from '@/assets/sign.svg';
 import logo from '@/assets/logo-bg.svg';
 
-export default function Home() {
+const NotFound = () => {
   return (
     <div className="h-full flex flex-col justify-center relative">
       <div className="-mt-[200px] text-center font-semibold h-[220px] relative">
@@ -12,7 +12,7 @@ export default function Home() {
           src={logo}
           alt="logo"
         />
-        <p className="tracking-title text-[68px] pt-[42px] pl-5 pb-4">YIKE DESIGN</p>
+        <p className="tracking-title text-8xl pt-[42px] pl-5 pb-4">404</p>
         <p className="text-base">包容万物，从源头出发，一切从简</p>
       </div>
       <div className="flex justify-center gap-4 mt-10">
@@ -32,4 +32,6 @@ export default function Home() {
       </div>
     </div>
   );
-}
+};
+
+export default NotFound;
