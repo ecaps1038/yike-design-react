@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+      "rootDir": "./src",
+      "moduleResolution": "Node",
+      "baseUrl": "./",
+      "outDir": "./dist",
+      "declaration": true,
+      "noEmit": false
+    }
+  }
+}

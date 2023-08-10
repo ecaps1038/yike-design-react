@@ -1,7 +1,7 @@
 import '@yike-design/react/style';
 import type { Metadata } from 'next';
 import Header from '@/components/Header';
-import './globals.css';
+import './globals.scss';
 
 export const metadata: Metadata = {
   title: 'Yike Design React',

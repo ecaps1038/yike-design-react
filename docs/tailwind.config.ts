@@ -25,6 +25,10 @@ const config: Config = {
     },
   },
   plugins: [],
+  // remove preflight to avoid affecting @yike-design/react components style
+  corePlugins: {
+    preflight: false,
+  },
 };
 
 export default config;

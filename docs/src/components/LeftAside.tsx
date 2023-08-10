@@ -22,7 +22,7 @@ const LeftAside: React.FC<LeftAsideProps> = ({ items }) => {
   const pathname = usePathname();
 
   return (
-    <div className="w-[268px] border-r h-full border-yike overflow-y-auto py-2 px-4">
+    <div className="w-[268px] flex-shrink-0 border-r h-full border-yike overflow-y-auto py-2 px-4">
       {items.map((item, index) => (
         <div
           key={index}
