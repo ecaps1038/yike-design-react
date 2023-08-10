@@ -67,9 +67,6 @@ const transformTOCElement = element => {
  * @param {HTMLElementNode} element
  */
 const customizeTOC = element => {
-  console.log(JSON.stringify(element, null, 2));
-  console.log(JSON.stringify(transformTOCElement(element), null, 2));
-
   return {
     type: 'element',
     tagName: 'YiKeTOC',
