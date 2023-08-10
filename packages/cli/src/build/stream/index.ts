@@ -41,7 +41,7 @@ export const createStream = (globs: Globs, destination: string, module: CompileM
       .pipe(extraStream({ extensions: ['.js', '.ts', '.jsx', '.tsx'] }))
       .pipe<compile.CompileStream>(tsx2js());
 
-    const js = esm.pipe(babelify({ module: module }));
+    const js = esm.pipe(babelify({ module }));
 
     const stream = merge2([dts, js, style], {
       pipeError: true,

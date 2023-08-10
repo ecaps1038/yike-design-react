@@ -17,9 +17,9 @@ export const mergeStyles = (...styles: CSSStyleType[]) => {
     const styleIterable = style.matchAll(/[a-z-]*:\s*[a-z0-9()#-]+;?/g);
     const jsxStyles = Array.from(styleIterable).map(cssStyle => {
       const [cssAttr, cssValue] = cssStyle.toString().replace(';', '').split(':');
-      // CK => camel kebab
-      const cssCKAttr = cssAttr.replace(/-(\w)/, (_, text) => text.toUpperCase());
-      return [cssCKAttr, cssValue];
+      // CC => camel case
+      const cssCCAttr = cssAttr.replace(/-(\w)/, (_, text) => text.toUpperCase());
+      return [cssCCAttr, cssValue];
     });
     return Object.fromEntries(jsxStyles);
   });

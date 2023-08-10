@@ -9,7 +9,6 @@
     "stylelint": "npx stylelint --aei .less,.css,.scss . --fix",
     "lint": "eslint . && stylelint .",
     "lint:fix": "pnpm run eslint && pnpm run stylelint",
-    "new": "tsx ./scripts/new-component.ts",
     "docs:dev": "pnpm --filter @yike-design/react-docs dev",
     "docs:build": "pnpm --filter @yike-design/react-docs build",
     "release": "standard-version",
@@ -20,6 +19,7 @@
     "build": "pnpm --filter @yike-design/react build"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.7.1",
     "@commitlint/config-conventional": "^17.6.7",
     "@types/fs-extra": "^11.0.1",
     "@types/node": "^20.4.5",
@@ -28,7 +28,6 @@
     "@typescript-eslint/eslint-plugin": "^6.2.1",
     "@typescript-eslint/parser": "^6.2.1",
     "@yike-design/cli": "workspace:*",
-    "commitlint": "^17.6.7",
     "eslint": "^8.46.0",
     "eslint-config-prettier": "^8.9.0",
     "eslint-plugin-react": "^7.33.1",
