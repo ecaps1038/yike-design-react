@@ -15,12 +15,7 @@ module.exports = {
       extends: ['stylelint-config-standard-scss'],
       customSyntax: 'postcss-scss',
       rules: {
-        'scss/at-rule-no-unknown': [
-          true,
-          {
-            ignoreAtRules: ['tailwind', 'apply', 'variants', 'responsive', 'screen'],
-          },
-        ],
+        'at-rule-no-unknown': null,
       },
     },
   ],
