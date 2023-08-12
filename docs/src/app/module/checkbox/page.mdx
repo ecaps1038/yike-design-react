@@ -1,1 +1,66 @@
 # Checkbox 复选框
+
+## 未选定和选定状态
+
+```tsx
+import { Checkbox } from '@yike-design/react';
+
+export default () => {
+  return (
+    <div>
+      <Checkbox>选项 1</Checkbox>
+      <Checkbox checked>选项 2</Checkbox>
+    </div>
+  );
+};
+```
+
+## 特殊的半选状态
+
+```tsx
+import { Checkbox } from '@yike-design/react';
+
+export default () => {
+  return (
+    <div>
+      <Checkbox indeterminate>半选</Checkbox>
+    </div>
+  );
+};
+```
+
+## 已禁用
+
+```tsx
+import { Checkbox } from '@yike-design/react';
+
+export default () => {
+  return (
+    <div>
+      <Checkbox disabled>未选</Checkbox>
+      <Checkbox
+        checked
+        disabled
+      >
+        已选
+      </Checkbox>
+      <Checkbox
+        indeterminate
+        disabled
+      >
+        半选
+      </Checkbox>
+    </div>
+  );
+};
+```
+
+## API
+
+### `<Checkbox>`
+
+| 属性            | 类型                           | 默认值 | 说明                     |
+| --------------- | ------------------------------ | ------ | ------------------------ |
+| `checked`       | `boolean`                      | -      | 设置是否勾选的状态       |
+| `indeterminate` | `boolean`                      | -      | 设置是否为半选状态       |
+| `onChange`      | `(isChecked: boolean) => void` | -      | 勾选状态改变时的回调函数 |

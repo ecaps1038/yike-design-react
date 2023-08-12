@@ -1,0 +1,103 @@
+@use 'sass:color';
+@import '../../../styles/tokens/index';
+
+.yk-checkbox {
+  display: inline-flex;
+  margin-right: 1rem;
+
+  > label {
+    position: relative;
+
+    > input[type='checkbox'] {
+      position: absolute;
+      visibility: hidden;
+      opacity: 0;
+
+      &:checked {
+        + .yk-checkbox_content {
+          &::before {
+            background-color: $color-primary;
+            border-color: $color-primary;
+          }
+
+          &::after {
+            opacity: 1;
+          }
+        }
+      }
+
+      &:indeterminate {
+        + .yk-checkbox_content {
+          &::before {
+            background-color: $color-primary;
+            border-color: $color-primary;
+          }
+
+          &::after {
+            top: 50%;
+            height: 0;
+            border-left: none;
+            opacity: 1;
+            transform: translate(-50%);
+          }
+        }
+      }
+
+      &:disabled {
+        + .yk-checkbox_content {
+          &::before {
+            cursor: auto;
+            background-color: #f3f3f4;
+            border-color: #e8e9eb;
+          }
+
+          &::after {
+            border-color: #000;
+          }
+        }
+      }
+    }
+
+    .yk-checkbox_content {
+      padding-left: 1.5em;
+
+      &::before {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        display: block;
+        width: 1em;
+        height: 1em;
+        line-height: 1em;
+        cursor: pointer;
+        content: ' ';
+        border: 1px solid color.mix(#1e2025, #fff, 18%);
+        border-radius: 4px;
+        transition: all $motion-duration-short3 $motion-easing-standard;
+        transform: translateY(-50%);
+      }
+
+      &::after {
+        position: absolute;
+        top: calc(50% - 1px);
+        left: 0.5em;
+        width: 0.5em;
+        height: 0.25em;
+        pointer-events: none;
+        content: ' ';
+        border-bottom: 1px solid #fff;
+        border-left: 1px solid #fff;
+        opacity: 0;
+        transform: translate(-50%, -50%) rotate(-45deg);
+      }
+    }
+
+    &:hover {
+      .yk-checkbox_content {
+        &::before {
+          border-color: $color-primary;
+        }
+      }
+    }
+  }
+}
