@@ -1,7 +1,8 @@
 import type Vinyl from 'vinyl';
 import through2 from 'through2';
 import { consola } from 'consola';
-import sass, { type Options as SassOptions } from 'sass';
+import * as sass from 'sass';
+import { type Options as SassOptions } from 'sass';
 
 type ScssConfig = SassOptions<'sync'>;
 

@@ -13,7 +13,7 @@
     "src"
   ],
   "scripts": {
-    "new": "yike create",
+    "new": "yike create te",
     "build": "yike build --bundle",
     "prepack": "clean-package",
     "postpack": "clean-package restore"

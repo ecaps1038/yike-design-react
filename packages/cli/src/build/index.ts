@@ -12,21 +12,6 @@ export type BuildOptions = {
   bundle?: boolean;
 };
 
-const withSpinner = <T extends any[]>(func: (...args: T) => Promise<any>, closeFlag?: boolean, ...args: T) => {
-  spinner.start({ text: 'Building' });
-
-  return func(...args)
-    .then(() => {
-      spinner.stop({ closeChildProcess: closeFlag });
-      consola.success(chalk.green('Build successfully'));
-    })
-    .catch(error => {
-      spinner.fail({ text: 'Build failed' });
-      consola.error(error);
-      process.exit(1);
-    });
-};
-
 export default async ({ bundle }: BuildOptions) => {
   const { entry, output = 'dist', clean = false, modules = ['es'] } = loadConfig<BuildConfig>();
 
@@ -43,20 +28,26 @@ export default async ({ bundle }: BuildOptions) => {
     }
   }
   consola.info(`Start build the modules：${chalk.green(modules.join('、'))}`);
-  spinner.start({ text: 'Being build...' });
-
-  await withSpinner(() => {
-    return Promise.all(
+  await spinner.promisify(
+    Promise.all(
       modules.map(module => {
         const dist = path.join(destination, module);
         return createStream(entry, dist, module);
       })
-    );
-  }, false);
+    ),
+    {
+      text: 'Building...',
+      failText: 'Build failed',
+      successText: 'Build successfully',
+    }
+  );
 
   if (bundle) {
-    consola.log('');
     consola.info('Start generate the bundle');
-    await withSpinner(generateBundle, true, destination);
+    await spinner.promisify(generateBundle(destination), {
+      text: 'Generating...',
+      failText: 'Generate failed',
+      successText: 'Generate successfully',
+    });
   }
 };

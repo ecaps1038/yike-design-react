@@ -2,6 +2,7 @@ import jiti from 'jiti';
 import { consola } from 'consola';
 import { isAbsolute, join } from 'node:path';
 import { readFileSync, existsSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 
 export type CompileModule = 'es' | 'cjs' | 'umd' | 'amd' | 'systemjs';
 
@@ -26,6 +27,7 @@ export const readConfig = <Config extends Record<string, any> = any>(path: strin
       return require(filepath).default;
     }
     if (/(mj|t)s/g.test(filepath)) {
+      const __filename = fileURLToPath(import.meta.url);
       const runtime = jiti(__filename, {
         esmResolve: true,
         extensions: ['.ts', '.mjs'],
