@@ -2,6 +2,13 @@ $color-primary: var(--yike-color-primary);
 $color-danger: var(--yike-color-danger);
 $color-success: var(--yike-color-success);
 $color-warning: var(--yike-color-warning);
+
+// f
+$color-primary-1: fade-out(red, 0.08);
+$color-danger-1: rgba(var(--yike-color-danger) / 8%);
+$color-success-1: rgba(var(--yike-color-success) / 8%);
+$color-warning-1: rgba(var(--yike-color-warning) / 8%);
+
 $color-href: var(--yike-color-href);
 $color-text: var(--yike-color-text);
 $color-text-secondary: var(--yike-color-text-secondary);

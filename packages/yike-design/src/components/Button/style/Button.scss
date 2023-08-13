@@ -8,9 +8,87 @@
   justify-content: center;
   padding: 6px 16px;
   color: white;
-  background-color: $color-primary;
+  border: 1px solid transparent;
+  outline: none;
+  transition: all 0.3s;
+
+  &--round {
+    border-radius: 20px !important;
+  }
+
+  &--circle {
+    padding: 0 !important;
+    border-radius: 20px !important;
+  }
+
+  &--square {
+    padding: 0 !important;
+  }
 }
 
-.yk-button--l {
-  border-radius: 4px;
+/* stylelint-disable-next-line scss/at-mixin-pattern */
+@mixin buttonSize($size, $br, $height, $fs, $pd) {
+  .yk-button--#{$size} {
+    min-width: $height;
+    height: $height;
+    padding: 0 $pd;
+    font-size: $fs;
+    border-radius: $br;
+  }
 }
+
+/* stylelint-disable-next-line scss/at-mixin-pattern */
+@mixin buttonType($type, $color) {
+  .yk-button--#{$type} {
+    color: $color;
+  }
+}
+
+// primary type
+/* stylelint-disable-next-line scss/at-mixin-pattern */
+@mixin buttonPrimaryBGC($status, $color_) {
+  .yk-button--primary.yk-button--#{$status} {
+    background-color: $color_;
+
+    &:not(:disabled):hover {
+      background-color: color-mix(in srgb, $color_, #fff 12%);
+    }
+
+    &:not(:disabled):active {
+      background-color: color-mix(in srgb, $color_, #000 8%);
+    }
+  }
+}
+
+// secondary type
+/* stylelint-disable-next-line scss/at-mixin-pattern */
+@mixin buttonSecondaryBGC($status, $color_) {
+  .yk-button--secondary.yk-button--#{$status} {
+    color: $color_;
+    background-color: rgba($color_, 0.08);
+
+    &:not(:disabled):hover {
+      background-color: rgba($color_, 0.12);
+    }
+
+    &:not(:disabled):active {
+      background-color: rgba($color_, 0.16);
+    }
+  }
+}
+
+@include buttonSize(s, 4px, 24px, 12px, 8px);
+@include buttonSize(m, 4px, 32px, 14px, 16px);
+@include buttonSize(l, 8px, 36px, 14px, 16px);
+@include buttonSize(xl, 8px, 48px, 16px, 24px);
+@include buttonType(primary, white);
+@include buttonType(secondary, black);
+@include buttonType(outline, black);
+@include buttonPrimaryBGC(primary, $color-primary);
+@include buttonPrimaryBGC(danger, $color-danger);
+@include buttonPrimaryBGC(success, $color-success);
+@include buttonPrimaryBGC(warning, $color-warning);
+@include buttonSecondaryBGC(primary, black);
+@include buttonSecondaryBGC(danger, #fa5247);
+@include buttonSecondaryBGC(success, #1fb4a2);
+@include buttonSecondaryBGC(warning, #ffaa1a);

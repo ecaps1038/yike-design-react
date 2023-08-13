@@ -1,8 +1,8 @@
 # Button 按钮
 
-## 按钮类型 type
+## 按钮类型 Type
 
-按钮有三种类型：主按钮、次按钮、线框按钮。主按钮在同一个操作区域建议最多出现一次。
+按钮有三种类型：主按钮、次要按钮、线框按钮。主按钮在同一个操作区域建议最多出现一次。
 
 ```tsx
 import { Button } from '@yike-design/react';
@@ -11,8 +11,46 @@ export default () => {
   return (
     <div>
       <Button>主要按钮</Button>
-      <Button>次要按钮</Button>
-      <Button>线框按钮</Button>
+      <Button type="secondary" status="warning">次要按钮</Button>
+      <Button type="outline">线框按钮</Button>
+    </div>
+  );
+};
+```
+
+## 按钮尺寸 Size
+
+按钮分为：`s`、`m`、`l`、`xl` 四种尺寸。高度分别为：`24px`、`32px`、`36px`、`48px`。默认尺寸为`l`。
+
+```tsx
+import { Button } from '@yike-design/react';
+
+export default () => {
+  return (
+    <div>
+      <Button size="s">按钮</Button>
+      <Button size="m">按钮</Button>
+      <Button size="l">按钮</Button>
+      <Button size="xl">按钮</Button>
+    </div>
+  );
+};
+```
+
+## 按钮形状 Shape
+
+按钮分为默认形状、`circle` 圆形、`round` 全圆角、`square` 正方形四种形状。
+
+```tsx
+import { Button } from '@yike-design/react';
+
+export default () => {
+  return (
+    <div>
+      <Button>默认形状</Button>
+      <Button shape="round">全圆角</Button>
+      <Button shape="circle">+</Button>
+      <Button shape="square">+</Button>
     </div>
   );
 };

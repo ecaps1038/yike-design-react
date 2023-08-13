@@ -22,10 +22,11 @@ const Button: React.FC<YkButtonProps> = props => {
     disabled = false,
     type = 'primary',
     size = 'l',
-    shape = 'round',
     status = 'primary',
+    shape,
     loading = false,
     long = false,
+    children,
   } = props;
 
   const bem = createCssScope('button');
@@ -49,7 +50,7 @@ const Button: React.FC<YkButtonProps> = props => {
       className={classname}
       onClick={handleClick}
     >
-      {props.children}
+      {children}
     </button>
   );
 };
