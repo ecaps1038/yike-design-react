@@ -1,3 +1,4 @@
+'use client';
 import type React from 'react';
 import type { Size, Type, Shape, Status } from '../../utils/constant';
 import { isFunction } from '../../utils/helper';
@@ -14,7 +15,7 @@ interface YkButtonProps {
   long?: boolean;
   children: React.ReactNode;
 
-  onClick: React.MouseEventHandler;
+  onClick?: React.MouseEventHandler;
 }
 
 const Button: React.FC<YkButtonProps> = props => {
