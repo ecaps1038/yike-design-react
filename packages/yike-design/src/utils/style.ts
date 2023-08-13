@@ -1,5 +1,5 @@
 import type React from 'react';
-import { isObject } from './helper';
+import { isArray, isObject, isString } from './helper';
 
 /**
  * @description: 合并样式
@@ -24,4 +24,37 @@ export const mergeStyles = (...styles: CSSStyleType[]) => {
     return Object.fromEntries(jsxStyles);
   });
   return Object.assign({}, ...cssStyles);
+};
+
+type ClassNameType = string | undefined | false | null;
+
+export const mergeClasses = (...classes: ClassNameType[]) => {
+  return classes.filter(Boolean).join(' ');
+};
+
+type PrefixClassName = ClassNameType | ClassNameType[] | Record<string, ClassNameType>;
+/**
+ * 使用方式参考 clsx 或 classnames
+ */
+export const createPrefixClass = (ns: string) => {
+  const prefix = `yike-${ns}`;
+
+  return (...classnames: PrefixClassName[]) => {
+    return mergeClasses(
+      ...classnames
+        .map(_class => {
+          if (isString(_class)) return _class && `${prefix}-${_class}`;
+          if (isArray(_class)) {
+            return _class.map(name => name && `${prefix}-${name}`);
+          }
+          if (isObject(_class)) {
+            return Object.entries(_class).map(([name, status]) => {
+              return status && `${prefix}-${name}`;
+            });
+          }
+          return _class;
+        })
+        .flat(1)
+    );
+  };
 };
