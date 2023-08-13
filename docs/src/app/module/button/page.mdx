@@ -55,3 +55,160 @@ export default () => {
   );
 };
 ```
+
+## 按钮图标 Icon
+
+自己插入图标，无论前后。
+
+TODO: add icon button
+
+## 按钮状态 Status
+
+按钮的状态分为 默认、`primary` 主要、`success` 成功、`warning` 警告、`danger` 危险五种，可以与按钮类型同时使用。
+
+```tsx
+import { Button } from '@yike-design/react';
+
+export default () => {
+  return (
+    <>
+      <div>
+        <Button>主要按钮</Button>
+        <Button type="secondary">次要按钮</Button>
+        <Button type="outline">线框按钮</Button>
+      </div>
+      <div>
+        <Button status="primary">主要按钮</Button>
+        <Button
+          type="secondary"
+          status="primary"
+        >
+          次要按钮
+        </Button>
+        <Button
+          type="outline"
+          status="primary"
+        >
+          线框按钮
+        </Button>
+      </div>
+      <div>
+        <Button status="success">主要按钮</Button>
+        <Button
+          type="secondary"
+          status="success"
+        >
+          次要按钮
+        </Button>
+        <Button
+          type="outline"
+          status="success"
+        >
+          线框按钮
+        </Button>
+      </div>
+      <div>
+        <Button status="warning">主要按钮</Button>
+        <Button
+          type="secondary"
+          status="warning"
+        >
+          次要按钮
+        </Button>
+        <Button
+          type="outline"
+          status="warning"
+        >
+          线框按钮
+        </Button>
+      </div>
+      <div>
+        <Button status="danger">主要按钮</Button>
+        <Button
+          type="secondary"
+          status="danger"
+        >
+          次要按钮
+        </Button>
+        <Button
+          type="outline"
+          status="danger"
+        >
+          线框按钮
+        </Button>
+      </div>
+    </>
+  );
+};
+```
+
+## 禁用状态 disabled
+
+按钮不可点击
+
+```tsx
+import { Button } from '@yike-design/react';
+
+export default () => {
+  return (
+    <div>
+      <Button disabled>禁用按钮</Button>
+      <Button
+        shape="round"
+        disabled
+      >
+        禁用按钮
+      </Button>
+    </div>
+  );
+};
+```
+
+## 按钮图标 Icon
+
+通过设置 `loading` 可以让按钮处于加载中状态。处于加载中状态的按钮不会触发点击事件。
+
+TODO: add loading icon button
+
+## 通栏（长按钮） Block
+
+通过设置 `long` 属性，使按钮的宽度跟随容器的宽度。
+
+```tsx
+import { Button } from '@yike-design/react';
+
+export default () => {
+  return (
+    <div>
+      <Button long>主要按钮</Button>
+      <Button
+        type="secondary"
+        long
+      >
+        次要按钮
+      </Button>
+      <Button
+        type="outline"
+        long
+      >
+        线框按钮
+      </Button>
+    </div>
+  );
+};
+```
+
+## API
+
+通过设置 Button 的属性来产生不同的按钮样式，推荐顺序为：type -> size -> shape -> status -> disabled。
+
+| 参数     | 描述             | 类型                                      | 默认值  |
+| -------- | ---------------- | ----------------------------------------- | ------- |
+| type     | 按钮的类型       | 'primary'｜'secondary'｜'outline'         | primary |
+| size     | 按钮的大小       | 's'｜'m'｜'l' ｜'xl'                      | 'l'     |
+| shape    | 按钮的形状       | 'round' ｜ 'circle' ｜ 'square'           | -       |
+| status   | 按钮的状态       | 'primary'｜'success'｜'warning'｜'danger' | -       |
+| disabled | 按钮是否被禁用   | boolean                                   | false   |
+| loading  | 按钮是否加载中   | boolean                                   | false   |
+| long     | 按钮是否通栏     | boolean                                   | false   |
+| onCLick  | 点击按钮时的回调 | (ev: React.MouseEvent) => {}              | -       |

@@ -22,7 +22,7 @@ const Button: React.FC<YkButtonProps> = props => {
     disabled = false,
     type = 'primary',
     size = 'l',
-    status = 'primary',
+    status,
     shape,
     loading = false,
     long = false,
@@ -39,7 +39,7 @@ const Button: React.FC<YkButtonProps> = props => {
   const handleClick = (ev: React.MouseEvent) => {
     const { onClick } = props;
 
-    if (isFunction(onClick)) {
+    if (isFunction(onClick) && !disabled) {
       ev.preventDefault();
       onClick(ev);
     }
@@ -47,6 +47,7 @@ const Button: React.FC<YkButtonProps> = props => {
 
   return (
     <button
+      disabled={disabled}
       className={classname}
       onClick={handleClick}
     >
