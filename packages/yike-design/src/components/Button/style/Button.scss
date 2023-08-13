@@ -1,1 +1,16 @@
 /* stylelint-disable-next-line no-empty-source */
+@import '../../../styles/tokens/index';
+@import '../../../styles/mixins/index';
+
+.yk-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 16px;
+  color: white;
+  background-color: $color-primary;
+}
+
+.yk-button--l {
+  border-radius: 4px;
+}
