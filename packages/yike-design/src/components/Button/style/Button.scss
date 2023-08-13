@@ -62,7 +62,7 @@
 
 // secondary type
 /* stylelint-disable-next-line scss/at-mixin-pattern */
-@mixin buttonSecondaryBGC($status, $color_) {
+@mixin buttonSecondaryOutlineBGC($status, $color_) {
   .yk-button--secondary.yk-button--#{$status} {
     color: $color_;
     background-color: rgba($color_, 0.08);
@@ -73,6 +73,19 @@
 
     &:not(:disabled):active {
       background-color: rgba($color_, 0.16);
+    }
+  }
+
+  .yk-button--outline.yk-button--#{$status} {
+    background-color: transparent;
+    border-color: rgba($color_, 0.16);
+
+    &:not(:disabled):hover {
+      background-color: rgba($color_, 0.08);
+    }
+
+    &:not(:disabled):active {
+      background-color: rgba($color_, 0.12);
     }
   }
 }
@@ -88,7 +101,7 @@
 @include buttonPrimaryBGC(danger, $color-danger);
 @include buttonPrimaryBGC(success, $color-success);
 @include buttonPrimaryBGC(warning, $color-warning);
-@include buttonSecondaryBGC(primary, black);
-@include buttonSecondaryBGC(danger, #fa5247);
-@include buttonSecondaryBGC(success, #1fb4a2);
-@include buttonSecondaryBGC(warning, #ffaa1a);
+@include buttonSecondaryOutlineBGC(primary, black);
+@include buttonSecondaryOutlineBGC(danger, #fa5247);
+@include buttonSecondaryOutlineBGC(success, #1fb4a2);
+@include buttonSecondaryOutlineBGC(warning, #ffaa1a);
