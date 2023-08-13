@@ -24,7 +24,9 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@babel/runtime": "^7.22.6"
+    "@babel/runtime": "^7.22.6",
+    "axios": "^1.4.0",
+    "clsx": "^2.0.0"
   },
   "devDependencies": {
     "clean-package": "^2.2.0"

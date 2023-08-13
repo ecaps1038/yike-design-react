@@ -1,10 +1,12 @@
+import clsx from 'clsx';
 import type React from 'react';
-import { useRef, type ChangeEvent, useState } from 'react';
-import type { UploadFile, UploadProps } from '../types/types';
-import { uploadClsPrefix } from '../constants';
-// import classnames from 'classnames';
+import { useRef, useState } from 'react';
 import axios, { type AxiosProgressEvent } from 'axios';
-const Upload: React.FC<UploadProps> = props => {
+
+import { uploadClsPrefix } from '../constants';
+import type { UploadFile, UploadProps } from '../types/types';
+
+const Upload: React.FC<React.PropsWithChildren<UploadProps>> = props => {
   const {
     action,
     defaultFileList,
@@ -21,6 +23,8 @@ const Upload: React.FC<UploadProps> = props => {
     beforeUpload,
     // onRemove,
     onChange,
+
+    children,
   } = props;
 
   const uploadInputRef = useRef<HTMLInputElement>(null);
@@ -43,7 +47,8 @@ const Upload: React.FC<UploadProps> = props => {
       uploadInputRef.current.click();
     }
   };
-  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (!files) {
       return;
@@ -100,11 +105,11 @@ const Upload: React.FC<UploadProps> = props => {
         withCredentials,
         onUploadProgress: (e: AxiosProgressEvent) => {
           if (e.total) {
-            const persent = Math.round((e.loaded * 100) / e.total) || 0;
-            if (persent < 100) {
-              updateFileList(_file, { percent: persent, status: 'uploading' });
+            const percent = Math.round((e.loaded * 100) / e.total) || 0;
+            if (percent < 100) {
+              updateFileList(_file, { percent: percent, status: 'uploading' });
               if (onProgress) {
-                onProgress(persent, file);
+                onProgress(percent, file);
               }
             }
           }
@@ -140,9 +145,9 @@ const Upload: React.FC<UploadProps> = props => {
   // };
 
   return (
-    <div className={`${uploadClsPrefix}`}>
+    <div className={clsx(uploadClsPrefix)}>
       <div
-        className={`${uploadClsPrefix}-input-wrapper`}
+        className={clsx(`${uploadClsPrefix}-input-wrapper`)}
         style={{ display: 'inline-block' }}
         onClick={handleClick}
       >
@@ -155,6 +160,7 @@ const Upload: React.FC<UploadProps> = props => {
           accept={accept}
           multiple={multiple}
         />
+        {children}
       </div>
       <div>
         {fileList.map((item, index) => {
