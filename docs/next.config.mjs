@@ -25,7 +25,7 @@ if (!fs.existsSync(YIKE_DEMO_PATH)) {
 const onResolve = (_file, current, source) => {
   const target = resolve(YIKE_DEMO_PATH, `${current}.tsx`);
   fs.ensureDirSync(dirname(target));
-  fs.writeFileSync(target, source, 'utf-8');
+  fs.writeFileSync(target, `'use client';\n${source}`, 'utf-8');
 };
 
 /**
