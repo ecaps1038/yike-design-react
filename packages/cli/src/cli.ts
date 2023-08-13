@@ -12,8 +12,8 @@ export const startCommand = async () => {
       await build({ bundle });
     });
 
-  cli.command('create <component>', 'Create a new component').action(async (component: string) => {
-    await create(component);
+  cli.command('create', 'Create a new component').action(async () => {
+    await create();
   });
 
   cli.help();
