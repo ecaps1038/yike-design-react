@@ -6,6 +6,10 @@ export const isString = (val: unknown): val is string => {
   return typeof val === 'string';
 };
 
-export const isArray = (val: unknown): val is unknown[] => {
+export function isFunction(val: any): val is (...args: any[]) => any {
+  return typeof val === 'function';
+}
+
+export const isArray = (val: unknown): val is string[] => {
   return Array.isArray(val);
 };
