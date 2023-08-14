@@ -17,7 +17,8 @@
     "cli:dev": "pnpm --filter @yike-design/cli dev",
     "cli:build": "pnpm --filter @yike-design/cli build",
     "new": "pnpm --filter @yike-design/react new",
-    "build": "pnpm --filter @yike-design/react build"
+    "build": "pnpm --filter @yike-design/react build",
+    "icons:build": "pnpm --filter @yike-design/react-icons build"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.7.1",
