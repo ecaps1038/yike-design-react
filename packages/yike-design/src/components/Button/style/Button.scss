@@ -138,7 +138,7 @@
 @include buttonPrimaryBGC(danger, $color-danger);
 @include buttonPrimaryBGC(success, $color-success);
 @include buttonPrimaryBGC(warning, $color-warning);
-@include buttonSecondaryOutlineBGC(primary, $color-primary);
-@include buttonSecondaryOutlineBGC(danger, $color-danger);
-@include buttonSecondaryOutlineBGC(success, $color-success);
-@include buttonSecondaryOutlineBGC(warning, $color-warning);
+@include buttonSecondaryOutlineBGC(primary, #2b5aed);
+@include buttonSecondaryOutlineBGC(danger, #fa5247);
+@include buttonSecondaryOutlineBGC(success, #1fb4a2);
+@include buttonSecondaryOutlineBGC(warning, #ffaa1a);
