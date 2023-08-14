@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import sign from '@/assets/sign.svg';
 import logo from '@/assets/logo-bg.svg';
+import { Space, Button } from '@yike-design/react';
 
 const NotFound = () => {
   return (
@@ -15,14 +16,15 @@ const NotFound = () => {
         <p className="tracking-title text-8xl pt-[42px] pl-5 pb-4">404</p>
         <p className="text-base">包容万物，从源头出发，一切从简</p>
       </div>
-      <div className="flex justify-center gap-4 mt-10">
-        {/* TODO: use yike button */}
-        <Link href="/develop/yike">
-          <button className="yike-doc-button bg-[#2B5AED] text-white">开始使用</button>
-        </Link>
-        <Link href="/design/yike">
-          <button className="yike-doc-button bg-[#1e20250f]">设计资源</button>
-        </Link>
+      <div className="flex justify-center mt-10">
+        <Space>
+          <Link href="/develop/yike">
+            <Button>开始使用</Button>
+          </Link>
+          <Link href="/design/yike">
+            <Button type="secondary">设计资源</Button>
+          </Link>
+        </Space>
       </div>
       <div className="flex justify-center absolute bottom-14 left-1/2 -translate-x-1/2">
         <Image

@@ -3,11 +3,11 @@ import type { Size, Direction, Align } from '../../utils/constant';
 type GapSizeUnit = Size | number | [number, number];
 
 export interface YkSpaceProps {
-  align: Align;
-  direction: Direction;
-  size: GapSizeUnit;
-  wrap: boolean;
-  block: boolean;
+  align?: Align;
+  direction?: Direction;
+  size?: GapSizeUnit;
+  wrap?: boolean;
+  block?: boolean;
 }
 
 export const getDirection = (dirction: Direction): React.CSSProperties['flexDirection'] => {
