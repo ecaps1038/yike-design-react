@@ -7,6 +7,7 @@ export interface YkSpaceProps {
   direction: Direction;
   size: GapSizeUnit;
   wrap: boolean;
+  block: boolean;
 }
 
 export const getDirection = (dirction: Direction): React.CSSProperties['flexDirection'] => {

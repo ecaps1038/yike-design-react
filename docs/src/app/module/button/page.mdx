@@ -5,15 +5,15 @@
 按钮有三种类型：主按钮、次要按钮、线框按钮。主按钮在同一个操作区域建议最多出现一次。
 
 ```tsx
-import { Button } from '@yike-design/react';
+import { Button, Space } from '@yike-design/react';
 
 export default () => {
   return (
-    <div>
+    <Space>
       <Button>主要按钮</Button>
       <Button type="secondary">次要按钮</Button>
       <Button type="outline">线框按钮</Button>
-    </div>
+    </Space>
   );
 };
 ```
@@ -23,16 +23,16 @@ export default () => {
 按钮分为：`s`、`m`、`l`、`xl` 四种尺寸。高度分别为：`24px`、`32px`、`36px`、`48px`。默认尺寸为`l`。
 
 ```tsx
-import { Button } from '@yike-design/react';
+import { Button, Space } from '@yike-design/react';
 
 export default () => {
   return (
-    <div>
+    <Space>
       <Button size="s">按钮</Button>
       <Button size="m">按钮</Button>
       <Button size="l">按钮</Button>
       <Button size="xl">按钮</Button>
-    </div>
+    </Space>
   );
 };
 ```
@@ -42,16 +42,16 @@ export default () => {
 按钮分为默认形状、`circle` 圆形、`round` 全圆角、`square` 正方形四种形状。
 
 ```tsx
-import { Button } from '@yike-design/react';
+import { Button, Space } from '@yike-design/react';
 
 export default () => {
   return (
-    <div>
+    <Space>
       <Button>默认形状</Button>
       <Button shape="round">全圆角</Button>
       <Button shape="circle">+</Button>
       <Button shape="square">+</Button>
-    </div>
+    </Space>
   );
 };
 ```
@@ -67,17 +67,17 @@ TODO: add icon button
 按钮的状态分为 默认、`primary` 主要、`success` 成功、`warning` 警告、`danger` 危险五种，可以与按钮类型同时使用。
 
 ```tsx
-import { Button } from '@yike-design/react';
+import { Button, Space } from '@yike-design/react';
 
 export default () => {
   return (
-    <>
-      <div>
+    <Space direction="vertical">
+      <Space>
         <Button>主要按钮</Button>
         <Button type="secondary">次要按钮</Button>
         <Button type="outline">线框按钮</Button>
-      </div>
-      <div>
+      </Space>
+      <Space>
         <Button status="primary">主要按钮</Button>
         <Button
           type="secondary"
@@ -91,8 +91,8 @@ export default () => {
         >
           线框按钮
         </Button>
-      </div>
-      <div>
+      </Space>
+      <Space>
         <Button status="success">主要按钮</Button>
         <Button
           type="secondary"
@@ -106,8 +106,8 @@ export default () => {
         >
           线框按钮
         </Button>
-      </div>
-      <div>
+      </Space>
+      <Space>
         <Button status="warning">主要按钮</Button>
         <Button
           type="secondary"
@@ -121,8 +121,8 @@ export default () => {
         >
           线框按钮
         </Button>
-      </div>
-      <div>
+      </Space>
+      <Space>
         <Button status="danger">主要按钮</Button>
         <Button
           type="secondary"
@@ -136,8 +136,8 @@ export default () => {
         >
           线框按钮
         </Button>
-      </div>
-    </>
+      </Space>
+    </Space>
   );
 };
 ```
@@ -147,11 +147,11 @@ export default () => {
 按钮不可点击
 
 ```tsx
-import { Button } from '@yike-design/react';
+import { Button, Space } from '@yike-design/react';
 
 export default () => {
   return (
-    <div>
+    <Space>
       <Button disabled>禁用按钮</Button>
       <Button
         shape="round"
@@ -159,7 +159,7 @@ export default () => {
       >
         禁用按钮
       </Button>
-    </div>
+    </Space>
   );
 };
 ```
@@ -175,11 +175,11 @@ TODO: add loading icon button
 通过设置 `long` 属性，使按钮的宽度跟随容器的宽度。
 
 ```tsx
-import { Button } from '@yike-design/react';
+import { Button, Space } from '@yike-design/react';
 
 export default () => {
   return (
-    <div>
+    <Space direction="vertical" block>
       <Button long>主要按钮</Button>
       <Button
         type="secondary"
@@ -193,7 +193,7 @@ export default () => {
       >
         线框按钮
       </Button>
-    </div>
+    </Space>
   );
 };
 ```

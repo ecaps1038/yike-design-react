@@ -5,7 +5,7 @@ import './style/Space.scss';
 import { isArray, isNumber, isString } from '../../utils/helper';
 
 const Space: React.FC<React.PropsWithChildren<YkSpaceProps>> = props => {
-  const { align = 'start', direction = 'horizontal', size = 'l', wrap = false, children, ...other } = props;
+  const { block, align = 'start', direction = 'horizontal', size = 'l', wrap = false, children, ...other } = props;
 
   const resolveGapSize = (): React.CSSProperties => {
     if (isArray(size)) {
@@ -24,6 +24,7 @@ const Space: React.FC<React.PropsWithChildren<YkSpaceProps>> = props => {
   };
 
   const style_: React.CSSProperties = {
+    display: block ? 'flex' : 'inline-flex',
     flexWrap: wrap ? 'wrap' : 'nowrap',
     flexDirection: getDirection(direction),
     alignItems: getAlign(align),
@@ -32,7 +33,6 @@ const Space: React.FC<React.PropsWithChildren<YkSpaceProps>> = props => {
 
   return (
     <div
-      className="yk-space"
       style={style_}
       {...other}
     >
