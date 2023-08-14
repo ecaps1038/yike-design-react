@@ -10,8 +10,8 @@ export interface YkSpaceProps {
   block?: boolean;
 }
 
-export const getDirection = (dirction: Direction): React.CSSProperties['flexDirection'] => {
-  if (dirction === 'horizontal') {
+export const getDirection = (direction: Direction): React.CSSProperties['flexDirection'] => {
+  if (direction === 'horizontal') {
     return 'row';
   } else {
     return 'column';
