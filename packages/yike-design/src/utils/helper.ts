@@ -13,3 +13,7 @@ export function isFunction(val: any): val is (...args: any[]) => any {
 export const isArray = (val: unknown): val is string[] => {
   return Array.isArray(val);
 };
+
+export function isNumber(val: any): val is number {
+  return Object.prototype.toString.call(val) === '[object Number]' && val === val;
+}
