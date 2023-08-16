@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { GithubFilled } from '@yike-design/react-icons';
 
 import Nav from './Nav';
 import logo from '@/assets/logo.svg';
@@ -35,13 +36,12 @@ const Header = () => {
           />
         ))}
         <Link
-          className="text-sm"
+          className="text-base"
           target="_blank"
           href="https://github.com/ecaps1038/yike-design-react"
           rel="noreferrer"
         >
-          {/* TODO: text to icon */}
-          Github
+          <GithubFilled />
         </Link>
         {/* TODO: theme */}
         {/* TODO: login */}
