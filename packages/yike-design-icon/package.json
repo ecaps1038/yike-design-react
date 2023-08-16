@@ -12,7 +12,8 @@
     "dist"
   ],
   "scripts": {
-    "build": "yike build-icons"
+    "build": "yike build-icons",
+    "generate": "yike generate-icons"
   },
   "keywords": [],
   "author": "",

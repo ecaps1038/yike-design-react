@@ -1,30 +1,19 @@
 import chalk from 'chalk';
 import fs from 'node:fs';
 import path from 'node:path';
-import { consola } from 'consola';
-import spinner from '../utils/spinner';
-import { readdir, writeFile } from 'node:fs/promises';
-import { rollup, type OutputOptions } from 'rollup';
-import svgr from '@svgr/rollup';
-import typescript from '@rollup/plugin-typescript';
 import { rimraf } from 'rimraf';
+import svgr from '@svgr/rollup';
+import { consola } from 'consola';
+import typescript from '@rollup/plugin-typescript';
+import { rollup, type OutputOptions } from 'rollup';
+import { readdir, writeFile } from 'node:fs/promises';
 
-const formatterIconName = (svgFileName: string) => {
-  return svgFileName
-    .replace(/\.svg$/, '')
-    .split('-')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-    .join('');
-};
+import spinner from '../utils/spinner';
+import { filledSvgDir, inlineSvgDir, outlinedSvgDir, root } from './utils/define';
 
-const root = path.resolve(process.cwd());
+const entry = path.resolve(root, 'index.ts');
 
-const exportFile = path.resolve(root, 'index.tsx');
-
-const iconsDir = path.resolve(root, 'icons');
-
-const filledIconDir = path.resolve(iconsDir, 'fill');
-const outlinedIconDir = path.resolve(iconsDir, 'outline');
+const comment = `// This icon export file is generated automatically.`;
 
 const outputOptionsList: OutputOptions[] = [
   {
@@ -49,22 +38,22 @@ const outputOptionsList: OutputOptions[] = [
 ];
 
 export default async () => {
-  const outDirs = ['es', 'cjs', 'dist'].map(item => path.resolve(root, item)).filter(dir => fs.existsSync(dir));
-
-  if (outDirs.length) {
+  try {
     consola.info('Start clean the output directory');
-    try {
-      await rimraf(outDirs);
-      consola.success(chalk.green('Clean successfully\n'));
-    } catch (error) {
-      consola.fail('Clean failed');
-      consola.error(error + '\n');
-      process.exit(1);
-    }
+    await rimraf(['es', 'cjs', 'dist'].map(item => path.resolve(root, item)));
+    consola.success(chalk.green('Clean successfully\n'));
+
+    consola.info('Start clean the entry');
+    await rimraf(entry);
+    consola.success(chalk.green('Clean successfully\n'));
+  } catch (error) {
+    consola.fail('Clean failed');
+    consola.error(error + '\n');
+    process.exit(1);
   }
 
-  if (!fs.existsSync(filledIconDir) || !fs.existsSync(outlinedIconDir)) {
-    consola.error(chalk.red('The icons directory does not exist'));
+  if (!fs.existsSync(inlineSvgDir)) {
+    consola.error(chalk.red('The inline-svg directory does not exist, please generate icons first\n'));
     process.exit(1);
   }
 
@@ -72,20 +61,20 @@ export default async () => {
 
   await spinner.promisify(
     async () => {
-      const filledIcons = await readdir(filledIconDir);
-      const outlinedIcons = await readdir(outlinedIconDir);
+      const filledIcons = await readdir(filledSvgDir);
+      const outlinedIcons = await readdir(outlinedSvgDir);
 
       const filledIconsExport = filledIcons
-        .map(icon => `export { default as ${formatterIconName(icon)}Filled } from './icons/fill/${icon}';`)
+        .map(icon => `export { default as ${path.basename(icon, '.svg')} } from './inline-svg/filled/${icon}';`)
         .join('\n');
 
       const outlinedIconsExport = outlinedIcons
-        .map(icon => `export { default as ${formatterIconName(icon)}Outlined } from './icons/outline/${icon}';`)
+        .map(icon => `export { default as ${path.basename(icon, '.svg')} } from './inline-svg/outlined/${icon}';`)
         .join('\n');
 
-      const content = ['// filled icons', filledIconsExport, '', '// outlined icons', outlinedIconsExport].join('\n');
+      const allIconExport = [comment, filledIconsExport, outlinedIconsExport].join('\n');
 
-      await writeFile(exportFile, content, 'utf-8');
+      await Promise.all([writeFile(entry, allIconExport, 'utf-8')]);
     },
     {
       text: 'Generating...',
@@ -99,7 +88,7 @@ export default async () => {
   await spinner.promisify(
     async () => {
       const bundle = await rollup({
-        input: exportFile,
+        input: entry,
         external: ['react', 'react-dom'],
         plugins: [
           svgr(),
@@ -120,12 +109,4 @@ export default async () => {
       successText: 'Build successfully',
     }
   );
-
-  try {
-    await rimraf(exportFile);
-    consola.success(chalk.green('Clean temp export file successfully\n'));
-  } catch (error) {
-    consola.fail('Clean temp export file failed');
-    consola.error(error + '\n');
-  }
 };
