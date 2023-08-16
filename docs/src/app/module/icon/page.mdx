@@ -1,11 +1,33 @@
 # icon 图标
 
-```tsx
-import * as Icons from '@yike-design/react-icons';
+在这汇总Yike Design 内置的图标，将不定期更新。
 
-console.log(Icons);
+## 使用方法
+
+使用图标组件，你需要安装 @yike-design/react-icons 图标组件包：
+
+```shell pure
+pnpm add @yike-design/react-icons
+```
+
+import IconList from './IconList.tsx';
+
+## 图标列表
+
+<IconList />
+
+## 图标使用
+
+```tsx
+import { Space } from '@yike-design/react';
+import { AvatarOutlined, TickCircleOutlined } from '@yike-design/react-icons';
 
 export default () => {
-  return <Icons.AlarmFilled />;
+  return (
+    <Space>
+      <AvatarOutlined />
+      <TickCircleOutlined />
+    </Space>
+  );
 };
 ```
