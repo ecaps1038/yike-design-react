@@ -1,0 +1,21 @@
+{
+  "name": "@yike-design/react-icons",
+  "version": "1.0.0",
+  "description": "",
+  "main": "cjs/index.js",
+  "module": "es/index.js",
+  "types": "es/index.d.ts",
+  "unpkg": "dist/index.js",
+  "files": [
+    "cjs",
+    "es",
+    "dist"
+  ],
+  "scripts": {
+    "build": "yike build-icons",
+    "generate": "yike generate-icons"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

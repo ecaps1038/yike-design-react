@@ -15,6 +15,7 @@ const config: Config = {
         nav: '#2b5aed',
         asideLink: '#1572ff',
         asideLinkNormal: 'var(--fontcolorm)',
+        primary: 'var(--yike-color-primary)',
       },
       borderColor: {
         yike: 'var(--yike-border-color)',

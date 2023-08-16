@@ -18,6 +18,7 @@ pnpm-lock.yaml
 # 生成的图标文件
 svg-icon
 
+cjs
 es 
 lib
 dist
