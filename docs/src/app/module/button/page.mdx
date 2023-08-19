@@ -60,7 +60,19 @@ export default () => {
 
 自己插入图标，无论前后。
 
-TODO: add icon button
+```tsx
+import { Button, Space } from '@yike-design/react';
+import { PlusOutlined, DeleteOutlined } from '@yike-design/react-icons';
+
+export default () => {
+  return (
+    <Space>
+      <Button icon={<PlusOutlined />}>新建</Button>
+      <Button status="danger" icon={<DeleteOutlined />}>删除</Button>
+    </Space>
+  );
+};
+```
 
 ## 按钮状态 Status
 
@@ -179,7 +191,10 @@ import { Button, Space } from '@yike-design/react';
 
 export default () => {
   return (
-    <Space direction="vertical" block>
+    <Space
+      direction="vertical"
+      block
+    >
       <Button long>主要按钮</Button>
       <Button
         type="secondary"
