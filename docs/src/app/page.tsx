@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import sign from '@/assets/sign.svg';
 import logo from '@/assets/logo-bg.svg';
 import { Space, Button } from '@yike-design/react';
+import { Yike1Outlined } from '@yike-design/react-icons';
 
 export default function Home() {
   return (
@@ -10,6 +10,7 @@ export default function Home() {
       <div className="-mt-[200px] text-center font-semibold h-[220px] relative">
         <Image
           className="absolute left-1/2 top-0 -z-10 -translate-x-1/2"
+          priority
           src={logo}
           alt="logo"
         />
@@ -27,10 +28,7 @@ export default function Home() {
         </Space>
       </div>
       <div className="flex justify-center absolute bottom-14 left-1/2 -translate-x-1/2">
-        <Image
-          src={sign}
-          alt="sign"
-        />
+        <Yike1Outlined className="text-6xl" />
       </div>
     </div>
   );

@@ -13,7 +13,7 @@
     "docs:build": "pnpm --filter @yike-design/react-docs build",
     "release": "standard-version",
     "preinstall": "npx only-allow pnpm",
-    "postinstall": "npm-run-all -s cli:build -p doc-demo:build icons",
+    "postinstall": "npm-run-all -s cli:build -p doc-demo:build icons:generate",
     "cli:dev": "pnpm --filter @yike-design/cli dev",
     "cli:build": "pnpm --filter @yike-design/cli build",
     "new": "pnpm --filter @yike-design/react new",
@@ -51,7 +51,6 @@
     "stylelint-config-standard": "^34.0.0",
     "stylelint-config-standard-scss": "^10.0.0",
     "stylelint-less": "^1.0.8",
-    "tsx": "^3.12.7",
     "typescript": "^5.1.6"
   },
   "lint-staged": {
