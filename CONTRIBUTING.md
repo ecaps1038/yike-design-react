@@ -19,7 +19,7 @@
 
 ### fork 项目
 
-前往[项目主页](https://github.com/ecaps1038/yike-design-react,"github主页") fork 工程至自己的 git 仓库，并基于此 git 仓库维护代码。
+前往[项目主页](https://github.com/ecaps1038/yike-design-react) fork 工程至自己的 git 仓库，并基于此 git 仓库维护代码。
 
 ### 添加主仓库为远程仓库
 
@@ -36,8 +36,12 @@ git remote add upstream https://github.com/ecaps1038/yike-design-react.git
 ```sh
 git checkout -b dev
 git fetch upstream
-git merge upstream/dev
+git rebase upstream/dev 
 ```
+
+为什么使用 `rebase` ?
+
+`merge` 会重新生成一个 commit 节点，提交 PR 时你 merge 的记录也会被带上去，所以不建议使用
 
 ### 创建需求分支
 
@@ -45,32 +49,34 @@ git merge upstream/dev
 
 根据你需要开发的新功能，推荐采用：`${type}/${component}/${feat}` 分支命名规范。
 
-其中，type 表示该分支类型，有以下选项：
+其中，type 表示该分支类型，推荐以下选项：
 
 - feature：功能分支
 - fix：修复分支
 - docs：文档修改分支
 - refactor：重构分支
 
-component 为你需要修改的组件，如 button、icon、upload 等。若需要修改脚手架能力，此处应为 base。
+component 为你需要修改的组件或者是基建相关的能力
+
+- 对于组件库中的组件来说，可以是 button、icon、upload 等
+- 若需要修改脚手架能力，此处应为 cli
+- 如果是文档工程的修改，可以是 docs
 
 feat 为你需要具体修改的内容。此处定义根据功能自由命名，命名采用短横线命名法。
 
 以下是具体例子:
 
-- `feature/base/add-markdown-pure`
-- `feature/button/add-style`
-- `fix/icon/alignment-issue`
-- `docs/upload/add-picture-demo`
-- `refactor/base/refactor-router`
+- `feature/cli/update-icons-build`
+- `feature/button/add-style` 
+- `fix/icon/alignment-issue` 
+- `docs/upload/add-picture-demo` 
+- `refactor/docs/refactor-router`  
 
 ### 创建组件
 
-使用指令 `npm run new component-name [组件名]`。
+使用指令 `pnpm new component-name ` 即可自动创建组件目录及文件。
 
-例如 `npm run new checkbox 复选框` 即可自动创建组件目录及文件。
-
-在编写完代码后，在确保与目标分支不存在冲突的前提下可以将该功能分支提交 PR 到主仓库的对应分支（目前主要的开发分支为 monorepo-dev 分支）。
+编写完代码后在确保与目标分支不存在冲突的前提下可以将该功能分支提交 PR 到主仓库的对应分支（目前主要的开发分支为 dev 分支）。
 
 PR 将由具备权限的贡献者 CR 后进行 merge，若提交的功能影响面较广，CR 人员应当及时同其他成员共同参与讨论和检验。
 
@@ -132,21 +138,27 @@ PR 将由具备权限的贡献者 CR 后进行 merge，若提交的功能影响�
   |    |- ButtonGroup.scss    # ButtonGroup 样式文件
   |  |- Button.tsx          # Button 代码文件
   |  |- ButtonGroup.tsx     # ButtonGroup 代码文件
-  |  `- index.tsx            # 组件入口文件
+  |  |- index.tsx            # 组件入口文件
   |- ...
 ```
 
+### "use client"
+
+RSC（React Server Component）当前已经可以上生产，为了对 RSC 做适配，组件库中所有用到了客户端功能的组件，应当在组件文件的顶部加上 `"use client"` 指令（大概率大部分组件都需要）
+
+具体可以参考 [NextJS 文档](https://nextjs.org/docs/getting-started/react-essentials) 
+
 ## 文档编写
 
-所有的文档都在 `docs/src/app/module` 目录下对应的组件名文件夹下的 `page.md(x)` 
+`docs` 所有的文档都在 `docs/src/app/module` 目录下对应的组件名文件夹下的 `page.md(x)` 
 
-当然也可以完全使用 `tsx` 来书写，推荐使用 markdown 书写
+对于所有的文档页面，应当使用 md(x) 来书写，对于需要自定义组件的部分导入相关的 react 组件
 
 ### 代码块
 
-`docs` 是一个 NextJS 工程并且使用了 mdx，我们编写了一个 `remark` 插件用于将普通的 markdown 代码块进行预览渲染
+受 dumi 启发--**开发者应该像用户一样使用组件**，所以 demo 块的的书写方式应当和使用该组件类似，默认导出的组件会被渲染在预览区内
 
-书写方式和你怎么用一模一样（和 dumi 的写法相同），默认导出的组件会被渲染在预览区内，例如：
+我们编写了一个 `remark` 插件用于将普通的 markdown 代码块进行预览渲染，其书写规则类似于 dumi
 
 ````
 ```tsx
@@ -181,8 +193,6 @@ export default () => {
 }
 ```
 ````
-
-如果遇到 NextJS 提示错误，可以 `rm -rf docs/.next` 和 `rm -rf docs/node_modules/yike` 并且重启服务
 
 ### 组件文档.md
 
