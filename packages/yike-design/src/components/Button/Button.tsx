@@ -1,22 +1,7 @@
 'use client';
-import type React from 'react';
-import type { Size, Type, Shape, Status } from '../../utils/constant';
-import { isFunction } from '../../utils/helper';
-import { createCssScope } from '../../utils/bem';
+import { isFunction, createCssScope } from '../../utils';
 import './style/Button.scss';
-
-interface YkButtonProps {
-  disabled?: boolean;
-  type?: Type;
-  size?: Size;
-  shape?: Shape;
-  status?: Status;
-  loading?: boolean;
-  long?: boolean;
-  children: React.ReactNode;
-
-  onClick?: React.MouseEventHandler;
-}
+import type { YkButtonProps } from './utils';
 
 const Button: React.FC<YkButtonProps> = props => {
   const {
@@ -28,6 +13,7 @@ const Button: React.FC<YkButtonProps> = props => {
     loading = false,
     long = false,
     children,
+    icon,
   } = props;
 
   const bem = createCssScope('button');
@@ -52,6 +38,7 @@ const Button: React.FC<YkButtonProps> = props => {
       className={classname}
       onClick={handleClick}
     >
+      {icon}
       {children}
     </button>
   );
