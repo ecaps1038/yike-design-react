@@ -1,6 +1,6 @@
 import fs from 'node:fs';
-import { readConfig, type CompileModule } from './helper';
 import type { Globs } from 'gulp';
+import { readConfig, type CompileModule } from './helper';
 
 export type BuildConfig = {
   entry: Globs;
