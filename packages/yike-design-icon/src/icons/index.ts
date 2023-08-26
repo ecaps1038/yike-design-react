@@ -1,6 +1,6 @@
 /**
- * GENERATE BY @yike-design/cli
- * DON NOT EDIT IT MANUALLY
+ * 🎉🎉🎉 GENERATE BY @yike-design/cli
+ * ⚠️⚠️⚠️ DO NOT EDIT IT MANUALLY
  */
 
 export { default as AlarmFilled } from './AlarmFilled';

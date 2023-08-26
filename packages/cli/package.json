@@ -22,7 +22,6 @@
     "build": "unbuild"
   },
   "devDependencies": {
-    "@types/ejs": "^3.1.2",
     "@types/gulp": "^4.0.13",
     "@types/gulp-babel": "^6.1.30",
     "@types/gulp-postcss": "^8.0.3",
@@ -49,12 +48,14 @@
     "@rollup/plugin-babel": "^6.0.3",
     "@rollup/plugin-commonjs": "^25.0.3",
     "@rollup/plugin-node-resolve": "^15.1.0",
+    "@svgr/core": "^8.1.0",
+    "@svgr/plugin-jsx": "^8.1.0",
+    "@svgr/plugin-prettier": "^8.1.0",
     "autoprefixer": "10.4.14",
     "cac": "^6.7.14",
     "chalk": "^5.3.0",
     "consola": "^3.2.3",
     "defu": "^6.1.2",
-    "ejs": "^3.1.9",
     "esbuild": "^0.19.2",
     "glob": "^10.3.3",
     "gulp": "^4.0.2",

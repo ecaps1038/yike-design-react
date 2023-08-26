@@ -1,14 +1,24 @@
 import chalk from 'chalk';
 import merge2 from 'merge2';
-import path, { basename } from 'node:path';
 import consola from 'consola';
 import { rimraf } from 'rimraf';
-import { readdir, writeFile } from 'node:fs/promises';
+import path, { basename } from 'node:path';
+import { writeFile } from 'node:fs/promises';
 
-import { exportTemplate } from './template/icon.ejs';
-import { generateIcons } from './utils/generateIcons';
-import { exportFile, iconsDir, svgDir } from './utils/define';
-import ejs from 'ejs';
+import spinner from '../../utils/spinner';
+import { generateIcons } from './utils/gen';
+import { FILE_AUTO_GENERATE_COMMENT, exportFile, iconsDir, svgDir } from './utils/define';
+import template from 'lodash.template';
+import { readdirSync } from 'node:fs';
+
+const SVGIconDir = path.resolve(iconsDir, 'svg');
+
+const exportTemplate = `
+${FILE_AUTO_GENERATE_COMMENT}
+<% for( let index = 0; index < files.length; index++ ) { %>
+export { default as  <%- files[index] %> } from './<%- files[index] %>';
+<% } %>
+`.trimStart();
 
 export default async () => {
   try {
@@ -28,13 +38,15 @@ export default async () => {
       // Generate filled icons
       generateIcons({
         from: [path.resolve(svgDir, 'fill/*.svg')],
-        to: iconsDir,
+        svgIconDir: SVGIconDir,
+        iconDir: iconsDir,
         type: 'filled',
       }),
       // Generate outlined icons
       generateIcons({
         from: [path.resolve(svgDir, 'outline/*.svg')],
-        to: iconsDir,
+        svgIconDir: SVGIconDir,
+        iconDir: iconsDir,
         type: 'outlined',
       }),
     ],
@@ -44,32 +56,26 @@ export default async () => {
     }
   );
 
-  await new Promise((resolve, reject) => {
-    stream.on('finish', resolve);
-    stream.on('error', reject);
-  });
-  await writeFile(
-    exportFile,
-    ejs.render(exportTemplate, { files: (await readdir(iconsDir)).map(item => basename(item, '.tsx')) }),
-    'utf-8'
+  await spinner.promisify(
+    async () => {
+      await new Promise((resolve, reject) => {
+        stream.on('finish', resolve);
+        stream.on('error', reject);
+      });
+      await writeFile(
+        exportFile,
+        template(exportTemplate)({
+          files: readdirSync(iconsDir)
+            .filter(item => !item.startsWith('svg'))
+            .map(item => basename(item, '.tsx')),
+        }),
+        'utf-8'
+      );
+    },
+    {
+      text: 'Generating...',
+      failText: 'Generate failed',
+      successText: 'Generate successfully',
+    }
   );
-
-  // await spinner.promisify(
-  //   async () => {
-  //     await new Promise((resolve, reject) => {
-  //       stream.on('finish', resolve);
-  //       stream.on('error', reject);
-  //     });
-  //     await writeFile(
-  //       exportFile,
-  //       ejs.render(exportTemplate, { files: (await readdir(iconsDir)).map(item => basename(item, '.tsx')) }),
-  //       'utf-8'
-  //     );
-  //   },
-  //   {
-  //     text: 'Generating...',
-  //     failText: 'Generate failed',
-  //     successText: 'Generate successfully',
-  //   }
-  // );
 };

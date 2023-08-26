@@ -1,30 +1,20 @@
 /**
- * GENERATE BY @yike-design/cli
- * DON NOT EDIT IT MANUALLY
+ * 🎉🎉🎉 GENERATE BY @yike-design/cli
+ * ⚠️⚠️⚠️ DO NOT EDIT IT MANUALLY
  */
 
 import React from 'react';
-import YiKeIcon from '../components/YiKeIcon';
 import type { YiKeIconProps } from '../types';
+import YiKeIcon from '../components/YiKeIcon';
+import FolderCloseOutlinedSVG from './svg/FolderCloseOutlined';
 
 const FolderCloseOutlined = React.forwardRef<HTMLSpanElement, YiKeIconProps>((props, ref) => {
   return (
     <YiKeIcon
       {...props}
       ref={ref}
-      icon={{
-        name: 'folder-close-outlined',
-        component: (
-          <svg
-            viewBox="0 0 1024 1024"
-            fill="currentColor"
-            width="1em"
-            height="1em"
-          >
-            <path d="M972.8 896a51.2 51.2 0 0 1-51.2 51.2H102.4A51.2 51.2 0 0 1 51.2 896V153.6a51.2 51.2 0 0 1 51.2-51.2h240.3a51.2 51.2 0 0 1 42.45 22.55l53.86 79.85H921.6a51.2 51.2 0 0 1 51.2 51.2v640zM896 460.8H128v409.6h768V460.8zM329.09 179.2H128V384h768V281.6H398.2L329.1 179.2z" />
-          </svg>
-        ),
-      }}
+      name="folder-close-outlined"
+      icon={FolderCloseOutlinedSVG}
     />
   );
 });

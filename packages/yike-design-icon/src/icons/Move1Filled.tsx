@@ -1,30 +1,20 @@
 /**
- * GENERATE BY @yike-design/cli
- * DON NOT EDIT IT MANUALLY
+ * 🎉🎉🎉 GENERATE BY @yike-design/cli
+ * ⚠️⚠️⚠️ DO NOT EDIT IT MANUALLY
  */
 
 import React from 'react';
-import YiKeIcon from '../components/YiKeIcon';
 import type { YiKeIconProps } from '../types';
+import YiKeIcon from '../components/YiKeIcon';
+import Move1FilledSVG from './svg/Move1Filled';
 
 const Move1Filled = React.forwardRef<HTMLSpanElement, YiKeIconProps>((props, ref) => {
   return (
     <YiKeIcon
       {...props}
       ref={ref}
-      icon={{
-        name: 'move-1-filled',
-        component: (
-          <svg
-            viewBox="0 0 1024 1024"
-            fill="currentColor"
-            width="1em"
-            height="1em"
-          >
-            <path d="M320 128h128v128H320zm256 0h128v128H576zM320 448h128v128H320zm256 0h128v128H576zM320 768h128v128H320zm256 0h128v128H576z" />
-          </svg>
-        ),
-      }}
+      name="move-1-filled"
+      icon={Move1FilledSVG}
     />
   );
 });

@@ -1,30 +1,20 @@
 /**
- * GENERATE BY @yike-design/cli
- * DON NOT EDIT IT MANUALLY
+ * 🎉🎉🎉 GENERATE BY @yike-design/cli
+ * ⚠️⚠️⚠️ DO NOT EDIT IT MANUALLY
  */
 
 import React from 'react';
-import YiKeIcon from '../components/YiKeIcon';
 import type { YiKeIconProps } from '../types';
+import YiKeIcon from '../components/YiKeIcon';
+import SlashOutlinedSVG from './svg/SlashOutlined';
 
 const SlashOutlined = React.forwardRef<HTMLSpanElement, YiKeIconProps>((props, ref) => {
   return (
     <YiKeIcon
       {...props}
       ref={ref}
-      icon={{
-        name: 'slash-outlined',
-        component: (
-          <svg
-            viewBox="0 0 1024 1024"
-            fill="currentColor"
-            width="1em"
-            height="1em"
-          >
-            <path d="m596.94 56.96 74.19 19.9-238.54 890.18-74.19-19.87z" />
-          </svg>
-        ),
-      }}
+      name="slash-outlined"
+      icon={SlashOutlinedSVG}
     />
   );
 });

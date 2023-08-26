@@ -1,30 +1,20 @@
 /**
- * GENERATE BY @yike-design/cli
- * DON NOT EDIT IT MANUALLY
+ * 🎉🎉🎉 GENERATE BY @yike-design/cli
+ * ⚠️⚠️⚠️ DO NOT EDIT IT MANUALLY
  */
 
 import React from 'react';
-import YiKeIcon from '../components/YiKeIcon';
 import type { YiKeIconProps } from '../types';
+import YiKeIcon from '../components/YiKeIcon';
+import MenuOutlinedSVG from './svg/MenuOutlined';
 
 const MenuOutlined = React.forwardRef<HTMLSpanElement, YiKeIconProps>((props, ref) => {
   return (
     <YiKeIcon
       {...props}
       ref={ref}
-      icon={{
-        name: 'menu-outlined',
-        component: (
-          <svg
-            viewBox="0 0 1024 1024"
-            fill="currentColor"
-            width="1em"
-            height="1em"
-          >
-            <path d="M76.8 153.6h870.4v76.8H76.8zm0 320h870.4v76.8H76.8zm0 320h870.4v76.8H76.8z" />
-          </svg>
-        ),
-      }}
+      name="menu-outlined"
+      icon={MenuOutlinedSVG}
     />
   );
 });
