@@ -13,7 +13,6 @@ const generateRotateStyle = (rotate?: number) => {
 
 interface IconComponentProps extends YiKeIconProps {
   name: string;
-  svgRef?: React.Ref<SVGSVGElement>;
   icon: React.ComponentType<React.SVGProps<SVGSVGElement> & React.RefAttributes<SVGSVGElement>>;
 }
 
