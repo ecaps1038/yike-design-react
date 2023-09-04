@@ -5,13 +5,31 @@
 
 
 ```tsx
-import { Input } from '@yike-design/react';
+import { Input,Button } from '@yike-design/react';
 
 export default () => {
   return (
-    <div>
-     <Input />
-    </div>
+    <>
+      <Button>主要按钮</Button>
+      <Input value={123123} />
+    </>
   );
 };
 ```
+
+## API
+
+
+|参数       | 描述      | 类型       | 可选值                               | 默认值     |
+| -------- | -------- | ---------- | ----------------------------------- | --------- |
+| value       | 输入框内容	             | string                    | -     ||
+| defaultValue | 默认值	|  |  ||
+| allowClear           | 是否允许清空输入框 | boolean                   | false ||
+| disabled             | 是否禁用           | boolean                   | false ||
+| readonly             | 是否为只读状态     | boolean                   | false ||
+| error                | 是否为错误状态     | boolean                   | false ||
+| placeholder          | 提示文字           | string                    | -     ||
+| size                 | 输入框大小         | 's' \| 'm' \| 'l' \| 'xl' | l     ||
+| maxLength            | 输入值的最大长度   | number                    | -     ||
+| showLimit            | 是否显示字数统计   | boolean                   | false ||
+
