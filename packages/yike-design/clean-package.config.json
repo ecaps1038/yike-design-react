@@ -6,7 +6,9 @@
         "require": "./dist/cjs/index.js",
         "types": "./dist/es/index.d.ts"
       },
-      "style": "./dist/es/styles/index.js"
+      "./dist/es/": "./dist/es/",
+      "./dist/cjs/": "./dist/cjs/",
+      "./style": "./dist/es/styles/index.js"
     },
     "files": ["dist"],
     "main": "./dist/cjs/index.js",

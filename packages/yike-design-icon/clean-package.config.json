@@ -1,0 +1,18 @@
+{
+  "replace": {
+    "exports": {
+      ".": {
+        "import": "./dist/es/index.js",
+        "require": "./dist/cjs/index.js",
+        "types": "./dist/es/index.d.ts"
+      },
+      "./es/": "./dist/es/",
+      "./cjs/": "./dist/cjs/"
+    },
+    "files": ["dist"],
+    "main": "./dist/cjs/index.js",
+    "module": "./dist/es/index.js",
+    "unpkg": "./dist/umd/yike-design-icons.js",
+    "typings": "./dist/es/index.d.ts"
+  }
+}

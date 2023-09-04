@@ -1,0 +1,28 @@
+{
+  "name": "@yike-design/react-icons",
+  "version": "0.0.0",
+  "description": "",
+  "type": "module",
+  "module": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "files": [
+    "src"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "yike build --builder",
+    "generate": "yike generate-icons",
+    "prepack": "clean-package",
+    "postpack": "clean-package restore"
+  },
+  "peerDependencies": {
+    "react": ">=16.0.0",
+    "react-dom": ">=16.0.0"
+  },
+  "clean-package": "./clean-package.config.json",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

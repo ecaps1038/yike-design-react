@@ -14,6 +14,9 @@
     "@next/mdx": "^13.4.12",
     "@types/mdx": "^2.0.5",
     "@yike-design/react": "workspace:^",
+    "@yike-design/react-icons": "workspace:^",
+    "@yike-design/remark-doc-demo": "workspace:^",
+    "ahooks": "^3.7.8",
     "autoprefixer": "10.4.14",
     "clsx": "^2.0.0",
     "eslint-config-next": "13.4.12",
@@ -21,12 +24,15 @@
     "postcss": "8.4.27",
     "react-copy-to-clipboard": "^5.1.0",
     "react-syntax-highlighter": "^15.5.0",
-    "remark-demo-plugin": "workspace:^",
+    "remark-gfm": "^3.0.1",
     "tailwindcss": "3.3.3"
   },
   "devDependencies": {
+    "@jsdevtools/rehype-toc": "^3.0.2",
     "@total-typescript/ts-reset": "^0.4.2",
     "@types/react-copy-to-clipboard": "^5.0.4",
-    "@types/react-syntax-highlighter": "^15.5.7"
+    "@types/react-syntax-highlighter": "^15.5.7",
+    "remark-slug": "^7.0.1",
+    "sass": "^1.64.2"
   }
 }

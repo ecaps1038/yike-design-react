@@ -14,11 +14,25 @@ module.exports = {
       files: ['*.scss'],
       extends: ['stylelint-config-standard-scss'],
       customSyntax: 'postcss-scss',
+      rules: {
+        'at-rule-no-unknown': null,
+        'scss/at-rule-no-unknown': [
+          true,
+          {
+            ignoreAtRules: ['tailwind', 'apply', 'variants', 'responsive', 'screen'],
+          },
+        ],
+      },
     },
   ],
   rules: {
     'import-notation': null,
-    'at-rule-no-unknown': null,
+    'at-rule-no-unknown': [
+      true,
+      {
+        ignoreAtRules: ['tailwind', 'apply', 'variants', 'responsive', 'screen'],
+      },
+    ],
     'selector-class-pattern': null,
     'no-descending-specificity': null,
     'no-invalid-position-at-import-rule': null,

@@ -1,15 +1,16 @@
 'use client';
-import type React from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import clsx from 'clsx';
+import Link from 'next/link';
+import type React from 'react';
+import { usePathname } from 'next/navigation';
 
 interface NavProps {
   base: string;
   href: string;
+  text: string;
 }
 
-const Nav: React.FC<React.PropsWithChildren<NavProps>> = ({ base, href, children }) => {
+const Nav: React.FC<NavProps> = ({ base, href, text }) => {
   const pathname = usePathname();
 
   const className = clsx('text-sm', {
@@ -21,7 +22,7 @@ const Nav: React.FC<React.PropsWithChildren<NavProps>> = ({ base, href, children
       className={className}
       href={href}
     >
-      {children}
+      {text}
     </Link>
   );
 };

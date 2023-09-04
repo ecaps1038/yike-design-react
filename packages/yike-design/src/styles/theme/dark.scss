@@ -1,7 +1,12 @@
-:root {
-  --color-primary: #3575f6;
-  --color-danger: #df4d43;
-  --color-success: #3dbaab;
-  --color-warning: #fbad3b;
-  --color-link: #308ce1;
+:root.dark {
+  --yike-color-primary: #3575f6;
+  --yike-color-danger: #df4d43;
+  --yike-color-success: #3dbaab;
+  --yike-color-warning: #fbad3b;
+  --yike-color-href: #308ce1;
+  --yike-color-text: rgb(255 255 255 / 90%);
+  --yike-color-text-secondary: rgb(255 255 255 / 70%);
+  --yike-color-text-tertiary: rgb(255 255 255 / 45%);
+  --yike-color-text-disabled: rgb(255 255 255 / 26%);
+  --yike-color-outlined: rgb(255 255 255 / 24%);
 }
