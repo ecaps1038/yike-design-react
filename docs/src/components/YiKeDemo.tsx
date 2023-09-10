@@ -1,18 +1,19 @@
 import DemoCode from './DemoCode';
-import Previewer from './Previewer';
+import CodeLive from './code-demo/CodeLive';
 
 interface YiKeDemoProps {
   lang: string;
-  path: string;
   code: string;
+  error?: string;
+  liveCode: string;
 }
 
-const YiKeDemo = async ({ lang, code, path }: YiKeDemoProps) => {
-  const { default: Demo } = await import(`@yike-demo/${normalizePath(path)}`);
-
+const YiKeDemo = ({ lang, code, liveCode, error }: YiKeDemoProps) => {
   return (
     <div className="mt-3">
-      <Previewer component={<Demo />} />
+      <div className="border p-5 rounded-lg border-yike">
+        {error ? <pre>{error}</pre> : <CodeLive code={liveCode} />}
+      </div>
       <DemoCode
         code={code}
         lang={lang}
@@ -22,8 +23,3 @@ const YiKeDemo = async ({ lang, code, path }: YiKeDemoProps) => {
 };
 
 export default YiKeDemo;
-
-// simple normalize path for windows
-function normalizePath(path: string) {
-  return path.replaceAll('\\', '/');
-}

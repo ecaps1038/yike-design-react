@@ -10,8 +10,6 @@ interface DemoCodeProps {
   code: string;
 }
 
-// TODO: 按钮样式美化（待 ICON 组件完成）
-
 const DemoCode = ({ code, lang }: DemoCodeProps) => {
   const [showCode, setShowCode] = useState<boolean>(false);
 
@@ -41,10 +39,12 @@ const DemoCode = ({ code, lang }: DemoCodeProps) => {
         </button>
       </div>
       <div className={hiddenClass}>
-        <CodeBlock
-          lang={lang}
-          code={code}
-        />
+        <div className="text-sm leading-normal">
+          <CodeBlock
+            lang={lang}
+            code={code}
+          />
+        </div>
       </div>
     </div>
   );

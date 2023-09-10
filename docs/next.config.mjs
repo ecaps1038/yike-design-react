@@ -1,32 +1,9 @@
 // @ts-check
-import fs from 'fs-extra';
 import mdx from '@next/mdx';
 import slug from 'remark-slug';
 import remarkGfm from 'remark-gfm';
-import { fileURLToPath } from 'url';
-import { resolve, dirname } from 'path';
 import rehypeTOC from '@jsdevtools/rehype-toc';
 import docDemo from '@yike-design/remark-doc-demo';
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
-
-const YIKE_DEMO_PATH = resolve(__dirname, '.yike');
-
-if (!fs.existsSync(YIKE_DEMO_PATH)) {
-  fs.mkdirSync(YIKE_DEMO_PATH);
-}
-
-/**
- * when resolve demo code block
- * @param {string} _file file path
- * @param {string} current current demo name
- * @param {string} source demo source code
- */
-const onResolve = (_file, current, source) => {
-  const target = resolve(YIKE_DEMO_PATH, `${current}.tsx`);
-  fs.ensureDirSync(dirname(target));
-  fs.writeFileSync(target, `'use client';\n${source}`, 'utf-8');
-};
 
 /**
  *  @typedef { import('./src/types').HTMLElementNode } HTMLElementNode
@@ -85,7 +62,6 @@ const withMDX = mdx({
       [
         docDemo,
         {
-          onResolve,
           component: 'YiKeDemo',
         },
       ],
@@ -116,13 +92,6 @@ const nextConfig = {
   },
   pageExtensions: ['ts', 'tsx', 'md', 'mdx'],
   transpilePackages: ['@yike-design/react'],
-  webpack: config => {
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      '@yike-demo': resolve(__dirname, '.yike'),
-    };
-    return config;
-  },
 };
 
 export default withMDX(nextConfig);
