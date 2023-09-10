@@ -8,6 +8,7 @@ interface CodeBlockProps {
   code: string;
 }
 
+// TODO: update theme
 const CodeBlock: React.FC<CodeBlockProps> = ({ lang, code }) => {
   return (
     <SyntaxHighlighter
@@ -15,7 +16,7 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ lang, code }) => {
       language={lang}
       style={coldarkDark}
       customStyle={{
-        fontSize: 16,
+        fontSize: 'inherit',
         background: '#282c34',
         margin: 0,
         padding: 16,

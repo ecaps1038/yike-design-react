@@ -48,9 +48,10 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     },
     YiKeDemo: props => (
       <YiKeDemo
-        path={props.path}
         lang={props.lang}
+        error={props.error}
         code={props.children}
+        liveCode={props.liveCode}
       />
     ),
   };
