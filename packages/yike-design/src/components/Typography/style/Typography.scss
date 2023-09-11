@@ -1,3 +1,5 @@
+@import '../../../styles/tokens/color';
+
 $prefix: yk-typography;
 
 .#{$prefix} {
@@ -16,5 +18,15 @@ $prefix: yk-typography;
   &--ellipsis-multiple-line {
     display: -webkit-box;
     -webkit-box-orient: vertical;
+  }
+
+  &__ellipsis-operation-expand {
+    color: $color-primary;
+    cursor: pointer;
+    user-select: none;
+
+    &:hover {
+      color: color-mix(in srgb, $color-primary, #fff 20%);
+    }
   }
 }

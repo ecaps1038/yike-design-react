@@ -1,47 +1,30 @@
 'use client';
-import React, { useState } from 'react';
+import React from 'react';
 import Ellipsis from './Ellipsis';
 import { createCssScope } from '../../utils';
+import composeRef from '../_utils/composeRef';
 import ResizeObserver from '../_utils/ResizeObserver';
+import type { EllipsisProps, TitleLevel, TypographyProps } from './interface';
 
-const TITLE_ELE_LIST = [1, 2, 3, 4, 5] as const;
+type TextElements = 'blockquote' | 'div' | `h${TitleLevel}` | 'span';
 
-interface EllipsisProps {
-  rows?: number;
-  expandable?: boolean;
+interface BaseProps extends TypographyProps {
+  component: TextElements;
 }
 
-interface BaseProps {
-  type: 'title' | 'paragraph' | 'text';
-  heading?: (typeof TITLE_ELE_LIST)[number];
-  blockquote?: boolean;
-  ellipsis?: boolean | EllipsisProps;
-}
+const NOOP = () => {};
 
-type TextElements = 'blockquote' | 'div' | `h${(typeof TITLE_ELE_LIST)[number]}` | 'span';
-
-const defaultEllipsisConfig = {
+const defaultEllipsisConfig: Required<EllipsisProps> = {
   rows: 1,
   expandable: false,
-  suffix: '...',
-  symbol: 'more',
-  onExpand: () => {},
-  onCollapse: () => {},
+  onEllipsis: NOOP,
+  onExpand: NOOP,
 };
 
-const Base = (props: React.PropsWithChildren<BaseProps>) => {
-  const { type, blockquote = false, heading = 1, ellipsis = false, children } = props;
+const ellipsisStr = '...';
 
-  let TextComponent: TextElements = 'div';
-  if (type === 'paragraph') {
-    TextComponent = blockquote ? 'blockquote' : 'div';
-  } else if (type === 'title') {
-    TextComponent = `h${heading}`;
-  } else if (type === 'text') {
-    TextComponent = ellipsis ? 'div' : 'span';
-  } else {
-    // warn('Invalid type');
-  }
+const Base = React.forwardRef<HTMLElement, React.PropsWithChildren<BaseProps>>((props, ref) => {
+  const { component: Component, ellipsis = false, children } = props;
 
   const ellipsisConfig =
     typeof ellipsis === 'boolean' ? defaultEllipsisConfig : { ...defaultEllipsisConfig, ...ellipsis };
@@ -58,29 +41,34 @@ const Base = (props: React.PropsWithChildren<BaseProps>) => {
 
   const bem = createCssScope('typography');
 
-  const onResize = (width: number) => {
+  const onResize = React.useCallback((width: number) => {
     setWidth(width);
-  };
+  }, []);
 
-  const [expand, setExpand] = useState(false);
+  // current expanding state
+  const [expanding, setExpanding] = React.useState(false);
 
   const renderOperationNode = () => {
+    const onExpandClick = () => {
+      setExpanding(!expanding);
+      ellipsisConfig.onExpand(true);
+    };
     return (
       <span
-        onClick={() => setExpand(!expand)}
-        style={{ cursor: 'pointer', userSelect: 'none' }}
+        onClick={onExpandClick}
+        className={bem('ellipsis-operation-expand')}
       >
-        {expand ? '折叠' : '展开'}
+        {expanding ? '折叠' : '展开'}
       </span>
     );
   };
 
-  const renderMeasureNode = (node: React.ReactNode) => {
+  const renderMeasureNode = (node: React.ReactNode, isEllipsis: boolean) => {
     return (
       <React.Fragment>
         {node}
-        ...
-        {renderOperationNode()}
+        {isEllipsis && !expanding && ellipsisStr}
+        {isEllipsis && renderOperationNode()}
       </React.Fragment>
     );
   };
@@ -88,12 +76,12 @@ const Base = (props: React.PropsWithChildren<BaseProps>) => {
   return (
     <ResizeObserver<HTMLElement>
       onResize={onResize}
-      enable={ellipsisConfig.expandable}
+      enable={enableEllipsis}
     >
-      {ref => (
-        <TextComponent
-          // @ts-expect-error TODO: fix this type definition（too complex）
-          ref={ref}
+      {resizeRef => (
+        <Component
+          // @ts-expect-error TODO: fix there type definition
+          ref={composeRef(resizeRef, ref)}
           style={{
             WebkitLineClamp: enableCssEllipsis && rows > 1 ? rows : undefined,
           }}
@@ -103,20 +91,23 @@ const Base = (props: React.PropsWithChildren<BaseProps>) => {
             'ellipsis-multiple-line': enableCssEllipsis && rows > 1,
           })}
         >
-          {enableJSEllipsis ? (
+          {enableEllipsis ? (
             <Ellipsis
               rows={rows}
               width={width}
               text={children}
+              expanding={expanding}
+              enableJSEllipsis={enableJSEllipsis}
               renderMeasureNode={renderMeasureNode}
+              onEllipsis={ellipsisConfig.onEllipsis}
             />
           ) : (
             children
           )}
-        </TextComponent>
+        </Component>
       )}
     </ResizeObserver>
   );
-};
+});
 
 export default Base;

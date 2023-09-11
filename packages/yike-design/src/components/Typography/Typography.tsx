@@ -1,10 +1,11 @@
-'use client';
-import Base from './Base';
-import Ellipsis from './Ellipsis';
+import Title from './Title';
 
-const Typegraphy = {
-  Base,
-  Ellipsis,
+interface TypegraphyType {
+  Title: typeof Title;
+}
+
+const Typegraphy: TypegraphyType = {
+  Title,
 };
 
 export default Typegraphy;

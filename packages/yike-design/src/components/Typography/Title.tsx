@@ -1,18 +1,19 @@
+'use client';
 import React from 'react';
 import Base from './Base';
+import type { TitleLevel, TypographyProps } from './interface';
 
-const TITLE_ELE_LIST = [1, 2, 3, 4, 5] as const;
-
-interface TitleProps {
-  level?: (typeof TITLE_ELE_LIST)[number];
+interface TitleProps extends TypographyProps {
+  level?: TitleLevel;
 }
 
-const Title = React.forwardRef<HTMLHeadingElement, TitleProps>(props => {
-  const { level = 1 } = props;
+const Title = React.forwardRef<HTMLHeadingElement, TitleProps>((props, ref) => {
+  const { level = 1, ...rest } = props;
   return (
     <Base
-      type="title"
-      heading={level}
+      {...rest}
+      ref={ref}
+      component={`h${level}`}
     />
   );
 });

@@ -1,5 +1,6 @@
 'use client';
-import React, { useRef, useState } from 'react';
+import React from 'react';
+import useUpdateEffect from '../_utils/hooks/useUpdateEffect';
 import useIsomorphicLayoutEffect from '../_utils/hooks/useIsomorphicLayoutEffect';
 
 const isTextNode = (node: React.ReactNode): node is string | number => {
@@ -61,33 +62,40 @@ const basicStyle: React.CSSProperties = {
 interface EllipsisProps {
   rows: number;
   width: number;
+  expanding: boolean;
   text: React.ReactNode;
-  renderMeasureNode: (node: React.ReactNode) => React.ReactNode;
-
-  onExpand?: (expand: boolean) => void;
-  onEllipsis?: (ellipsis: boolean) => void;
+  onEllipsis: (ellipsis: boolean) => void;
+  enableJSEllipsis: boolean;
+  renderMeasureNode: (node: React.ReactNode, isEllipsis: boolean) => React.ReactNode;
 }
 
 // js ellipsis
 const Ellipsis: React.FC<EllipsisProps> = props => {
-  const { rows, text, width, renderMeasureNode } = props;
+  const { rows, text, width, expanding, onEllipsis, renderMeasureNode, enableJSEllipsis } = props;
 
   const nodeList = React.useMemo(() => React.Children.toArray([text]), [text]);
 
   const totalLen = React.useMemo(() => getNodesLength(nodeList), [nodeList]);
 
-  const [binarySearchIndex, setBinarySearchIndex] = useState([0, 0, 0]);
+  const [binarySearchIndex, setBinarySearchIndex] = React.useState([0, 0, 0]);
 
-  const singleRef = useRef<HTMLDivElement>(null);
+  const singleRef = React.useRef<HTMLDivElement>(null);
 
-  const mirrorRef = useRef<HTMLDivElement>(null);
+  const mirrorRef = React.useRef<HTMLDivElement>(null);
 
-  const [lineHeight, setLineHeight] = useState(0);
+  const [lineHeight, setLineHeight] = React.useState(0);
 
   const [start, mid, end] = binarySearchIndex;
 
   // measure state
-  const [state, setState] = useState(MEASURE_STATE.UNMEASURED);
+  const [state, setState] = React.useState(MEASURE_STATE.UNMEASURED);
+
+  // current ellipsis state
+  const [isEllipsis, setIsEllipsis] = React.useState(false);
+
+  useUpdateEffect(() => {
+    onEllipsis(isEllipsis);
+  }, [isEllipsis]);
 
   useIsomorphicLayoutEffect(() => {
     if (singleRef.current) {
@@ -96,24 +104,33 @@ const Ellipsis: React.FC<EllipsisProps> = props => {
   }, []);
 
   useIsomorphicLayoutEffect(() => {
-    if (width) {
-      setBinarySearchIndex([0, totalLen, totalLen]);
-      setState(MEASURE_STATE.INIT);
+    if (width <= 0) {
+      return;
     }
-  }, [width]);
+    setBinarySearchIndex([0, totalLen, totalLen]);
+    setState(MEASURE_STATE.INIT);
+    // when width or expanding changed, reset state
+  }, [width, expanding]);
 
   useIsomorphicLayoutEffect(() => {
     if (lineHeight && mirrorRef.current) {
       const maxHeight = rows * lineHeight;
       const mirrorHeight = mirrorRef.current.offsetHeight;
 
-      if (state === MEASURE_STATE.INIT && mirrorHeight <= maxHeight) {
-        setState(MEASURE_STATE.NO_NEED_ELLIPSIS);
-      } else if (state === MEASURE_STATE.INIT) {
-        setState(MEASURE_STATE.MEASURING);
-      }
+      const ellipsis = mirrorHeight > maxHeight;
 
-      if (state === MEASURE_STATE.MEASURING) {
+      if (state === MEASURE_STATE.INIT) {
+        if (!enableJSEllipsis || expanding) {
+          setState(MEASURE_STATE.MEASURE_END);
+          setIsEllipsis(ellipsis);
+        } else if (mirrorHeight <= maxHeight) {
+          setState(MEASURE_STATE.NO_NEED_ELLIPSIS);
+          setIsEllipsis(false);
+        } else {
+          setState(MEASURE_STATE.MEASURING);
+          setIsEllipsis(true);
+        }
+      } else if (state === MEASURE_STATE.MEASURING) {
         if (start !== end - 1) {
           let nextStart = start;
           let nextEnd = end;
@@ -132,6 +149,7 @@ const Ellipsis: React.FC<EllipsisProps> = props => {
     }
   }, [lineHeight, rows, start, mid, end, state]);
 
+  // get line height
   const singleNode = React.useMemo(
     () => (
       <div
@@ -145,8 +163,10 @@ const Ellipsis: React.FC<EllipsisProps> = props => {
   );
 
   const ellipsisNode = React.useMemo(() => {
-    return state === MEASURE_STATE.NO_NEED_ELLIPSIS ? text : renderMeasureNode(sliceNodes(nodeList, mid, totalLen));
-  }, [state, text, nodeList, mid, totalLen, renderMeasureNode]);
+    return !enableJSEllipsis || state === MEASURE_STATE.NO_NEED_ELLIPSIS
+      ? text
+      : renderMeasureNode(sliceNodes(nodeList, mid, totalLen), isEllipsis);
+  }, [enableJSEllipsis, state, text, nodeList, mid, totalLen, renderMeasureNode, isEllipsis]);
 
   const mirrorNode = React.useMemo(
     () => (
