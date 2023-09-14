@@ -21,7 +21,7 @@
     "clsx": "^2.0.0",
     "eslint-config-next": "13.4.12",
     "next": "13.4.12",
-    "nextjs-toploader": "^1.4.2",
+    "next-nprogress-bar": "^2.1.2",
     "postcss": "8.4.27",
     "react-copy-to-clipboard": "^5.1.0",
     "react-live": "^4.1.3",
