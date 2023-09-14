@@ -2,6 +2,7 @@ import CodeBlock from '@/components/CodeBlock';
 import YiKeDemo from '@/components/YiKeDemo';
 import YiKeTOC from '@/components/YiKeTOC';
 import type { TOCData } from '@/types';
+import { Typography } from '@yike-design/react';
 import type { MDXComponents } from 'mdx/types';
 
 // This file allows you to provide custom React components
@@ -17,6 +18,41 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <a
         className="yike-doc-link"
         {...props}
+      />
+    ),
+    h1: props => (
+      // @ts-expect-error
+      <Typography.Title
+        {...props}
+        level={1}
+      />
+    ),
+    h2: props => (
+      // @ts-expect-error
+      <Typography.Title
+        {...props}
+        level={2}
+      />
+    ),
+    h3: props => (
+      // @ts-expect-error
+      <Typography.Title
+        {...props}
+        level={3}
+      />
+    ),
+    h4: props => (
+      // @ts-expect-error
+      <Typography.Title
+        {...props}
+        level={4}
+      />
+    ),
+    h5: props => (
+      // @ts-expect-error
+      <Typography.Title
+        {...props}
+        level={5}
       />
     ),
     code: props => {
