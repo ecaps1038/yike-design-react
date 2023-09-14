@@ -1,6 +1,6 @@
 # Button 按钮
 
-## 按钮类型 Type
+## 按钮类型
 
 按钮有三种类型：主按钮、次要按钮、线框按钮。主按钮在同一个操作区域建议最多出现一次。
 
@@ -18,7 +18,7 @@ export default () => {
 };
 ```
 
-## 按钮尺寸 Size
+## 按钮尺寸
 
 按钮分为：`s`、`m`、`l`、`xl` 四种尺寸。高度分别为：`24px`、`32px`、`36px`、`48px`。默认尺寸为`l`。
 
@@ -37,7 +37,7 @@ export default () => {
 };
 ```
 
-## 按钮形状 Shape
+## 按钮形状
 
 按钮分为默认形状、`circle` 圆形、`round` 全圆角、`square` 正方形四种形状。
 
@@ -56,7 +56,7 @@ export default () => {
 };
 ```
 
-## 按钮图标 Icon
+## 图标按钮
 
 自己插入图标，无论前后。
 
@@ -68,13 +68,18 @@ export default () => {
   return (
     <Space>
       <Button icon={<PlusOutlined />}>新建</Button>
-      <Button status="danger" icon={<DeleteOutlined />}>删除</Button>
+      <Button
+        status="danger"
+        icon={<DeleteOutlined />}
+      >
+        删除
+      </Button>
     </Space>
   );
 };
 ```
 
-## 按钮状态 Status
+## 状态
 
 按钮的状态分为 默认、`primary` 主要、`success` 成功、`warning` 警告、`danger` 危险五种，可以与按钮类型同时使用。
 
@@ -154,7 +159,7 @@ export default () => {
 };
 ```
 
-## 禁用状态 disabled
+## 禁用状态
 
 按钮不可点击
 
@@ -176,13 +181,13 @@ export default () => {
 };
 ```
 
-## 按钮图标 Icon
+## 加载状态
 
 通过设置 `loading` 可以让按钮处于加载中状态。处于加载中状态的按钮不会触发点击事件。
 
 TODO: add loading icon button
 
-## 通栏 Block
+## 长按钮
 
 通过设置 `long` 属性，使按钮的宽度跟随容器的宽度。
 
@@ -226,4 +231,4 @@ export default () => {
 | disabled | 按钮是否被禁用   | boolean                                   | false   |
 | loading  | 按钮是否加载中   | boolean                                   | false   |
 | long     | 按钮是否通栏     | boolean                                   | false   |
-| onCLick  | 点击按钮时的回调 | (ev: React.MouseEvent) => {}              | -       |
+| onClick  | 点击按钮时的回调 | (ev: React.MouseEvent) => {}              | -       |
