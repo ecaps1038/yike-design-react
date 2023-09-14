@@ -4,7 +4,7 @@ import Ellipsis from './Ellipsis';
 import { createCssScope } from '../../utils';
 import composeRef from '../_utils/composeRef';
 import ResizeObserver from '../_utils/ResizeObserver';
-import type { EllipsisProps, TitleLevel, TypographyProps } from './interface';
+import type { EllipsisConfig, TitleLevel, TypographyProps } from './interface';
 
 type TextElements = 'blockquote' | 'div' | `h${TitleLevel}` | 'span';
 
@@ -14,7 +14,7 @@ interface BaseProps extends TypographyProps {
 
 const NOOP = () => {};
 
-const defaultEllipsisConfig: Required<EllipsisProps> = {
+const defaultEllipsisConfig: Required<EllipsisConfig> = {
   rows: 1,
   expandable: false,
   onEllipsis: NOOP,
@@ -24,7 +24,18 @@ const defaultEllipsisConfig: Required<EllipsisProps> = {
 const ellipsisStr = '...';
 
 const Base = React.forwardRef<HTMLElement, React.PropsWithChildren<BaseProps>>((props, ref) => {
-  const { component: Component, ellipsis = false, children } = props;
+  const {
+    component: Component,
+    ellipsis = false,
+    children,
+    className,
+    type = 'default',
+    strong = false,
+    disabled = false,
+    underline = false,
+    delete: del = false,
+    mark = false,
+  } = props;
 
   const ellipsisConfig =
     typeof ellipsis === 'boolean' ? defaultEllipsisConfig : { ...defaultEllipsisConfig, ...ellipsis };
@@ -73,6 +84,15 @@ const Base = React.forwardRef<HTMLElement, React.PropsWithChildren<BaseProps>>((
     );
   };
 
+  const renderContent = (content: React.ReactNode) => {
+    if (del) {
+      return <del>{content}</del>;
+    } else if (strong) {
+      return <strong>{content}</strong>;
+    }
+    return content;
+  };
+
   return (
     <ResizeObserver<HTMLElement>
       onResize={onResize}
@@ -85,24 +105,36 @@ const Base = React.forwardRef<HTMLElement, React.PropsWithChildren<BaseProps>>((
           style={{
             WebkitLineClamp: enableCssEllipsis && rows > 1 ? rows : undefined,
           }}
-          className={bem({
-            ellipsis: enableCssEllipsis,
-            'ellipsis-single-line': enableCssEllipsis && rows === 1,
-            'ellipsis-multiple-line': enableCssEllipsis && rows > 1,
-          })}
+          className={bem.join(
+            bem([type], {
+              disabled,
+              strong,
+              underline,
+              del,
+              mark,
+            }),
+            bem({
+              ellipsis: enableCssEllipsis,
+              'ellipsis-single-line': enableCssEllipsis && rows === 1,
+              'ellipsis-multiple-line': enableCssEllipsis && rows > 1,
+            }),
+            className
+          )}
         >
-          {enableEllipsis ? (
-            <Ellipsis
-              rows={rows}
-              width={width}
-              text={children}
-              expanding={expanding}
-              enableJSEllipsis={enableJSEllipsis}
-              renderMeasureNode={renderMeasureNode}
-              onEllipsis={ellipsisConfig.onEllipsis}
-            />
-          ) : (
-            children
+          {renderContent(
+            enableEllipsis ? (
+              <Ellipsis
+                rows={rows}
+                width={width}
+                text={children}
+                expanding={expanding}
+                enableJSEllipsis={enableJSEllipsis}
+                renderMeasureNode={renderMeasureNode}
+                onEllipsis={ellipsisConfig.onEllipsis}
+              />
+            ) : (
+              children
+            )
           )}
         </Component>
       )}
