@@ -1,6 +1,14 @@
 import type React from 'react';
+import type { Metadata } from 'next';
 import Layout from '@/components/Layout';
 import type { LeftAsideItems } from '@/types';
+
+export const metadata: Metadata = {
+  title: {
+    template: '%s - Yike Design',
+    default: '',
+  },
+};
 
 const ComponentsLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
   const items: LeftAsideItems = [

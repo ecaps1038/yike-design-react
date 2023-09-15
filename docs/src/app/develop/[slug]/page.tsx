@@ -1,20 +1,27 @@
+import type { DocPageProps } from '@/types';
 import { allDocs } from 'contentlayer/generated';
-import { notFound } from 'next/navigation';
+import { createDocPage, createGetDocFromSlug } from '@/utils/doc';
 
-interface PageProps {
-  params: {
-    slug: string;
-  };
-}
+const getDocFromSlug = createGetDocFromSlug('develop');
 
-const DocPage = async ({ params }: PageProps) => {
-  const { slug } = params;
-  const doc = allDocs.find(doc => doc.dir === 'develop' && doc.slug === slug);
-  if (!doc) {
-    notFound();
-  }
-  const { default: Content } = await import(`@/content/${doc.path}`);
-  return <Content />;
+export const generateStaticParams = async () => {
+  return allDocs.map(doc => ({
+    slug: doc.slug,
+  }));
 };
 
-export default DocPage;
+export const generateMetadata = ({ params }: DocPageProps) => {
+  const doc = getDocFromSlug(params.slug);
+  if (!doc) {
+    return {
+      title: 'Not found',
+      description: '',
+    };
+  }
+  return {
+    title: doc.title ?? doc.slug,
+    description: doc.description,
+  };
+};
+
+export default createDocPage(getDocFromSlug);

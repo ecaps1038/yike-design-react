@@ -3,11 +3,10 @@ import { defineDocumentType, makeSource } from 'contentlayer/source-files';
 export const Doc = defineDocumentType(() => ({
   name: 'Doc',
   filePathPattern: `docs/*/*.md(x)?`,
-  contentType: 'mdx',
+  contentType: 'markdown',
   fields: {
-    // title: { type: 'string', required: true },
-    // description: { type: 'string', required: false },
-    // date: { type: 'date', required: false },
+    title: { type: 'string', required: false },
+    description: { type: 'string', required: false },
   },
   computedFields: {
     slug: {

@@ -3,8 +3,10 @@ import mdx from '@next/mdx';
 import slug from 'remark-slug';
 import remarkGfm from 'remark-gfm';
 import rehypeTOC from '@jsdevtools/rehype-toc';
+import remarkFrontmatter from 'remark-frontmatter';
 import docDemo from '@yike-design/remark-doc-demo';
 import { withContentlayer } from 'next-contentlayer';
+
 /**
  *  @typedef { import('./src/types').HTMLElementNode } HTMLElementNode
  */
@@ -59,6 +61,7 @@ const withMDX = mdx({
     remarkPlugins: [
       slug,
       remarkGfm,
+      remarkFrontmatter,
       [
         docDemo,
         {
@@ -92,6 +95,13 @@ const nextConfig = {
   },
   pageExtensions: ['ts', 'tsx', 'md', 'mdx'],
   transpilePackages: ['@yike-design/react'],
+  webpack: config => {
+    // https://github.com/contentlayerdev/contentlayer/issues/313
+    config.infrastructureLogging = {
+      level: 'error',
+    };
+    return config;
+  },
 };
 
 export default withContentlayer(withMDX(nextConfig));
