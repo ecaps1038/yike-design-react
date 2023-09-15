@@ -8,7 +8,7 @@ import logo from '@/assets/logo.svg';
 const navigators = [
   { base: 'design', href: '/design/yike', text: '设计' },
   { base: 'develop', href: '/develop/yike', text: '开发' },
-  { base: 'module', href: '/module/button', text: '组件' },
+  { base: 'components', href: '/components/button', text: '组件' },
 ];
 
 const Header = () => {

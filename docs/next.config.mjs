@@ -4,7 +4,7 @@ import slug from 'remark-slug';
 import remarkGfm from 'remark-gfm';
 import rehypeTOC from '@jsdevtools/rehype-toc';
 import docDemo from '@yike-design/remark-doc-demo';
-
+import { withContentlayer } from 'next-contentlayer';
 /**
  *  @typedef { import('./src/types').HTMLElementNode } HTMLElementNode
  */
@@ -94,4 +94,4 @@ const nextConfig = {
   transpilePackages: ['@yike-design/react'],
 };
 
-export default withMDX(nextConfig);
+export default withContentlayer(withMDX(nextConfig));
