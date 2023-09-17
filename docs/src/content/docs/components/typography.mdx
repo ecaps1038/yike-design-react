@@ -1,0 +1,137 @@
+# Typography 排版
+
+展示段落、标题、文本内容
+
+## 标题组件
+
+展示不同级别的标题，通过 `level` 展示不同级别的标题， 一共五个级别
+
+```tsx
+import { Typography } from '@yike-design/react';
+
+export default () => {
+  return (
+    <React.Fragment>
+      <Typography.Title>h1. Yike Design</Typography.Title>
+      <Typography.Title level={2}>h2. Yike Design</Typography.Title>
+      <Typography.Title level={3}>h3. Yike Design</Typography.Title>
+      <Typography.Title level={4}>h4. Yike Design</Typography.Title>
+      <Typography.Title level={5}>h5. Yike Design</Typography.Title>
+    </React.Fragment>
+  );
+};
+```
+
+## 文本组件
+
+展示不同样式的文本
+
+```tsx
+import { Typography, Space } from '@yike-design/react';
+
+export default () => {
+  return (
+    <Space direction="vertical">
+      <Typography.Text>Yike Design(default)</Typography.Text>
+      <Typography.Text type="primary">Yike Design(primary)</Typography.Text>
+      <Typography.Text type="secondary">Yike Design(secondary)</Typography.Text>
+      <Typography.Text type="success">Yike Design(success)</Typography.Text>
+      <Typography.Text type="warning">Yike Design(warning)</Typography.Text>
+      <Typography.Text type="danger">Yike Design(danger)</Typography.Text>
+      <Typography.Text disabled>Yike Design(disabled)</Typography.Text>
+      <Typography.Text underline>Yike Design(underline)</Typography.Text>
+      <Typography.Text delete>Yike Design(delete)</Typography.Text>
+      <Typography.Text strong>Yike Design(strong)</Typography.Text>
+      <Typography.Text mark>Yike Design(mark)</Typography.Text>
+    </Space>
+  );
+};
+```
+
+{/* TODO: 可交互 */}
+
+## 段落
+
+文本段落
+
+```tsx
+
+```
+
+## 省略
+
+多行文本省略
+
+```tsx
+import { Typography } from '@yike-design/react';
+
+export default () => {
+  return (
+    // TODO: fix use Space height is 0
+    <div className="flex flex-col gap-4">
+      <Typography.Paragraph ellipsis>
+        Ant Design, a design language for background applications, is refined by Ant UED Team. Ant Design, a design
+        language for background applications, is refined by Ant UED Team. Ant Design, a design language for background
+        applications, is refined by Ant UED Team. Ant Design, a design language for background applications, is refined
+        by Ant UED Team. Ant Design, a design language for background applications, is refined by Ant UED Team. Ant
+        Design, a design language for background applications, is refined by Ant UED Team.
+      </Typography.Paragraph>
+      <Typography.Paragraph ellipsis={{ rows: 2 }}>
+        Ant Design, a design language for background applications, is refined by Ant UED Team. Ant Design, a design
+        language for background applications, is refined by Ant UED Team. Ant Design, a design language for background
+        applications, is refined by Ant UED Team. Ant Design, a design language for background applications, is refined
+        by Ant UED Team. Ant Design, a design language for background applications, is refined by Ant UED Team. Ant
+        Design, a design language for background applications, is refined by Ant UED Team.
+      </Typography.Paragraph>
+      <Typography.Paragraph ellipsis={{ rows: 2, expandable: true }}>
+        Ant Design, a design language for background applications, is refined by Ant UED Team. Ant Design, a design
+        language for background applications, is refined by Ant UED Team. Ant Design, a design language for background
+        applications, is refined by Ant UED Team. Ant Design, a design language for background applications, is refined
+        by Ant UED Team. Ant Design, a design language for background applications, is refined by Ant UED Team. Ant
+        Design, a design language for background applications, is refined by Ant UED Team.
+      </Typography.Paragraph>
+    </div>
+  );
+};
+```
+
+## API
+
+### Typography.Text
+
+| 参数           | 描述           | 类型                                                                        | 默认值  |
+| -------------- | -------------- | --------------------------------------------------------------------------- | ------- |
+| type           | 文本类型       | 'default' \| 'primary' \| 'secondary' \| 'success' \| 'warning' \| 'danger' | primary |
+| delete         | 添加删除线样式 | boolean                                                                     | false   |
+| disabled       | 禁用文本       | boolean                                                                     | false   |
+| mark           | 添加标记样式   | boolean                                                                     | false   |
+| strong         | 是否加粗       | boolean                                                                     | false   |
+| underline      | 添加下划线样式 | boolean                                                                     | false   |
+| ellipsis       | 自动溢出省略   | boolean \| EllipsisConfig                                                   | false   |
+| copyable(todo) | 是否可拷贝     | boolean \| CopyConfig                                                       | false   |
+
+### Typography.Title
+
+| 参数           | 描述           | 类型                                                                        | 默认值  |
+| -------------- | -------------- | --------------------------------------------------------------------------- | ------- |
+| level          | 标题级别       | 1 \| 2 \| 3 \| 4 \| 5                                                       | 1       |
+| type           | 文本类型       | 'default' \| 'primary' \| 'secondary' \| 'success' \| 'warning' \| 'danger' | primary |
+| delete         | 添加删除线样式 | boolean                                                                     | false   |
+| disabled       | 禁用文本       | boolean                                                                     | false   |
+| mark           | 添加标记样式   | boolean                                                                     | false   |
+| underline      | 添加下划线样式 | boolean                                                                     | false   |
+| ellipsis       | 自动溢出省略   | boolean \| EllipsisConfig                                                   | false   |
+| copyable(todo) | 是否可拷贝     | boolean \| CopyConfig                                                       | false   |
+
+### Typography.Paragraph
+
+| 参数           | 描述           | 类型                                                                        | 默认值  |
+| -------------- | -------------- | --------------------------------------------------------------------------- | ------- |
+| type           | 文本类型       | 'default' \| 'primary' \| 'secondary' \| 'success' \| 'warning' \| 'danger' | primary |
+| delete         | 添加删除线样式 | boolean                                                                     | false   |
+| disabled       | 禁用文本       | boolean                                                                     | false   |
+| mark           | 添加标记样式   | boolean                                                                     | false   |
+| strong         | 是否加粗       | boolean                                                                     | false   |
+| underline      | 添加下划线样式 | boolean                                                                     | false   |
+| ellipsis       | 自动溢出省略   | boolean \| EllipsisConfig                                                   | false   |
+| copyable(todo) | 是否可拷贝     | boolean \| CopyConfig                                                       | false   |

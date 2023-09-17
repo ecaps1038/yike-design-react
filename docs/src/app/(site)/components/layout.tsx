@@ -17,7 +17,7 @@ const ComponentsLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
       children: [
         { text: 'Button 按钮', link: '/components/button' },
         { text: 'Icon 图标', link: '/components/icon' },
-        { text: 'Typegraphy 排版', link: '/components/typegraphy' },
+        { text: 'Typography 排版', link: '/components/typography' },
       ],
     },
     {

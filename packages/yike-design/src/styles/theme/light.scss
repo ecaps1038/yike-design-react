@@ -1,12 +1,49 @@
+@import '../tokens/color';
+
 :root {
-  --yike-color-primary: #2b5aed;
-  --yike-color-danger: #fa5247;
-  --yike-color-success: #1fb4a2;
-  --yike-color-warning: #f5ac08;
-  --yike-color-href: #1890ff;
-  --yike-color-text: rgb(30 32 37 / 100%);
-  --yike-color-text-secondary: rgb(30 32 37 / 80%);
-  --yike-color-text-tertiary: rgb(30 32 37 / 50%);
-  --yike-color-text-disabled: rgb(30 32 37 / 30%);
-  --yike-color-outlined: rgb(30 32 37 / 24%);
+  $color-primary: $color-blue;
+  $color-danger: $color-red;
+  $color-success: $color-green;
+  $color-warning: $color-yellow;
+  $color-link: #1890ff;
+
+  --yike-color-blue: #{$color-blue};
+  --yike-color-red: #{$color-red};
+  --yike-color-green: #{$color-green};
+  --yike-color-yellow: #{$color-yellow};
+
+  // ------ neutral colors ------
+  --yike-color-gray: #{$color-gray};
+  --yike-color-gray-1: #{$color-gray-1};
+
+  // ------ functional color ------
+  --yike-color-primary: #{$color-primary};
+  --yike-color-danger: #{$color-danger};
+  --yike-color-success: #{$color-success};
+  --yike-color-warning: #{$color-warning};
+  --yike-color-link: #{$color-link};
+
+  // ------ background color ------
+  --yike-color-background-ss: #{$color-bg-ss};
+  --yike-color-background-s: #{$color-bg-s};
+  --yike-color-background-m: #{$color-bg-m};
+  --yike-color-background-l: #{$color-bg-l};
+
+  // ------ text size ------
+  --yike-font-size-ss: 12px;
+  --yike-font-size-s: 14px;
+  --yike-font-size-m: 16px;
+  --yike-font-size-l: 18px;
+  --yike-font-size-xl: 24px;
+  --yike-font-size-2xl: 32px;
+  --yike-font-size-3xl: 40px;
+
+  // ------ text line height ------
+  --yike-line-height-ss: 18px;
+  --yike-line-height-s: 22px;
+  --yike-line-height-m: 24px;
+  --yike-line-height-l: 26px;
+  --yike-line-height-xl: 36px;
+  --yike-line-height-2xl: 46px;
+  --yike-line-height-3xl: 50px;
 }

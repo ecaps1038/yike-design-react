@@ -1,5 +1,7 @@
 import { isString, isArray, isObject } from './helper';
 
+const IDENTITY = 'yk';
+
 type BEMElement = string;
 type BEMModifier = (string | undefined | false)[] | Record<string, boolean | string | undefined>;
 
@@ -21,6 +23,15 @@ const createModifier = (prefixClass: string, modifierObject?: BEMModifier) => {
   return modifiers;
 };
 
+type ClassItem = (string | undefined)[] | string | undefined | false;
+
+export const clsx = (...classes: ClassItem[]) => {
+  return classes
+    .map(item => (Array.isArray(item) ? item.filter(Boolean).join(' ') : item ? item : ''))
+    .filter(Boolean)
+    .join(' ');
+};
+
 /**
  * CSS BEM
  * @example
@@ -35,20 +46,36 @@ const createModifier = (prefixClass: string, modifierObject?: BEMModifier) => {
  * bem('main',[type, status, shape, size], {loading: loading,long: long,disabled: disabled}),
  */
 
-export const createCssScope = (prefix: string, identity = 'yk') => {
-  const prefixClass = `${identity}-${prefix.replace(identity, '')}`;
+interface BEMCallable {
+  (): string;
+  (element: BEMElement): string;
+  (element: BEMElement, modifier: BEMModifier): string;
+  (element: BEMElement, modifier: BEMModifier, modifierLater: BEMModifier): string;
+  (modifier: BEMModifier): string;
+  (modifier: BEMModifier, modifierLater: BEMModifier): string;
 
-  return (elementOrModifier?: BEMElement | BEMModifier, modifier?: BEMModifier, modifierLater?: BEMModifier) => {
+  join: typeof clsx;
+}
+
+export const createCssScope = (prefix: string) => {
+  const prefixClass = `${IDENTITY}-${prefix}`;
+
+  const bem: BEMCallable = (
+    elementOrModifier?: BEMElement | BEMModifier,
+    modifier?: BEMModifier,
+    modifierLater?: BEMModifier
+  ) => {
     if (!elementOrModifier) return prefixClass;
     if (isString(elementOrModifier)) {
       const element = `${prefixClass}__${elementOrModifier}`;
       if (!modifier) return element;
-      return [element, ...createModifier(element, modifier), ...createModifier(element, modifierLater)].join(' ');
+      return clsx(element, createModifier(element, modifier), createModifier(element, modifierLater));
     }
-    return [
-      prefixClass,
-      ...createModifier(prefixClass, elementOrModifier),
-      ...createModifier(prefixClass, modifier),
-    ].join(' ');
+
+    return clsx(prefixClass, createModifier(prefixClass, elementOrModifier), createModifier(prefixClass, modifier));
   };
+
+  bem.join = clsx;
+
+  return bem;
 };
