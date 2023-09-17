@@ -1,5 +1,5 @@
-import DemoCode from './DemoCode';
-import CodeLive from './code-demo/CodeLive';
+import DemoCode from './doc-demo/DemoCode';
+import Previewer from './doc-demo/Previewer';
 
 interface YiKeDemoProps {
   lang: string;
@@ -11,8 +11,11 @@ interface YiKeDemoProps {
 const YiKeDemo = ({ lang, code, liveCode, error }: YiKeDemoProps) => {
   return (
     <div className="mt-3">
-      <div className="border p-5 rounded-lg border-yike">
-        {error ? <pre>{error}</pre> : <CodeLive code={liveCode} />}
+      <div className="border p-5 rounded-lg border-yike overflow-x-auto">
+        <Previewer
+          error={error}
+          code={liveCode}
+        />
       </div>
       <DemoCode
         code={code}
