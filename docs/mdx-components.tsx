@@ -1,15 +1,11 @@
-import CodeBlock from '@/components/CodeBlock';
-import YiKeDemo from '@/components/YiKeDemo';
-import YiKeTOC from '@/components/YiKeTOC';
 import type { TOCData } from '@/types';
 import type { MDXComponents } from 'mdx/types';
 
-// This file allows you to provide custom React components
-// to be used in MDX files. You can import and use any
-// React component you want, including components from
-// other libraries.
+import YiKeTOC from '@/components/doc/YiKeTOC';
+import YiKeDemo from '@/components/doc/YiKeDemo';
+import External from '@/components/doc/ExternalDemo';
+import CodeBlock from '@/components/doc/doc-demo/CodeBlock';
 
-// This file is required to use MDX in `app` directory.
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     ...components,
@@ -52,6 +48,12 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         error={props.error}
         code={props.children}
         liveCode={props.liveCode}
+      />
+    ),
+    External: props => (
+      <External
+        src={props.src}
+        devOnly={props.devOnly ?? false}
       />
     ),
   };

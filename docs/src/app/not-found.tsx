@@ -6,7 +6,7 @@ import { Space, Button } from '@yike-design/react';
 
 const NotFound = () => {
   return (
-    <div className="h-full flex flex-col justify-center relative">
+    <div className="h-screen flex flex-col justify-center relative">
       <div className="-mt-[200px] text-center font-semibold h-[220px] relative">
         <Image
           className="absolute left-1/2 top-0 -z-10 -translate-x-1/2"
