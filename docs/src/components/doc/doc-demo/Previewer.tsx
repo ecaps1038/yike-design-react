@@ -1,21 +1,22 @@
 'use client';
 import * as React from 'react';
+import omit from 'lodash.omit';
 import * as UIComponents from '@yike-design/react';
 import * as IconComponents from '@yike-design/react-icons';
 import { LiveError, LivePreview, LiveProvider } from 'react-live';
 
 const Components = {
-  ...React,
+  ...omit(React, 'default'),
   ...UIComponents,
   ...IconComponents,
 };
 
-interface CodeLiveProps {
+interface PreviewerProps {
   code: string;
   error?: string;
 }
 
-const CodeLive: React.FC<CodeLiveProps> = ({ code, error }) => {
+const Previewer: React.FC<PreviewerProps> = ({ code, error }) => {
   if (error) {
     return <pre>{error}</pre>;
   }
@@ -31,4 +32,4 @@ const CodeLive: React.FC<CodeLiveProps> = ({ code, error }) => {
   );
 };
 
-export default CodeLive;
+export default Previewer;

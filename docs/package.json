@@ -22,6 +22,7 @@
     "contentlayer": "^0.3.4",
     "date-fns": "^2.30.0",
     "eslint-config-next": "13.4.12",
+    "lodash.omit": "^4.5.0",
     "next": "13.4.12",
     "next-contentlayer": "^0.3.4",
     "next-nprogress-bar": "^2.1.2",
@@ -36,6 +37,7 @@
   "devDependencies": {
     "@jsdevtools/rehype-toc": "^3.0.2",
     "@total-typescript/ts-reset": "^0.4.2",
+    "@types/lodash.omit": "^4.5.7",
     "@types/react-copy-to-clipboard": "^5.0.4",
     "@types/react-syntax-highlighter": "^15.5.7",
     "remark-slug": "^7.0.1",

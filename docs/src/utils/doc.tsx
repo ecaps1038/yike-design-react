@@ -6,7 +6,7 @@ export const createPage = (type: string) => {
   const docs = allDocs.filter(doc => doc.dir === type);
   const getDocFromSlug = (slug: string) => docs.find(doc => doc.slug === slug);
 
-  const generateStaticParams = docs.map(({ slug }) => ({ slug }));
+  const generateStaticParams = () => docs.map(({ slug }) => ({ slug }));
 
   const generateMetadata = ({ params }: DocPageProps) => {
     const doc = getDocFromSlug(params.slug);
@@ -27,7 +27,7 @@ export const createPage = (type: string) => {
     if (!doc) {
       notFound();
     }
-    const { default: Content } = await import(`@/content/${doc.path}`);
+    const { default: Content } = await import(`@/content/${doc.path.replace('.mdx', '')}.mdx`);
     return <Content />;
   };
 
