@@ -2,7 +2,7 @@ import type React from 'react';
 import { getAlign, getDirection, getGapSize } from './utils';
 import type { YkSpaceProps } from './utils';
 import './style/Space.scss';
-import { isArray, isNumber, isString } from '../../utils/helper';
+import { isArray, isNumber, isString } from '../../utils';
 
 const Space: React.FC<React.PropsWithChildren<YkSpaceProps>> = props => {
   const { block, align = 'start', direction = 'horizontal', size = 'l', wrap = false, children, ...other } = props;

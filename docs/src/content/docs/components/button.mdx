@@ -1,0 +1,234 @@
+# Button 按钮
+
+## 按钮类型
+
+按钮有三种类型：主按钮、次要按钮、线框按钮。主按钮在同一个操作区域建议最多出现一次。
+
+```tsx
+import { Button, Space } from '@yike-design/react';
+
+export default () => {
+  return (
+    <Space>
+      <Button>主要按钮</Button>
+      <Button type="secondary">次要按钮</Button>
+      <Button type="outline">线框按钮</Button>
+    </Space>
+  );
+};
+```
+
+## 按钮尺寸
+
+按钮分为：`s`、`m`、`l`、`xl` 四种尺寸。高度分别为：`24px`、`32px`、`36px`、`48px`。默认尺寸为`l`。
+
+```tsx
+import { Button, Space } from '@yike-design/react';
+
+export default () => {
+  return (
+    <Space>
+      <Button size="s">按钮</Button>
+      <Button size="m">按钮</Button>
+      <Button size="l">按钮</Button>
+      <Button size="xl">按钮</Button>
+    </Space>
+  );
+};
+```
+
+## 按钮形状
+
+按钮分为默认形状、`circle` 圆形、`round` 全圆角、`square` 正方形四种形状。
+
+```tsx
+import { Button, Space } from '@yike-design/react';
+
+export default () => {
+  return (
+    <Space>
+      <Button>默认形状</Button>
+      <Button shape="round">全圆角</Button>
+      <Button shape="circle">+</Button>
+      <Button shape="square">+</Button>
+    </Space>
+  );
+};
+```
+
+## 图标按钮
+
+自己插入图标，无论前后。
+
+```tsx
+import { Button, Space } from '@yike-design/react';
+import { PlusOutlined, DeleteOutlined } from '@yike-design/react-icons';
+
+export default () => {
+  return (
+    <Space>
+      <Button icon={<PlusOutlined />}>新建</Button>
+      <Button
+        status="danger"
+        icon={<DeleteOutlined />}
+      >
+        删除
+      </Button>
+    </Space>
+  );
+};
+```
+
+## 状态
+
+按钮的状态分为 默认、`primary` 主要、`success` 成功、`warning` 警告、`danger` 危险五种，可以与按钮类型同时使用。
+
+```tsx
+import { Button, Space } from '@yike-design/react';
+
+export default () => {
+  return (
+    <Space direction="vertical">
+      <Space>
+        <Button>主要按钮</Button>
+        <Button type="secondary">次要按钮</Button>
+        <Button type="outline">线框按钮</Button>
+      </Space>
+      <Space>
+        <Button status="primary">主要按钮</Button>
+        <Button
+          type="secondary"
+          status="primary"
+        >
+          次要按钮
+        </Button>
+        <Button
+          type="outline"
+          status="primary"
+        >
+          线框按钮
+        </Button>
+      </Space>
+      <Space>
+        <Button status="success">主要按钮</Button>
+        <Button
+          type="secondary"
+          status="success"
+        >
+          次要按钮
+        </Button>
+        <Button
+          type="outline"
+          status="success"
+        >
+          线框按钮
+        </Button>
+      </Space>
+      <Space>
+        <Button status="warning">主要按钮</Button>
+        <Button
+          type="secondary"
+          status="warning"
+        >
+          次要按钮
+        </Button>
+        <Button
+          type="outline"
+          status="warning"
+        >
+          线框按钮
+        </Button>
+      </Space>
+      <Space>
+        <Button status="danger">主要按钮</Button>
+        <Button
+          type="secondary"
+          status="danger"
+        >
+          次要按钮
+        </Button>
+        <Button
+          type="outline"
+          status="danger"
+        >
+          线框按钮
+        </Button>
+      </Space>
+    </Space>
+  );
+};
+```
+
+## 禁用状态
+
+按钮不可点击
+
+```tsx
+import { Button, Space } from '@yike-design/react';
+
+export default () => {
+  return (
+    <Space>
+      <Button disabled>禁用按钮</Button>
+      <Button
+        shape="round"
+        disabled
+      >
+        禁用按钮
+      </Button>
+    </Space>
+  );
+};
+```
+
+## 加载状态
+
+通过设置 `loading` 可以让按钮处于加载中状态。处于加载中状态的按钮不会触发点击事件。
+
+TODO: add loading icon button
+
+## 长按钮
+
+通过设置 `long` 属性，使按钮的宽度跟随容器的宽度。
+
+```tsx
+import { Button, Space } from '@yike-design/react';
+
+export default () => {
+  return (
+    <Space
+      direction="vertical"
+      block
+    >
+      <Button long>主要按钮</Button>
+      <Button
+        type="secondary"
+        long
+      >
+        次要按钮
+      </Button>
+      <Button
+        type="outline"
+        long
+      >
+        线框按钮
+      </Button>
+    </Space>
+  );
+};
+```
+
+## API
+
+通过设置 Button 的属性来产生不同的按钮样式，推荐顺序为：type -> size -> shape -> status -> disabled。
+
+| 参数     | 描述             | 类型                                      | 默认值  |
+| -------- | ---------------- | ----------------------------------------- | ------- |
+| type     | 按钮的类型       | 'primary'｜'secondary'｜'outline'         | primary |
+| size     | 按钮的大小       | 's'｜'m'｜'l' ｜'xl'                      | 'l'     |
+| shape    | 按钮的形状       | 'round' ｜ 'circle' ｜ 'square'           | -       |
+| status   | 按钮的状态       | 'primary'｜'success'｜'warning'｜'danger' | -       |
+| disabled | 按钮是否被禁用   | boolean                                   | false   |
+| loading  | 按钮是否加载中   | boolean                                   | false   |
+| long     | 按钮是否通栏     | boolean                                   | false   |
+| onClick  | 点击按钮时的回调 | (ev: React.MouseEvent) => {}              | -       |
