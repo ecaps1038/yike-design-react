@@ -3,6 +3,7 @@ import type { MDXComponents } from 'mdx/types';
 
 import YiKeTOC from '@/components/doc/YiKeTOC';
 import YiKeDemo from '@/components/doc/YiKeDemo';
+import External from '@/components/doc/ExternalDemo';
 import CodeBlock from '@/components/doc/doc-demo/CodeBlock';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
@@ -47,6 +48,12 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         error={props.error}
         code={props.children}
         liveCode={props.liveCode}
+      />
+    ),
+    External: props => (
+      <External
+        src={props.src}
+        devOnly={props.devOnly ?? false}
       />
     ),
   };
