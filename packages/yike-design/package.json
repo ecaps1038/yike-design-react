@@ -4,9 +4,7 @@
   "type": "module",
   "module": "./src/index.ts",
   "exports": {
-    ".": {
-      "import": "./src/index.ts"
-    },
+    ".": "./src/index.ts",
     "./style": "./src/styles/index.ts"
   },
   "files": [

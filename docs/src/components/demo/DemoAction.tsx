@@ -1,0 +1,71 @@
+'use client';
+import clsx from 'clsx';
+import React from 'react';
+import CopyToClipboard from 'react-copy-to-clipboard';
+import { CodeOutlined, CopyOutlined } from '@yike-design/react-icons';
+
+import CodeBlock from './CodeBlock';
+import type { FileRecord } from '@/types';
+
+interface DemoActionProps {
+  files: FileRecord[];
+}
+
+const DemoAction: React.FC<DemoActionProps> = ({ files }) => {
+  const [showCode, setShowCode] = React.useState(false);
+
+  const hiddenClass = clsx({ hidden: !showCode });
+
+  const btnClass = 'text-base rounded-lg leading-[0px] bg-[--bgcolors] p-1.5';
+
+  const codeBtnClass = clsx(btnClass, { 'bg-[--fontcolorl]': showCode, 'text-[--bgcolorl]': showCode });
+
+  const [currentFile, setCurrentFile] = React.useState(files.length ? files[0] : null);
+
+  const code = currentFile?.source ?? '';
+
+  return (
+    <React.Fragment>
+      <div className="flex items-center justify-end gap-4 py-2">
+        <CopyToClipboard
+          text={code}
+          // TODO: change to message component
+          onCopy={() => alert('拷贝成功')}
+        >
+          <button className={clsx(btnClass, hiddenClass)}>
+            <CopyOutlined />
+          </button>
+        </CopyToClipboard>
+        <button
+          className={codeBtnClass}
+          onClick={() => setShowCode(!showCode)}
+        >
+          <CodeOutlined />
+        </button>
+      </div>
+      <div className={hiddenClass}>
+        <div className="rounded overflow-hidden border border-yike">
+          {files.length > 1 && (
+            <div className="border-b border-yike p-1">
+              {files.map(file => (
+                <button
+                  key={file.path}
+                  onClick={() => setCurrentFile(file)}
+                  className={clsx('mr-2 text-sm', { 'text-primary': file === currentFile })}
+                >
+                  {file.filename}
+                </button>
+              ))}
+            </div>
+          )}
+          <CodeBlock
+            code={code}
+            language={currentFile?.language ?? ''}
+          />
+        </div>
+      </div>
+    </React.Fragment>
+  );
+};
+
+export default DemoAction;

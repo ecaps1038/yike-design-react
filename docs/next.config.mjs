@@ -100,6 +100,7 @@ const nextConfig = {
     config.infrastructureLogging = {
       level: 'error',
     };
+    config.externals.push('esbuild');
     return config;
   },
 };

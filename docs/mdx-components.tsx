@@ -6,6 +6,7 @@ import YiKeTOC from '@/components/doc/YiKeTOC';
 import YiKeDemo from '@/components/doc/YiKeDemo';
 import External from '@/components/doc/ExternalDemo';
 import CodeBlock from '@/components/doc/doc-demo/CodeBlock';
+import DemoContainer from '@/components/demo/DemoContainer';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -86,6 +87,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         liveCode={props.liveCode}
       />
     ),
+    DemoContainer: props => <DemoContainer {...props} />,
     External: props => (
       <External
         src={props.src}

@@ -10,6 +10,7 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
+      "~demos/*": ["./src/content/demos/*"],
       "contentlayer/generated": ["./.contentlayer/generated"]
     }
   },

@@ -18,3 +18,10 @@ export interface DocPageProps {
     slug: string;
   };
 }
+
+export interface FileRecord {
+  filename: string;
+  language: string;
+  source: string;
+  path: string;
+}
