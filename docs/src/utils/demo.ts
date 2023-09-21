@@ -26,11 +26,11 @@ interface DemoAsset {
   dependencies: Dependency[];
 }
 
-export const parseDemoAsset = async (entry: string) => {
+export const parseDemoAsset = async (entry: string, entrySource?: string) => {
   const asset: DemoAsset = {
     filename: basename(entry),
     path: entry,
-    source: '',
+    source: entrySource ?? '',
     language: extname(entry).slice(1),
     dependencies: [],
   };
@@ -50,9 +50,15 @@ export const parseDemoAsset = async (entry: string) => {
         name: 'deps',
         setup(builder) {
           builder.onResolve({ filter: /.*/ }, args => {
+            if (args.kind === 'entry-point') {
+              return {
+                path: entry,
+                pluginData: { kind: args.kind },
+              };
+            }
             const resolved = resolver(args.resolveDir, args.path);
             assert(resolved, `Can't resolve ${args.path} from ${args.resolveDir}`);
-            if (args.kind !== 'entry-point' && !args.path.startsWith('.')) {
+            if (!args.path.startsWith('.')) {
               asset.dependencies.push({
                 filename: args.path,
                 importPath: args.path,
@@ -63,7 +69,7 @@ export const parseDemoAsset = async (entry: string) => {
               });
               // make all deps external
               return { path: args.path, external: true };
-            } else if (args.kind !== 'entry-point') {
+            } else {
               const relativePath = relative(absWorkingDir, resolved);
               asset.dependencies.push({
                 filename: basename(resolved),
@@ -76,7 +82,7 @@ export const parseDemoAsset = async (entry: string) => {
             }
             return {
               path: resolved,
-              pluginData: { kind: args.kind, resolveDir: args.resolveDir },
+              pluginData: { kind: args.kind },
             };
           });
           builder.onLoad({ filter: /.*/ }, args => {
@@ -85,6 +91,13 @@ export const parseDemoAsset = async (entry: string) => {
             const isPlainText = ['.css', '.less', '.sass', '.scss', '.styl', '.json'].includes(ext);
             const isEntryPoint = args.pluginData.kind === 'entry-point';
             if (isModule || isPlainText) {
+              if (entrySource && isEntryPoint) {
+                return {
+                  contents: entrySource,
+                  loader: ext.slice(1),
+                };
+              }
+
               const source = readFileSync(args.path, 'utf-8');
 
               if (isEntryPoint) {

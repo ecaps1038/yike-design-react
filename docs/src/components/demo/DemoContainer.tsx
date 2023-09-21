@@ -7,11 +7,13 @@ import { extname } from 'path';
 interface DemoContainerProps {
   previewer: React.ReactNode;
   entry: string;
+  inline?: string;
+  source?: string;
 }
 
-const DemoContainer: React.FC<DemoContainerProps> = async ({ previewer, entry }) => {
+const DemoContainer: React.FC<DemoContainerProps> = async ({ previewer, entry, source }) => {
   try {
-    const asset = await parseDemoAsset(entry);
+    const asset = await parseDemoAsset(entry, source);
 
     const files: FileRecord[] = [
       {

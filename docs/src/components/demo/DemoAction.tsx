@@ -20,7 +20,9 @@ const DemoAction: React.FC<DemoActionProps> = ({ files }) => {
 
   const codeBtnClass = clsx(btnClass, { 'bg-[--fontcolorl]': showCode, 'text-[--bgcolorl]': showCode });
 
-  const [currentFile, setCurrentFile] = React.useState(files.length ? files[0] : null);
+  const [currentFilePath, setCurrentFile] = React.useState(files.length ? files[0].path : null);
+
+  const currentFile = files.find(file => file.path === currentFilePath);
 
   const code = currentFile?.source ?? '';
 
@@ -50,7 +52,7 @@ const DemoAction: React.FC<DemoActionProps> = ({ files }) => {
               {files.map(file => (
                 <button
                   key={file.path}
-                  onClick={() => setCurrentFile(file)}
+                  onClick={() => setCurrentFile(file.path)}
                   className={clsx('mr-2 text-sm', { 'text-primary': file === currentFile })}
                 >
                   {file.filename}

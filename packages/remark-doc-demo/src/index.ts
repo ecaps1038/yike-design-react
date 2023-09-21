@@ -1,8 +1,7 @@
 import type { Node } from 'unist';
-import type { Transformer } from 'unified';
+import { resolve } from 'node:path';
 import { visit } from 'unist-util-visit';
-import transformCode from './transformCode.js';
-import { resolve } from 'path';
+import type { Transformer } from 'unified';
 
 export interface MDNode extends Node {
   lang?: string;
@@ -10,14 +9,14 @@ export interface MDNode extends Node {
   value: string;
 }
 
-interface Options {
-  component: string;
-}
+// interface Options {
+//   component: string;
+// }
 
 const DEMO_DIR = resolve(process.cwd(), 'src/content/demos');
 
-export default function remarkDemoPlugin({ component }: Options): Transformer {
-  return async tree => {
+export default function remarkDemoPlugin(): Transformer {
+  return async (tree, vFile) => {
     interface Dep {
       file: string;
       path: string;
@@ -37,6 +36,8 @@ export default function remarkDemoPlugin({ component }: Options): Transformer {
       error?: Error;
     }
 
+    const currentFile = vFile.history[0];
+
     const toAddImports: Imports[] = [];
     visit(tree, 'mdxJsxFlowElement', (node: any, index: number) => {
       if (node.name === 'code') {
@@ -55,7 +56,7 @@ export default function remarkDemoPlugin({ component }: Options): Transformer {
     });
 
     toAddImports.forEach(({ path, index }, importIndex) => {
-      const ComponentName = `Demo${importIndex}`;
+      const ComponentName = `ExternalDemo${importIndex}`;
 
       // @ts-expect-error
       tree.children.splice(index, 0, {
@@ -136,13 +137,10 @@ export default function remarkDemoPlugin({ component }: Options): Transformer {
       });
     });
 
-    // if (vFile.history[0].includes('button')) {
-    //   console.log(JSON.stringify(toAddImports, null, 2));
-    //   fs.writeFileSync('example.json', JSON.stringify(tree, null, 2), 'utf-8');
-    // }
+    const toTransform: { index: number; value: string }[] = [];
 
     // ast has no pre element
-    visit(tree, 'code', (node: MDNode) => {
+    visit(tree, 'code', (node: MDNode, index: number) => {
       if (node.meta === 'pure') {
         node.data = {
           hProperties: {
@@ -151,19 +149,136 @@ export default function remarkDemoPlugin({ component }: Options): Transformer {
           },
         };
       } else {
-        // the reason use transformCode in this package is using @babel/traverse in nextjs will cause error:
-        // Return statement is not allowed here
-        const [error, liveCode] = transformCode(node.value);
-
-        node.data = {
-          hName: component,
-          hProperties: {
-            lang: node.lang,
-            error: error?.toString(),
-            liveCode,
-          },
-        };
+        toTransform.push({ index: index + toTransform.length, value: node.value });
       }
+    });
+
+    toTransform.forEach((item, index) => {
+      const exportName = `InlineDemo${index}`;
+      const importPath = `!!@yike-design/inline-demo-loader?demo=${index}!${currentFile}`;
+      // @ts-expect-error
+      tree.children.splice(item.index, 0, {
+        type: 'mdxjsEsm',
+        value: `import ${exportName}, { raw as raw${index} } from '${importPath}';`,
+        data: {
+          estree: {
+            type: 'Program',
+            body: [
+              {
+                type: 'ImportDeclaration',
+                specifiers: [
+                  {
+                    type: 'ImportDefaultSpecifier',
+                    local: {
+                      type: 'Identifier',
+                      name: exportName,
+                    },
+                  },
+                  {
+                    type: 'ImportSpecifier',
+                    imported: {
+                      type: 'Identifier',
+                      name: 'raw',
+                    },
+                    local: {
+                      type: 'Identifier',
+                      name: `raw${index}`,
+                    },
+                  },
+                ],
+                source: {
+                  type: 'Literal',
+                  value: importPath,
+                  raw: `'${importPath}'`,
+                },
+              },
+            ],
+            sourceType: 'module',
+            comments: [],
+          },
+        },
+      });
+
+      // @ts-expect-error
+      tree.children.splice(item.index + 1, 1, {
+        type: 'mdxJsxFlowElement',
+        name: 'DemoContainer',
+        attributes: [
+          {
+            type: 'mdxJsxAttribute',
+            name: 'previewer',
+            value: {
+              type: 'mdxJsxAttributeValueExpression',
+              value: `<${exportName} />`,
+              data: {
+                estree: {
+                  type: 'Program',
+                  body: [
+                    {
+                      type: 'ExpressionStatement',
+                      expression: {
+                        type: 'JSXElement',
+                        openingElement: {
+                          type: 'JSXOpeningElement',
+                          attributes: [],
+                          name: {
+                            type: 'JSXIdentifier',
+                            name: exportName,
+                          },
+                          selfClosing: true,
+                        },
+                        closingElement: null,
+                        children: [],
+                      },
+                    },
+                  ],
+                  sourceType: 'module',
+                  comments: [],
+                },
+              },
+            },
+          },
+          {
+            type: 'mdxJsxAttribute',
+            name: 'inline',
+            value: `demo${index}`,
+          },
+          {
+            type: 'mdxJsxAttribute',
+            name: 'entry',
+            value: currentFile.replace(/\.mdx?$/, '.tsx'),
+          },
+          {
+            type: 'mdxJsxAttribute',
+            name: 'source',
+            value: item.value,
+          },
+          // {
+          //   type: 'mdxJsxAttribute',
+          //   name: 'source',
+          //   value: {
+          //     type: 'mdxJsxAttributeValueExpression',
+          //     value: `raw${index}`,
+          //     data: {
+          //       estree: {
+          //         type: 'Program',
+          //         body: [
+          //           {
+          //             type: 'ExpressionStatement',
+          //             expression: {
+          //               type: 'Identifier',
+          //               name: `raw${index}`,
+          //             },
+          //           },
+          //         ],
+          //         sourceType: 'module',
+          //         comments: [],
+          //       },
+          //     },
+          //   },
+          // },
+        ],
+      });
     });
   };
 }
