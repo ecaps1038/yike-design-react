@@ -1,3 +1,4 @@
+'use client';
 import type React from 'react';
 import { Highlight, themes } from 'prism-react-renderer';
 
@@ -9,9 +10,9 @@ interface CodeBlockProps {
 const CodeBlock: React.FC<CodeBlockProps> = ({ code, language }) => {
   return (
     <Highlight
-      theme={themes.jettwaveLight}
       code={code}
       language={language}
+      theme={themes.jettwaveLight}
     >
       {({ style, tokens, getLineProps, getTokenProps }) => (
         <div
