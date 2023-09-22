@@ -62,7 +62,12 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
           />
         );
       }
-      return <code {...props} />;
+      return (
+        <code
+          {...props}
+          className="inline"
+        />
+      );
     },
     pre: props => props.children as JSX.Element,
     table: props => (
