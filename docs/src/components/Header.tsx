@@ -4,6 +4,7 @@ import { GithubFilled } from '@yike-design/react-icons';
 
 import Nav from './Nav';
 import logo from '@/assets/logo.svg';
+import ThemeButton from './ThemeButton';
 
 const navigators = [
   { base: 'design', href: '/design/yike', text: '设计' },
@@ -43,6 +44,7 @@ const Header = () => {
         >
           <GithubFilled />
         </Link>
+        <ThemeButton />
         {/* TODO: theme */}
         {/* TODO: login */}
       </div>
