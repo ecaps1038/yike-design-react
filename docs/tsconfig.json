@@ -9,10 +9,17 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"],
-      "~demos/*": ["./src/content/demos/*"],
-      "contentlayer/generated": ["./.contentlayer/generated"]
-    }
+      "@/*": [
+        "./src/*"
+      ],
+      "~demos/*": [
+        "./src/content/demos/*"
+      ],
+      "contentlayer/generated": [
+        "./.contentlayer/generated"
+      ]
+    },
+    "strictNullChecks": true
   },
   "include": [
     "next-env.d.ts",

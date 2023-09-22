@@ -15,8 +15,8 @@ const Title = React.forwardRef<HTMLHeadingElement, TitleProps>((props, ref) => {
     <Base
       {...rest}
       ref={ref}
-      className={bem()}
       component={`h${level}`}
+      className={bem.join(bem(), rest.className)}
     />
   );
 });

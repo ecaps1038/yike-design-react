@@ -1,17 +1,22 @@
 'use client';
 import clsx from 'clsx';
 import React from 'react';
+import { useRouter } from 'next/navigation';
 import CopyToClipboard from 'react-copy-to-clipboard';
-import { CodeOutlined, CopyOutlined } from '@yike-design/react-icons';
+import { CodeOutlined, CopyOutlined, ShareOutlined } from '@yike-design/react-icons';
 
 import CodeBlock from './CodeBlock';
 import type { FileRecord } from '@/types';
+import { IS_DEV } from '@/utils/constants';
 
 interface DemoActionProps {
   files: FileRecord[];
+  external?: [string, string];
 }
 
-const DemoAction: React.FC<DemoActionProps> = ({ files }) => {
+const DemoAction: React.FC<DemoActionProps> = ({ files, external }) => {
+  const router = useRouter();
+
   const [showCode, setShowCode] = React.useState(false);
 
   const hiddenClass = clsx({ hidden: !showCode });
@@ -29,6 +34,15 @@ const DemoAction: React.FC<DemoActionProps> = ({ files }) => {
   return (
     <React.Fragment>
       <div className="flex items-center justify-end gap-4 py-2">
+        {IS_DEV && external && (
+          <button
+            className={btnClass}
+            onClick={() => router.push(`/demos/${external.join('/')}`)}
+          >
+            <ShareOutlined />
+          </button>
+        )}
+
         <CopyToClipboard
           text={code}
           // TODO: change to message component

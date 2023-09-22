@@ -17,6 +17,7 @@ const config: Config = {
         asideLink: '#1572ff',
         asideLinkNormal: 'var(--fontcolorm)',
         primary: 'var(--yike-color-primary)',
+        danger: 'var(--yike-color-danger)',
       },
       borderColor: {
         yike: 'var(--yike-border-color)',

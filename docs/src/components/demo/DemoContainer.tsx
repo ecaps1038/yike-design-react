@@ -1,8 +1,11 @@
 import type React from 'react';
+import { basename, extname, parse } from 'node:path';
+
 import DemoAction from './DemoAction';
-import { parseDemoAsset } from '@/utils/demo';
 import type { FileRecord } from '@/types';
-import { extname } from 'path';
+import { parseDemoAsset } from '@/utils/demo';
+import DemoErrorBoundary from './DemoErrorBoundary';
+import { COMPONENT_DEMOS_DIR } from '@/utils/constants';
 
 interface DemoContainerProps {
   previewer: React.ReactNode;
@@ -11,7 +14,12 @@ interface DemoContainerProps {
   source?: string;
 }
 
-const DemoContainer: React.FC<DemoContainerProps> = async ({ previewer, entry, source }) => {
+const parseExternal = (entry: string) => {
+  const parsed = parse(entry.replace(COMPONENT_DEMOS_DIR, ''));
+  return [basename(parsed.dir), parsed.name] as [string, string];
+};
+
+const DemoContainer: React.FC<DemoContainerProps> = async ({ previewer, inline, entry, source }) => {
   try {
     const asset = await parseDemoAsset(entry, source);
 
@@ -32,10 +40,17 @@ const DemoContainer: React.FC<DemoContainerProps> = async ({ previewer, entry, s
         })),
     ];
 
+    const external = !inline ? parseExternal(entry) : undefined;
+
     return (
       <div className="mt-3">
-        <div className="border p-5 rounded-lg border-yike overflow-x-auto">{previewer}</div>
-        <DemoAction files={files} />
+        <div className="border p-5 rounded-lg border-yike overflow-x-auto">
+          <DemoErrorBoundary>{previewer}</DemoErrorBoundary>
+        </div>
+        <DemoAction
+          files={files}
+          external={external}
+        />
       </div>
     );
   } catch (error) {

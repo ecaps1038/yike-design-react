@@ -1,8 +1,8 @@
 import assert from 'assert';
 import { build } from 'esbuild';
+import { readFileSync } from 'fs';
 import enhancedResolve from 'enhanced-resolve';
 import { basename, dirname, extname, relative } from 'path';
-import { readFileSync } from 'fs-extra';
 
 const resolver = enhancedResolve.create.sync({
   extensions: ['.js', '.jsx', '.ts', '.tsx'],
