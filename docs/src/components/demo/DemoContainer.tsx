@@ -4,6 +4,7 @@ import { basename, extname, parse } from 'node:path';
 import DemoAction from './DemoAction';
 import type { FileRecord } from '@/types';
 import { parseDemoAsset } from '@/utils/demo';
+import ErrorContainer from './ErrorContainer';
 import DemoErrorBoundary from './DemoErrorBoundary';
 import { COMPONENT_DEMOS_DIR } from '@/utils/constants';
 
@@ -54,7 +55,13 @@ const DemoContainer: React.FC<DemoContainerProps> = async ({ previewer, inline, 
       </div>
     );
   } catch (error) {
-    return <div className="mt-3">{(error as Error).toString()}</div>;
+    return (
+      <div className="mt-3">
+        <div className="border p-5 rounded-lg border-yike overflow-x-auto">
+          <ErrorContainer error={error as Error} />
+        </div>
+      </div>
+    );
   }
 };
 
