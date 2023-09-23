@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { Typography } from '@yike-design/react';
 import { getComponents, getDemos } from '../../utils';
 import { COMPONENT_DEMOS_DIR, IS_DEV } from '@/utils/constants';
+import PreviewerContainer from '@/components/demo/PreviewerContainer';
 
 interface PageProps {
   params: {
@@ -39,8 +40,6 @@ const Page = async ({ params: { component, demo } }: PageProps) => {
     notFound();
   }
 
-  const { default: Demo } = await import(`@/content/demos/${component}/${demo}.tsx`);
-
   if (IS_DEV) {
     return (
       <div className="p-4">
@@ -52,13 +51,21 @@ const Page = async ({ params: { component, demo } }: PageProps) => {
           </Typography.Text>
         </p>
         <div className="border border-yike p-4 rounded">
-          <Demo />
+          <PreviewerContainer
+            demo={demo}
+            component={component}
+          />
         </div>
       </div>
     );
   }
 
-  return <Demo />;
+  return (
+    <PreviewerContainer
+      demo={demo}
+      component={component}
+    />
+  );
 };
 
 export default Page;

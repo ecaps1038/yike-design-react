@@ -2,11 +2,14 @@ import assert from 'assert';
 import { build } from 'esbuild';
 import { readFileSync } from 'fs';
 import enhancedResolve from 'enhanced-resolve';
-import { basename, dirname, extname, relative } from 'path';
+import { basename, dirname, extname, relative, resolve } from 'path';
 
 const resolver = enhancedResolve.create.sync({
   extensions: ['.js', '.jsx', '.ts', '.tsx'],
-  alias: {},
+  alias: {
+    '@': resolve(process.cwd(), 'src'),
+    '~demos': resolve(process.cwd(), 'src/content/demos'),
+  },
 });
 
 interface Dependency {

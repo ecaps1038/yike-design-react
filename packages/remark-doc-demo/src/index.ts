@@ -48,86 +48,19 @@ export default function remarkDemoPlugin(): Transformer {
           toAddImports.push({
             path,
             source: '',
-            index: index + toAddImports.length,
+            index,
             dependencies,
           });
         }
       }
     });
 
-    toAddImports.forEach(({ path, index }, importIndex) => {
-      const ComponentName = `ExternalDemo${importIndex}`;
-
+    toAddImports.forEach(({ path, index }) => {
       // @ts-expect-error
-      tree.children.splice(index, 0, {
-        type: 'mdxjsEsm',
-        value: `import ${ComponentName} from '${path}'`,
-        data: {
-          estree: {
-            type: 'Program',
-            body: [
-              {
-                type: 'ImportDeclaration',
-                specifiers: [
-                  {
-                    type: 'ImportDefaultSpecifier',
-                    local: {
-                      type: 'Identifier',
-                      name: ComponentName,
-                    },
-                  },
-                ],
-                source: {
-                  type: 'Literal',
-                  value: path,
-                  raw: `'${path}'`,
-                },
-              },
-            ],
-            sourceType: 'module',
-          },
-        },
-      });
-
-      // @ts-expect-error
-      tree.children.splice(index + 1, 1, {
+      tree.children.splice(index, 1, {
         type: 'mdxJsxFlowElement',
         name: 'DemoContainer',
         attributes: [
-          {
-            type: 'mdxJsxAttribute',
-            name: 'previewer',
-            value: {
-              type: 'mdxJsxAttributeValueExpression',
-              value: `<${ComponentName} />`,
-              data: {
-                estree: {
-                  type: 'Program',
-                  body: [
-                    {
-                      type: 'ExpressionStatement',
-                      expression: {
-                        type: 'JSXElement',
-                        openingElement: {
-                          type: 'JSXOpeningElement',
-                          attributes: [],
-                          name: {
-                            type: 'JSXIdentifier',
-                            name: ComponentName,
-                          },
-                          selfClosing: true,
-                        },
-                        closingElement: null,
-                        children: [],
-                      },
-                    },
-                  ],
-                  sourceType: 'module',
-                  comments: [],
-                },
-              },
-            },
-          },
           {
             type: 'mdxJsxAttribute',
             name: 'entry',
@@ -206,42 +139,8 @@ export default function remarkDemoPlugin(): Transformer {
         attributes: [
           {
             type: 'mdxJsxAttribute',
-            name: 'previewer',
-            value: {
-              type: 'mdxJsxAttributeValueExpression',
-              value: `<${exportName} />`,
-              data: {
-                estree: {
-                  type: 'Program',
-                  body: [
-                    {
-                      type: 'ExpressionStatement',
-                      expression: {
-                        type: 'JSXElement',
-                        openingElement: {
-                          type: 'JSXOpeningElement',
-                          attributes: [],
-                          name: {
-                            type: 'JSXIdentifier',
-                            name: exportName,
-                          },
-                          selfClosing: true,
-                        },
-                        closingElement: null,
-                        children: [],
-                      },
-                    },
-                  ],
-                  sourceType: 'module',
-                  comments: [],
-                },
-              },
-            },
-          },
-          {
-            type: 'mdxJsxAttribute',
             name: 'inline',
-            value: `demo${index}`,
+            value: `${index}`,
           },
           {
             type: 'mdxJsxAttribute',
