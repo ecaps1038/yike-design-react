@@ -107,3 +107,14 @@ a {
     }
   }
 }
+
+code.inline {
+  padding-block: 0.2em 0.1em;
+  padding-inline: 0.4em;
+  margin: 0 0.2em;
+  font-family: SFMono-Regular, Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+  font-size: 85%;
+  background: rgb(150 150 150 / 10%);
+  border: 1px solid rgb(100 100 100 / 20%);
+  border-radius: 3px;
+}

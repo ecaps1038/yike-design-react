@@ -4,8 +4,7 @@ import slug from 'remark-slug';
 import remarkGfm from 'remark-gfm';
 import rehypeTOC from '@jsdevtools/rehype-toc';
 import remarkFrontmatter from 'remark-frontmatter';
-import docDemo from '@yike-design/remark-doc-demo';
-import { withContentlayer } from 'next-contentlayer';
+import remarkDemoPlugin from '@yike-design/mdx-demo/remark-plugin';
 
 /**
  *  @typedef { import('./src/types').HTMLElementNode } HTMLElementNode
@@ -63,9 +62,9 @@ const withMDX = mdx({
       remarkGfm,
       remarkFrontmatter,
       [
-        docDemo,
+        remarkDemoPlugin,
         {
-          component: 'YiKeDemo',
+          component: 'DemoContainer',
         },
       ],
     ],
@@ -100,8 +99,9 @@ const nextConfig = {
     config.infrastructureLogging = {
       level: 'error',
     };
+    config.externals.push('esbuild');
     return config;
   },
 };
 
-export default withContentlayer(withMDX(nextConfig));
+export default withMDX(nextConfig);

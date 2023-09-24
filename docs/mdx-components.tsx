@@ -5,7 +5,8 @@ import type { MDXComponents } from 'mdx/types';
 import YiKeTOC from '@/components/doc/YiKeTOC';
 import YiKeDemo from '@/components/doc/YiKeDemo';
 import External from '@/components/doc/ExternalDemo';
-import CodeBlock from '@/components/doc/doc-demo/CodeBlock';
+import DemoContainer from '@/components/demo/DemoContainer';
+import CodeBlockWrapper from '@/components/demo/CodeBlockWrapper';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -55,13 +56,18 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       // @ts-expect-error type error
       if (props.pure) {
         return (
-          <CodeBlock
-            lang={props.lang!}
+          <CodeBlockWrapper
+            language={props.lang!}
             code={props.children as string}
           />
         );
       }
-      return <code {...props} />;
+      return (
+        <code
+          {...props}
+          className="inline"
+        />
+      );
     },
     pre: props => props.children as JSX.Element,
     table: props => (
@@ -86,6 +92,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         liveCode={props.liveCode}
       />
     ),
+    DemoContainer: props => <DemoContainer {...props} />,
     External: props => (
       <External
         src={props.src}
