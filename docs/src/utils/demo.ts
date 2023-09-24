@@ -30,6 +30,9 @@ interface DemoAsset {
 }
 
 export const parseDemoAsset = async (entry: string, entrySource?: string) => {
+  const resolvedEntry = entrySource ? entry : resolver(process.cwd(), entry);
+  assert(resolvedEntry, `Can't resolve ${entry}`);
+  entry = resolvedEntry;
   const asset: DemoAsset = {
     filename: basename(entry),
     path: entry,

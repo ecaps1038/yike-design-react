@@ -23,7 +23,7 @@ const parseExternal = (entry: string) => {
 const DemoContainer: React.FC<DemoContainerProps> = async ({ inline, entry, source }) => {
   try {
     const [component, demo] = inline
-      ? [basename(entry, extname(entry)), `demo-${inline}`]
+      ? [basename(entry, extname(entry)), inline]
       : [basename(dirname(entry)), basename(entry, extname(entry))];
 
     const asset = await parseDemoAsset(entry, source);

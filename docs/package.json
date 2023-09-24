@@ -13,9 +13,9 @@
     "@mdx-js/react": "^2.3.0",
     "@next/mdx": "^13.4.12",
     "@types/mdx": "^2.0.5",
+    "@yike-design/mdx-demo": "workspace:^",
     "@yike-design/react": "workspace:^",
     "@yike-design/react-icons": "workspace:^",
-    "@yike-design/remark-doc-demo": "workspace:^",
     "ahooks": "^3.7.8",
     "autoprefixer": "10.4.14",
     "clsx": "^2.0.0",
@@ -46,7 +46,6 @@
     "@types/lodash.omit": "^4.5.7",
     "@types/react-copy-to-clipboard": "^5.0.4",
     "@types/react-syntax-highlighter": "^15.5.7",
-    "@yike-design/inline-demo-loader": "workspace:^",
     "remark-slug": "^7.0.1",
     "sass": "^1.64.2"
   }

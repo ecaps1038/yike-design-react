@@ -13,7 +13,10 @@ interface ContainerProps {
 const PreviewerContainer: React.FC<ContainerProps> = ({ inline = false, component, demo }) => {
   const Component = dynamic(
     inline
-      ? () => import(`!!@yike-design/inline-demo-loader?demo=${demo}!@/content/docs/components/${component}.mdx`)
+      ? () =>
+          import(`!!@yike-design/mdx-demo/inline-loader!@/content/docs/components/${component}.mdx`).then(mod =>
+            mod[demo]()
+          )
       : () => import(`@/content/demos/${component}/${demo}.tsx`),
     {
       ssr: false,
