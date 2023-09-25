@@ -1,5 +1,5 @@
-import { CircleCrossOutlined } from '@yike-design/react-icons';
 import type React from 'react';
+import { CircleCrossOutlined } from '@yike-design/react-icons';
 
 interface ErrorContainerProps {
   error: Error;

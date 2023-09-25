@@ -2,10 +2,8 @@ import type { TOCData } from '@/types';
 import { Typography } from '@yike-design/react';
 import type { MDXComponents } from 'mdx/types';
 
-import YiKeTOC from '@/components/doc/YiKeTOC';
-import YiKeDemo from '@/components/doc/YiKeDemo';
-import External from '@/components/doc/ExternalDemo';
-import DemoContainer from '@/components/demo/DemoContainer';
+import YiKeTOC from '@/components/YiKeTOC';
+import YiKeDemo from '@/components/YiKeDemo';
 import CodeBlockWrapper from '@/components/demo/CodeBlockWrapper';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
@@ -84,20 +82,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       }
       return <YiKeTOC toc={toc} />;
     },
-    YiKeDemo: props => (
-      <YiKeDemo
-        lang={props.lang}
-        error={props.error}
-        code={props.children}
-        liveCode={props.liveCode}
-      />
-    ),
-    DemoContainer: props => <DemoContainer {...props} />,
-    External: props => (
-      <External
-        src={props.src}
-        devOnly={props.devOnly ?? false}
-      />
-    ),
+    YiKeDemo: props => <YiKeDemo {...props} />,
   };
 }

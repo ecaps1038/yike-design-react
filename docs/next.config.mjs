@@ -64,7 +64,7 @@ const withMDX = mdx({
       [
         remarkDemoPlugin,
         {
-          component: 'DemoContainer',
+          component: 'YiKeDemo',
         },
       ],
     ],

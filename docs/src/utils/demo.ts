@@ -4,7 +4,7 @@ import { readFileSync } from 'fs';
 import enhancedResolve from 'enhanced-resolve';
 import { basename, dirname, extname, relative, resolve } from 'path';
 
-const resolver = enhancedResolve.create.sync({
+export const resolver = enhancedResolve.create.sync({
   extensions: ['.js', '.jsx', '.ts', '.tsx'],
   alias: {
     '@': resolve(process.cwd(), 'src'),

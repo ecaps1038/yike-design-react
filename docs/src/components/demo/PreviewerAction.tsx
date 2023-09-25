@@ -9,12 +9,12 @@ import CodeBlock from './CodeBlock';
 import type { FileRecord } from '@/types';
 import { IS_DEV } from '@/utils/constants';
 
-interface DemoActionProps {
+interface PreviewerActionProps {
   files: FileRecord[];
   external?: [string, string];
 }
 
-const DemoAction: React.FC<DemoActionProps> = ({ files, external }) => {
+const PreviewerAction: React.FC<PreviewerActionProps> = ({ files, external }) => {
   const router = useRouter();
 
   const [showCode, setShowCode] = React.useState(false);
@@ -84,4 +84,4 @@ const DemoAction: React.FC<DemoActionProps> = ({ files, external }) => {
   );
 };
 
-export default DemoAction;
+export default PreviewerAction;

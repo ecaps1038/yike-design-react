@@ -18,8 +18,8 @@ const fallbackRender = ({ error, resetErrorBoundary }: FallbackProps) => {
   );
 };
 
-const DemoErrorBoundary: React.FC<React.PropsWithChildren> = ({ children }) => {
+const PreviewerErrorBoundary: React.FC<React.PropsWithChildren> = ({ children }) => {
   return <ErrorBoundary fallbackRender={fallbackRender}>{children}</ErrorBoundary>;
 };
 
-export default DemoErrorBoundary;
+export default PreviewerErrorBoundary;

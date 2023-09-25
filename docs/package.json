@@ -24,6 +24,7 @@
     "eslint-config-next": "13.4.12",
     "glob": "^10.3.3",
     "gray-matter": "^4.0.3",
+    "lodash.capitalize": "^4.2.1",
     "lodash.groupby": "^4.6.0",
     "lodash.omit": "^4.5.0",
     "next": "13.4.12",
@@ -42,6 +43,7 @@
   "devDependencies": {
     "@jsdevtools/rehype-toc": "^3.0.2",
     "@total-typescript/ts-reset": "^0.4.2",
+    "@types/lodash.capitalize": "^4.2.7",
     "@types/lodash.groupby": "^4.6.7",
     "@types/lodash.omit": "^4.5.7",
     "@types/react-copy-to-clipboard": "^5.0.4",
