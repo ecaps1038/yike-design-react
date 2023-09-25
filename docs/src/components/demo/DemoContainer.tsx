@@ -1,15 +1,14 @@
 import type React from 'react';
-import { basename, dirname, extname, parse } from 'node:path';
+import { basename, extname, parse } from 'node:path';
 
 import DemoAction from './DemoAction';
 import type { FileRecord } from '@/types';
 import { parseDemoAsset } from '@/utils/demo';
 import ErrorContainer from './ErrorContainer';
-import PreviewerContainer from './PreviewerContainer';
 import { COMPONENT_DEMOS_DIR } from '@/utils/constants';
 
 interface DemoContainerProps {
-  previewer: React.ReactNode;
+  previewer: React.ComponentType;
   entry: string;
   inline?: string;
   source?: string;
@@ -20,12 +19,8 @@ const parseExternal = (entry: string) => {
   return [basename(parsed.dir), parsed.name] as [string, string];
 };
 
-const DemoContainer: React.FC<DemoContainerProps> = async ({ inline, entry, source }) => {
+const DemoContainer: React.FC<DemoContainerProps> = async ({ previewer: Previewer, inline, entry, source }) => {
   try {
-    const [component, demo] = inline
-      ? [basename(entry, extname(entry)), inline]
-      : [basename(dirname(entry)), basename(entry, extname(entry))];
-
     const asset = await parseDemoAsset(entry, source);
 
     const files: FileRecord[] = [
@@ -50,11 +45,7 @@ const DemoContainer: React.FC<DemoContainerProps> = async ({ inline, entry, sour
     return (
       <div className="mt-3">
         <div className="border p-5 rounded-lg border-yike overflow-x-auto">
-          <PreviewerContainer
-            inline={!!inline}
-            demo={demo}
-            component={component}
-          />
+          <Previewer />
         </div>
         <DemoAction
           files={files}

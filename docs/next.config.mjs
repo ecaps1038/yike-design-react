@@ -6,6 +6,8 @@ import rehypeTOC from '@jsdevtools/rehype-toc';
 import remarkFrontmatter from 'remark-frontmatter';
 import remarkDemoPlugin from '@yike-design/mdx-demo/remark-plugin';
 
+// wait nextjs fix: https://github.com/vercel/next.js/issues/55929
+
 /**
  *  @typedef { import('./src/types').HTMLElementNode } HTMLElementNode
  */
@@ -99,6 +101,11 @@ const nextConfig = {
     config.infrastructureLogging = {
       level: 'error',
     };
+    config.module.rules.push({
+      test: /PreviewerContainer4Doc\.tsx$/,
+      enforce: 'pre',
+      use: '@yike-design/mdx-demo/previewer-loader',
+    });
     config.externals.push('esbuild');
     return config;
   },

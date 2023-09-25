@@ -5,6 +5,9 @@
   "type": "module",
   "exports": {
     "./remark-plugin": "./dist/remark-plugin.js",
+    "./previewer-loader": {
+      "require": "./src/previewer-loader.cjs"
+    },
     "./inline-loader": {
       "require": "./src/inline-loader.cjs"
     }
@@ -24,12 +27,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "unist-util-visit": "^5.0.0",
+    "esbuild": "^0.19.2",
     "remark-mdx": "2.3.0",
     "remark-parse": "10.0.2",
     "remark-stringify": "10.0.3",
     "sucrase": "^3.34.0",
-    "unified": "^10.1.2"
+    "unified": "^10.1.2",
+    "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {
     "@types/unist": "^3.0.0"

@@ -44,11 +44,93 @@ export default function remarkDemoPlugin({ component }: Option): Transformer {
     });
 
     externalRecords.forEach(({ path, index }) => {
+      // const requirePath = `!!@yike-design/mdx-demo/previewer-loader?demo-path=${path}!@/components/demo/PreviewerContainer4Doc.tsx`;
+      const requirePath = `@/components/demo/PreviewerContainer4Doc.tsx?demo-path=${path}`;
+      // const requirePath = `@/components/demo/PreviewerContainer4Doc.tsx`;
       // @ts-expect-error
       tree.children.splice(index, 1, {
         type: 'mdxJsxFlowElement',
         name: component,
         attributes: [
+          {
+            type: 'mdxJsxAttribute',
+            name: 'previewer',
+            value: {
+              type: 'mdxJsxAttributeValueExpression',
+              value: `require('${requirePath}')`,
+              data: {
+                estree: {
+                  type: 'Program',
+                  body: [
+                    {
+                      type: 'ExpressionStatement',
+                      expression: {
+                        type: 'MemberExpression',
+                        object: {
+                          type: 'CallExpression',
+                          callee: {
+                            type: 'Identifier',
+                            name: 'require',
+                          },
+                          arguments: [
+                            {
+                              type: 'Literal',
+                              value: requirePath,
+                              raw: `'${requirePath}'`,
+                            },
+                          ],
+                          optional: false,
+                        },
+                        property: {
+                          type: 'Identifier',
+                          name: 'default',
+                        },
+                        computed: false,
+                        optional: false,
+                      },
+                    },
+                  ],
+                  sourceType: 'module',
+                  comments: [],
+                },
+              },
+            },
+          },
+          // {
+          //   type: 'mdxJsxAttribute',
+          //   name: 'previewer',
+          //   value: {
+          //     type: 'mdxJsxAttributeValueExpression',
+          //     value: `require('${requirePath}')`,
+          //     data: {
+          //       estree: {
+          //         type: 'Program',
+          //         body: [
+          //           {
+          //             type: 'ExpressionStatement',
+          //             expression: {
+          //               type: 'CallExpression',
+          //               callee: {
+          //                 type: 'Identifier',
+          //                 name: 'require',
+          //               },
+          //               arguments: [
+          //                 {
+          //                   type: 'Literal',
+          //                   value: requirePath,
+          //                   raw: `'${requirePath}'`,
+          //                 },
+          //               ],
+          //               optional: false,
+          //             },
+          //           },
+          //         ],
+          //         sourceType: 'module',
+          //         comments: [],
+          //       },
+          //     },
+          //   },
+          // },
           {
             type: 'mdxJsxAttribute',
             name: 'entry',
@@ -75,11 +157,58 @@ export default function remarkDemoPlugin({ component }: Option): Transformer {
     });
 
     inlineRecords.forEach((item, index) => {
+      // const requirePath = `!!@yike-design/mdx-demo/previewer-loader?demo-path=${currentFile}&inline=${index}!@/components/demo/PreviewerContainer4Doc.tsx`;
+      const requirePath = `@/components/demo/PreviewerContainer4Doc.tsx?demo-path=${currentFile}&inline=${index}`;
+      // const requirePath = `@/components/demo/PreviewerContainer4Doc.tsx`;
       // @ts-expect-error
       tree.children.splice(item.index, 1, {
         type: 'mdxJsxFlowElement',
         name: component,
         attributes: [
+          {
+            type: 'mdxJsxAttribute',
+            name: 'previewer',
+            value: {
+              type: 'mdxJsxAttributeValueExpression',
+              value: `require('${requirePath}')`,
+              data: {
+                estree: {
+                  type: 'Program',
+                  body: [
+                    {
+                      type: 'ExpressionStatement',
+                      expression: {
+                        type: 'MemberExpression',
+                        object: {
+                          type: 'CallExpression',
+                          callee: {
+                            type: 'Identifier',
+                            name: 'require',
+                          },
+                          arguments: [
+                            {
+                              type: 'Literal',
+                              value: requirePath,
+                              raw: `'${requirePath}'`,
+                            },
+                          ],
+                          optional: false,
+                        },
+                        property: {
+                          type: 'Identifier',
+                          name: 'default',
+                        },
+                        computed: false,
+                        optional: false,
+                      },
+                    },
+                  ],
+                  sourceType: 'module',
+                  comments: [],
+                },
+              },
+            },
+          },
           {
             type: 'mdxJsxAttribute',
             name: 'inline',
