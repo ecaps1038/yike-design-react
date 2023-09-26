@@ -8,26 +8,6 @@ import { build as buildIcons, generate as generateIcons } from './commands/icons
 export const startCommand = async () => {
   const cli = cac('yike-design');
 
-  // cli.command('bundless', 'Build module with bundless').action(async () => {
-  //   await builder.build({
-  //     esm: {
-  //       input: 'src',
-  //       sourcemap: true,
-  //       dts: true,
-  //     },
-  //     cjs: {
-  //       input: 'src',
-  //       sourcemap: true,
-  //     },
-  //     umd: {
-  //       entry: 'src/index.ts',
-  //       name: 'YikeDesign',
-  //       filename: 'yike-design',
-  //       minify: true,
-  //     },
-  //   });
-  // });
-
   cli
     .command('build', 'Build module with gulp')
     .option('-b, --bundle', 'Create bundle')
