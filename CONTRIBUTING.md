@@ -36,7 +36,7 @@ git remote add upstream https://github.com/ecaps1038/yike-design-react.git
 ```sh
 git checkout -b dev
 git fetch upstream
-git rebase upstream/dev 
+git rebase upstream/dev
 ```
 
 为什么使用 `rebase` ?
@@ -67,10 +67,10 @@ feat 为你需要具体修改的内容。此处定义根据功能自由命名，
 以下是具体例子:
 
 - `feature/cli/update-icons-build`
-- `feature/button/add-style` 
-- `fix/icon/alignment-issue` 
-- `docs/upload/add-picture-demo` 
-- `refactor/docs/refactor-router`  
+- `feature/button/add-style`
+- `fix/icon/alignment-issue`
+- `docs/upload/add-picture-demo`
+- `refactor/docs/refactor-router`
 
 ### 创建组件
 
@@ -98,30 +98,43 @@ PR 将由具备权限的贡献者 CR 后进行 merge，若提交的功能影响�
 ## 目录结构
 
 ```plaintext
-|- docs/                   # 组件库文档工程
-|  |- package.json         # package.json 文件
-|  |- tsconfig.json        # TypeScript 配置文件
-|  |- next.config.mjs      # NextJS 配置文件
-|  |- public/              # 公共文件夹
+|- docs/                     # 组件库文档工程
+|  |- package.json
+|  |- tsconfig.json
+|  |- next.config.mjs        # NextJS 配置文件
+|  |- public/
 |  |- src/
-|     |- app/              # 路由目录(app)
-|        |- page.tsx       # 首页
-|        |- design/        # 设计页面文件夹
-|        |- develop/       # 开发页面文件夹
-|        |- module/        # 组件页面文件夹
-|          |- button
-|            |- page.md(x) # 文档
+|     |- app/                # 路由目录(app)
+|        |- (site)
+|          |- page.tsx       # 首页
+|          |- design/        # 设计页面文件夹
+|          |- develop/       # 开发页面文件夹
+|          |- components/    # 组件页面文件夹
+|       |- (example)         # deme 对应的单独的页面
+|        ...
+|    |- content/             # 文档相关内容
+|       |- components/       # 文档中需要导入的组件（例如：Icon文档页面的列表）
+|       |- demos/            # 文档中的 Demo（外部Demo，比较复杂一点的）
+|       |- docs/             # 站点中对应路由的文档
+|         |- components      # components 路由对应页面的文件夹
+|            |- button.mdx   # /components/button 页面对应的文档内容
+|            ...
+|         |- design          # design 路由对应页面的文件夹
+|           ...
+|         |- develop         # develop 路由对应页面的文件夹
 |          ...
-|- packages/              
+|- packages/
+|  |- cli                   # 脚手架, 处理组件库的打包
 |  |- yike-design/
 |     |- src/
-|        |- components/    # 组件目录
-|        |- index.ts       # 组件库入口文件
-|     |- package.json      # 组件库 package.json 文件
-|  |- remark-demo-plugin/  # remark插件，用于处理md文档中的demo代码块
-|- package.json            # 根目录下的 package.json 文件
-|- README.md               # 根目录下的 README.md 文件
-|- tsconfig.json           # 根目录下的 TypeScript 配置文件
+|        |- components/      # 组件目录
+|        |- index.ts         # 组件库入口文件
+|     |- package.json
+|  |- yike-design-icon       # icon库
+|  |- mdx-demo               # 用于处理 mdx 文档中的 demo 代码块
+|- package.json
+|- README.md
+|- tsconfig.json
 |- ...
 ```
 
@@ -146,19 +159,19 @@ PR 将由具备权限的贡献者 CR 后进行 merge，若提交的功能影响�
 
 RSC（React Server Component）当前已经可以上生产，为了对 RSC 做适配，组件库中所有用到了客户端功能的组件，应当在组件文件的顶部加上 `"use client"` 指令（大概率大部分组件都需要）
 
-具体可以参考 [NextJS 文档](https://nextjs.org/docs/getting-started/react-essentials) 
+具体可以参考 [NextJS 文档](https://nextjs.org/docs/getting-started/react-essentials)
 
 ## 文档编写
 
-`docs` 所有的文档都在 `docs/src/app/module` 目录下对应的组件名文件夹下的 `page.md(x)` 
+所有的文档都在 `docs/src/content/docs/components` 目录下，文件名为 `[component].mdx`
 
-对于所有的文档页面，应当使用 md(x) 来书写，对于需要自定义组件的部分导入相关的 react 组件
+对于所有的文档页面，应当使用 md(x) 来书写，对于页面中需要自定义的部分导入相关的 react 组件（应当将其定义在 `docs/src/content/components`）
 
-### 代码块
+### Demo渲染
 
-受 dumi 启发--**开发者应该像用户一样使用组件**，所以 demo 块的的书写方式应当和使用该组件类似，默认导出的组件会被渲染在预览区内
+我们开发了 `@yike-design/mdx-demo` 实现 mdx 中的代码块预览渲染
 
-我们编写了一个 `remark` 插件用于将普通的 markdown 代码块进行预览渲染，其书写规则类似于 dumi
+其书写规则为 `import` 你所需要的依赖（只要存在当前工程, 包括样式文件），并且 `export default` 你需要渲染的组件，默认导出的组件会被渲染在预览区内
 
 ````
 ```tsx
@@ -176,10 +189,24 @@ export default () => {
 ```
 ````
 
+有两种形式的Demo书写方式：
+
+- 行内Demo
+
+- 外部Demo
+
+行内Demo即在 mdx 文件书写的代码块，其默认会被渲染成 React 组件
+
+外部Demo即将代码书写在 `docs/src/content/demos/[component]/[demo].tsx`，并且在 mdx 文件中通过 `<code src="~demos/[component]/[demo].tsx" />` 声明
+
+注意: 外部Demo的声明中, `src` 属性一定要为 `~demos` 开头（判断时偷懒了）
+
+### 代码块
+
 如果仅仅想渲染代码块，而不进行预览，使用 `pure` 标记：
 
 ````
-```tsx pure 
+```tsx pure
 import { Button } from '@yike-design/react'
 
 export default () => {
@@ -199,15 +226,14 @@ export default () => {
 组件文档应当提供关于组件的说明、用法、API 等相关信息。以下是一个组件文档的基本结构示例：
 
 ````md
-# yk-button 按钮  （文档首页标题）
-
+# yk-button 按钮 （文档首页标题）
 
 ## 按钮类型 type
 
 按钮有三种类型：`主按钮` 、`次按钮` 、`线框按钮` 。主按钮在同一个操作区域建议最多出现一次。
 
 ```tsx
-import { Button } from '@yike-design/react'
+import { Button } from '@yike-design/react';
 
 export default () => {
   return (
@@ -216,8 +242,8 @@ export default () => {
       <Button type="secondary">次要按钮</Button>
       <Button type="outline">线框按钮</Button>
     </div>
-  )
-}
+  );
+};
 ```
 
 ...其他用法
@@ -226,8 +252,7 @@ export default () => {
 
 通过设置 Button 的属性来产生不同的按钮样式，推荐顺序为：type -> size -> shape -> status -> disabled。
 
-|参数       | 描述      | 类型       | 可选值                               | 默认值     |
-| -------- | -------- | ---------- | ----------------------------------- | --------- |
-| type     | 按钮的类型 | string    | `primary`、`secondary`、`outline`   | `primary` |
+| 参数 | 描述       | 类型   | 可选值                            | 默认值    |
+| ---- | ---------- | ------ | --------------------------------- | --------- |
+| type | 按钮的类型 | string | `primary`、`secondary`、`outline` | `primary` |
 ````
-
