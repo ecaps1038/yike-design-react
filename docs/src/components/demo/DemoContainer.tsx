@@ -1,14 +1,12 @@
 import type React from 'react';
 import assert from 'node:assert';
-import { basename, dirname, extname, parse } from 'node:path';
+import { basename, dirname, extname } from 'node:path';
 
 import type { FileRecord } from '@/types';
 import { parseDemoAsset } from '@/utils/demo';
 import ErrorContainer from './ErrorContainer';
 import PreviewerAction from './PreviewerAction';
 import PreviewerContainer from './PreviewerContainer';
-import { COMPONENT_DEMOS_DIR } from '@/utils/constants';
-import PreviewerErrorBoundary from './PreviewerErrorBoundary';
 
 interface DemoContainerProps {
   previewer: React.ReactNode;
@@ -16,11 +14,6 @@ interface DemoContainerProps {
   inline?: string;
   source?: string;
 }
-
-const parseExternal = (entry: string) => {
-  const parsed = parse(entry.replace(COMPONENT_DEMOS_DIR, ''));
-  return [basename(parsed.dir), parsed.name] as [string, string];
-};
 
 const DemoContainer: React.FC<DemoContainerProps> = async ({ inline, entry, source }) => {
   try {
@@ -51,22 +44,20 @@ const DemoContainer: React.FC<DemoContainerProps> = async ({ inline, entry, sour
         })),
     ];
 
-    const external = !inline ? parseExternal(entry) : undefined;
+    const singleLink = [inline ? 'demos/inline' : 'demos', component, demo].join('/');
 
     return (
       <div className="mt-3">
         <div className="border p-5 rounded-lg border-yike overflow-x-auto">
-          <PreviewerErrorBoundary>
-            <PreviewerContainer
-              inline={!!inline}
-              demo={demo}
-              component={component}
-            />
-          </PreviewerErrorBoundary>
+          <PreviewerContainer
+            inline={!!inline}
+            demo={demo}
+            component={component}
+          />
         </div>
         <PreviewerAction
           files={files}
-          external={external}
+          singleLink={singleLink}
         />
       </div>
     );

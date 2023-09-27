@@ -2,6 +2,7 @@
 import type React from 'react';
 import { IS_DEV } from '@/utils/constants';
 import capitalize from 'lodash.capitalize';
+import PreviewerErrorBoundary from './PreviewerErrorBoundary';
 
 interface ContainerProps {
   inline?: boolean;
@@ -18,7 +19,11 @@ const PreviewerContainer: React.FC<ContainerProps> = ({ inline = false, componen
     Component.displayName = `YiKeDemo@${capitalize(component)}/${inline ? 'inline-' : ''}${demo}`;
   }
 
-  return <Component />;
+  return (
+    <PreviewerErrorBoundary>
+      <Component />
+    </PreviewerErrorBoundary>
+  );
 };
 
 export default PreviewerContainer;

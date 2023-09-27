@@ -1,22 +1,19 @@
 'use client';
 import clsx from 'clsx';
 import React from 'react';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import CopyToClipboard from 'react-copy-to-clipboard';
 import { CodeOutlined, CopyOutlined, ShareOutlined } from '@yike-design/react-icons';
 
 import CodeBlock from './CodeBlock';
 import type { FileRecord } from '@/types';
-import { IS_DEV } from '@/utils/constants';
 
 interface PreviewerActionProps {
   files: FileRecord[];
-  external?: [string, string];
+  singleLink?: string;
 }
 
-const PreviewerAction: React.FC<PreviewerActionProps> = ({ files, external }) => {
-  const router = useRouter();
-
+const PreviewerAction: React.FC<PreviewerActionProps> = ({ files, singleLink }) => {
   const [showCode, setShowCode] = React.useState(false);
 
   const hiddenClass = clsx({ hidden: !showCode });
@@ -34,13 +31,15 @@ const PreviewerAction: React.FC<PreviewerActionProps> = ({ files, external }) =>
   return (
     <React.Fragment>
       <div className="flex items-center justify-end gap-4 py-2">
-        {IS_DEV && external && (
-          <button
+        {/* TODO: add sandbox button */}
+        {singleLink && (
+          <Link
+            target="_blank"
             className={btnClass}
-            onClick={() => router.push(`/demos/${external.join('/')}`)}
+            href={`/${singleLink}`}
           >
             <ShareOutlined />
-          </button>
+          </Link>
         )}
 
         <CopyToClipboard

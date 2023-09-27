@@ -1,6 +1,8 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
     "baseUrl": ".",
     "incremental": true,
     "plugins": [
@@ -9,15 +11,9 @@
       }
     ],
     "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-      "~demos/*": [
-        "./src/content/demos/*"
-      ],
-      "contentlayer/generated": [
-        "./.contentlayer/generated"
-      ]
+      "@/*": ["./src/*"],
+      "~demos/*": ["./src/content/demos/*"],
+      "contentlayer/generated": ["./.contentlayer/generated"]
     },
     "strictNullChecks": true
   },
