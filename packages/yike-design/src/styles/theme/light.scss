@@ -1,33 +1,105 @@
+@import '../color/color';
 @import '../tokens/color';
 
 :root {
-  $color-primary: $color-blue;
-  $color-danger: $color-red;
-  $color-success: $color-green;
-  $color-warning: $color-yellow;
-  $color-link: #1890ff;
+  // base color
+  $base-primary: $color-blue;
+  $base-danger: $color-red;
+  $base-success: $color-green;
+  $base-warning: $color-yellow;
+  $base-link: #1890ff;
 
-  --yike-color-blue: #{$color-blue};
-  --yike-color-red: #{$color-red};
-  --yike-color-green: #{$color-green};
-  --yike-color-yellow: #{$color-yellow};
+  // bg color
+  $color-bg-1: $color-white;
+  $color-bg-2: color-mix(in srgb, #fff, $color-gray 3.6%);
+  $color-bg-3: color-mix(in srgb, #fff, $color-gray 6.8%);
+  $color-bg-4: color-mix(in srgb, #fff, $color-gray 9.4%);
 
-  // ------ neutral colors ------
-  --yike-color-gray: #{$color-gray};
-  --yike-color-gray-1: #{$color-gray-1};
+  // $color-bg-2: #e8e9eb;
+  // $color-bg-3: #f0f0f1;
+  // $color-bg-4: #f6f6f8;
+
+  // color
+  --yike-primary: #{hex2rgb($base-primary)};
+  --yike-danger: #{hex2rgb($base-danger)};
+  --yike-success: #{hex2rgb($base-success)};
+  --yike-warning: #{hex2rgb($base-warning)};
+  --yike-link: #{hex2rgb($base-link)};
 
   // ------ functional color ------
-  --yike-color-primary: #{$color-primary};
-  --yike-color-danger: #{$color-danger};
-  --yike-color-success: #{$color-success};
-  --yike-color-warning: #{$color-warning};
-  --yike-color-link: #{$color-link};
+  --yike-primary-color: #{$primary-color};
+  --yike-danger-color: #{$danger-color};
+  --yike-success-color: #{$success-color};
+  --yike-warning-color: #{$warning-color};
+  --yike-link-color: #{$link-color};
+
+  // ------ neutral color ------
+  --yike-neutral-color: #{$color-gray};
+
+  // primary
+  --yike-primary-color-1: #{$primary-color-1};
+  --yike-primary-color-2: #{$primary-color-2};
+  --yike-primary-color-3: #{$primary-color-3};
+  --yike-primary-color-4: #{$primary-color-4};
+  --yike-primary-color-5: #{$primary-color-5};
+  --yike-primary-color-6: #{$primary-color-6};
+  --yike-primary-color-7: #{$primary-color-7};
+  --yike-primary-color-8: #{$primary-color-8};
+  --yike-primary-color-9: #{$primary-color-9};
+  --yike-primary-color-10: #{$primary-color-10};
+
+  // success
+  --yike-success-color-1: #{$success-color-1};
+  --yike-success-color-2: #{$success-color-2};
+  --yike-success-color-3: #{$success-color-3};
+  --yike-success-color-4: #{$success-color-4};
+  --yike-success-color-5: #{$success-color-5};
+  --yike-success-color-6: #{$success-color-6};
+  --yike-success-color-7: #{$success-color-7};
+  --yike-success-color-8: #{$success-color-8};
+  --yike-success-color-9: #{$success-color-9};
+  --yike-success-color-10: #{$success-color-10};
+
+  // danger
+  --yike-danger-color-1: #{$danger-color-1};
+  --yike-danger-color-2: #{$danger-color-2};
+  --yike-danger-color-3: #{$danger-color-3};
+  --yike-danger-color-4: #{$danger-color-4};
+  --yike-danger-color-5: #{$danger-color-5};
+  --yike-danger-color-6: #{$danger-color-6};
+  --yike-danger-color-7: #{$danger-color-7};
+  --yike-danger-color-8: #{$danger-color-8};
+  --yike-danger-color-9: #{$danger-color-9};
+  --yike-danger-color-10: #{$danger-color-10};
+
+  // warning
+  --yike-warning-color-1: #{$warning-color-1};
+  --yike-warning-color-2: #{$warning-color-2};
+  --yike-warning-color-3: #{$warning-color-3};
+  --yike-warning-color-4: #{$warning-color-4};
+  --yike-warning-color-5: #{$warning-color-5};
+  --yike-warning-color-6: #{$warning-color-6};
+  --yike-warning-color-7: #{$warning-color-7};
+  --yike-warning-color-8: #{$warning-color-8};
+  --yike-warning-color-9: #{$warning-color-9};
+  --yike-warning-color-10: #{$warning-color-10};
 
   // ------ background color ------
-  --yike-color-background-ss: #{$color-bg-ss};
-  --yike-color-background-s: #{$color-bg-s};
-  --yike-color-background-m: #{$color-bg-m};
-  --yike-color-background-l: #{$color-bg-l};
+  --yike-background-color-1: #{$color-bg-1};
+  --yike-background-color-2: #{$color-bg-2};
+  --yike-background-color-3: #{$color-bg-3};
+  --yike-background-color-4: #{$color-bg-4};
+
+  // ------ line color ------
+  --yike-line-color-1: #{$color-gray-1};
+  --yike-line-color-2: #{$color-gray-3};
+  --yike-line-color-3: #{$color-gray-4};
+
+  // ------ text color ------
+  --yike-text-color-1: #{$color-gray-10};
+  --yike-text-color-2: #{$color-gray-8};
+  --yike-text-color-3: #{$color-gray-6};
+  --yike-text-color-4: #{$color-gray-5};
 
   // ------ text size ------
   --yike-font-size-ss: 12px;

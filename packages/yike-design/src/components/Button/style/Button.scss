@@ -136,10 +136,10 @@
 @include buttonType(primary, white);
 @include buttonType(secondary, black);
 @include buttonType(outline, black);
-@include buttonPrimaryBGC(primary, $color-primary);
-@include buttonPrimaryBGC(danger, $color-danger);
-@include buttonPrimaryBGC(success, $color-success);
-@include buttonPrimaryBGC(warning, $color-warning);
+@include buttonPrimaryBGC(primary, $primary-color);
+@include buttonPrimaryBGC(danger, $danger-color);
+@include buttonPrimaryBGC(success, $success-color);
+@include buttonPrimaryBGC(warning, $warning-color);
 @include buttonSecondaryOutlineBGC(primary, #2b5aed);
 @include buttonSecondaryOutlineBGC(danger, #fa5247);
 @include buttonSecondaryOutlineBGC(success, #1fb4a2);

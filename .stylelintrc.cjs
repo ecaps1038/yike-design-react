@@ -36,5 +36,6 @@ module.exports = {
     'selector-class-pattern': null,
     'no-descending-specificity': null,
     'no-invalid-position-at-import-rule': null,
+    'color-function-notation': null,
   },
 };

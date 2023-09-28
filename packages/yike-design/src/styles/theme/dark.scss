@@ -1,12 +1,44 @@
-:root[data-theme='dark'] {
-  --yike-color-primary: #3575f6;
-  --yike-color-danger: #df4d43;
-  --yike-color-success: #3dbaab;
-  --yike-color-warning: #fbad3b;
-  --yike-color-link: #308ce1;
-  --yike-color-text: rgb(255 255 255 / 90%);
-  --yike-color-text-secondary: rgb(255 255 255 / 70%);
-  --yike-color-text-tertiary: rgb(255 255 255 / 45%);
-  --yike-color-text-disabled: rgb(255 255 255 / 26%);
-  --yike-color-outlined: rgb(255 255 255 / 24%);
+@import '../color/color';
+@import '../tokens/color';
+
+:root[yike-theme='dark'] {
+  // basic color
+  $base-primary: #3575f6;
+  $base-link: #308ce1;
+  $base-success: #19ad78;
+  $base-warning: #f6a224;
+  $base-danger: #df4d43;
+
+  // bg color
+  $color-bg-1: $color-gray;
+  $color-bg-2: color-mix(in srgb, $color-gray, #fff 3.2%);
+  $color-bg-3: color-mix(in srgb, $color-gray, #fff 6.4%);
+  $color-bg-4: color-mix(in srgb, $color-gray, #fff 8.8%);
+
+  // ------ functional color ------
+  --yike-primary-color: #{$base-primary};
+  --yike-danger-color: #{$base-danger};
+  --yike-success-color: #{$base-success};
+  --yike-warning-color: #{$base-warning};
+  --yike-link-color: #{$base-link};
+
+  // ------ neutral color ------
+  --yike-neutral-color: #{$color-white};
+
+  // ------ background color ------
+  --yike-background-color-1: #{$color-bg-1};
+  --yike-background-color-2: #{$color-bg-2};
+  --yike-background-color-3: #{$color-bg-3};
+  --yike-background-color-4: #{$color-bg-4};
+
+  // ------ line color ------
+  --yike-line-color-1: #{$color-white-1};
+  --yike-line-color-2: #{$color-white-3};
+  --yike-line-color-3: #{$color-white-4};
+
+  // ------ text color ------
+  --yike-text-color-1: #{$color-white};
+  --yike-text-color-2: #{$color-white-8};
+  --yike-text-color-3: #{$color-white-6};
+  --yike-text-color-4: #{$color-white-5};
 }

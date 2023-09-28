@@ -8,7 +8,7 @@ interface CodeBlockWrapperProps {
 
 const CodeBlockWrapper: React.FC<CodeBlockWrapperProps> = ({ language, code }) => {
   return (
-    <div className="rounded overflow-hidden border border-yike mt-4">
+    <div className="rounded overflow-hidden border border-yike-1 mt-4">
       <CodeBlock
         code={code.trim()}
         language={language}

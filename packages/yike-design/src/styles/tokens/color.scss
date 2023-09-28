@@ -1,82 +1,81 @@
-// ------------ blue ------------
-$color-blue: #2b5aed;
-$color-blue-1: rgba($color-blue, 0.08);
-$color-blue-2: rgba($color-blue, 0.12);
-$color-blue-3: rgba($color-blue, 0.16);
-$color-blue-4: rgba($color-blue, 0.24);
-$color-blue-5: rgba($color-blue, 0.32);
-$color-blue-6: #436ff8;
-$color-blue-7: $color-blue;
-$color-blue-8: #2753da;
-$color-blue-9: #244cc7;
-$color-blue-10: #1d3da1;
-
-// ------------ red ------------
-$color-red: #fa5247;
-$color-red-1: rgba($color-red, 0.08);
-$color-red-2: rgba($color-red, 0.12);
-$color-red-3: rgba($color-red, 0.16);
-$color-red-4: rgba($color-red, 0.24);
-$color-red-5: rgba($color-red, 0.32);
-$color-red-6: #fb675d;
-$color-red-7: $color-red;
-$color-red-8: #e64b41;
-$color-red-9: #d2453c;
-$color-red-10: #aa3830;
-
-// ------------ green ------------
-$color-green: #1fb4a2;
-$color-green-1: rgba($color-green, 0.08);
-$color-green-2: rgba($color-green, 0.12);
-$color-green-3: rgba($color-green, 0.16);
-$color-green-4: rgba($color-green, 0.24);
-$color-green-5: rgba($color-green, 0.32);
-
-// ------------ yellow ------------
-$color-yellow: #ffaa1a;
-$color-yellow-1: rgba($color-yellow, 0.08);
-$color-yellow-2: rgba($color-yellow, 0.12);
-$color-yellow-3: rgba($color-yellow, 0.16);
-$color-yellow-4: rgba($color-yellow, 0.24);
-$color-yellow-5: rgba($color-yellow, 0.32);
-
-// ------------ neutral colors ------------
-
-//            ------ gray ------
-$color-gray: #1e2025;
-$color-gray-1: rgba($color-gray, 0.08);
-$color-gray-2: rgba($color-gray, 0.12);
-$color-gray-3: rgba($color-gray, 0.16);
-$color-gray-4: rgba($color-gray, 0.24);
-$color-gray-5: rgba($color-gray, 0.32);
-$color-gray-6: rgba($color-gray, 0.48);
-$color-gray-7: rgba($color-gray, 0.64);
-$color-gray-8: rgba($color-gray, 0.72);
-$color-gray-9: rgba($color-gray, 0.88);
-
-//            ------ white ------
-$color-white: #fff;
+$yike-primary: var(--yike-primary);
+$yike-danger: var(--yike-danger);
+$yike-success: var(--yike-success);
+$yike-warning: var(--yike-warning);
+$yike-link: var(--yike-link);
 
 // ------------ functional color ------------
-$color-primary: var(--yike-color-primary);
-$color-danger: var(--yike-color-danger);
-$color-success: var(--yike-color-success);
-$color-warning: var(--yike-color-warning);
-$color-link: var(--yike-color-link);
+$primary-color: rgb($yike-primary);
+$danger-color: rgb($yike-danger);
+$success-color: rgb($yike-success);
+$warning-color: rgb($yike-warning);
+$link-color: rgb($yike-link);
+
+// primary
+$primary-color-1: rgba($yike-primary, 0.08);
+$primary-color-2: rgba($yike-primary, 0.12);
+$primary-color-3: rgba($yike-primary, 0.16);
+$primary-color-4: rgba($yike-primary, 0.24);
+$primary-color-5: rgba($yike-primary, 0.32);
+$primary-color-6: color-mix(in srgb, $primary-color, #fff 12%);
+$primary-color-7: $primary-color;
+$primary-color-8: color-mix(in srgb, $primary-color, #000 8%);
+$primary-color-9: color-mix(in srgb, $primary-color, #000 16%);
+$primary-color-10: color-mix(in srgb, $primary-color, #000 32%);
+
+// success
+$success-color-1: rgba($yike-success, 0.08);
+$success-color-2: rgba($yike-success, 0.12);
+$success-color-3: rgba($yike-success, 0.16);
+$success-color-4: rgba($yike-success, 0.24);
+$success-color-5: rgba($yike-success, 0.32);
+$success-color-6: color-mix(in srgb, $success-color, #fff 12%);
+$success-color-7: $success-color;
+$success-color-8: color-mix(in srgb, $success-color, #000 8%);
+$success-color-9: color-mix(in srgb, $success-color, #000 16%);
+$success-color-10: color-mix(in srgb, $success-color, #000 32%);
+
+// danger
+$danger-color-1: rgba($yike-danger, 0.08);
+$danger-color-2: rgba($yike-danger, 0.12);
+$danger-color-3: rgba($yike-danger, 0.16);
+$danger-color-4: rgba($yike-danger, 0.24);
+$danger-color-5: rgba($yike-danger, 0.32);
+$danger-color-6: color-mix(in srgb, $danger-color, #fff 12%);
+$danger-color-7: $danger-color;
+$danger-color-8: color-mix(in srgb, $danger-color, #000 8%);
+$danger-color-9: color-mix(in srgb, $danger-color, #000 16%);
+$danger-color-10: color-mix(in srgb, $danger-color, #000 32%);
+
+// warning
+$warning-color-1: rgba($yike-warning, 0.08);
+$warning-color-2: rgba($yike-warning, 0.12);
+$warning-color-3: rgba($yike-warning, 0.16);
+$warning-color-4: rgba($yike-warning, 0.24);
+$warning-color-5: rgba($yike-warning, 0.32);
+$warning-color-6: color-mix(in srgb, $warning-color, #fff 12%);
+$warning-color-7: $warning-color;
+$warning-color-8: color-mix(in srgb, $warning-color, #000 8%);
+$warning-color-9: color-mix(in srgb, $warning-color, #000 16%);
+$warning-color-10: color-mix(in srgb, $warning-color, #000 32%);
 
 // ------------ background color ------------
-$color-bg-m: #f6f6f8;
-$color-bg-s: #f0f0f1;
-$color-bg-ss: #e8e9eb;
-$color-bg-l: $color-white;
+$background-color-1: var(--yike-background-color-1);
+$background-color-2: var(--yike-background-color-2);
+$background-color-3: var(--yike-background-color-3);
+$background-color-4: var(--yike-background-color-4);
+$background-color-l: $background-color-1;
+$background-color-m: $background-color-2;
+$background-color-s: $background-color-3;
+$background-color-ss: $background-color-4;
 
 // ------------ text color ------------
-$color-text-l: $color-gray;
-$color-text-m: $color-gray-8;
-$color-text-s: $color-gray-6;
-$color-text-ss: $color-gray-5;
+$text-color-l: var(--yike-text-color-1);
+$text-color-m: var(--yike-text-color-2);
+$text-color-s: var(--yike-text-color-3);
+$text-color-ss: var(--yike-text-color-4);
 
 // ------------ line color ------------
-$color-line-s: $color-gray-1;
-$color-line-m: $color-gray-3;
-$color-line-l: $color-gray-4;
+$line-color-s: var(--yike-line-color-1);
+$line-color-m: var(--yike-line-color-2);
+$line-color-l: var(--yike-line-color-3);

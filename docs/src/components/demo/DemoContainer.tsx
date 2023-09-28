@@ -48,7 +48,7 @@ const DemoContainer: React.FC<DemoContainerProps> = async ({ inline, entry, sour
 
     return (
       <div className="mt-3">
-        <div className="border p-5 rounded-lg border-yike overflow-x-auto">
+        <div className="border p-5 rounded-lg border-yike-1 overflow-x-auto">
           <PreviewerContainer
             inline={!!inline}
             demo={demo}
@@ -64,7 +64,7 @@ const DemoContainer: React.FC<DemoContainerProps> = async ({ inline, entry, sour
   } catch (error) {
     return (
       <div className="mt-3">
-        <div className="border p-5 rounded-lg border-yike overflow-x-auto">
+        <div className="border p-5 rounded-lg border-yike-1 overflow-x-auto">
           <ErrorContainer error={error as Error} />
         </div>
       </div>

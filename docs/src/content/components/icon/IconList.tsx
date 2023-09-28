@@ -22,8 +22,8 @@ const IconButton = ({ selected, text, onClick }: IconButtonProps) => {
   return (
     <button
       onClick={onClick}
-      className={clsx('px-4 py-1.5 cursor-pointer rounded text-base hover:bg-slate-300 transition duration-200', {
-        '!bg-white': selected,
+      className={clsx('px-4 py-1.5 cursor-pointer rounded text-base hover:bg-yike-2 transition duration-200', {
+        '!bg-yike-bg-1': selected,
       })}
     >
       {text}
@@ -43,7 +43,7 @@ const IconList = () => {
   return (
     <div>
       <div className="flex items-center gap-4 pb-8">
-        <div className="p-0.5 bg-slate-200 rounded flex items-center">
+        <div className="p-0.5 bg-yike-4 rounded flex items-center">
           <IconButton
             text={
               <div className="flex items-center">

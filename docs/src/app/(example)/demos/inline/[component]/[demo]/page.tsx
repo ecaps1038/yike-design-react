@@ -32,7 +32,7 @@ const Page = ({ params: { component, demo } }: PageProps) => {
     return (
       <div className="p-4">
         <Typography.Title className="text-center">Yike Design React Demo</Typography.Title>
-        <div className="border border-yike p-4 rounded">
+        <div className="border border-yike-1 p-4 rounded">
           <PreviewerContainer
             inline
             demo={demo}

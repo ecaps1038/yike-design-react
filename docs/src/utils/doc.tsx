@@ -39,7 +39,7 @@ export const createPage = (type: string) => {
   const generateMetadata = ({ params }: DocPageProps) => {
     const doc = getDocFromSlug(params.slug);
     if (!doc) {
-      notFound();
+      return {};
     }
     return {
       title: doc.meta.title,

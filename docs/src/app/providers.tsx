@@ -5,10 +5,10 @@ import { AppProgressBar as ProgressBar } from 'next-nprogress-bar';
 
 const Providers: React.FC<React.PropsWithChildren> = ({ children }) => {
   return (
-    <ThemeProvider enableColorScheme={false}>
+    <ThemeProvider attribute="yike-theme">
       <ProgressBar
         shallowRouting
-        color="var(--yike-color-primary)"
+        color="var(--yike-primary-color)"
         options={{ showSpinner: false }}
       />
       {children}

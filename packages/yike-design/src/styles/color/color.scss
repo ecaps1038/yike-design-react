@@ -1,0 +1,76 @@
+@function hex2rgb($hex) {
+  $color: '#{rgba($hex, 0)}';
+  /* stylelint-disable-next-line scss/no-global-function-names */
+  $length: str-length($color);
+
+  @return str-slice($color, 6, $length - 4);
+}
+
+// ------------ blue ------------
+$color-blue: #2b5aed;
+$color-blue-1: rgba($color-blue, 0.08);
+$color-blue-2: rgba($color-blue, 0.12);
+$color-blue-3: rgba($color-blue, 0.16);
+$color-blue-4: rgba($color-blue, 0.24);
+$color-blue-5: rgba($color-blue, 0.32);
+$color-blue-6: #436ff8;
+$color-blue-7: $color-blue;
+$color-blue-8: #2753da;
+$color-blue-9: #244cc7;
+$color-blue-10: #1d3da1;
+
+// ------------ red ------------
+$color-red: #fa5247;
+$color-red-1: rgba($color-red, 0.08);
+$color-red-2: rgba($color-red, 0.12);
+$color-red-3: rgba($color-red, 0.16);
+$color-red-4: rgba($color-red, 0.24);
+$color-red-5: rgba($color-red, 0.32);
+$color-red-6: #fb675d;
+$color-red-7: $color-red;
+$color-red-8: #e64b41;
+$color-red-9: #d2453c;
+$color-red-10: #aa3830;
+
+// ------------ green ------------
+$color-green: #1fb4a2;
+$color-green-1: rgba($color-green, 0.08);
+$color-green-2: rgba($color-green, 0.12);
+$color-green-3: rgba($color-green, 0.16);
+$color-green-4: rgba($color-green, 0.24);
+$color-green-5: rgba($color-green, 0.32);
+
+// ------------ yellow ------------
+$color-yellow: #ffaa1a;
+$color-yellow-1: rgba($color-yellow, 0.08);
+$color-yellow-2: rgba($color-yellow, 0.12);
+$color-yellow-3: rgba($color-yellow, 0.16);
+$color-yellow-4: rgba($color-yellow, 0.24);
+$color-yellow-5: rgba($color-yellow, 0.32);
+
+// ------------ neutral colors ------------
+
+//            ------ gray ------
+$color-gray: #1e2025;
+$color-gray-1: rgba($color-gray, 0.08);
+$color-gray-2: rgba($color-gray, 0.12);
+$color-gray-3: rgba($color-gray, 0.16);
+$color-gray-4: rgba($color-gray, 0.24);
+$color-gray-5: rgba($color-gray, 0.32);
+$color-gray-6: rgba($color-gray, 0.48);
+$color-gray-7: rgba($color-gray, 0.64);
+$color-gray-8: rgba($color-gray, 0.72);
+$color-gray-9: rgba($color-gray, 0.88);
+$color-gray-10: $color-gray;
+
+//            ------ white ------
+$color-white: #fff;
+$color-white-1: rgba($color-white, 0.08);
+$color-white-2: rgba($color-white, 0.12);
+$color-white-3: rgba($color-white, 0.16);
+$color-white-4: rgba($color-white, 0.24);
+$color-white-5: rgba($color-white, 0.32);
+$color-white-6: rgba($color-white, 0.48);
+$color-white-7: rgba($color-white, 0.64);
+$color-white-8: rgba($color-white, 0.72);
+$color-white-9: rgba($color-white, 0.88);

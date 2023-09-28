@@ -15,7 +15,8 @@ body {
     'Helvetica Neue',
     sans-serif;
   font-size: $text-size-s;
-  background: $color-bg-l;
+  color: $text-color-l;
+  background-color: $background-color-l;
   text-rendering: optimizelegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

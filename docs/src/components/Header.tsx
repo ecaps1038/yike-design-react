@@ -14,10 +14,11 @@ const navigators = [
 
 const Header = () => {
   return (
-    <header className="h-[60px] px-[30px] flex items-center border-b border-yike flex-shrink-0">
+    <header className="h-[60px] px-6 flex items-center border-b border-yike-1 flex-shrink-0">
       <div className="flex items-center">
         <Image
-          width={32}
+          width={36}
+          height={28}
           src={logo}
           alt="logo"
         />

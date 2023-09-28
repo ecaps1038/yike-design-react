@@ -50,7 +50,7 @@ const Page = async ({ params: { component, demo } }: PageProps) => {
             @/content/demos/{component}/{demo}.tsx
           </Typography.Text>
         </p>
-        <div className="border border-yike p-4 rounded">
+        <div className="border border-yike-1 p-4 rounded">
           <PreviewerContainer
             demo={demo}
             component={component}

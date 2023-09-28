@@ -24,31 +24,31 @@
 
 .yk-typography {
   &--default {
-    color: $color-text-l;
+    color: $text-color-l;
   }
 
   &--primary {
-    color: $color-primary;
+    color: $primary-color;
   }
 
   &--success {
-    color: $color-success;
+    color: $success-color;
   }
 
   &--warning {
-    color: $color-warning;
+    color: $warning-color;
   }
 
   &--danger {
-    color: $color-danger;
+    color: $danger-color;
   }
 
   &--secondary {
-    color: $color-text-m;
+    color: $text-color-m;
   }
 
   &--disabled {
-    color: $color-text-ss;
+    color: $text-color-ss;
     cursor: not-allowed;
     user-select: none;
   }
@@ -88,12 +88,12 @@
   }
 
   &__ellipsis-operation-expand {
-    color: $color-primary;
+    color: $primary-color;
     cursor: pointer;
     user-select: none;
 
     &:hover {
-      color: color-mix(in srgb, $color-primary, #fff 20%);
+      color: color-mix(in srgb, $primary-color, #fff 20%);
     }
   }
 }
