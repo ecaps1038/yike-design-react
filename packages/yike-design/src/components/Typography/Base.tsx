@@ -122,7 +122,7 @@ const Base = React.forwardRef<HTMLElement, React.PropsWithChildren<BaseProps>>((
           )}
         >
           {renderContent(
-            enableEllipsis ? (
+            enableJSEllipsis ? (
               <Ellipsis
                 rows={rows}
                 width={width}

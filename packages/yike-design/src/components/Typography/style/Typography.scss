@@ -22,6 +22,11 @@
   }
 }
 
+span.yk-typography--ellipsis {
+  display: inline-block;
+  max-width: 100%;
+}
+
 .yk-typography {
   &--default {
     color: $text-color-l;
