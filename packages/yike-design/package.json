@@ -14,7 +14,8 @@
     "new": "yike create",
     "build": "yike build --bundle",
     "prepack": "clean-package",
-    "postpack": "clean-package restore"
+    "postpack": "clean-package restore",
+    "test": "vitest"
   },
   "clean-package": "./clean-package.config.json",
   "peerDependencies": {
