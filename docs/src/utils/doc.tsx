@@ -7,14 +7,15 @@ import { basename, dirname, relative, resolve } from 'node:path';
 
 import { DOCS_DIR } from './constants';
 import type { DocPageProps } from '@/types';
+import All_DOC_GROUPS from '@/doc-groups.json';
 
 const allDocuments = groupby(
   globSync(resolve(DOCS_DIR, '**/*.mdx')).map(path => {
     const docMatter = matter(readFileSync(path, 'utf-8'));
 
-    const title = docMatter.data.title ?? basename(path, '.mdx');
+    const { data: meta } = docMatter;
 
-    const description = docMatter.data.description;
+    const { title = basename(path, '.mdx'), description, group = '', order = Infinity, label = title } = meta;
 
     return {
       file: relative(DOCS_DIR, path),
@@ -23,11 +24,84 @@ const allDocuments = groupby(
       meta: {
         title,
         description,
+        group,
+        order,
+        label,
       },
     };
   }),
   item => item.route
 );
+
+type Route = {
+  link: string;
+  group: string;
+  order: number;
+  label: string;
+};
+
+type Dictionary<T extends object> = ReturnType<typeof groupby<T>>;
+
+type DocGroupRoutes = Record<string, Dictionary<Route[]>>;
+
+export const allDocGroupRoutes: DocGroupRoutes = Object.keys(allDocuments).reduce((memo, type) => {
+  const docs = allDocuments[type];
+  memo[type] = groupby(
+    docs
+      .map(doc => ({
+        link: `/${doc.route}/${doc.slug}`,
+        group: doc.meta.group,
+        order: doc.meta.order,
+        label: doc.meta.label,
+      }))
+      .sort((a, b) => a.order - b.order),
+    item => item.group
+  );
+  return memo;
+}, {} as DocGroupRoutes);
+
+function assertDocDefineType(type: string): asserts type is keyof typeof All_DOC_GROUPS {
+  if (!(type in All_DOC_GROUPS)) {
+    throw new Error(`Invalid Doc type: ${type}, please check the doc-groups.json`);
+  }
+}
+
+export const getRouteLinks = (type: string) => {
+  const groupRoutes = allDocGroupRoutes[type];
+  if (!groupRoutes) {
+    return [];
+  }
+  try {
+    assertDocDefineType(type);
+
+    const currentGroup = All_DOC_GROUPS[type];
+
+    const groupKeysOrder = currentGroup.map(group => group.key);
+
+    return Object.keys(groupRoutes)
+      .filter(groupKey => {
+        const includes = groupKeysOrder.includes(groupKey);
+        if (!includes) {
+          console.warn('Invalid groupKey: ', groupKey);
+        }
+        return includes;
+      })
+      .sort((a, b) => groupKeysOrder.indexOf(a) - groupKeysOrder.indexOf(b))
+      .map(groupKey => {
+        const group = currentGroup.find(item => item.key === groupKey)!;
+        const routes = groupRoutes[groupKey] as Route[];
+        const title = group.text;
+        return {
+          title,
+          children: routes.map(({ link, label }) => ({ text: label, link })),
+        };
+      })
+      .filter(Boolean);
+  } catch (error) {
+    console.warn((error as Error).message);
+    return [];
+  }
+};
 
 export const createPage = (type: string) => {
   const docs = allDocuments[type];

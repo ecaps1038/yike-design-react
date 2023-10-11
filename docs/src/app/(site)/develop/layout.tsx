@@ -1,7 +1,7 @@
 import type React from 'react';
 import type { Metadata } from 'next';
 import Layout from '@/components/Layout';
-import type { LeftAsideItems } from '@/types';
+import { getRouteLinks } from '@/utils/doc';
 
 export const metadata: Metadata = {
   title: {
@@ -11,17 +11,7 @@ export const metadata: Metadata = {
 };
 
 const DevelopLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
-  const items: LeftAsideItems = [
-    {
-      title: '开发指南',
-      children: [
-        { text: 'Yike Design', link: '/develop/yike' },
-        { text: '快速上手', link: '/develop/grasp' },
-        { text: '暗黑模式', link: '/develop/dark' },
-        { text: '定制主题', link: '/develop/theme' },
-      ],
-    },
-  ];
+  const items = getRouteLinks('develop');
 
   return <Layout items={items}>{children}</Layout>;
 };
