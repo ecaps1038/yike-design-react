@@ -2,39 +2,12 @@
 @import '../tokens/color';
 
 :root {
-  // base color
-  $base-primary: $color-blue;
-  $base-danger: $color-red;
-  $base-success: $color-green;
-  $base-warning: $color-yellow;
-  $base-link: #1890ff;
-
-  // bg color
-  $color-bg-1: $color-white;
-  $color-bg-2: color-mix(in srgb, #fff, $color-gray 3.6%);
-  $color-bg-3: color-mix(in srgb, #fff, $color-gray 6.8%);
-  $color-bg-4: color-mix(in srgb, #fff, $color-gray 9.4%);
-
-  // $color-bg-2: #e8e9eb;
-  // $color-bg-3: #f0f0f1;
-  // $color-bg-4: #f6f6f8;
-
-  // color
-  --yike-primary: #{hex2rgb($base-primary)};
-  --yike-danger: #{hex2rgb($base-danger)};
-  --yike-success: #{hex2rgb($base-success)};
-  --yike-warning: #{hex2rgb($base-warning)};
-  --yike-link: #{hex2rgb($base-link)};
-
   // ------ functional color ------
   --yike-primary-color: #{$primary-color};
   --yike-danger-color: #{$danger-color};
   --yike-success-color: #{$success-color};
   --yike-warning-color: #{$warning-color};
   --yike-link-color: #{$link-color};
-
-  // ------ neutral color ------
-  --yike-neutral-color: #{$color-gray};
 
   // primary
   --yike-primary-color-1: #{$primary-color-1};
@@ -84,23 +57,6 @@
   --yike-warning-color-9: #{$warning-color-9};
   --yike-warning-color-10: #{$warning-color-10};
 
-  // ------ background color ------
-  --yike-background-color-1: #{$color-bg-1};
-  --yike-background-color-2: #{$color-bg-2};
-  --yike-background-color-3: #{$color-bg-3};
-  --yike-background-color-4: #{$color-bg-4};
-
-  // ------ line color ------
-  --yike-line-color-1: #{$color-gray-1};
-  --yike-line-color-2: #{$color-gray-3};
-  --yike-line-color-3: #{$color-gray-4};
-
-  // ------ text color ------
-  --yike-text-color-1: #{$color-gray-10};
-  --yike-text-color-2: #{$color-gray-8};
-  --yike-text-color-3: #{$color-gray-6};
-  --yike-text-color-4: #{$color-gray-5};
-
   // ------ text size ------
   --yike-font-size-ss: 12px;
   --yike-font-size-s: 14px;
@@ -118,4 +74,61 @@
   --yike-line-height-xl: 36px;
   --yike-line-height-2xl: 46px;
   --yike-line-height-3xl: 50px;
+}
+
+:root,
+[yike-theme='light'] {
+  // base color
+  $base-primary: $color-blue;
+  $base-danger: $color-red;
+  $base-success: $color-green;
+  $base-warning: $color-yellow;
+  $base-link: #1890ff;
+
+  // bg color
+  $color-bg-1: $color-white;
+  $color-bg-2: color-mix(in srgb, #fff, $color-gray 3.6%);
+  $color-bg-3: color-mix(in srgb, #fff, $color-gray 6.8%);
+  $color-bg-4: color-mix(in srgb, #fff, $color-gray 9.4%);
+
+  // $color-bg-2: #e8e9eb;
+  // $color-bg-3: #f0f0f1;
+  // $color-bg-4: #f6f6f8;
+
+  // color
+  --yike-primary: #{hex2rgb($base-primary)};
+  --yike-danger: #{hex2rgb($base-danger)};
+  --yike-success: #{hex2rgb($base-success)};
+  --yike-warning: #{hex2rgb($base-warning)};
+  --yike-link: #{hex2rgb($base-link)};
+
+  // ------ neutral color ------
+  --yike-neutral-color: #{$color-gray};
+  --yike-neutral-color-1: #{$color-gray-1};
+  --yike-neutral-color-2: #{$color-gray-2};
+  --yike-neutral-color-3: #{$color-gray-3};
+  --yike-neutral-color-4: #{$color-gray-4};
+  --yike-neutral-color-5: #{$color-gray-5};
+  --yike-neutral-color-6: #{$color-gray-6};
+  --yike-neutral-color-7: #{$color-gray-7};
+  --yike-neutral-color-8: #{$color-gray-8};
+  --yike-neutral-color-9: #{$color-gray-9};
+  --yike-neutral-color-10: #{$color-gray-10};
+
+  // ------ background color ------
+  --yike-background-color-1: #{$color-bg-1};
+  --yike-background-color-2: #{$color-bg-2};
+  --yike-background-color-3: #{$color-bg-3};
+  --yike-background-color-4: #{$color-bg-4};
+
+  // ------ line color ------
+  --yike-line-color-1: #{$color-gray-1};
+  --yike-line-color-2: #{$color-gray-3};
+  --yike-line-color-3: #{$color-gray-4};
+
+  // ------ text color ------
+  --yike-text-color-1: #{$color-gray-10};
+  --yike-text-color-2: #{$color-gray-8};
+  --yike-text-color-3: #{$color-gray-6};
+  --yike-text-color-4: #{$color-gray-5};
 }

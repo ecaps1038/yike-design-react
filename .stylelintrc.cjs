@@ -22,6 +22,7 @@ module.exports = {
             ignoreAtRules: ['tailwind', 'apply', 'variants', 'responsive', 'screen'],
           },
         ],
+        'scss/dollar-variable-pattern': ['[a-z]+([a-z0-9-]+[a-z0-9]+)?$'],
       },
     },
   ],

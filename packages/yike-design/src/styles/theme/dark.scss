@@ -15,15 +15,26 @@
   $color-bg-3: color-mix(in srgb, $color-gray, #fff 6.4%);
   $color-bg-4: color-mix(in srgb, $color-gray, #fff 8.8%);
 
-  // ------ functional color ------
-  --yike-primary-color: #{$base-primary};
-  --yike-danger-color: #{$base-danger};
-  --yike-success-color: #{$base-success};
-  --yike-warning-color: #{$base-warning};
-  --yike-link-color: #{$base-link};
+  // color
+  --yike-primary: #{hex2rgb($base-primary)};
+  --yike-danger: #{hex2rgb($base-danger)};
+  --yike-success: #{hex2rgb($base-success)};
+  --yike-warning: #{hex2rgb($base-warning)};
+  --yike-link: #{hex2rgb($base-link)};
+  --yike-neutral: #{hex2rgb($color-white)};
 
   // ------ neutral color ------
   --yike-neutral-color: #{$color-white};
+  --yike-neutral-color-1: #{$color-white-1};
+  --yike-neutral-color-2: #{$color-white-2};
+  --yike-neutral-color-3: #{$color-white-3};
+  --yike-neutral-color-4: #{$color-white-4};
+  --yike-neutral-color-5: #{$color-white-5};
+  --yike-neutral-color-6: #{$color-white-6};
+  --yike-neutral-color-7: #{$color-white-7};
+  --yike-neutral-color-8: #{$color-white-8};
+  --yike-neutral-color-9: #{$color-white-9};
+  --yike-neutral-color-10: #{$color-white-10};
 
   // ------ background color ------
   --yike-background-color-1: #{$color-bg-1};
@@ -37,7 +48,7 @@
   --yike-line-color-3: #{$color-white-4};
 
   // ------ text color ------
-  --yike-text-color-1: #{$color-white};
+  --yike-text-color-1: #{$color-white-10};
   --yike-text-color-2: #{$color-white-8};
   --yike-text-color-3: #{$color-white-6};
   --yike-text-color-4: #{$color-white-5};
