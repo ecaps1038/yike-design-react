@@ -48,7 +48,7 @@
     "@types/lodash.omit": "^4.5.7",
     "@types/react-copy-to-clipboard": "^5.0.4",
     "@types/react-syntax-highlighter": "^15.5.7",
-    "remark-slug": "^7.0.1",
+    "rehype-slug": "^6.0.0",
     "sass": "^1.64.2"
   }
 }

@@ -1,6 +1,7 @@
 // @ts-check
 import mdx from '@next/mdx';
-import slug from 'remark-slug';
+// import slug from 'remark-slug';
+import slug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 import rehypeTOC from '@jsdevtools/rehype-toc';
 import remarkFrontmatter from 'remark-frontmatter';
@@ -58,7 +59,6 @@ const withMDX = mdx({
   extension: /\.mdx?$/,
   options: {
     remarkPlugins: [
-      slug,
       remarkGfm,
       remarkFrontmatter,
       [
@@ -69,6 +69,7 @@ const withMDX = mdx({
       ],
     ],
     rehypePlugins: [
+      slug,
       [
         rehypeTOC,
         {
