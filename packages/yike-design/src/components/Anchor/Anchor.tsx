@@ -137,10 +137,14 @@ const Anchor: React.FC<AnchorProps> = props => {
     }
   }, [lineless, updateSlider]);
 
-  // init when has hash
+  // init when url has hash
   React.useEffect(() => {
-    if (location.hash && links.includes(location.hash)) {
-      scrollTo(location.hash);
+    if (location.hash) {
+      // fix when hash is Chinese
+      const link = decodeURIComponent(location.hash);
+      if (links.includes(link)) {
+        scrollTo(link);
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

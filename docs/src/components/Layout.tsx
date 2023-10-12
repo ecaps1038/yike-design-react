@@ -12,7 +12,7 @@ const Layout: React.FC<React.PropsWithChildren<LayoutProps>> = ({ items, childre
       <LeftAside items={items} />
       <div
         id="yike-doc-container"
-        className="h-full flex-grow overflow-y-auto pr-36 scroll-smooth relative"
+        className="h-full flex-grow overflow-y-auto pr-36 relative"
       >
         <article className="px-14 py-6">{children}</article>
       </div>

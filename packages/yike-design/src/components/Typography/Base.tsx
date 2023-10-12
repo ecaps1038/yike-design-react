@@ -35,6 +35,7 @@ const Base = React.forwardRef<HTMLElement, React.PropsWithChildren<BaseProps>>((
     underline = false,
     delete: del = false,
     mark = false,
+    ...restProps
   } = props;
 
   const ellipsisConfig =
@@ -100,6 +101,7 @@ const Base = React.forwardRef<HTMLElement, React.PropsWithChildren<BaseProps>>((
     >
       {resizeRef => (
         <Component
+          {...restProps}
           // @ts-expect-error TODO: fix there type definition
           ref={composeRef(resizeRef, ref)}
           style={{
