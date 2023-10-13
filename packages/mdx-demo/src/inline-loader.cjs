@@ -23,7 +23,7 @@ const transform = async content => {
     .use(remarkMDX)
     .use(() => tree => {
       visit(tree, 'code', node => {
-        if (node.meta) {
+        if (node.meta === 'pure') {
           return;
         }
         inlineCodes.push(node.value.trim() ?? EMPTY_CODE);

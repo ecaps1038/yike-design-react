@@ -35,8 +35,8 @@ const PreviewerAction: React.FC<PreviewerActionProps> = ({ files, singleLink }) 
         {singleLink && (
           <Link
             target="_blank"
+            href={singleLink}
             className={btnClass}
-            href={`/${singleLink}`}
           >
             <ShareOutlined />
           </Link>

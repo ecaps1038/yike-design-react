@@ -5,7 +5,7 @@ interface YiKeDemoProps {
   entry: string;
   inline?: string;
   source?: string;
-  previewer: React.ReactNode;
+  iframe: boolean;
 }
 
 const YiKeDemo: React.FC<YiKeDemoProps> = props => {

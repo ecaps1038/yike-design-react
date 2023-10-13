@@ -11,11 +11,13 @@ export interface MDNode extends Node {
 interface ExternalRecord {
   index: number;
   path: string;
+  iframe: boolean;
 }
 
 interface InlineRecord {
   index: number;
   value: string;
+  iframe: boolean;
 }
 
 interface Option {
@@ -33,17 +35,19 @@ export default function remarkDemoPlugin({ component }: Option): Transformer {
     visit(tree, 'mdxJsxFlowElement', (node: any, index: number) => {
       if (node.name === 'code') {
         const srcAttr = node.attributes.find((attr: any) => attr.name === 'src');
+        const iframeAttr = node.attributes.find((attr: any) => attr.name === 'iframe');
         if (srcAttr) {
           const path = srcAttr.value as string;
           externalRecords.push({
             path,
             index,
+            iframe: iframeAttr && iframeAttr.value === null ? true : false,
           });
         }
       }
     });
 
-    externalRecords.forEach(({ path, index }) => {
+    externalRecords.forEach(({ path, index, iframe }) => {
       // @ts-expect-error
       tree.children.splice(index, 1, {
         type: 'mdxJsxFlowElement',
@@ -53,6 +57,31 @@ export default function remarkDemoPlugin({ component }: Option): Transformer {
             type: 'mdxJsxAttribute',
             name: 'entry',
             value: path,
+          },
+          {
+            type: 'mdxJsxAttribute',
+            name: 'iframe',
+            value: {
+              type: 'mdxJsxAttributeValueExpression',
+              value: `${iframe}`,
+              data: {
+                estree: {
+                  type: 'Program',
+                  body: [
+                    {
+                      type: 'ExpressionStatement',
+                      expression: {
+                        type: 'Literal',
+                        value: iframe,
+                        raw: `${iframe}`,
+                      },
+                    },
+                  ],
+                  sourceType: 'module',
+                  comments: [],
+                },
+              },
+            },
           },
         ],
       });
@@ -70,7 +99,7 @@ export default function remarkDemoPlugin({ component }: Option): Transformer {
           },
         };
       } else {
-        inlineRecords.push({ index: index, value: node.value });
+        inlineRecords.push({ index: index, value: node.value, iframe: node.meta === 'iframe' });
       }
     });
 
@@ -94,6 +123,31 @@ export default function remarkDemoPlugin({ component }: Option): Transformer {
             type: 'mdxJsxAttribute',
             name: 'source',
             value: item.value,
+          },
+          {
+            type: 'mdxJsxAttribute',
+            name: 'iframe',
+            value: {
+              type: 'mdxJsxAttributeValueExpression',
+              value: `${item.iframe}`,
+              data: {
+                estree: {
+                  type: 'Program',
+                  body: [
+                    {
+                      type: 'ExpressionStatement',
+                      expression: {
+                        type: 'Literal',
+                        value: item.iframe,
+                        raw: `${item.iframe}`,
+                      },
+                    },
+                  ],
+                  sourceType: 'module',
+                  comments: [],
+                },
+              },
+            },
           },
         ],
       });

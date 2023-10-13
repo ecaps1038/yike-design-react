@@ -6,16 +6,17 @@ import type { FileRecord } from '@/types';
 import { parseDemoAsset } from '@/utils/demo';
 import ErrorContainer from './ErrorContainer';
 import PreviewerAction from './PreviewerAction';
+import IframePreviewer from './IframePreviewer';
 import PreviewerContainer from './PreviewerContainer';
 
 interface DemoContainerProps {
-  previewer: React.ReactNode;
   entry: string;
   inline?: string;
   source?: string;
+  iframe: boolean;
 }
 
-const DemoContainer: React.FC<DemoContainerProps> = async ({ inline, entry, source }) => {
+const DemoContainer: React.FC<DemoContainerProps> = async ({ inline, entry, source, iframe }) => {
   try {
     if (!inline) {
       assert(entry.startsWith('~demos/'), 'External demo must be in ~demos directory');
@@ -44,16 +45,20 @@ const DemoContainer: React.FC<DemoContainerProps> = async ({ inline, entry, sour
         })),
     ];
 
-    const singleLink = [inline ? 'demos/inline' : 'demos', component, demo].join('/');
+    const singleLink = ['', inline ? 'demos/inline' : 'demos', component, demo].join('/');
 
     return (
       <div className="mt-3">
         <div className="border p-5 rounded-lg border-yike-1 overflow-x-auto">
-          <PreviewerContainer
-            inline={!!inline}
-            demo={demo}
-            component={component}
-          />
+          {iframe ? (
+            <IframePreviewer src={singleLink} />
+          ) : (
+            <PreviewerContainer
+              inline={!!inline}
+              demo={demo}
+              component={component}
+            />
+          )}
         </div>
         <PreviewerAction
           files={files}

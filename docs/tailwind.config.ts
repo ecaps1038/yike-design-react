@@ -24,6 +24,9 @@ const config: Config = {
         'yike-1': 'var(--yike-line-color-1)',
       },
       backgroundColor: {
+        neutral: 'var(--yike-neutral-color)',
+        'neutral-1': 'var(--yike-neutral-color-1)',
+        'neutral-2': 'var(--yike-neutral-color-2)',
         'primary-1': 'var(--yike-primary-color-1)',
         'yike-1': 'var(--yike-background-color-1)',
         'yike-2': 'var(--yike-background-color-2)',
