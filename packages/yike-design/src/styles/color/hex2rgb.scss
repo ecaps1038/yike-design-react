@@ -1,0 +1,7 @@
+@function hex2rgb($hex) {
+  $color: '#{rgba($hex, 0)}';
+  /* stylelint-disable-next-line scss/no-global-function-names */
+  $length: str-length($color);
+
+  @return str-slice($color, 6, $length - 4);
+}

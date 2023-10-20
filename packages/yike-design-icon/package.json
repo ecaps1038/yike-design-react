@@ -2,17 +2,13 @@
   "name": "@yike-design/react-icons",
   "version": "0.0.0",
   "description": "",
-  "type": "module",
   "module": "./src/index.ts",
-  "exports": {
-    ".": "./src/index.ts"
-  },
   "files": [
     "src"
   ],
   "sideEffects": false,
   "scripts": {
-    "build": "yike build --builder",
+    "build": "yike build",
     "generate": "yike generate-icons",
     "prepack": "clean-package",
     "postpack": "clean-package restore"

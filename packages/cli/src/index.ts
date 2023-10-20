@@ -1,3 +1,3 @@
-export { defineBuildConfig, type BuildConfig } from './utils/loadConfig';
+import type { BuildConfig } from './types';
 
-export * from './utils/builder';
+export const defineBuildConfig = (config: BuildConfig) => config;

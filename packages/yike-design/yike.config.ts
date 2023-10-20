@@ -1,16 +1,19 @@
-import path from 'node:path';
 import { defineBuildConfig } from '@yike-design/cli';
 
 export default defineBuildConfig({
-  clean: true,
-  entry: [
-    `${path.resolve('src/**/*.js')}`,
-    `${path.resolve('src/**/*.ts')}`,
-    `${path.resolve('src/**/*.tsx')}`,
-    `${path.resolve('src/**/*.d.ts')}`,
-    `${path.resolve('src/**/*.css')}`,
-    `${path.resolve('src/**/*.scss')}`,
-    `!${path.resolve('src**/__tests__/**')}`,
-  ],
-  modules: ['cjs', 'es'],
+  input: 'src',
+  pattern: ['**/*.@(j|t)s{,x}', '**/*.d.ts', '**/*.scss', '!**/__test__/*', '!bundle.ts'],
+  entry: 'src/bundle.ts',
+  output: ['dist/es', 'dist/cjs', 'dist'],
+  minify: true,
+  filename: 'yike-design',
+  expose: 'yikeDesign',
+  sourcemap: true,
+  targets: {
+    chrome: 58,
+  },
+  externals: {
+    react: 'React',
+    'react-dom': 'ReactDOM',
+  },
 });

@@ -1,28 +1,17 @@
 import cac from 'cac';
+import { version } from '../package.json';
+
 import build from './commands/build';
 import create from './commands/create';
-import { version } from '../package.json';
-import buildWithNewBuilder from './commands/builder';
+import { build as buildComponents } from './commands/components';
 import { build as buildIcons, generate as generateIcons } from './commands/icons';
 
 export const startCommand = async () => {
   const cli = cac('yike-design');
 
-  cli
-    .command('build', 'Build module with gulp')
-    .option('-b, --bundle', 'Create bundle')
-    .option('--builder', 'Use new builder')
-    .action(async ({ bundle, builder }) => {
-      if (builder) {
-        await buildWithNewBuilder();
-      } else {
-        await build({ bundle });
-      }
-    });
+  cli.command('build', 'Build module with gulp').action(build);
 
-  cli.command('builder', 'Build module with custom builder').action(async () => {
-    //
-  });
+  cli.command('build:components', 'Build components').action(buildComponents);
 
   cli.command('create', 'Create a new component').action(create);
 

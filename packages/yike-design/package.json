@@ -1,18 +1,26 @@
 {
   "name": "@yike-design/react",
   "version": "0.0.0",
-  "type": "module",
-  "module": "./src/index.ts",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/es/index.js",
   "exports": {
-    ".": "./src/index.ts",
-    "./style": "./src/styles/index.ts"
+    ".": {
+      "import": "./dist/es/index.js",
+      "require": "./dist/cjs/index.js"
+    },
+    "./es/": "./dist/es/components/",
+    "./cjs/": "./dist/cjs/components/",
+    "./style": {
+      "import": "./dist/es/styles/index.js",
+      "require": "./dist/cjs/styles/index.js"
+    }
   },
   "files": [
     "src"
   ],
   "scripts": {
     "new": "yike create",
-    "build": "yike build --bundle",
+    "build": "yike build",
     "prepack": "clean-package",
     "postpack": "clean-package restore",
     "test": "vitest"
@@ -26,6 +34,7 @@
     "@babel/runtime": "^7.22.6"
   },
   "devDependencies": {
+    "@types/webpack-env": "^1.18.2",
     "clean-package": "^2.2.0"
   }
 }

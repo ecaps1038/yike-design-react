@@ -1,0 +1,48 @@
+/* stylelint-disable scss/no-global-function-names */
+@import './variables';
+
+@mixin button-type($type) {
+  $current-color: map-get($btn-color, $type);
+  .yk-button--#{$type} {
+    color: map-get($current-color, text);
+    background-color: map-get($current-color, bg);
+    border-color: map-get($current-color, border);
+
+    &:not(:disabled):hover {
+      background-color: map-get($current-color, bg-hover);
+    }
+
+    &:not(:disabled):active {
+      background-color: map-get($current-color, bg-active);
+    }
+  }
+}
+
+@mixin button-status($type, $status) {
+  $current-color: map-get($btn-color, $type);
+  .yk-button--#{$type} {
+    &.yk-button--#{$status} {
+      color: map-get($current-color, text--#{$status});
+      background-color: map-get($current-color, bg--#{$status});
+      border-color: map-get($current-color, border--#{$status});
+
+      &:not(:disabled):hover {
+        background-color: map-get($current-color, bg-hover--#{$status});
+      }
+
+      &:not(:disabled):active {
+        background-color: map-get($current-color, bg-active--#{$status});
+      }
+    }
+  }
+}
+
+@mixin button-size($size, $br, $height, $fs, $pd) {
+  .yk-button--#{$size} {
+    min-width: $height;
+    height: $height;
+    padding: 0 $pd;
+    font-size: $fs;
+    border-radius: $br;
+  }
+}

@@ -5,9 +5,7 @@
     "declaration": true,
     "isolatedModules": false,
     "rootDir": ".",
-    "paths": {
-      "@yike-design/cli": ["../../packages/cli/src"]
-    }
+    "paths": {}
   },
   "include": ["src"]
 }
