@@ -1,7 +1,8 @@
 {
   "name": "@yike-design/react-icons",
   "version": "0.0.0",
-  "description": "",
+  "description": "React icons of Yike Design",
+  "main": "./src/index.ts",
   "module": "./src/index.ts",
   "files": [
     "src"
@@ -20,5 +21,8 @@
   "clean-package": "./clean-package.config.json",
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@babel/runtime": "^7.22.6"
+  }
 }
