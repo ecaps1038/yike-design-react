@@ -20,6 +20,7 @@
     "inputnumber",
     "inputtag",
     "nprogress",
+    "onwarn",
     "rehype",
     "stylelint",
     "Typegraphy",

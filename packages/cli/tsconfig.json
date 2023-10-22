@@ -3,7 +3,11 @@
   "compilerOptions": {
     "noEmit": false,
     "declaration": true,
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
   },
   "include": ["src"]
 }

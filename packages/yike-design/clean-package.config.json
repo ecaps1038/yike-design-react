@@ -6,14 +6,17 @@
         "require": "./dist/cjs/index.js",
         "types": "./dist/es/index.d.ts"
       },
-      "./dist/es/": "./dist/es/",
-      "./dist/cjs/": "./dist/cjs/",
-      "./style": "./dist/es/styles/index.js"
+      "./es/": "./dist/es/components/",
+      "./cjs/": "./dist/cjs/components/",
+      "./style": {
+        "import": "./dist/es/styles/index.js",
+        "require": "./dist/cjs/styles/index.js"
+      }
     },
     "files": ["dist"],
     "main": "./dist/cjs/index.js",
     "module": "./dist/es/index.js",
-    "unpkg": "./dist/yike.umd.js",
+    "unpkg": "./dist/yike-design.js",
     "typings": "./dist/es/index.d.ts"
   }
 }

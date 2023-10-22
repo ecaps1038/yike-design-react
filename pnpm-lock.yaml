@@ -292,9 +292,6 @@ importers:
       defu:
         specifier: ^6.1.2
         version: 6.1.2
-      esbuild:
-        specifier: ^0.19.2
-        version: 0.19.3
       glob:
         specifier: ^10.3.6
         version: 10.3.6
@@ -355,9 +352,6 @@ importers:
       through2:
         specifier: ^4.0.2
         version: 4.0.2
-      typescript:
-        specifier: ^5.1.6
-        version: 5.2.2
     devDependencies:
       '@types/gulp':
         specifier: ^4.0.13
@@ -424,8 +418,6 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
 
-  packages/remark-doc-meta: {}
-
   packages/yike-design:
     dependencies:
       '@babel/runtime':
@@ -444,6 +436,9 @@ importers:
 
   packages/yike-design-icon:
     dependencies:
+      '@babel/runtime':
+        specifier: ^7.22.6
+        version: 7.23.1
       react:
         specifier: '>=16.0.0'
         version: 18.2.0

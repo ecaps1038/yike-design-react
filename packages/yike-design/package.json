@@ -1,7 +1,8 @@
 {
   "name": "@yike-design/react",
   "version": "0.0.0",
-  "type": "module",
+  "description": "yike-design react component library",
+  "main": "./src/index.ts",
   "module": "./src/index.ts",
   "exports": {
     ".": "./src/index.ts",
@@ -11,8 +12,7 @@
     "src"
   ],
   "scripts": {
-    "new": "yike create",
-    "build": "yike build --bundle",
+    "build": "yike build",
     "prepack": "clean-package",
     "postpack": "clean-package restore",
     "test": "vitest"

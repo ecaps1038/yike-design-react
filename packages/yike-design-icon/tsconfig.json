@@ -1,4 +1,11 @@
 {
   "extends": "../../tsconfig.json",
-  "compilerOptions": {}
+  "compilerOptions": {
+    "useDefineForClassFields": true,
+    "declaration": true,
+    "isolatedModules": false,
+    "rootDir": ".",
+    "paths": {}
+  },
+  "include": ["src"]
 }
