@@ -12,7 +12,6 @@
     "src"
   ],
   "scripts": {
-    "new": "yike create",
     "build": "yike build",
     "prepack": "clean-package",
     "postpack": "clean-package restore",

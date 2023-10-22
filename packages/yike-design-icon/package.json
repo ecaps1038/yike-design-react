@@ -10,7 +10,7 @@
   "sideEffects": false,
   "scripts": {
     "build": "yike build",
-    "generate": "yike generate-icons",
+    "generate": "yike icons::generate",
     "prepack": "clean-package",
     "postpack": "clean-package restore"
   },
