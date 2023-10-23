@@ -7,11 +7,11 @@
 要运行组件库，请执行以下步骤：
 
 1. 推荐先 fork 项目并基于此仓库进行操作
-2. 克隆 fork 后的项目到本地 `git clone https://github.com/xxxxxx/yike-design-react.git`
-3. 切换至 dev 分支 `git checkout dev`
-4. 安装依赖：`pnpm i`
-5. 启动开发服务器：`npm run docs:dev`
-6. 在浏览器中访问：`http://localhost:3000`
+2. 克隆 fork 后的项目到本地 `git clone https://github.com/<username>/yike-design-react.git`
+3. 切换至 dev 分支 `git checkout dev` 
+4. 安装依赖 `pnpm install` 
+5. 启动文档开发服务器 `npm run docs:dev` 
+6. 浏览器中访问 `http://localhost:3000` 
 
 ## 如何贡献？
 
@@ -70,15 +70,7 @@ feat 为你需要具体修改的内容。此处定义根据功能自由命名，
 - `feature/button/add-style`
 - `fix/icon/alignment-issue`
 - `docs/upload/add-picture-demo`
-- `refactor/docs/refactor-router`
-
-### 创建组件
-
-使用指令 `pnpm new component-name ` 即可自动创建组件目录及文件。
-
-编写完代码后在确保与目标分支不存在冲突的前提下可以将该功能分支提交 PR 到主仓库的对应分支（目前主要的开发分支为 dev 分支）。
-
-PR 将由具备权限的贡献者 CR 后进行 merge，若提交的功能影响面较广，CR 人员应当及时同其他成员共同参与讨论和检验。
+- `refactor/docs/refactor-router` 
 
 ## Commit 规范
 
@@ -140,15 +132,23 @@ PR 将由具备权限的贡献者 CR 后进行 merge，若提交的功能影响�
 
 ## 组件开发
 
+### 创建组件
+
+在项目根目录运行 `pnpm generate` 选择 `component` 或运行 `pnpm generate:component` 即可自动创建组件目录及文件。
+
+编写完代码后在确保与目标分支不存在冲突的前提下可以将该功能分支提交 PR 到主仓库的对应分支（目前主要的开发分支为 dev 分支）。
+
+PR 将由具备权限的贡献者 CR 后进行 merge，若提交的功能影响面较广，CR 人员应当及时同其他成员共同参与讨论和检验。
+
 ### 目录结构
 
 ```
 - components
   |- button                 # Button 组件目录
   |  |-style
-       |- index.scss
-  |    |- Button.scss         # Button 样式文件
-  |    |- ButtonGroup.scss    # ButtonGroup 样式文件
+       |- index.ts
+  |    |- index.scss        # 样式文件
+  |    |- ...               # 其他样式文件
   |  |- Button.tsx          # Button 代码文件
   |  |- ButtonGroup.tsx     # ButtonGroup 代码文件
   |  |- index.tsx            # 组件入口文件
@@ -167,11 +167,17 @@ RSC（React Server Component）当前已经可以上生产，为了对 RSC 做�
 
 对于所有的文档页面，应当使用 md(x) 来书写，对于页面中需要自定义的部分导入相关的 react 组件（应当将其定义在 `docs/src/content/components`）
 
-### Demo渲染
+### 文档生成
+
+在项目根目录运行 `pnpm generate` 选择 `document` 或运行 `pnpm generate:document` 即可自动创建文档文件
+
+Todo: 实现 `pnpm generate:document` 
+
+### Demo 渲染
 
 我们开发了 `@yike-design/mdx-demo` 实现 mdx 中的代码块预览渲染
 
-其书写规则为 `import` 你所需要的依赖（只要存在当前工程, 包括样式文件），并且 `export default` 你需要渲染的组件，默认导出的组件会被渲染在预览区内
+其书写规则为导入你所需要的依赖（只要存在当前工程，包括样式文件），默认导出的组件会被渲染在预览区内
 
 ````
 ```tsx
@@ -189,15 +195,14 @@ export default () => {
 ```
 ````
 
-有两种形式的Demo书写方式：
+Demo 的书写方式分为两种: 
 
-- 行内Demo
+- 行内Demo: 即在 mdx 文件书写的 markdown 代码块
 
-- 外部Demo
+- 外部Demo:
+  - 代码书写在 `docs/src/content/demos/[component]/[demo].tsx`
+  - 在 mdx 文件中通过 `<code src="~demos/[component]/[demo].tsx" />` 声明
 
-行内Demo即在 mdx 文件书写的代码块，其默认会被渲染成 React 组件
-
-外部Demo即将代码书写在 `docs/src/content/demos/[component]/[demo].tsx`，并且在 mdx 文件中通过 `<code src="~demos/[component]/[demo].tsx" />` 声明
 
 注意: 外部Demo的声明中, `src` 属性一定要为 `~demos` 开头（判断时偷懒了）
 
@@ -221,38 +226,3 @@ export default () => {
 ```
 ````
 
-### 组件文档.md
-
-组件文档应当提供关于组件的说明、用法、API 等相关信息。以下是一个组件文档的基本结构示例：
-
-````md
-# yk-button 按钮 （文档首页标题）
-
-## 按钮类型 type
-
-按钮有三种类型：`主按钮` 、`次按钮` 、`线框按钮` 。主按钮在同一个操作区域建议最多出现一次。
-
-```tsx
-import { Button } from '@yike-design/react';
-
-export default () => {
-  return (
-    <div>
-      <Button>主要按钮</Button>
-      <Button type="secondary">次要按钮</Button>
-      <Button type="outline">线框按钮</Button>
-    </div>
-  );
-};
-```
-
-...其他用法
-
-## API
-
-通过设置 Button 的属性来产生不同的按钮样式，推荐顺序为：type -> size -> shape -> status -> disabled。
-
-| 参数 | 描述       | 类型   | 可选值                            | 默认值    |
-| ---- | ---------- | ------ | --------------------------------- | --------- |
-| type | 按钮的类型 | string | `primary`、`secondary`、`outline` | `primary` |
-````
