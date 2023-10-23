@@ -13,3 +13,5 @@ const Anchor = InternalAnchor as CompoundedComponent;
 Anchor.Link = AnchorLink;
 
 export { Anchor };
+
+export type { AnchorItem, AnchorProps } from './interface';
