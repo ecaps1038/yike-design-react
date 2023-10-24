@@ -1,0 +1,45 @@
+{
+  "design": [
+    {
+      "key": "Principle",
+      "text": "设计指南"
+    }
+  ],
+  "develop": [
+    {
+      "key": "Principle",
+      "text": "开发指南"
+    }
+  ],
+  "components": [
+    {
+      "key": "General",
+      "text": "通用"
+    },
+    {
+      "key": "Layout",
+      "text": "布局"
+    },
+    {
+      "key": "Navigation",
+      "text": "导航"
+    },
+
+    {
+      "key": "Input",
+      "text": "数据输入"
+    },
+    {
+      "key": "Display",
+      "text": "数据展示"
+    },
+    {
+      "key": "Feedback",
+      "text": "反馈"
+    },
+    {
+      "key": "Other",
+      "text": "其他"
+    }
+  ]
+}

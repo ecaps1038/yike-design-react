@@ -1,0 +1,48 @@
+---
+title: 锚点 Anchor
+label: Anchor 锚点
+
+group: Other #category
+order: 1
+---
+
+# Anchor 锚点
+
+用于跳转到页面指定位置。
+
+## 基本使用
+
+<code
+  iframe
+  src="~demos/anchor/basic.tsx"
+/>
+
+## 无轴线
+
+不显示左侧导航轴
+
+<code
+  iframe
+  src="~demos/anchor/lineless.tsx"
+/>
+
+## 自定义滚动容器
+
+使用 `getContainer` 指定滚动的容器，默认为 `window`。
+
+<code
+  iframe
+  src="~demos/anchor/container.tsx"
+/>
+
+## API
+
+| 参数         | 描述                             | 类型                               | 默认值       |
+| ------------ | -------------------------------- | ---------------------------------- | ------------ |
+| lineless     | 不显示左侧导航轴                 | `boolean `                         | false        |
+| items        | 按钮的大小                       | `AnchorItem[]`                     | -            |
+| bounds       | 锚点区域边界                     | `number`                           | -            |
+| offsetTop    | 距离窗口顶部达到指定偏移量后触发 | `number`                           | -            |
+| getContainer | 指定滚动的容器                   | `() => HTMLElement`                | () => window |
+| onClick      | 点击链接                         | `(e: Event, link: object) => void` | -            |
+| onChange     | 锚点链接改变                     | `(link: string) => void`           | -            |

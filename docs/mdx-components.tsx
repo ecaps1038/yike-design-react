@@ -1,15 +1,11 @@
-import CodeBlock from '@/components/CodeBlock';
-import YiKeDemo from '@/components/YiKeDemo';
-import YiKeTOC from '@/components/YiKeTOC';
 import type { TOCData } from '@/types';
+import { Typography } from '@yike-design/react';
 import type { MDXComponents } from 'mdx/types';
 
-// This file allows you to provide custom React components
-// to be used in MDX files. You can import and use any
-// React component you want, including components from
-// other libraries.
+import YiKeTOC from '@/components/YiKeTOC';
+import YiKeDemo from '@/components/YiKeDemo';
+import CodeBlockWrapper from '@/components/demo/CodeBlockWrapper';
 
-// This file is required to use MDX in `app` directory.
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     ...components,
@@ -19,17 +15,57 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {...props}
       />
     ),
+    h1: props => (
+      // @ts-expect-error
+      <Typography.Title
+        {...props}
+        level={1}
+      />
+    ),
+    h2: props => (
+      // @ts-expect-error
+      <Typography.Title
+        {...props}
+        level={2}
+      />
+    ),
+    h3: props => (
+      // @ts-expect-error
+      <Typography.Title
+        {...props}
+        level={3}
+      />
+    ),
+    h4: props => (
+      // @ts-expect-error
+      <Typography.Title
+        {...props}
+        level={4}
+      />
+    ),
+    h5: props => (
+      // @ts-expect-error
+      <Typography.Title
+        {...props}
+        level={5}
+      />
+    ),
     code: props => {
       // @ts-expect-error type error
       if (props.pure) {
         return (
-          <CodeBlock
-            lang={props.lang!}
+          <CodeBlockWrapper
+            language={props.lang!}
             code={props.children as string}
           />
         );
       }
-      return <code {...props} />;
+      return (
+        <code
+          {...props}
+          className="inline"
+        />
+      );
     },
     pre: props => props.children as JSX.Element,
     table: props => (
@@ -46,12 +82,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       }
       return <YiKeTOC toc={toc} />;
     },
-    YiKeDemo: props => (
-      <YiKeDemo
-        path={props.path}
-        lang={props.lang}
-        code={props.children}
-      />
-    ),
+    YiKeDemo: props => <YiKeDemo {...props} />,
   };
 }

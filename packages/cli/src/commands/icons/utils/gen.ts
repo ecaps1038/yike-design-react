@@ -70,6 +70,7 @@ const svgo = (option: Config) => {
 
 const svgrTemplate: SvgrTemplate = (variables, { tpl }) => {
   variables.props.forEach(prop => {
+    // @ts-expect-error
     const typeName = prop.typeAnnotation.typeAnnotation.typeName;
     const typeValue = typeName.name;
     typeName.name = `React.` + typeValue;

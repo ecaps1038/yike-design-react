@@ -22,7 +22,7 @@ const LeftAside: React.FC<LeftAsideProps> = ({ items }) => {
   const pathname = usePathname();
 
   return (
-    <div className="w-[268px] flex-shrink-0 border-r h-full border-yike overflow-y-auto py-2 px-4">
+    <div className="w-[268px] flex-shrink-0 border-r h-full border-yike-1 overflow-y-auto py-2 px-4">
       {items.map((item, index) => (
         <div
           key={index}
@@ -34,8 +34,7 @@ const LeftAside: React.FC<LeftAsideProps> = ({ items }) => {
               key={link}
               href={link}
               className={clsx('block text-sm px-4 h-10 leading-10 rounded-lg transition-colors duration-300', {
-                'bg-asideLink font-semibold text-asideLink': pathname === link,
-                'text-asideLinkNormal': pathname !== link,
+                'bg-primary-1 font-semibold text-primary': pathname === link,
               })}
             >
               {text}

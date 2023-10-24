@@ -2,38 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --yike-border-color: #e8e8e8;
-  --fontcolorm: rgb(30 32 37 / 80%);
-  --bgcolorm: #f6f6f8;
-  --linecolorm: #e8e8e8;
-  --bgcolors: #f3f3f4;
-  --fontcolorl: rgb(30 32 37 / 100%);
-  --bgcolorl: #fff;
-}
-
-:root.dark {
-  --yike-border-color: #33353b;
-}
-
-body {
-  margin: 0;
-  font-family:
-    Inter,
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    Oxygen,
-    Ubuntu,
-    Cantarell,
-    'Fira Sans',
-    'Droid Sans',
-    'Helvetica Neue',
-    sans-serif;
-  background: #fff;
-}
-
 *,
 ::before,
 ::after {
@@ -94,7 +62,7 @@ a {
       font-weight: 600;
       line-height: 44px;
       text-align: left;
-      background-color: var(--bgcolorm, #f6f6f8);
+      background-color: var(--yike-background-color-3);
       transition: background-color 0.3s;
     }
 
@@ -102,8 +70,19 @@ a {
       max-width: 240px;
       padding: 10px 16px;
       text-align: left;
-      border-top: 1px solid var(--linecolorm, #e8e8e8);
+      border-top: 1px solid var(--yike-line-color-1);
       transition: border 0.3s;
     }
   }
+}
+
+code.inline {
+  padding-block: 0.2em 0.1em;
+  padding-inline: 0.4em;
+  margin: 0 0.2em;
+  font-family: SFMono-Regular, Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+  font-size: 85%;
+  background: rgb(150 150 150 / 10%);
+  border: 1px solid rgb(100 100 100 / 20%);
+  border-radius: 3px;
 }

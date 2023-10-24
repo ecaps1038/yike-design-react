@@ -1,15 +1,5 @@
 import fs from 'node:fs';
-import type { Globs } from 'gulp';
-import { readConfig, type CompileModule } from './helper';
-
-export type BuildConfig = {
-  entry: Globs;
-  output?: string;
-  clean?: boolean;
-  modules?: CompileModule[];
-};
-
-export const defineBuildConfig = (config: BuildConfig) => config;
+import { readConfig } from './helper';
 
 export const loadConfig = <Config extends Record<string, any> = any>(filename = 'yike.config'): Config => {
   const filepath = fs.readdirSync(process.cwd(), 'utf8').find(item => {

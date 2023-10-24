@@ -1,12 +1,55 @@
-:root.dark {
-  --yike-color-primary: #3575f6;
-  --yike-color-danger: #df4d43;
-  --yike-color-success: #3dbaab;
-  --yike-color-warning: #fbad3b;
-  --yike-color-href: #308ce1;
-  --yike-color-text: rgb(255 255 255 / 90%);
-  --yike-color-text-secondary: rgb(255 255 255 / 70%);
-  --yike-color-text-tertiary: rgb(255 255 255 / 45%);
-  --yike-color-text-disabled: rgb(255 255 255 / 26%);
-  --yike-color-outlined: rgb(255 255 255 / 24%);
+@import '../color';
+@import '../tokens/color';
+
+:root[yike-theme='dark'] {
+  // basic color
+  $base-primary: #3575f6;
+  $base-link: #308ce1;
+  $base-success: #19ad78;
+  $base-warning: #f6a224;
+  $base-danger: #df4d43;
+
+  // bg color
+  $color-bg-1: $color-gray;
+  $color-bg-2: color-mix(in srgb, $color-gray, #fff 3.2%);
+  $color-bg-3: color-mix(in srgb, $color-gray, #fff 6.4%);
+  $color-bg-4: color-mix(in srgb, $color-gray, #fff 8.8%);
+
+  // color
+  --yike-primary: #{hex2rgb($base-primary)};
+  --yike-danger: #{hex2rgb($base-danger)};
+  --yike-success: #{hex2rgb($base-success)};
+  --yike-warning: #{hex2rgb($base-warning)};
+  --yike-link: #{hex2rgb($base-link)};
+  --yike-neutral: #{hex2rgb($color-white)};
+
+  // ------ neutral color ------
+  --yike-neutral-color: #{$color-white};
+  --yike-neutral-color-1: #{$color-white-1};
+  --yike-neutral-color-2: #{$color-white-2};
+  --yike-neutral-color-3: #{$color-white-3};
+  --yike-neutral-color-4: #{$color-white-4};
+  --yike-neutral-color-5: #{$color-white-5};
+  --yike-neutral-color-6: #{$color-white-6};
+  --yike-neutral-color-7: #{$color-white-7};
+  --yike-neutral-color-8: #{$color-white-8};
+  --yike-neutral-color-9: #{$color-white-9};
+  --yike-neutral-color-10: #{$color-white-10};
+
+  // ------ background color ------
+  --yike-background-color-1: #{$color-bg-1};
+  --yike-background-color-2: #{$color-bg-2};
+  --yike-background-color-3: #{$color-bg-3};
+  --yike-background-color-4: #{$color-bg-4};
+
+  // ------ line color ------
+  --yike-line-color-1: #{$color-white-1};
+  --yike-line-color-2: #{$color-white-3};
+  --yike-line-color-3: #{$color-white-4};
+
+  // ------ text color ------
+  --yike-text-color-1: #{$color-white-10};
+  --yike-text-color-2: #{$color-white-8};
+  --yike-text-color-3: #{$color-white-6};
+  --yike-text-color-4: #{$color-white-5};
 }

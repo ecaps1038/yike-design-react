@@ -16,21 +16,26 @@
     "postinstall": "npm-run-all -p cli:build doc-demo:build",
     "cli:dev": "pnpm --filter @yike-design/cli dev",
     "cli:build": "pnpm --filter @yike-design/cli build",
-    "new": "pnpm --filter @yike-design/react new",
+    "generate": "yike generate",
+    "generate:component": "yike generate --type component",
+    "generate:document": "yike generate --type document",
     "build": "pnpm --filter @yike-design/react build",
-    "doc-demo:build": "pnpm --filter @yike-design/remark-doc-demo build",
+    "test": "pnpm --filter @yike-design/react test",
+    "doc-demo:build": "pnpm --filter @yike-design/mdx-demo build",
     "icons:build": "pnpm --filter @yike-design/react-icons build",
     "icons:generate": "pnpm --filter @yike-design/react-icons generate"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.7.1",
     "@commitlint/config-conventional": "^17.6.7",
+    "@testing-library/react": "^14.0.0",
     "@types/fs-extra": "^11.0.1",
     "@types/node": "^20.4.5",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.2.1",
     "@typescript-eslint/parser": "^6.2.1",
+    "@vitejs/plugin-react": "^4.1.0",
     "@yike-design/cli": "workspace:*",
     "eslint": "^8.46.0",
     "eslint-config-prettier": "^8.9.0",
@@ -38,6 +43,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-unused-imports": "^3.0.0",
     "fs-extra": "^11.1.1",
+    "happy-dom": "^12.9.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.3",
     "npm-run-all": "^4.1.5",
@@ -50,7 +56,8 @@
     "stylelint-config-standard": "^34.0.0",
     "stylelint-config-standard-scss": "^10.0.0",
     "stylelint-less": "^1.0.8",
-    "typescript": "^5.1.6"
+    "typescript": "^5.1.6",
+    "vitest": "^0.34.6"
   },
   "lint-staged": {
     "*.{js,ts,tsx}": [

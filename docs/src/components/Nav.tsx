@@ -14,7 +14,7 @@ const Nav: React.FC<NavProps> = ({ base, href, text }) => {
   const pathname = usePathname();
 
   const className = clsx('text-sm', {
-    'text-nav font-semibold': pathname.split('/')[1] === base,
+    'text-primary font-semibold': pathname.split('/')[1] === base,
   });
 
   return (

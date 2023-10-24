@@ -22,6 +22,7 @@ module.exports = {
             ignoreAtRules: ['tailwind', 'apply', 'variants', 'responsive', 'screen'],
           },
         ],
+        'scss/dollar-variable-pattern': ['[a-z]+([a-z0-9-]+[a-z0-9]+)?$'],
       },
     },
   ],
@@ -36,5 +37,6 @@ module.exports = {
     'selector-class-pattern': null,
     'no-descending-specificity': null,
     'no-invalid-position-at-import-rule': null,
+    'color-function-notation': null,
   },
 };

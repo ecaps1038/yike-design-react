@@ -1,6 +1,9 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "baseUrl": ".",
     "incremental": true,
     "plugins": [
       {
@@ -8,19 +11,18 @@
       }
     ],
     "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-      "@yike-design/react": [
-        "../packages/yike-design-react/src/index.ts"
-      ]
-    }
+      "@/*": ["./src/*"],
+      "~demos/*": ["./src/content/demos/*"],
+      "contentlayer/generated": ["./.contentlayer/generated"]
+    },
+    "strictNullChecks": true
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "dist/types/**/*.ts"
+    "dist/types/**/*.ts",
+    ".contentlayer/generated"
   ]
 }

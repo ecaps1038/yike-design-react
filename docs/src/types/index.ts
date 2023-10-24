@@ -12,3 +12,16 @@ export interface TOCData {
   href: string;
   children: TOCData[];
 }
+
+export interface DocPageProps {
+  params: {
+    slug: string;
+  };
+}
+
+export interface FileRecord {
+  filename: string;
+  language: string;
+  source: string;
+  path: string;
+}

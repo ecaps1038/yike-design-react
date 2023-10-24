@@ -1,0 +1,172 @@
+---
+title: 间距 Space
+label: Space 间距
+group: Layout
+order: 1
+---
+
+# Space 间距
+
+## 基础用法
+
+使元素之间产生间隔，使其不至于离得太近，提升观感。
+
+```tsx
+import { Space } from '@yike-design/react';
+import '../../demos/space.scss';
+
+export default () => {
+  return (
+    <Space>
+      <div className="demo-box-1"></div>
+      <div className="demo-box-1"></div>
+      <div className="demo-box-1"></div>
+    </Space>
+  );
+};
+```
+
+## 间隔尺寸
+
+内置 4 个尺寸，分别是 `s - 4px`，`m - 8px`，`l - 16px`，`xl -24px`，默认为 `l`，为数字或枚举值时，是`水平和垂直间距`；为数组时，是 `[水平间距, 垂直间距]`。
+
+```tsx
+import { Space } from '@yike-design/react';
+
+export default () => {
+  return (
+    <>
+      <h4>Size = s</h4>
+      <Space size="s">
+        <div className="demo-box-1"></div>
+        <div className="demo-box-1"></div>
+        <div className="demo-box-1"></div>
+      </Space>
+      <h4>Size = m</h4>
+      <Space size="m">
+        <div className="demo-box-1"></div>
+        <div className="demo-box-1"></div>
+        <div className="demo-box-1"></div>
+      </Space>
+      <h4>Size = l</h4>
+      <Space size="l">
+        <div className="demo-box-1"></div>
+        <div className="demo-box-1"></div>
+        <div className="demo-box-1"></div>
+      </Space>
+      <h4>Size = xl</h4>
+      <Space size="xl">
+        <div className="demo-box-1"></div>
+        <div className="demo-box-1"></div>
+        <div className="demo-box-1"></div>
+      </Space>
+      <h4>自定义 Size = {50}</h4>
+      <Space size={50}>
+        <div className="demo-box-1"></div>
+        <div className="demo-box-1"></div>
+        <div className="demo-box-1"></div>
+      </Space>
+      <h4>自定义水平和竖直间距 size=[50, 30]</h4>
+      <Space
+        size={[50, 30]}
+        wrap
+      >
+        <div className="demo-box-3"></div>
+        <div className="demo-box-3"></div>
+        <div className="demo-box-3"></div>
+        <div className="demo-box-3"></div>
+        <div className="demo-box-3"></div>
+        <div className="demo-box-3"></div>
+        <div className="demo-box-3"></div>
+        <div className="demo-box-3"></div>
+        <div className="demo-box-3"></div>
+        <div className="demo-box-3"></div>
+        <div className="demo-box-3"></div>
+        <div className="demo-box-3"></div>
+      </Space>
+    </>
+  );
+};
+```
+
+## 对齐
+
+内置 4 种对齐方式，分别为 `'start'｜'center'｜'end'｜'baseline'` ，在水平模式下默认为 `start`。
+
+```tsx
+import { Space } from '@yike-design/react';
+
+export default () => {
+  return (
+    <>
+      <h4>默认上对齐</h4>
+      <Space>
+        <div className="demo-box-1"></div>
+        <div className="demo-box-2"></div>
+        <div className="demo-box-3"></div>
+      </Space>
+      <h4>上对齐</h4>
+      <Space align="center">
+        <div className="demo-box-1"></div>
+        <div className="demo-box-2"></div>
+        <div className="demo-box-3"></div>
+      </Space>
+      <h4>上对齐</h4>
+      <Space align="end">
+        <div className="demo-box-1"></div>
+        <div className="demo-box-2"></div>
+        <div className="demo-box-3"></div>
+      </Space>
+    </>
+  );
+};
+```
+
+## 方向
+
+可以设置横排或竖排，默认横排：`'vertical'｜'horizontal'`。
+
+```tsx
+import { Space } from '@yike-design/react';
+
+export default () => {
+  return (
+    <Space direction="vertical">
+      <div className="demo-box-1"></div>
+      <div className="demo-box-1"></div>
+      <div className="demo-box-1"></div>
+    </Space>
+  );
+};
+```
+
+## 换行
+
+设置 `wrap` 来允许在空间不足时换行。
+
+```tsx
+import { Space } from '@yike-design/react';
+
+export default () => {
+  return (
+    <Space wrap>
+      <div className="demo-box-4"></div>
+      <div className="demo-box-4"></div>
+      <div className="demo-box-4"></div>
+      <div className="demo-box-4"></div>
+      <div className="demo-box-4"></div>
+      <div className="demo-box-4"></div>
+    </Space>
+  );
+};
+```
+
+## API
+
+| 参数      | 描述           | 类型                                          | 默认值       |
+| --------- | -------------- | --------------------------------------------- | ------------ |
+| size      | 间距尺寸       | 's'｜'m'｜'l'｜'xl'｜number｜[number, number] | 'l'          |
+| align     | 对齐           | 'start'｜'center'｜'end'｜'baseline'          | 'start'      |
+| wrap      | 换行           | boolean                                       | false        |
+| direction | 方向           | 'vertical'｜'horizontal'                      | 'horizontal' |
+| block     | 显示为块级元素 | boolean                                       | false        |

@@ -56,8 +56,7 @@
     "chalk": "^5.3.0",
     "consola": "^3.2.3",
     "defu": "^6.1.2",
-    "esbuild": "^0.19.2",
-    "glob": "^10.3.3",
+    "glob": "^10.3.6",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
     "gulp-postcss": "^9.0.1",
@@ -76,7 +75,6 @@
     "rollup-plugin-terser": "^7.0.2",
     "sass": "^1.64.2",
     "svgo": "^3.0.2",
-    "through2": "^4.0.2",
-    "typescript": "^5.1.6"
+    "through2": "^4.0.2"
   }
 }

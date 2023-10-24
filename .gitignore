@@ -13,7 +13,6 @@ pnpm-debug.log*
 !.vscode/extensions.json
 .idea/*
 package-lock.json
-pnpm-lock.yaml
 
 # 生成的图标文件
 svg-icon

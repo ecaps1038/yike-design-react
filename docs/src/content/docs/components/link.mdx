@@ -1,0 +1,84 @@
+---
+title: 链接 Link
+label: Link 链接
+
+group: General
+order: 4
+---
+
+# Link 链接
+
+对 `<a>` 标签的简单封装。
+
+## 基本用法
+
+```tsx
+import { Link } from '@yike-design/react';
+
+export default () => {
+  return (
+    <p>
+      这里有两个链接：一个是
+      <Link href="http://bing.com">链接</Link>
+      ，另一个是
+      <Link
+        href="http://bing.com"
+        disabled
+      >
+        禁用的链接
+      </Link>。
+    </p>
+  );
+};
+```
+
+## 排版
+
+与 `Typography` 组件一起使用即可实现各种效果。
+
+```tsx
+import { Typography, Link } from '@yike-design/react';
+export default () => {
+  return (
+    <div>
+      <Typography.Title level={5}>
+        <Link href="/">yike design</Link>
+      </Typography.Title>
+      <Typography.Title
+        level={4}
+        type="primary"
+      >
+        <Link href="/">yike design</Link>
+      </Typography.Title>
+      <Typography.Title
+        level={3}
+        type="success"
+      >
+        <Link href="/">yike design</Link>
+      </Typography.Title>
+      <Typography.Title
+        level={2}
+        type="warning"
+      >
+        <Link href="/">yike design</Link>
+      </Typography.Title>
+      <Typography.Title
+        level={1}
+        type="danger"
+      >
+        <Link href="/">yike design</Link>
+      </Typography.Title>
+    </div>
+  );
+};
+```
+
+## API
+
+具有 `<a>` 元素所有的属性
+
+| 参数      | 描述     | 类型    | 默认值 |
+| --------- | -------- | ------- | ------ |
+| href      | 链接地址 | string  | -      |
+| disabled  | 是否禁用 | boolean | false  |
+| className | CSS类名  | string  | -      |

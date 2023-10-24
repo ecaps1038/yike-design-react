@@ -1,0 +1,54 @@
+// ------------ text size ------------
+$text-size-ss: var(--yike-font-size-ss);
+$text-size-s: var(--yike-font-size-s);
+$text-size-m: var(--yike-font-size-m);
+$text-size-l: var(--yike-font-size-l);
+$text-size-xl: var(--yike-font-size-xl);
+$text-size-2xl: var(--yike-font-size-2xl);
+$text-size-3xl: var(--yike-font-size-3xl);
+
+// ------------ text line height ------------
+$text-line-height-ss: var(--yike-line-height-ss);
+$text-line-height-s: var(--yike-line-height-s);
+$text-line-height-m: var(--yike-line-height-m);
+$text-line-height-l: var(--yike-line-height-l);
+$text-line-height-xl: var(--yike-line-height-xl);
+$text-line-height-2xl: var(--yike-line-height-2xl);
+$text-line-height-3xl: var(--yike-line-height-3xl);
+
+// ------------ text mixin ------------
+
+@mixin text-ss {
+  font-size: $text-size-ss;
+  line-height: $text-line-height-ss;
+}
+
+@mixin text-s {
+  font-size: $text-size-s;
+  line-height: $text-line-height-s;
+}
+
+@mixin text-m {
+  font-size: $text-size-m;
+  line-height: $text-line-height-m;
+}
+
+@mixin text-l {
+  font-size: $text-size-l;
+  line-height: $text-line-height-l;
+}
+
+@mixin text-xl {
+  font-size: $text-size-xl;
+  line-height: $text-line-height-xl;
+}
+
+@mixin text-2xl {
+  font-size: $text-size-2xl;
+  line-height: $text-line-height-2xl;
+}
+
+@mixin text-3xl {
+  font-size: $text-size-3xl;
+  line-height: $text-line-height-3xl;
+}

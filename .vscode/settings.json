@@ -11,7 +11,23 @@
   "css.lint.unknownAtRules": "ignore",
   "scss.lint.unknownAtRules": "ignore",
   "stylelint.validate": ["css", "less", "scss"],
-  "cSpell.words": ["bundless", "consola", "inputnumber", "inputtag", "stylelint", "Typegraphy", "yike", "yikedesign"],
+  "cSpell.words": [
+    "bundless",
+    "consola",
+    "contentlayer",
+    "frontmatter",
+    "groupby",
+    "inputnumber",
+    "inputtag",
+    "nprogress",
+    "onwarn",
+    "rehype",
+    "stylelint",
+    "Typegraphy",
+    "unoptimized",
+    "yike",
+    "yikedesign"
+  ],
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },

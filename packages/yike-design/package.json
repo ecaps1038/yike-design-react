@@ -1,22 +1,21 @@
 {
   "name": "@yike-design/react",
   "version": "0.0.0",
-  "type": "module",
+  "description": "yike-design react component library",
+  "main": "./src/index.ts",
   "module": "./src/index.ts",
   "exports": {
-    ".": {
-      "import": "./src/index.ts"
-    },
+    ".": "./src/index.ts",
     "./style": "./src/styles/index.ts"
   },
   "files": [
     "src"
   ],
   "scripts": {
-    "new": "yike create",
-    "build": "yike build --bundle",
+    "build": "yike build",
     "prepack": "clean-package",
-    "postpack": "clean-package restore"
+    "postpack": "clean-package restore",
+    "test": "vitest"
   },
   "clean-package": "./clean-package.config.json",
   "peerDependencies": {

@@ -4,19 +4,21 @@ import { GithubFilled } from '@yike-design/react-icons';
 
 import Nav from './Nav';
 import logo from '@/assets/logo.svg';
+import ThemeButton from './ThemeButton';
 
 const navigators = [
   { base: 'design', href: '/design/yike', text: '设计' },
   { base: 'develop', href: '/develop/yike', text: '开发' },
-  { base: 'module', href: '/module/button', text: '组件' },
+  { base: 'components', href: '/components/button', text: '组件' },
 ];
 
 const Header = () => {
   return (
-    <header className="h-[60px] px-[30px] flex items-center border-b border-yike flex-shrink-0">
+    <header className="h-[60px] px-6 flex items-center border-b border-yike-1 flex-shrink-0">
       <div className="flex items-center">
         <Image
-          width={32}
+          width={36}
+          height={28}
           src={logo}
           alt="logo"
         />
@@ -43,6 +45,7 @@ const Header = () => {
         >
           <GithubFilled />
         </Link>
+        <ThemeButton />
         {/* TODO: theme */}
         {/* TODO: login */}
       </div>

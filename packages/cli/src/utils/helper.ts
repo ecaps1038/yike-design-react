@@ -4,7 +4,7 @@ import { isAbsolute, join } from 'node:path';
 import { readFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
-export type CompileModule = 'es' | 'cjs' | 'umd' | 'amd' | 'systemjs';
+export type CompileModule = 'esm' | 'cjs' | 'umd' | 'amd' | 'systemjs';
 
 export const resolveModule = (module: string) => {
   return require.resolve(module);
