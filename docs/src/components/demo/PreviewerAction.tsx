@@ -33,11 +33,7 @@ const PreviewerAction: React.FC<PreviewerActionProps> = ({ files, singleLink }) 
       <div className="flex items-center justify-end gap-4 py-2">
         {/* TODO: add sandbox button */}
         {singleLink && (
-          <Link
-            target="_blank"
-            href={singleLink}
-            className={btnClass}
-          >
+          <Link target="_blank" href={singleLink} className={btnClass}>
             <ShareOutlined />
           </Link>
         )}
@@ -51,10 +47,7 @@ const PreviewerAction: React.FC<PreviewerActionProps> = ({ files, singleLink }) 
             <CopyOutlined />
           </button>
         </CopyToClipboard>
-        <button
-          className={codeBtnClass}
-          onClick={() => setShowCode(!showCode)}
-        >
+        <button className={codeBtnClass} onClick={() => setShowCode(!showCode)}>
           <CodeOutlined />
         </button>
       </div>
@@ -73,10 +66,7 @@ const PreviewerAction: React.FC<PreviewerActionProps> = ({ files, singleLink }) 
               ))}
             </div>
           )}
-          <CodeBlock
-            code={code}
-            language={currentFile?.language ?? ''}
-          />
+          <CodeBlock code={code} language={currentFile?.language ?? ''} />
         </div>
       </div>
     </React.Fragment>

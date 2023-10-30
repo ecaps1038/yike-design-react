@@ -10,10 +10,7 @@ const ThemeButton = () => {
   };
 
   return (
-    <button
-      onClick={toggleTheme}
-      className="text-base text-yellow-500"
-    >
+    <button onClick={toggleTheme} className="text-base text-yellow-500">
       {theme === 'dark' ? <MoonFilled /> : <SunFilled />}
     </button>
   );

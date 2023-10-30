@@ -31,10 +31,7 @@ const Space: React.FC<React.PropsWithChildren<YkSpaceProps>> = props => {
   };
 
   return (
-    <div
-      style={style_}
-      {...other}
-    >
+    <div style={style_} {...other}>
       {children}
     </div>
   );

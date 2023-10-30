@@ -53,17 +53,10 @@ const DemoContainer: React.FC<DemoContainerProps> = async ({ inline, entry, sour
           {iframe ? (
             <IframePreviewer src={singleLink} />
           ) : (
-            <PreviewerContainer
-              inline={!!inline}
-              demo={demo}
-              component={component}
-            />
+            <PreviewerContainer inline={!!inline} demo={demo} component={component} />
           )}
         </div>
-        <PreviewerAction
-          files={files}
-          singleLink={singleLink}
-        />
+        <PreviewerAction files={files} singleLink={singleLink} />
       </div>
     );
   } catch (error) {

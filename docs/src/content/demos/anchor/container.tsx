@@ -8,17 +8,11 @@ export default () => {
   return (
     <div className="p-4">
       <div className="flex gap-4">
-        <div
-          ref={scrollContainerRef}
-          className="h-56 flex-grow overflow-auto border border-yike-1"
-        >
+        <div ref={scrollContainerRef} className="h-56 flex-grow overflow-auto border border-yike-1">
           {renderAnchorTitle(items)}
         </div>
         <div className="h-56 p-4 w-52 rounded border border-yike-1">
-          <Anchor
-            items={items}
-            getContainer={() => scrollContainerRef.current!}
-          />
+          <Anchor items={items} getContainer={() => scrollContainerRef.current!} />
         </div>
       </div>
     </div>

@@ -18,10 +18,7 @@ const Nav: React.FC<NavProps> = ({ base, href, text }) => {
   });
 
   return (
-    <Link
-      className={className}
-      href={href}
-    >
+    <Link className={className} href={href}>
       {text}
     </Link>
   );

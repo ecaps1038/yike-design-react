@@ -7,11 +7,7 @@ const Link: React.FC<LinkProps> = ({ className, children, disabled = false, href
   const link = disabled ? undefined : href;
 
   return (
-    <a
-      href={link}
-      {...restProps}
-      className={bem.join(bem({ disabled }), className)}
-    >
+    <a href={link} {...restProps} className={bem.join(bem({ disabled }), className)}>
       {children}
     </a>
   );

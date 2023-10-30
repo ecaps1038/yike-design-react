@@ -12,10 +12,7 @@ const IframePreviewer: React.FC<IframePreviewerProps> = ({ src }) => {
         <span className="w-3 h-3 rounded-full bg-[#ffc75a]" />
         <span className="w-3 h-3 rounded-full bg-[#6bdb43]" />
       </div>
-      <iframe
-        src={src}
-        className="w-full h-80"
-      />
+      <iframe src={src} className="w-full h-80" />
     </div>
   );
 };

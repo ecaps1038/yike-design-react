@@ -79,13 +79,7 @@ const IconList = () => {
         {iconList.map(icon => {
           // @ts-expect-error
           const Icon = Icons[icon];
-          return (
-            <IconBox
-              key={icon}
-              name={icon}
-              icon={<Icon />}
-            />
-          );
+          return <IconBox key={icon} name={icon} icon={<Icon />} />;
         })}
       </div>
     </div>

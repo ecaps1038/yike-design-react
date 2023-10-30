@@ -39,12 +39,7 @@ const Page = async ({ params: { component, demo } }: PageProps) => {
     notFound();
   }
 
-  return (
-    <PreviewerContainer
-      demo={demo}
-      component={component}
-    />
-  );
+  return <PreviewerContainer demo={demo} component={component} />;
 };
 
 export default Page;

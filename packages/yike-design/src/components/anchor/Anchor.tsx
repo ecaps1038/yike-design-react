@@ -14,14 +14,8 @@ const renderAnchorList = (items?: AnchorProps['items']) => {
     return (
       <ul className="yk-anchor-list">
         {items.map((item, index) => (
-          <li
-            key={`${item.title}-${index}`}
-            className="yk-anchor-list-item"
-          >
-            <AnchorLink
-              href={item.href}
-              title={item.title}
-            />
+          <li key={`${item.title}-${index}`} className="yk-anchor-list-item">
+            <AnchorLink href={item.href} title={item.title} />
             {renderAnchorList(item.children)}
           </li>
         ))}
@@ -169,10 +163,7 @@ const Anchor: React.FC<AnchorProps> = props => {
 
   return (
     <AnchorProvider value={contextValue}>
-      <div
-        ref={anchorRef}
-        className={bem()}
-      >
+      <div ref={anchorRef} className={bem()}>
         {renderAnchorLine()}
         {renderAnchorList(items)}
       </div>

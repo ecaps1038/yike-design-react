@@ -26,13 +26,7 @@ const Page = ({ params: { component, demo } }: PageProps) => {
     notFound();
   }
 
-  return (
-    <PreviewerContainer
-      inline
-      demo={demo}
-      component={component}
-    />
-  );
+  return <PreviewerContainer inline demo={demo} component={component} />;
 };
 
 export default Page;

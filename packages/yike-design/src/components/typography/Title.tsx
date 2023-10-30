@@ -11,14 +11,7 @@ interface TitleProps extends Omit<TypographyProps, 'strong'> {
 const Title = React.forwardRef<HTMLHeadingElement, TitleProps>((props, ref) => {
   const { level = 1, ...rest } = props;
   const bem = createCssScope('title');
-  return (
-    <Base
-      {...rest}
-      ref={ref}
-      component={`h${level}`}
-      className={bem.join(bem(), rest.className)}
-    />
-  );
+  return <Base {...rest} ref={ref} component={`h${level}`} className={bem.join(bem(), rest.className)} />;
 });
 
 export default Title;

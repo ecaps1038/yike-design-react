@@ -66,10 +66,7 @@ const Base = React.forwardRef<HTMLElement, React.PropsWithChildren<BaseProps>>((
       ellipsisConfig.onExpand(true);
     };
     return (
-      <span
-        onClick={onExpandClick}
-        className={bem('ellipsis-operation-expand')}
-      >
+      <span onClick={onExpandClick} className={bem('ellipsis-operation-expand')}>
         {expanding ? '折叠' : '展开'}
       </span>
     );
@@ -95,10 +92,7 @@ const Base = React.forwardRef<HTMLElement, React.PropsWithChildren<BaseProps>>((
   };
 
   return (
-    <ResizeObserver<HTMLElement>
-      onResize={onResize}
-      enable={enableEllipsis}
-    >
+    <ResizeObserver<HTMLElement> onResize={onResize} enable={enableEllipsis}>
       {resizeRef => (
         <Component
           {...restProps}

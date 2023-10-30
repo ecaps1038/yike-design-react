@@ -152,10 +152,7 @@ const Ellipsis: React.FC<EllipsisProps> = props => {
   // get line height
   const singleNode = React.useMemo(
     () => (
-      <div
-        ref={singleRef}
-        style={{ wordBreak: 'keep-all', whiteSpace: 'nowrap', ...basicStyle }}
-      >
+      <div ref={singleRef} style={{ wordBreak: 'keep-all', whiteSpace: 'nowrap', ...basicStyle }}>
         lg
       </div>
     ),
@@ -170,10 +167,7 @@ const Ellipsis: React.FC<EllipsisProps> = props => {
 
   const mirrorNode = React.useMemo(
     () => (
-      <div
-        ref={mirrorRef}
-        style={{ width, ...basicStyle }}
-      >
+      <div ref={mirrorRef} style={{ width, ...basicStyle }}>
         {ellipsisNode}
       </div>
     ),

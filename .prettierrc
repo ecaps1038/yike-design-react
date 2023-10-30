@@ -11,6 +11,5 @@
   "bracketSameLine": false,
   "arrowParens": "avoid",
   "proseWrap": "preserve",
-  "htmlWhitespaceSensitivity": "css",
-  "singleAttributePerLine": true
+  "htmlWhitespaceSensitivity": "css"
 }

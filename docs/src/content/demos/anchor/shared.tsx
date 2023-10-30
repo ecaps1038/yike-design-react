@@ -30,10 +30,7 @@ export const renderAnchorTitle = (items: AnchorItem[]) => {
             <h2 id={item.href.slice(1)}>{item.title}</h2>
           </div>
           {item.children?.map(item => (
-            <div
-              key={item.href}
-              className="h-56"
-            >
+            <div key={item.href} className="h-56">
               <h3 id={item.href.slice(1)}>{item.title}</h3>
             </div>
           ))}

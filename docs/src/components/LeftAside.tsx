@@ -24,10 +24,7 @@ const LeftAside: React.FC<LeftAsideProps> = ({ items }) => {
   return (
     <div className="w-[268px] flex-shrink-0 border-r h-full border-yike-1 overflow-y-auto py-2 px-4">
       {items.map((item, index) => (
-        <div
-          key={index}
-          className="pt-4"
-        >
+        <div key={index} className="pt-4">
           <div className="text-sm font-bold h-10 leading-10">{item.title}</div>
           {item.children.map(({ text, link }) => (
             <Link

@@ -18,6 +18,11 @@ module.exports = {
       modules: true,
     },
   },
+  settings: {
+    react: {
+      version: 'detect',
+    },
+  },
   plugins: ['@typescript-eslint', 'react', 'react-hooks', 'unused-imports'],
   rules: {
     'no-unused-vars': 'off',

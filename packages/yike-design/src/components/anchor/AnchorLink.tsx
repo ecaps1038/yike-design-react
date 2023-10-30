@@ -14,11 +14,7 @@ const AnchorLink: React.FC<AnchorLinkProps> = ({ href, title }) => {
   };
 
   return (
-    <a
-      href={href}
-      onClick={handleClick}
-      className={bem({ active: activeLink === href })}
-    >
+    <a href={href} onClick={handleClick} className={bem({ active: activeLink === href })}>
       {title}
     </a>
   );
