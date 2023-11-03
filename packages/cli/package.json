@@ -57,6 +57,7 @@
     "consola": "^3.2.3",
     "defu": "^6.1.2",
     "glob": "^10.3.6",
+    "gray-matter": "^4.0.3",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
     "gulp-postcss": "^9.0.1",

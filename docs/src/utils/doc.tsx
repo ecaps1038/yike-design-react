@@ -15,7 +15,7 @@ const allDocuments = groupby(
 
     const { data: meta } = docMatter;
 
-    const { title = basename(path, '.mdx'), description, group = '', order = Infinity, label = title } = meta;
+    const { title = basename(path, '.mdx'), description, category = '', order = Infinity, label = title } = meta;
 
     return {
       file: relative(DOCS_DIR, path),
@@ -24,7 +24,7 @@ const allDocuments = groupby(
       meta: {
         title,
         description,
-        group,
+        category,
         order,
         label,
       },
@@ -35,7 +35,7 @@ const allDocuments = groupby(
 
 type Route = {
   link: string;
-  group: string;
+  category: string;
   order: number;
   label: string;
 };
@@ -50,12 +50,12 @@ export const allDocGroupRoutes: DocGroupRoutes = Object.keys(allDocuments).reduc
     docs
       .map(doc => ({
         link: `/${doc.route}/${doc.slug}`,
-        group: doc.meta.group,
+        category: doc.meta.category,
         order: doc.meta.order,
         label: doc.meta.label,
       }))
       .sort((a, b) => a.order - b.order),
-    item => item.group
+    item => item.category
   );
   return memo;
 }, {} as DocGroupRoutes);

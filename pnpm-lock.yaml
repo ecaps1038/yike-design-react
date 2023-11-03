@@ -295,6 +295,9 @@ importers:
       glob:
         specifier: ^10.3.6
         version: 10.3.6
+      gray-matter:
+        specifier: ^4.0.3
+        version: 4.0.3
       gulp:
         specifier: ^4.0.2
         version: 4.0.2
