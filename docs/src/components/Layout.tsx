@@ -1,4 +1,4 @@
-import type React from 'react';
+import React from 'react';
 import LeftAside from './LeftAside';
 import type { LeftAsideItems } from '@/types';
 
@@ -8,12 +8,12 @@ interface LayoutProps {
 
 const Layout: React.FC<React.PropsWithChildren<LayoutProps>> = ({ items, children }) => {
   return (
-    <div className="h-full flex">
+    <React.Fragment>
       <LeftAside items={items} />
-      <div id="yike-doc-container" className="h-full flex-grow overflow-y-auto pr-36 relative">
+      <div id="yike-doc-container" className="ml-aside pr-36 relative">
         <article className="px-14 py-6">{children}</article>
       </div>
-    </div>
+    </React.Fragment>
   );
 };
 

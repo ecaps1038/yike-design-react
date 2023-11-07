@@ -1,0 +1,35 @@
+---
+title: 固钉 Affix
+label: Affix 固钉
+category: Other
+order: 2
+---
+
+# Affix 固钉
+
+将页面元素钉在可视范围。
+
+## 基本使用
+
+最简单的用法。
+
+<code src="~demos/affix/basic.tsx" />
+
+## 指定容器滚动
+
+设置 `target` 属性，可以将滚动容器指定为 `Affix` 的父元素。
+
+<code src="~demos/affix/target.tsx" />
+
+
+## API
+
+| 参数       | 描述              | 类型                            | 默认值            |
+|----------|-----------------|-------------------------------|----------------|
+| offset   | 偏移量             | `number`                      | 0              |
+| position | 便宜配置            | `'top'                        | 'bottom'`      | 'top'           |
+| target   | 设置要监听其滚动事件的元素   | `() => HTMLElement`           | `() => window` |
+| onChange | 固定状态改变时触发的回调函数	 | `(affixed?: boolean) => void` | -              |
+
+
+

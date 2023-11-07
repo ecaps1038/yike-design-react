@@ -15,7 +15,7 @@ const PreviewerContainer: React.FC<ContainerProps> = ({ inline = false, componen
     ? require(`!!@yike-design/mdx-demo/inline-loader!@/content/docs/components/${component}.mdx`)[demo]?.()
     : require(`@/content/demos/${component}/${demo}.tsx`).default;
 
-  if (IS_DEV) {
+  if (IS_DEV && Component) {
     Component.displayName = `YiKeDemo@${capitalize(component)}/${inline ? 'inline-' : ''}${demo}`;
   }
 
