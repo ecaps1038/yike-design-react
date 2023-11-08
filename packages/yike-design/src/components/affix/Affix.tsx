@@ -17,10 +17,14 @@ interface AffixProps {
   position?: 'top' | 'bottom';
   target?: ComponentContainer;
   onChange?: (affixed: boolean) => void;
+  children: React.ReactNode;
 }
 
-// TODO: fix scroll window will out of container
-const Affix: React.FC<React.PropsWithChildren<AffixProps>> = ({ children, ...props }) => {
+interface AffixRef {
+  updatePosition: ReturnType<typeof throttleByAnimationFrame<Parameters<() => void>>>;
+}
+
+const Affix = React.forwardRef<AffixRef, AffixProps>((props, ref) => {
   const { offset = 0, position = 'top', target = getDefaultContainer, onChange } = props;
 
   const getTargetFunc = useNormalizedContainer(target);
@@ -100,15 +104,17 @@ const Affix: React.FC<React.PropsWithChildren<AffixProps>> = ({ children, ...pro
     measurePosition();
   }, [measurePosition]);
 
+  React.useImperativeHandle(ref, () => ({ updatePosition }));
+
   return (
     <ResizeObserver onResize={updatePosition}>
       <div ref={affixPlaceholderRef} style={placeholderStyle}>
         <div ref={fixedNodeRef} style={affixStyle}>
-          <ResizeObserver onResize={updatePosition}>{children}</ResizeObserver>
+          <ResizeObserver onResize={updatePosition}>{props.children}</ResizeObserver>
         </div>
       </div>
     </ResizeObserver>
   );
-};
+});
 
 export default Affix;
