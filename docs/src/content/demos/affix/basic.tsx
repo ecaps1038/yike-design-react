@@ -4,10 +4,10 @@ export default () => {
   return (
     <Space direction="vertical">
       <Affix position="top" offset={100}>
-        <Button>top</Button>
+        <Button>Affix top 100px</Button>
       </Affix>
       <Affix position="bottom" offset={100}>
-        <Button>bottom</Button>
+        <Button>Affix bottom 100px</Button>
       </Affix>
     </Space>
   );

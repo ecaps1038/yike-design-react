@@ -6,11 +6,12 @@ import type { ComponentContainer } from '../_types';
 import { getFixedBottom, getFixedTop } from './utils';
 import { getDefaultContainer } from '../_utils/container';
 import { throttleByAnimationFrame } from '../_utils/throttle';
+import { useNormalizedContainer } from '../_utils/hooks/useNormalizedContainer';
 
-// evnets that will trigger affix re-calculate
+// events that will trigger affix re-calculate
 const TRIGGER_EVENTS = ['resize', 'scroll', 'touchstart', 'touchmove', 'touchend', 'pageshow', 'load'] as const;
 
-// TODO: update API to offsetTop and offsetBottom
+// TODO: update API to top and bottom (support both top and bottom)
 interface AffixProps {
   offset?: number;
   position?: 'top' | 'bottom';
@@ -22,7 +23,7 @@ interface AffixProps {
 const Affix: React.FC<React.PropsWithChildren<AffixProps>> = ({ children, ...props }) => {
   const { offset = 0, position = 'top', target = getDefaultContainer, onChange } = props;
 
-  const getTargetFunc = target;
+  const getTargetFunc = useNormalizedContainer(target);
 
   const fixedNodeRef = React.useRef<HTMLDivElement>(null);
   const affixPlaceholderRef = React.useRef<HTMLDivElement>(null);
@@ -32,7 +33,7 @@ const Affix: React.FC<React.PropsWithChildren<AffixProps>> = ({ children, ...pro
 
   const measurePosition = React.useCallback(() => {
     const target = getTargetFunc();
-    if (!affixPlaceholderRef.current) {
+    if (!affixPlaceholderRef.current || !target) {
       return;
     }
     const placeholderRect = affixPlaceholderRef.current.getBoundingClientRect();
@@ -77,9 +78,12 @@ const Affix: React.FC<React.PropsWithChildren<AffixProps>> = ({ children, ...pro
 
   const updatePosition = React.useMemo(() => throttleByAnimationFrame(measurePosition), [measurePosition]);
 
+  // TODO: improve performance
   React.useEffect(() => {
     const target = getTargetFunc();
-
+    if (!target) {
+      return;
+    }
     TRIGGER_EVENTS.forEach(event => {
       target.addEventListener(event, updatePosition);
     });

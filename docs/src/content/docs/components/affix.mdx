@@ -21,15 +21,11 @@ order: 2
 
 <code src="~demos/affix/target.tsx" />
 
-
 ## API
 
-| 参数       | 描述              | 类型                            | 默认值            |
-|----------|-----------------|-------------------------------|----------------|
+| 参数     | 描述               | 类型                          | 默认值         |
+| -------- | ------------------ | ----------------------------- | -------------- |
 | offset   | 偏移量             | `number`                      | 0              |
-| position | 便宜配置            | `'top'                        | 'bottom'`      | 'top'           |
-| target   | 设置要监听其滚动事件的元素   | `() => HTMLElement`           | `() => window` |
-| onChange | 固定状态改变时触发的回调函数	 | `(affixed?: boolean) => void` | -              |
-
-
-
+| position | 偏移方向           | `'top' \| 'bottom'`           | `'top'`        |
+| target   | 滚动容器           | `() => HTMLElement`           | `() => window` |
+| onChange | 固定状态改变时触发 | `(affixed?: boolean) => void` | -              |
