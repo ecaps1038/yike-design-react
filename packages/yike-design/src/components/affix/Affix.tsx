@@ -49,7 +49,7 @@ const Affix = React.forwardRef<AffixRef, AffixProps>((props, ref) => {
         setAffixStyle({
           position: 'fixed',
           top: fixedTop,
-          zIndex: 10,
+          zIndex: 999,
         });
         setPlaceholderStyle({
           height: fixedNodeRef.current?.offsetHeight,
@@ -66,7 +66,7 @@ const Affix = React.forwardRef<AffixRef, AffixProps>((props, ref) => {
         setAffixStyle({
           position: 'fixed',
           bottom: fixedBottom,
-          zIndex: 10,
+          zIndex: 999,
         });
         setPlaceholderStyle({
           height: fixedNodeRef.current?.offsetHeight,
