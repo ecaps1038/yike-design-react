@@ -1,3 +1,4 @@
+import React from 'react';
 import type { Metadata } from 'next';
 import Header from '@/components/Header';
 
@@ -5,11 +6,11 @@ export const metadata: Metadata = {
   title: 'Yike Design React',
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }: React.PropsWithChildren) {
   return (
-    <div className="h-screen flex flex-col">
+    <React.Fragment>
       <Header />
-      <main className="flex-grow overflow-hidden">{children}</main>
-    </div>
+      <main className="pt-header min-h-screen">{children}</main>
+    </React.Fragment>
   );
 }

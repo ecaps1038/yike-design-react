@@ -6,6 +6,7 @@ import Providers from './providers';
 
 export const metadata: Metadata = {
   title: 'Yike Design React',
+  icons: [{ rel: 'icon', url: '/favicon.ico' }],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -4,7 +4,7 @@ import { Yike1Outlined } from '@yike-design/react-icons';
 
 export default function Home() {
   return (
-    <div className="h-full flex flex-col justify-center relative">
+    <div className="h-aside flex flex-col justify-center relative">
       <div className="-mt-[200px] text-center h-[220px] relative">
         <div className="absolute left-1/2 top-0 -z-10 -translate-x-1/2 w-[380px] text-yike-bg-2">
           <svg viewBox="0 0 380 220">

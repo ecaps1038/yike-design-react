@@ -77,12 +77,13 @@ a {
 }
 
 code.inline {
-  padding-block: 0.2em 0.1em;
-  padding-inline: 0.4em;
-  margin: 0 0.2em;
-  font-family: SFMono-Regular, Consolas, 'Liberation Mono', Menlo, Courier, monospace;
-  font-size: 85%;
-  background: rgb(150 150 150 / 10%);
-  border: 1px solid rgb(100 100 100 / 20%);
-  border-radius: 3px;
+  padding: 3px 6px;
+  margin: 0 1px;
+  font-family: 'IBM Plex Mono', Consolas, 'Andale Mono WT', 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter',
+    'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Liberation Mono', 'Nimbus Mono L', Monaco, 'Courier New', Courier,
+    monospace;
+  font-size: 0.85rem;
+  color: var(--yike-neutral-color);
+  background: var(--yike-neutral-color-1);
+  border-radius: 4px;
 }

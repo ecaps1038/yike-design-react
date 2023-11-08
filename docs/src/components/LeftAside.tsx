@@ -22,7 +22,7 @@ const LeftAside: React.FC<LeftAsideProps> = ({ items }) => {
   const pathname = usePathname();
 
   return (
-    <div className="w-[268px] flex-shrink-0 border-r h-full border-yike-1 overflow-y-auto py-2 px-4">
+    <div className="w-aside border-r h-aside fixed top-header border-yike-1 overflow-y-auto py-2 px-4">
       {items.map((item, index) => (
         <div key={index} className="pt-4">
           <div className="text-sm font-bold h-10 leading-10">{item.title}</div>

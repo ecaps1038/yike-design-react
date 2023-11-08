@@ -18,10 +18,7 @@ const transformTOC2AnchorItems = (toc: TOCData[]): any => {
 const YiKeTOC: React.FC<YiKeTOCProps> = ({ toc }) => {
   return (
     <div className="w-[133px] py-1 fixed right-1 top-20 overflow-hidden">
-      <Anchor
-        items={transformTOC2AnchorItems(toc)}
-        getContainer={() => document.getElementById('yike-doc-container')!}
-      />
+      <Anchor items={transformTOC2AnchorItems(toc)} />
     </div>
   );
 };

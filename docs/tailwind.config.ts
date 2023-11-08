@@ -1,5 +1,8 @@
 import type { Config } from 'tailwindcss';
 
+const HEADER_HEIGHT = '60px';
+const ASIDE_WIDTH = '268px';
+
 const config: Config = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -9,6 +12,23 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      height: {
+        header: HEADER_HEIGHT,
+        aside: `calc(100vh - ${HEADER_HEIGHT})`,
+      },
+      width: {
+        aside: ASIDE_WIDTH,
+      },
+      margin: {
+        aside: ASIDE_WIDTH,
+      },
+      padding: {
+        header: HEADER_HEIGHT,
+      },
+      spacing: {
+        header: HEADER_HEIGHT,
+        aside: ASIDE_WIDTH,
+      },
       letterSpacing: {
         title: '36px',
       },
