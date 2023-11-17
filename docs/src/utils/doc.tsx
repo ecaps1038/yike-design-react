@@ -3,14 +3,14 @@ import matter from 'gray-matter';
 import groupby from 'lodash.groupby';
 import { readFileSync } from 'node:fs';
 import { notFound } from 'next/navigation';
-import { basename, dirname, relative, resolve } from 'node:path';
+import { basename, dirname, relative } from 'node:path';
 
 import { DOCS_DIR } from './constants';
 import type { DocPageProps } from '@/types';
 import All_DOC_GROUPS from '@/doc-groups.json';
 
 const allDocuments = groupby(
-  globSync(resolve(DOCS_DIR, '**/*.mdx')).map(path => {
+  globSync('**/*.mdx', { cwd: DOCS_DIR, absolute: true }).map(path => {
     const docMatter = matter(readFileSync(path, 'utf-8'));
 
     const { data: meta } = docMatter;
