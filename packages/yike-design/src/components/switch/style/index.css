@@ -1,0 +1,203 @@
+/* stylelint-disable-next-line no-empty-source */
+:root {
+  --yike-primary-color: rgb(var(--yike-primary));
+  --yike-danger-color: rgb(var(--yike-danger));
+  --yike-success-color: rgb(var(--yike-success));
+  --yike-warning-color: rgb(var(--yike-warning));
+  --yike-link-color: rgb(var(--yike-link));
+  --yike-primary-color-1: rgba(var(--yike-primary), 0.08);
+  --yike-primary-color-2: rgba(var(--yike-primary), 0.12);
+  --yike-primary-color-3: rgba(var(--yike-primary), 0.16);
+  --yike-primary-color-4: rgba(var(--yike-primary), 0.24);
+  --yike-primary-color-5: rgba(var(--yike-primary), 0.32);
+  --yike-primary-color-6: color-mix(in srgb, rgb(var(--yike-primary)), #fff 12%);
+  --yike-primary-color-7: rgb(var(--yike-primary));
+  --yike-primary-color-8: color-mix(in srgb, rgb(var(--yike-primary)), #000 8%);
+  --yike-primary-color-9: color-mix(in srgb, rgb(var(--yike-primary)), #000 16%);
+  --yike-primary-color-10: color-mix(in srgb, rgb(var(--yike-primary)), #000 32%);
+  --yike-success-color-1: rgba(var(--yike-success), 0.08);
+  --yike-success-color-2: rgba(var(--yike-success), 0.12);
+  --yike-success-color-3: rgba(var(--yike-success), 0.16);
+  --yike-success-color-4: rgba(var(--yike-success), 0.24);
+  --yike-success-color-5: rgba(var(--yike-success), 0.32);
+  --yike-success-color-6: color-mix(in srgb, rgb(var(--yike-success)), #fff 12%);
+  --yike-success-color-7: rgb(var(--yike-success));
+  --yike-success-color-8: color-mix(in srgb, rgb(var(--yike-success)), #000 8%);
+  --yike-success-color-9: color-mix(in srgb, rgb(var(--yike-success)), #000 16%);
+  --yike-success-color-10: color-mix(in srgb, rgb(var(--yike-success)), #000 32%);
+  --yike-danger-color-1: rgba(var(--yike-danger), 0.08);
+  --yike-danger-color-2: rgba(var(--yike-danger), 0.12);
+  --yike-danger-color-3: rgba(var(--yike-danger), 0.16);
+  --yike-danger-color-4: rgba(var(--yike-danger), 0.24);
+  --yike-danger-color-5: rgba(var(--yike-danger), 0.32);
+  --yike-danger-color-6: color-mix(in srgb, rgb(var(--yike-danger)), #fff 12%);
+  --yike-danger-color-7: rgb(var(--yike-danger));
+  --yike-danger-color-8: color-mix(in srgb, rgb(var(--yike-danger)), #000 8%);
+  --yike-danger-color-9: color-mix(in srgb, rgb(var(--yike-danger)), #000 16%);
+  --yike-danger-color-10: color-mix(in srgb, rgb(var(--yike-danger)), #000 32%);
+  --yike-warning-color-1: rgba(var(--yike-warning), 0.08);
+  --yike-warning-color-2: rgba(var(--yike-warning), 0.12);
+  --yike-warning-color-3: rgba(var(--yike-warning), 0.16);
+  --yike-warning-color-4: rgba(var(--yike-warning), 0.24);
+  --yike-warning-color-5: rgba(var(--yike-warning), 0.32);
+  --yike-warning-color-6: color-mix(in srgb, rgb(var(--yike-warning)), #fff 12%);
+  --yike-warning-color-7: rgb(var(--yike-warning));
+  --yike-warning-color-8: color-mix(in srgb, rgb(var(--yike-warning)), #000 8%);
+  --yike-warning-color-9: color-mix(in srgb, rgb(var(--yike-warning)), #000 16%);
+  --yike-warning-color-10: color-mix(in srgb, rgb(var(--yike-warning)), #000 32%);
+  --yike-font-size-ss: 12px;
+  --yike-font-size-s: 14px;
+  --yike-font-size-m: 16px;
+  --yike-font-size-l: 18px;
+  --yike-font-size-xl: 24px;
+  --yike-font-size-2xl: 32px;
+  --yike-font-size-3xl: 40px;
+  --yike-line-height-ss: 18px;
+  --yike-line-height-s: 22px;
+  --yike-line-height-m: 24px;
+  --yike-line-height-l: 26px;
+  --yike-line-height-xl: 36px;
+  --yike-line-height-2xl: 46px;
+  --yike-line-height-3xl: 50px;
+}
+
+:root,
+[yike-theme='light'] {
+  --yike-primary: 43, 90, 237;
+  --yike-danger: 250, 82, 71;
+  --yike-success: 31, 180, 162;
+  --yike-warning: 255, 170, 26;
+  --yike-link: 24, 144, 255;
+  --yike-neutral-color: #1e2025;
+  --yike-neutral-color-1: rgba(30, 32, 37, 8%);
+  --yike-neutral-color-2: rgba(30, 32, 37, 12%);
+  --yike-neutral-color-3: rgba(30, 32, 37, 16%);
+  --yike-neutral-color-4: rgba(30, 32, 37, 24%);
+  --yike-neutral-color-5: rgba(30, 32, 37, 32%);
+  --yike-neutral-color-6: rgba(30, 32, 37, 48%);
+  --yike-neutral-color-7: rgba(30, 32, 37, 64%);
+  --yike-neutral-color-8: rgba(30, 32, 37, 72%);
+  --yike-neutral-color-9: rgba(30, 32, 37, 88%);
+  --yike-neutral-color-10: #1e2025;
+  --yike-background-color-1: #fff;
+  --yike-background-color-2: color-mix(in srgb, #fff, #1e2025 3.6%);
+  --yike-background-color-3: color-mix(in srgb, #fff, #1e2025 6.8%);
+  --yike-background-color-4: color-mix(in srgb, #fff, #1e2025 9.4%);
+  --yike-line-color-1: rgba(30, 32, 37, 8%);
+  --yike-line-color-2: rgba(30, 32, 37, 16%);
+  --yike-line-color-3: rgba(30, 32, 37, 24%);
+  --yike-text-color-1: #1e2025;
+  --yike-text-color-2: rgba(30, 32, 37, 72%);
+  --yike-text-color-3: rgba(30, 32, 37, 48%);
+  --yike-text-color-4: rgba(30, 32, 37, 32%);
+}
+
+.yk-switch {
+  position: relative;
+  box-sizing: border-box;
+  padding: 0;
+  overflow: hidden;
+  vertical-align: middle;
+  cursor: pointer;
+  background-color: var(--yike-background-color-4);
+  border: none;
+  outline: none;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.yk-switch--m {
+  min-width: 40px;
+  height: 22px;
+  line-height: 22px;
+  border-radius: 11px;
+}
+
+.yk-switch--m.yk-switch--checked .yk-switch-dot {
+  left: calc(100% - 19px);
+}
+
+.yk-switch--s {
+  min-width: 32px;
+  height: 18px;
+  line-height: 18px;
+  border-radius: 10px;
+}
+
+.yk-switch-dot {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: all 0.2s ease-in-out;
+}
+
+.yk-switch--m .yk-switch-dot {
+  width: 16px;
+  height: 16px;
+}
+
+.yk-switch--s .yk-switch-dot {
+  width: 12px;
+  height: 12px;
+}
+
+.yk-switch--checked {
+  background-color: #2b5aed;
+}
+
+.yk-switch--s.yk-switch--checked .yk-switch-dot {
+  left: calc(100% - 15px);
+}
+
+.yk-switch[disabled] {
+  cursor: not-allowed;
+  opacity: 0.48;
+}
+
+.yk-switch--loading {
+  cursor: not-allowed;
+  opacity: 0.72 !important;
+}
+
+.yk-switch--loading svg {
+  width: 16px;
+  transform-origin: center;
+  animation: rotate4 2s linear infinite;
+}
+
+.yk-switch--loading circle {
+  fill: none;
+  stroke: #2b5aed;
+  stroke-dasharray: 1, 200;
+  stroke-dashoffset: 0;
+  stroke-linecap: round;
+  stroke-width: 3;
+  animation: dash4 1.5s ease-in-out infinite;
+}
+
+@keyframes rotate4 {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dash4 {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+
+  50% {
+    stroke-dasharray: 90, 200;
+    stroke-dashoffset: -35px;
+  }
+
+  100% {
+    stroke-dashoffset: -125px;
+  }
+}
