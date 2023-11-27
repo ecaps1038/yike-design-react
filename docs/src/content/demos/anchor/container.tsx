@@ -12,7 +12,16 @@ export default () => {
           {renderAnchorTitle(items)}
         </div>
         <div className="h-56 p-4 w-52 rounded border border-yike-1">
-          <Anchor items={items} getContainer={() => scrollContainerRef.current!} />
+          <Anchor getContainer={() => scrollContainerRef.current!}>
+            <Anchor.Link href="#basic-1" title="一级锚点-1">
+              <Anchor.Link href="#basic-1-1" title="二级锚点1-1" />
+              <Anchor.Link href="#basic-1-2" title="二级锚点1-2" />
+            </Anchor.Link>
+            <Anchor.Link href="#basic-2" title="一级锚点-2">
+              <Anchor.Link href="#basic-2-1" title="二级锚点2-1" />
+              <Anchor.Link href="#basic-2-2" title="二级锚点2-2" />
+            </Anchor.Link>
+          </Anchor>
         </div>
       </div>
     </div>

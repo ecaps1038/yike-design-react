@@ -28,12 +28,20 @@ order: 1
 
 ## API
 
-| 参数         | 描述                             | 类型                               | 默认值       |
-| ------------ | -------------------------------- | ---------------------------------- | ------------ |
-| lineless     | 不显示左侧导航轴                 | `boolean`                         | false        |
-| items        | 按钮的大小                       | `AnchorItem[]`                     | -            |
-| bounds       | 锚点区域边界                     | `number`                           | -            |
-| offsetTop    | 距离窗口顶部达到指定偏移量后触发 | `number`                           | -            |
-| getContainer | 指定滚动的容器                   | `() => HTMLElement`                | () => window |
-| onClick      | 点击链接                         | `(e: Event, link: object) => void` | -            |
-| onChange     | 锚点链接改变                     | `(link: string) => void`           | -            |
+### Anchor
+| 参数           | 描述               | 类型                                 | 默认值          |
+|--------------|------------------|------------------------------------|--------------|
+| lineless     | 不显示左侧导航轴         | `boolean`                          | false        |
+| offsetTop    | 距离容器顶部达到指定偏移量后触发 | `number`                           | -            |
+| targetOffset | 锚点滚动偏移量          | `number`                           | -            |
+| getContainer | 指定滚动的容器          | `() => HTMLElement`                | () => window |
+| onClick      | 点击链接             | `(e: Event, link: object) => void` | -            |
+| onChange     | 锚点链接改变           | `(link: string) => void`           | -            |
+| className    | 容器类名             | `string`                           | -            |
+### AnchorLink
+| 参数        | 描述   | 类型       | 默认值 |
+|-----------|------|----------|-----|
+| href      | 锚点链接 | `string` | -   |
+| title     | 标题   | `string` | -   |
+| className | 类名   | `string` | -   |
+
