@@ -1,40 +1,26 @@
+import clsx from 'clsx';
 import React from 'react';
 
 import AnchorLine from './AnchorLine';
-import AnchorLink from './AnchorLink';
 import { AnchorProvider } from './context';
 import { createCssScope } from '../../utils';
-import { getOffsetTop, scrollYTo } from './utils/scroll';
 import { HASH_REGEXP, getAllLinks } from './utils/anchor';
+import { getOffsetTop, scrollYTo } from '../_utils/scroll';
 import useUpdateEffect from '../_utils/hooks/useUpdateEffect';
 import type { AnchorProps, YKAnchorContext } from './interface';
 
-const renderAnchorList = (items?: AnchorProps['items']) => {
-  if (items?.length) {
-    return (
-      <ul className="yk-anchor-list">
-        {items.map((item, index) => (
-          <li key={`${item.title}-${index}`} className="yk-anchor-list-item">
-            <AnchorLink href={item.href} title={item.title} />
-            {renderAnchorList(item.children)}
-          </li>
-        ))}
-      </ul>
-    );
-  }
-};
+const DEFAULT_GET_CONTAINER = () => window;
 
-const getDefaultContainer = () => window;
-
-const Anchor: React.FC<AnchorProps> = props => {
+const Anchor: React.FC<React.PropsWithChildren<AnchorProps>> = props => {
   const {
-    items,
     onClick,
+    children,
     onChange,
-    bounds = 5,
+    className,
     offsetTop = 0,
+    targetOffset = 0,
     lineless = false,
-    getContainer = getDefaultContainer,
+    getContainer = DEFAULT_GET_CONTAINER,
   } = props;
 
   const bem = createCssScope('anchor');
@@ -48,7 +34,7 @@ const Anchor: React.FC<AnchorProps> = props => {
 
   const [sliderTop, setSliderTop] = React.useState<number>();
 
-  const links = React.useMemo(() => getAllLinks(items), [items]);
+  const links = React.useMemo(() => getAllLinks(children), [children]);
 
   const getCurrentAnchor = React.useCallback(() => {
     const allViewsAnchors: { link: string; top: number }[] = [];
@@ -59,7 +45,7 @@ const Anchor: React.FC<AnchorProps> = props => {
         const target = document.querySelector<HTMLElement>(link);
         if (target) {
           const offset = getOffsetTop(target, container);
-          if (offset < bounds + offsetTop) {
+          if (offset <= offsetTop + targetOffset) {
             allViewsAnchors.push({ link, top: offset });
           }
         }
@@ -69,7 +55,7 @@ const Anchor: React.FC<AnchorProps> = props => {
     if (allViewsAnchors.length) {
       return allViewsAnchors.reduce((max, item) => (item.top > max.top ? item : max)).link;
     }
-  }, [links, getContainer, bounds, offsetTop]);
+  }, [links, getContainer, offsetTop, targetOffset]);
 
   // TODO: add debounce
   const handleScroll = React.useCallback(() => {
@@ -106,18 +92,20 @@ const Anchor: React.FC<AnchorProps> = props => {
         return;
       }
       const container = getContainer();
+
       const offset = getOffsetTop(target, container);
       const currentScrollTop = container === window ? window.scrollY : (container as HTMLElement).scrollTop;
-      const targetScrollTop = currentScrollTop + offset;
+      const targetScrollTop = currentScrollTop + offset - targetOffset;
       scrollYTo(container, targetScrollTop).then(() => {
         scrollingRef.current = false;
       });
     },
-    [getContainer]
+    [getContainer, targetOffset]
   );
 
   React.useEffect(() => {
     const container = getContainer();
+
     container.addEventListener('scroll', handleScroll);
     return () => {
       container.removeEventListener('scroll', handleScroll);
@@ -163,9 +151,9 @@ const Anchor: React.FC<AnchorProps> = props => {
 
   return (
     <AnchorProvider value={contextValue}>
-      <div ref={anchorRef} className={bem()}>
+      <div ref={anchorRef} className={clsx(bem(), className)}>
         {renderAnchorLine()}
-        {renderAnchorList(items)}
+        {children && <ul className="yk-anchor-list">{children}</ul>}
       </div>
     </AnchorProvider>
   );

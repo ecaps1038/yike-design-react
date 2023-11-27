@@ -13,6 +13,7 @@ export interface YKAnchorContext {
 export interface AnchorLinkProps {
   href: string;
   title: React.ReactNode;
+  className?: string;
 }
 
 export interface AnchorItem extends AnchorLinkProps {
@@ -22,10 +23,11 @@ export interface AnchorItem extends AnchorLinkProps {
 export interface AnchorProps {
   // TODO: affix
   lineless?: boolean;
-  items: AnchorItem[];
   bounds?: number;
   offsetTop?: number;
-  getContainer?: () => HTMLElement;
+  targetOffset?: number;
+  getContainer?: () => HTMLElement | Window;
   onClick?: AnchorClickEventHandler;
   onChange?: (link: string) => void;
+  className?: string;
 }

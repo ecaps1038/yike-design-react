@@ -4,18 +4,18 @@ import type { AnchorItem } from '@yike-design/react';
 export const items = [
   {
     title: '一级锚点-1',
-    href: '#basic',
+    href: '#basic-1',
     children: [
-      { title: '二级锚点1-1', href: '#basic-1' },
-      { title: '二级锚点1-2', href: '#basic-2' },
+      { title: '二级锚点1-1', href: '#basic-1-1' },
+      { title: '二级锚点1-2', href: '#basic-1-2' },
     ],
   },
   {
     title: '一级锚点-2',
-    href: '#static',
+    href: '#basic-2',
     children: [
-      { title: '二级锚点2-1', href: '#static-1' },
-      { title: '二级锚点2-2', href: '#static-2' },
+      { title: '二级锚点2-1', href: '#basic-2-1' },
+      { title: '二级锚点2-2', href: '#basic-2-2' },
     ],
   },
 ];

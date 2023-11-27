@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.22.6",
+    "clsx": "^2.0.0",
     "rc-resize-observer": "^1.4.0"
   },
   "devDependencies": {
