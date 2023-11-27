@@ -1,121 +1,113 @@
 ---
-title:  开关 Switch 
-label:  Switch 开关
+title: 开关 Switch
+label: Switch 开关
 category: Input
 order: 1
 ---
 
-#  Switch 开关
+# Switch 开关
 
 实现切换控制
 
 ### 基本用法
 
 通过 `(value)`可以进行双向绑定。
+
 ```tsx
-import {Switch, Space} from '@yike-design/react';
+import { Switch, Space } from '@yike-design/react';
 
 export default () => {
   return (
     <Space>
-       <Switch value={false} />
+      <Switch value={false} />
     </Space>
-    )
-}
+  );
+};
 ```
 
 ### 按钮尺寸 size
+
 按钮分为：`s` 和 `m` 两种尺寸。默认尺寸为 `m`。
 
 ```tsx
-import {Switch, Space} from '@yike-design/react';
+import { Switch, Space } from '@yike-design/react';
 
 export default () => {
-    return (
-      <Space>
-         <Switch size='s' />
-         <Switch size='m' />
-      </Space>
-    )
-}    
+  return (
+    <Space>
+      <Switch size="s" />
+      <Switch size="m" />
+    </Space>
+  );
+};
 ```
 
 ### 自定义开关的背景色
+
 通过 `checkedColor` 和 `uncheckedColor` 属性可以指定开关的背景色。
 
-
 ```tsx
-import {Switch, Space} from '@yike-design/react';
+import { Switch, Space } from '@yike-design/react';
 
 export default () => {
-    return (
-      <Space>
-         <Switch checkedColor="#7c4dff" uncheckedColor="#5a7a8a" />
-      </Space>
-    )
-}    
+  return (
+    <Space>
+      <Switch checkedColor="#7c4dff" uncheckedColor="#5a7a8a" />
+    </Space>
+  );
+};
 ```
 
 ### 自定义开关的值
 
 通过 `checkedValue` 和 `uncheckedValue` 属性可以指定开关在不同状态的值
 
-
-<code src="~demos/switch/custom.tsx" />   
+<code src="~demos/switch/custom.tsx" />{' '}
 
 ### 禁用状态 disabled
 
 设置 `disabled` 后无法触发事件
 
 ```tsx
-
-import {Switch, Space} from '@yike-design/react';
+import { Switch, Space } from '@yike-design/react';
 
 export default () => {
-    return (
-      <Space>
-         <Switch disabled />
-         <Switch value={true} disabled />
-      </Space>
-    )
-} 
+  return (
+    <Space>
+      <Switch disabled />
+      <Switch value={true} disabled />
+    </Space>
+  );
+};
 ```
 
 ### 加载状态 loading
+
 `loading` 时无法触发事件
 
 ```tsx
-
-import {Switch, Space} from '@yike-design/react';
+import { Switch, Space } from '@yike-design/react';
 
 export default () => {
-    return (
-      <Space>
-         <Switch loading />
-         <Switch value={true} loading />
-      </Space>
-    )
-} 
+  return (
+    <Space>
+      <Switch loading />
+      <Switch value={true} loading />
+    </Space>
+  );
+};
 ```
-
 
 ## API
 
-| 参数           | 描述           | 类型                                                                        | 默认值  |
-| -------------- | -------------- | --------------------------------------------------------------------------- | ------- |
-| value           | 绑定值       | string ｜ number ｜ boolean                                                   |      -   |
-| disabled         | 是否禁用 | boolean                                                                         | false   |
-| loading       | 加载状态       | boolean                                                                      | false   |
-| size           | 开关大小   | 's' ｜'m'                                                                     | m   |
-| checkedValue         | 	选中时的值      | string ｜ number ｜ boolean                                                                   | true   |
-| uncheckedValue      | 未选中时的值    | string ｜ number ｜ boolean                                                                       | false   |
-| checkedColor       | 选中时的背景色   | string                                                 | -  |
-| uncheckedColor | 未选中时的背景色     | string             
-
-
-## Event
-
-| 参数     | 描述               | 类型                          
-| -------- | ------------------ | ----------------------------- 
-| onChange   | 值改变时触发             | Function(value: string ｜ number ｜ boolean)|
-
+| 参数             | 描述       | 类型                                         | 默认值   |
+|----------------|----------|--------------------------------------------|-------|
+| value          | 绑定值      | string ｜ number ｜ boolean                  | -     |
+| disabled       | 是否禁用     | boolean                                    | false |
+| loading        | 加载状态     | boolean                                    | false |
+| size           | 开关大小     | 's' ｜'m'                                   | m     |
+| checkedValue   | 选中时的值    | string ｜ number ｜ boolean                  | true  |
+| uncheckedValue | 未选中时的值   | string ｜ number ｜ boolean                  | false |
+| checkedColor   | 选中时的背景色  | string                                     | -     |
+| uncheckedColor | 未选中时的背景色 | string                                     |
+| onChange       | 值改变时触发   | Function(value: string ｜ number ｜ boolean) |

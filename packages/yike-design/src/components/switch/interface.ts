@@ -1,4 +1,4 @@
-export interface switchprops {
+export interface SwitchProps {
   value?: boolean | string | number;
   size?: 's' | 'm';
   loading?: boolean;

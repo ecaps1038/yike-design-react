@@ -1,8 +1,8 @@
-import type { switchprops } from './interface';
+import type { SwitchProps } from './interface';
 import { createCssScope } from '../../utils';
 import React, { useEffect, useState } from 'react';
 
-const Switch = React.forwardRef<HTMLButtonElement, switchprops>((props, ref) => {
+const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>((props, ref) => {
   const {
     disabled = false,
     size = 'm',
