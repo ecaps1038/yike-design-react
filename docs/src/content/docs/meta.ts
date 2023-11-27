@@ -25,6 +25,15 @@ export const COMPONENT_ROUTER = [
       },
     ],
   },
+  {
+    title: '数据输入',
+    items: [
+      {
+        label: 'Swicth 开关',
+        link: '/components/switch',
+      },
+    ],
+  },
 ];
 
 // export const
