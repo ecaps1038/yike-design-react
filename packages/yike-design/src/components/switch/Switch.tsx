@@ -1,42 +1,43 @@
-import type { SwitchProps } from './interface';
+import React from 'react';
+
 import { createCssScope } from '../../utils';
-import React, { useEffect, useState } from 'react';
+import type { SwitchProps } from './interface';
+import { useMergeState } from '../_utils/hooks/useMergeState';
+import useUpdateEffect from '../_utils/hooks/useUpdateEffect';
 
 const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>((props, ref) => {
   const {
+    checked,
+    defaultChecked = false,
     disabled = false,
     size = 'm',
     loading = false,
-    checkedValue = true,
-    uncheckedValue = false,
-    value = '',
     onChange,
     ...restProps
   } = props;
 
-  const [currentValue, setCurrentValue] = useState(value);
-
-  const isChecked = currentValue == checkedValue;
-  const isDisabled = loading || disabled;
+  const [innerChecked, setInnerChecked] = useMergeState(checked, defaultChecked);
 
   const bem = createCssScope('switch');
   const className = bem([size], {
-    disabled: isDisabled,
+    disabled,
     loading,
-    checked: isChecked,
+    checked: innerChecked,
   });
 
-  useEffect(() => {
-    onChange && onChange(currentValue);
-  }, [currentValue, onChange]);
+  useUpdateEffect(() => {
+    onChange?.(innerChecked);
+  }, [innerChecked, onChange]);
 
   const styles = {
-    backgroundColor: currentValue ? restProps.checkedColor : restProps.uncheckedColor,
+    backgroundColor: innerChecked ? restProps.checkedColor : restProps.uncheckedColor,
   };
 
   const handleClick = () => {
-    if (isDisabled || loading) return;
-    setCurrentValue(isChecked ? uncheckedValue : checkedValue);
+    if (disabled || loading) {
+      return;
+    }
+    setInnerChecked(!innerChecked);
   };
 
   return (

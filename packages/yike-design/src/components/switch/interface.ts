@@ -1,11 +1,11 @@
+// TODO: add checkedChildren unCheckedChildren onClick
 export interface SwitchProps {
-  value?: boolean | string | number;
-  size?: 's' | 'm';
+  checked?: boolean;
+  defaultChecked?: boolean;
   loading?: boolean;
   disabled?: boolean;
-  checkedValue?: boolean | string | number;
-  uncheckedValue?: boolean | string | number;
+  size?: 's' | 'm';
   checkedColor?: string;
   uncheckedColor?: string;
-  onChange?: (value: boolean | string | number) => void;
+  onChange?: (checked: boolean) => void;
 }

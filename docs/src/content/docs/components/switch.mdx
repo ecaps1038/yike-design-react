@@ -11,16 +11,16 @@ order: 1
 
 ### 基本用法
 
-通过 `(value)`可以进行双向绑定。
-
+最基本的使用
 ```tsx
 import { Switch, Space } from '@yike-design/react';
 
 export default () => {
   return (
-    <Space>
-      <Switch value={false} />
-    </Space>
+    <Switch
+      defaultChecked
+      onChange={checked => console.log(checked)}
+    />
   );
 };
 ```
@@ -58,12 +58,6 @@ export default () => {
 };
 ```
 
-### 自定义开关的值
-
-通过 `checkedValue` 和 `uncheckedValue` 属性可以指定开关在不同状态的值
-
-<code src="~demos/switch/custom.tsx" />{' '}
-
 ### 禁用状态 disabled
 
 设置 `disabled` 后无法触发事件
@@ -74,8 +68,8 @@ import { Switch, Space } from '@yike-design/react';
 export default () => {
   return (
     <Space>
+      <Switch checked disabled />
       <Switch disabled />
-      <Switch value={true} disabled />
     </Space>
   );
 };
@@ -100,14 +94,13 @@ export default () => {
 
 ## API
 
-| 参数             | 描述       | 类型                                         | 默认值   |
-|----------------|----------|--------------------------------------------|-------|
-| value          | 绑定值      | string ｜ number ｜ boolean                  | -     |
-| disabled       | 是否禁用     | boolean                                    | false |
-| loading        | 加载状态     | boolean                                    | false |
-| size           | 开关大小     | 's' ｜'m'                                   | m     |
-| checkedValue   | 选中时的值    | string ｜ number ｜ boolean                  | true  |
-| uncheckedValue | 未选中时的值   | string ｜ number ｜ boolean                  | false |
-| checkedColor   | 选中时的背景色  | string                                     | -     |
-| uncheckedColor | 未选中时的背景色 | string                                     |
-| onChange       | 值改变时触发   | Function(value: string ｜ number ｜ boolean) |
+| 参数             | 描述        | 类型                           | 默认值     |
+|----------------|-----------|------------------------------|---------|
+| checked        | 指定选中状态	   | `boolean`                    | -       |
+| defaultChecked | 初始是否选中	   | `boolean`                    | `false` |
+| disabled       | 是否禁用      | `boolean`                    | `false` |
+| loading        | 加载状态      | `boolean`                    | `false` |
+| size           | 开关大小      | `'s' ｜'m'`                   | `'m'`   |
+| checkedColor   | 选中时的背景色   | `string`                     | -       |
+| uncheckedColor | 未选中时的背景色  | `string`                     | -       |
+| onChange       | 选中状态改变时触发 | `(checked: boolean) => void` | -       |
