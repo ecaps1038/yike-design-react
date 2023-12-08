@@ -13,6 +13,9 @@ const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>((props, ref) => 
     size = 'm',
     loading = false,
     onChange,
+    onClick,
+    checkedChildren,
+    unCheckedChildren,
     ...restProps
   } = props;
 
@@ -33,23 +36,25 @@ const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>((props, ref) => 
     backgroundColor: innerChecked ? restProps.checkedColor : restProps.uncheckedColor,
   };
 
-  const handleClick = () => {
+  const onInnerClick: React.MouseEventHandler<HTMLButtonElement> = e => {
     if (disabled || loading) {
       return;
     }
     setInnerChecked(!innerChecked);
+    onClick?.(!innerChecked, e);
   };
 
   return (
     <button
       ref={ref}
-      onClick={handleClick}
       type="button"
       role="switch"
-      className={className}
-      disabled={disabled}
       style={styles}
+      disabled={disabled}
+      className={className}
+      onClick={onInnerClick}
     >
+      <span className={bem('inner')}>{innerChecked ? checkedChildren : unCheckedChildren}</span>
       <span className="yk-switch-dot">
         {loading && (
           <svg viewBox="25 25 50 50">

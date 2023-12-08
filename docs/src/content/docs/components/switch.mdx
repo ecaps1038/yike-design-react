@@ -13,7 +13,7 @@ order: 1
 
 最基本的使用
 ```tsx
-import { Switch, Space } from '@yike-design/react';
+import { Switch } from '@yike-design/react';
 
 export default () => {
   return (
@@ -25,26 +25,27 @@ export default () => {
 };
 ```
 
+### 不可用
+Switch 失效状态
+
+<code src="~demos/switch/disable.tsx" />
+
+### 文字图标
+
+带有文字和图标
+
+<code src="~demos/switch/text-icon.tsx" />
+
 ### 按钮尺寸 size
 
-按钮分为：`s` 和 `m` 两种尺寸。默认尺寸为 `m`。
+按钮分为：`s` 和 `m` 两种尺寸。默认尺寸为 `m`
 
-```tsx
-import { Switch, Space } from '@yike-design/react';
+<code src="~demos/switch/size.tsx" />
 
-export default () => {
-  return (
-    <Space>
-      <Switch size="s" />
-      <Switch size="m" />
-    </Space>
-  );
-};
-```
 
 ### 自定义开关的背景色
 
-通过 `checkedColor` 和 `uncheckedColor` 属性可以指定开关的背景色。
+通过 `checkedColor` 和 `uncheckedColor` 属性可以指定开关的背景色
 
 ```tsx
 import { Switch, Space } from '@yike-design/react';
@@ -86,7 +87,7 @@ export default () => {
   return (
     <Space>
       <Switch loading />
-      <Switch value={true} loading />
+      <Switch checked loading />
     </Space>
   );
 };
@@ -94,13 +95,16 @@ export default () => {
 
 ## API
 
-| 参数             | 描述        | 类型                           | 默认值     |
-|----------------|-----------|------------------------------|---------|
-| checked        | 指定选中状态	   | `boolean`                    | -       |
-| defaultChecked | 初始是否选中	   | `boolean`                    | `false` |
-| disabled       | 是否禁用      | `boolean`                    | `false` |
-| loading        | 加载状态      | `boolean`                    | `false` |
-| size           | 开关大小      | `'s' ｜'m'`                   | `'m'`   |
-| checkedColor   | 选中时的背景色   | `string`                     | -       |
-| uncheckedColor | 未选中时的背景色  | `string`                     | -       |
-| onChange       | 选中状态改变时触发 | `(checked: boolean) => void` | -       |
+| 参数                | 描述        | 类型                                          | 默认值     |
+|-------------------|-----------|---------------------------------------------|---------|
+| checked           | 指定选中状态	   | `boolean`                                   | -       |
+| defaultChecked    | 初始是否选中	   | `boolean`                                   | `false` |
+| disabled          | 是否禁用      | `boolean`                                   | `false` |
+| loading           | 加载状态      | `boolean`                                   | `false` |
+| size              | 开关大小      | `'s' ｜'m'`                                  | `'m'`   |
+| checkedChildren   | 选中时的内容	   | `ReactNode`                                 | -       |
+| unCheckedChildren | 非选中时的内容	  | `ReactNode`                                 | -       |
+| checkedColor      | 选中时的背景色   | `string`                                    | -       |
+| uncheckedColor    | 未选中时的背景色  | `string`                                    | -       |
+| onChange          | 选中状态改变时触发 | `(checked: boolean) => void`                | -       |
+| onClick           | 点击时触发     | `(checked: boolean, e: MouseEvent) => void` | -       |

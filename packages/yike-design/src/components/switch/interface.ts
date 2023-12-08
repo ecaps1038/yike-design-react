@@ -1,4 +1,5 @@
-// TODO: add checkedChildren unCheckedChildren onClick
+import type React from 'react';
+
 export interface SwitchProps {
   checked?: boolean;
   defaultChecked?: boolean;
@@ -8,4 +9,7 @@ export interface SwitchProps {
   checkedColor?: string;
   uncheckedColor?: string;
   onChange?: (checked: boolean) => void;
+  checkedChildren?: React.ReactNode;
+  unCheckedChildren?: React.ReactNode;
+  onClick?: (checked: boolean, e: React.MouseEvent<HTMLButtonElement>) => void;
 }
