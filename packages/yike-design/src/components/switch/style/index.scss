@@ -1,5 +1,6 @@
 @import '../../../styles/color/color';
-@import '../../../styles/theme/light';
+@import '../../../styles/tokens/color';
+@import '../../../styles/tokens/text';
 
 .yk-switch {
   position: relative;
@@ -8,7 +9,7 @@
   overflow: hidden;
   vertical-align: middle;
   cursor: pointer;
-  background-color: var(--yike-background-color-4);
+  background-color: $background-color-4;
   border: none;
   outline: none;
   transition: background-color 0.2s ease-in-out;
@@ -64,17 +65,32 @@
 
   &--checked {
     background-color: $color-blue;
+
+    .yk-switch__inner {
+      margin: 0 22px 0 7px;
+      color: $color-white;
+    }
   }
 
   &[disabled] {
     cursor: not-allowed;
     opacity: 0.48;
   }
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    margin: 0 7px 0 22px;
+    font-size: $text-size-ss;
+    color: $text-color-l;
+    transition: margin 0.3s;
+  }
 }
 
 .yk-switch--loading {
-  cursor: not-allowed;
-  opacity: 0.72 !important;
+  cursor: default;
+  opacity: 0.72;
 
   svg {
     width: 16px;
