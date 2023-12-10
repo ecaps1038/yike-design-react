@@ -11,17 +11,17 @@ interface ContainerProps {
 }
 
 const PreviewerContainer: React.FC<ContainerProps> = ({ inline = false, component, demo }) => {
-  const Component = inline
+  const PreviewComponent = inline
     ? require(`!!@yike-design/mdx-demo/inline-loader!@/content/docs/components/${component}.mdx`)[demo]?.()
     : require(`@/content/demos/${component}/${demo}.tsx`).default;
 
-  if (IS_DEV && Component) {
-    Component.displayName = `YiKeDemo@${capitalize(component)}/${inline ? 'inline-' : ''}${demo}`;
+  if (IS_DEV && PreviewComponent) {
+    PreviewComponent.displayName = `YiKeDemo@${capitalize(component)}/${inline ? 'inline-' : ''}${demo}`;
   }
 
   return (
     <PreviewerErrorBoundary>
-      <Component />
+      <PreviewComponent />
     </PreviewerErrorBoundary>
   );
 };

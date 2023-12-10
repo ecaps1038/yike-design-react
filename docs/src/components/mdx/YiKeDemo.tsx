@@ -1,5 +1,5 @@
 import type React from 'react';
-import DemoContainer from './demo/DemoContainer';
+import DemoContainer from '@/components/demo/DemoContainer';
 
 interface YiKeDemoProps {
   entry: string;
