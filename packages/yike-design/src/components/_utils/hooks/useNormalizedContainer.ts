@@ -9,6 +9,5 @@ export const useNormalizedContainer = (container: ComponentContainer) => {
     });
     return () => clearTimeout(timer);
   }, [container]);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  return React.useCallback(() => normalizedContainer, [container, normalizedContainer]);
+  return React.useCallback(() => normalizedContainer, [normalizedContainer]);
 };

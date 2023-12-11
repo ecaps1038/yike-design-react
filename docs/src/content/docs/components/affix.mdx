@@ -29,9 +29,10 @@ order: 2
 
 ## API
 
-| 参数     | 描述               | 类型                          | 默认值         |
-| -------- | ------------------ | ----------------------------- | -------------- |
-| offset   | 偏移量             | `number`                      | 0              |
-| position | 偏移方向           | `'top' \| 'bottom'`           | `'top'`        |
-| target   | 滚动容器           | `() => HTMLElement`           | `() => window` |
-| onChange | 固定状态改变时触发 | `(affixed?: boolean) => void` | -              |
+| 参数              | 描述                                                              | 类型                            | 默认值            |
+|-----------------|-----------------------------------------------------------------|-------------------------------|----------------|
+| offset          | 偏移量                                                             | `number`                      | 0              |
+| position        | 偏移方向                                                            | `'top' \| 'bottom'`           | `'top'`        |
+| target          | 滚动容器                                                            | `() => HTMLElement \| Window` | `() => window` |
+| targetContainer | `target` 的外层滚动元素，用于解决 `target` 为非 `window` 时，外层元素滚动会导致固钉跑出容器问题。 | `() => HTMLElement \| Window` | -              |
+| onChange        | 固定状态改变时触发                                                       | `(affixed?: boolean) => void` | -              |

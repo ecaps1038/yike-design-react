@@ -68,7 +68,8 @@ a {
 
     td {
       max-width: 240px;
-      padding: 10px 16px;
+      padding: 8px 16px;
+      line-height: 2;
       text-align: left;
       border-top: 1px solid var(--yike-line-color-1);
       transition: border 0.3s;
