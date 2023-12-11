@@ -16,6 +16,7 @@ interface AffixProps {
   offset?: number;
   position?: 'top' | 'bottom';
   target?: ComponentContainer;
+  targetContainer?: ComponentContainer;
   onChange?: (affixed: boolean) => void;
   children: React.ReactNode;
 }
@@ -25,9 +26,11 @@ interface AffixRef {
 }
 
 const Affix = React.forwardRef<AffixRef, AffixProps>((props, ref) => {
-  const { offset = 0, position = 'top', target = getDefaultContainer, onChange } = props;
+  const { offset = 0, position = 'top', target = getDefaultContainer, onChange, targetContainer = target } = props;
 
   const getTargetFunc = useNormalizedContainer(target);
+
+  const getTargetContainerFunc = useNormalizedContainer(targetContainer);
 
   const fixedNodeRef = React.useRef<HTMLDivElement>(null);
   const affixPlaceholderRef = React.useRef<HTMLDivElement>(null);
@@ -37,15 +40,25 @@ const Affix = React.forwardRef<AffixRef, AffixProps>((props, ref) => {
 
   const measurePosition = React.useCallback(() => {
     const target = getTargetFunc();
-    if (!affixPlaceholderRef.current || !target) {
+    if (!affixPlaceholderRef.current || !target || !fixedNodeRef.current) {
       return;
     }
+    const fixedNodeRect = fixedNodeRef.current.getBoundingClientRect();
     const placeholderRect = affixPlaceholderRef.current.getBoundingClientRect();
-    const { top: currentScreenTop } = placeholderRect;
-    const currentScreenBottom = window.innerHeight - placeholderRect.bottom;
+    const placeholderScreenTop = placeholderRect.top;
+    const placeholderScreenBottom = window.innerHeight - placeholderRect.bottom;
+
+    const fixedNodeScreenTop = fixedNodeRect.top;
+    const fixedNodeScreenBottom = window.innerHeight - fixedNodeRect.bottom;
+
     if (position === 'top') {
       const fixedTop = getFixedTop(target, offset);
-      if (currentScreenTop <= fixedTop && !affixStyle) {
+      if (affixStyle && fixedNodeScreenTop !== fixedTop) {
+        setAffixStyle({
+          ...affixStyle,
+          top: fixedTop,
+        });
+      } else if (placeholderScreenTop <= fixedTop && !affixStyle) {
         setAffixStyle({
           position: 'fixed',
           top: fixedTop,
@@ -55,14 +68,19 @@ const Affix = React.forwardRef<AffixRef, AffixProps>((props, ref) => {
           height: fixedNodeRef.current?.offsetHeight,
         });
         onChange?.(true);
-      } else if (currentScreenTop > fixedTop && affixStyle) {
+      } else if (placeholderScreenTop > fixedTop && affixStyle) {
         setAffixStyle(undefined);
         setPlaceholderStyle(undefined);
         onChange?.(false);
       }
     } else {
       const fixedBottom = getFixedBottom(target, offset);
-      if (currentScreenBottom <= fixedBottom && !affixStyle) {
+      if (affixStyle && fixedNodeScreenBottom !== fixedBottom) {
+        setAffixStyle({
+          ...affixStyle,
+          bottom: fixedBottom,
+        });
+      } else if (placeholderScreenBottom <= fixedBottom && !affixStyle) {
         setAffixStyle({
           position: 'fixed',
           bottom: fixedBottom,
@@ -72,7 +90,7 @@ const Affix = React.forwardRef<AffixRef, AffixProps>((props, ref) => {
           height: fixedNodeRef.current?.offsetHeight,
         });
         onChange?.(true);
-      } else if (currentScreenBottom > fixedBottom && affixStyle) {
+      } else if (placeholderScreenBottom > fixedBottom && affixStyle) {
         setAffixStyle(undefined);
         setPlaceholderStyle(undefined);
         onChange?.(false);
@@ -99,6 +117,23 @@ const Affix = React.forwardRef<AffixRef, AffixProps>((props, ref) => {
       updatePosition.cancel();
     };
   }, [getTargetFunc, updatePosition]);
+
+  React.useEffect(() => {
+    const target = getTargetFunc();
+    const targetContainer = getTargetContainerFunc();
+    if (!target || !targetContainer || target === targetContainer) {
+      return;
+    }
+    TRIGGER_EVENTS.forEach(event => {
+      targetContainer.addEventListener(event, updatePosition);
+    });
+    return () => {
+      TRIGGER_EVENTS.forEach(event => {
+        targetContainer.removeEventListener(event, updatePosition);
+      });
+      updatePosition.cancel();
+    };
+  }, [getTargetFunc, getTargetContainerFunc, updatePosition]);
 
   React.useEffect(() => {
     measurePosition();
