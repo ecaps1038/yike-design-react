@@ -42,6 +42,8 @@ const config: Config = {
       },
       borderColor: {
         'yike-1': 'var(--yike-line-color-1)',
+        'yike-2': 'var(--yike-line-color-2)',
+        'yike-3': 'var(--yike-line-color-3)',
       },
       backgroundColor: {
         neutral: 'var(--yike-neutral-color)',
@@ -53,6 +55,10 @@ const config: Config = {
         'yike-3': 'var(--yike-background-color-3)',
         'yike-4': 'var(--yike-background-color-4)',
         'yike-neutral': 'var(--yike-neutral-color)',
+        'yike-text-1': 'var(--yike-text-color-1)',
+        'yike-text-2': 'var(--yike-text-color-2)',
+        'yike-text-3': 'var(--yike-text-color-3)',
+        'yike-text-4': 'var(--yike-text-color-4)',
       },
     },
   },
