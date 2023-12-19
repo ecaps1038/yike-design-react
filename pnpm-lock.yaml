@@ -319,6 +319,9 @@ importers:
       jiti:
         specifier: ^1.19.1
         version: 1.20.0
+      lodash.camelcase:
+        specifier: ^4.3.0
+        version: 4.3.0
       lodash.capitalize:
         specifier: ^4.2.1
         version: 4.2.1
@@ -371,6 +374,9 @@ importers:
       '@types/inquirer':
         specifier: ^9.0.3
         version: 9.0.3
+      '@types/lodash.camelcase':
+        specifier: ^4.3.9
+        version: 4.3.9
       '@types/lodash.capitalize':
         specifier: ^4.2.7
         version: 4.2.7
@@ -3371,6 +3377,12 @@ packages:
     resolution: {integrity: sha512-8t92P+oeW4d/CRQfJaSqEwXujrhH4OEeHRjGU3v1Q8mUS8GPF3yiX26sw4svv6faL2HfBtGTe2xWIoVgN3dy9w==}
     dependencies:
       '@types/node': 20.7.0
+    dev: true
+
+  /@types/lodash.camelcase@4.3.9:
+    resolution: {integrity: sha512-ys9/hGBfsKxzmFI8hckII40V0ASQ83UM2pxfQRghHAwekhH4/jWtjz/3/9YDy7ZpUd/H0k2STSqmPR28dnj7Zg==}
+    dependencies:
+      '@types/lodash': 4.14.199
     dev: true
 
   /@types/lodash.capitalize@4.2.7:

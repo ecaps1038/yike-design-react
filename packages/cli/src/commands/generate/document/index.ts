@@ -1,5 +1,7 @@
+import consola from 'consola';
 import inquirer from 'inquirer';
 import matter from 'gray-matter';
+import camelcase from 'lodash.camelcase';
 import { basename, resolve } from 'node:path';
 import { readFileSync, readJsonSync, readdirSync, writeFileSync } from 'fs-extra';
 
@@ -51,41 +53,27 @@ export default async () => {
     message: 'Please select the document category: ',
   });
 
-  const { title } = await inquirer.prompt({
-    name: 'title',
+  const { zName } = await inquirer.prompt({
+    name: 'zName',
     type: 'input',
     validate: input => !!input?.trim(),
-    message: 'Please select the document title (browser tab title): ',
+    message: 'Please input the component Chinese name: ',
   });
 
-  const { label } = await inquirer.prompt({
-    name: 'label',
-    type: 'input',
-    validate: input => !!input?.trim(),
-    message: 'Please select the document label (link text): ',
-  });
+  const formatedComponent = `${(component as string).charAt(0).toUpperCase()}${camelcase(component).slice(1)}`;
 
-  // const orderMap = docs.reduce(
-  //   (map, item) => {
-  //     const { data } = matter(readFileSync(resolve(COMPONENTS_DOCS_DIR, `${item}.mdx`), 'utf-8'));
-  //     if (data.category === category) {
-  //       map[item] = data.order;
-  //     }
-  //     return map;
-  //   },
-  //   {} as Record<string, number>
-  // );
+  const title = `${zName} ${formatedComponent}`;
+
+  const label = `${formatedComponent} ${zName}`;
 
   const order = docs.reduce((memo, item) => {
     const { data } = matter(readFileSync(resolve(COMPONENTS_DOCS_DIR, `${item}.mdx`), 'utf-8'));
-    if (data.category === category) {
-      memo++;
-    }
-    return memo;
+    return data.category === category ? memo + 1 : memo;
   }, 1);
 
   writeFileSync(
     resolve(COMPONENTS_DOCS_DIR, `${component}.mdx`),
     matter.stringify(`# ${label}`, { title, label, category, order })
   );
+  consola.success('generate successfully');
 };
