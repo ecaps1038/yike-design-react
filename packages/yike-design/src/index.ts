@@ -5,3 +5,4 @@ export * from './components/anchor';
 export * from './components/link';
 export * from './components/affix';
 export * from './components/switch';
+export * from './components/back-top';

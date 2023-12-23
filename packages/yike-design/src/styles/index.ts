@@ -8,3 +8,4 @@ import '../components/space/style';
 import '../components/typography/style';
 import '../components/affix/style';
 import '../components/switch/style';
+import '../components/back-top/style';
