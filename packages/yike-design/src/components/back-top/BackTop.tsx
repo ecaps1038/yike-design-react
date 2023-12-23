@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 
 import { isWindow } from '../_utils/is';

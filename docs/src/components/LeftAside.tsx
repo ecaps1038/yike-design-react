@@ -30,9 +30,12 @@ const LeftAside: React.FC<LeftAsideProps> = ({ items }) => {
             <Link
               key={link}
               href={link}
-              className={clsx('block text-sm px-4 h-10 leading-10 rounded-lg transition-colors duration-300', {
-                'bg-primary-1 font-semibold text-primary': pathname === link,
-              })}
+              className={clsx(
+                'block text-sm px-4 h-10 leading-10 mb-1 rounded-lg transition-colors duration-300 hover:bg-primary-1',
+                {
+                  'bg-primary-1 font-semibold text-primary': pathname === link,
+                }
+              )}
             >
               {text}
             </Link>

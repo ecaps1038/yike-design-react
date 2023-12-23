@@ -12,6 +12,16 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      keyframes: {
+        spin: {
+          '100%': {
+            transform: 'rotate(360deg)',
+          },
+        },
+      },
+      animation: {
+        'iframe-loaing': 'spin .8s linear infinite',
+      },
       height: {
         header: HEADER_HEIGHT,
         aside: `calc(100vh - ${HEADER_HEIGHT})`,

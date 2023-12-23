@@ -1,5 +1,7 @@
 'use client';
+import clsx from 'clsx';
 import React from 'react';
+import { LoadingOutlined } from '@yike-design/react-icons';
 
 interface IframePreviewerProps {
   src: string;
@@ -14,6 +16,7 @@ const hasHTMLAnchorElement = (iframe: HTMLIFrameElement): iframe is IframeWithHT
 };
 
 const IframePreviewer: React.FC<IframePreviewerProps> = ({ src }) => {
+  const [loaded, setLoaded] = React.useState(false);
   const iframeRef = React.useRef<HTMLIFrameElement>(null);
 
   // prevent anchors in iframe cause main page scroll in chrome and safari
@@ -35,6 +38,7 @@ const IframePreviewer: React.FC<IframePreviewerProps> = ({ src }) => {
     };
 
     const loadListener = () => {
+      setLoaded(true);
       iframe.contentWindow?.document.body.addEventListener('click', clickListener);
     };
 
@@ -57,7 +61,14 @@ const IframePreviewer: React.FC<IframePreviewerProps> = ({ src }) => {
         <span className="w-3 h-3 rounded-full bg-[#ffc75a]" />
         <span className="w-3 h-3 rounded-full bg-[#6bdb43]" />
       </div>
-      <iframe src={src} ref={iframeRef} className="w-full h-80" />
+      <div className="h-80">
+        {!loaded && (
+          <div className="flex p-1 justify-end">
+            <LoadingOutlined className="animate-iframe-loaing text-primary text-xl" />
+          </div>
+        )}
+        <iframe src={src} ref={iframeRef} className={clsx('w-full h-full', !loaded && 'hidden')} />
+      </div>
     </div>
   );
 };
