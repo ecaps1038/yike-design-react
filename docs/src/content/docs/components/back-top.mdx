@@ -1,0 +1,47 @@
+---
+title: 返回顶部 BackTop
+label: BackTop 返回顶部
+category: Other
+order: 3
+---
+# BackTop 返回顶部
+
+可一键返回顶部的按钮。
+
+## 基本使用
+
+当滚动到一定高度的时候，页面右下角会出现一个返回顶部的按钮。
+
+<code iframe src='~demos/back-top/basic.tsx' />
+
+
+## 自定义目标
+
+可以设定监听滚动的元素, 甚至可以让 `BackTop` 依据某个父元素固定。
+
+<code src='~demos/back-top/target.tsx' />
+
+## 不同的类型
+
+默认按钮具有 `primary` 和 `secondary` 类型
+
+<code src='~demos/back-top/type.tsx' />
+
+## 自定义按钮
+
+<code src='~demos/back-top/custom.tsx' />
+
+## API
+
+默认样式，距离底部和右侧 `50px`，可通过 `style` 进行覆盖
+
+| 参数            | 描述              | 类型                                | 默认值            |
+|---------------|-----------------|-----------------------------------|----------------|
+| type          | 默认按钮的类型         | `'primary' \| 'secondary'`        | `'primary'`    |
+| style         | 样式设置            | ` React.CSSProperties`            | -              |
+| visibleHeight | 滚动时触发显示回到顶部的高度	 | `number`                          | 400            |
+| behavior      | 滚动时的过渡效果	       | `'auto' \| 'instant' \| 'smooth'` | `'smooth'`     |
+| target        | 监听滚动的元素	        | `() => HTMLElement \| Window`     | `() => window` |
+| onClick       | 点击按钮时触发         | `() => void`                      | -              |
+| onChange      | 按钮显隐状态切换时触发     | `(visible?: boolean) => void`     | -              |
+

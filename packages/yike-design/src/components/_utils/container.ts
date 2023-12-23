@@ -1,1 +1,1 @@
-export const getDefaultContainer = () => (typeof window === 'undefined' ? null : window);
+export const getDefaultContainer = () => window;

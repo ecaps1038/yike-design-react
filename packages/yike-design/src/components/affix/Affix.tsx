@@ -2,11 +2,11 @@
 import React from 'react';
 import ResizeObserver from 'rc-resize-observer';
 
-import type { ComponentContainer } from '../_types';
+import type { ContainerType } from '../_types';
 import { getFixedBottom, getFixedTop } from './utils';
 import { getDefaultContainer } from '../_utils/container';
 import { throttleByAnimationFrame } from '../_utils/throttle';
-import { useNormalizedContainer } from '../_utils/hooks/useNormalizedContainer';
+import { useContainerMemo } from '../_utils/hooks/useContainerMemo';
 
 // events that will trigger affix re-calculate
 const TRIGGER_EVENTS = ['resize', 'scroll', 'touchstart', 'touchmove', 'touchend', 'pageshow', 'load'] as const;
@@ -15,8 +15,8 @@ const TRIGGER_EVENTS = ['resize', 'scroll', 'touchstart', 'touchmove', 'touchend
 interface AffixProps {
   offset?: number;
   position?: 'top' | 'bottom';
-  target?: ComponentContainer;
-  targetContainer?: ComponentContainer;
+  target?: ContainerType;
+  targetContainer?: ContainerType;
   onChange?: (affixed: boolean) => void;
   children: React.ReactNode;
 }
@@ -28,9 +28,9 @@ interface AffixRef {
 const Affix = React.forwardRef<AffixRef, AffixProps>((props, ref) => {
   const { offset = 0, position = 'top', target = getDefaultContainer, onChange, targetContainer = target } = props;
 
-  const getTargetFunc = useNormalizedContainer(target);
+  const getTargetFunc = useContainerMemo(target);
 
-  const getTargetContainerFunc = useNormalizedContainer(targetContainer);
+  const getTargetContainerFunc = useContainerMemo(targetContainer);
 
   const fixedNodeRef = React.useRef<HTMLDivElement>(null);
   const affixPlaceholderRef = React.useRef<HTMLDivElement>(null);
@@ -40,7 +40,7 @@ const Affix = React.forwardRef<AffixRef, AffixProps>((props, ref) => {
 
   const measurePosition = React.useCallback(() => {
     const target = getTargetFunc();
-    if (!affixPlaceholderRef.current || !target || !fixedNodeRef.current) {
+    if (!affixPlaceholderRef.current || !fixedNodeRef.current) {
       return;
     }
     const fixedNodeRect = fixedNodeRef.current.getBoundingClientRect();
@@ -103,9 +103,7 @@ const Affix = React.forwardRef<AffixRef, AffixProps>((props, ref) => {
   // TODO: improve performance
   React.useEffect(() => {
     const target = getTargetFunc();
-    if (!target) {
-      return;
-    }
+
     TRIGGER_EVENTS.forEach(event => {
       target.addEventListener(event, updatePosition);
     });
@@ -121,7 +119,7 @@ const Affix = React.forwardRef<AffixRef, AffixProps>((props, ref) => {
   React.useEffect(() => {
     const target = getTargetFunc();
     const targetContainer = getTargetContainerFunc();
-    if (!target || !targetContainer || target === targetContainer) {
+    if (target === targetContainer) {
       return;
     }
     TRIGGER_EVENTS.forEach(event => {

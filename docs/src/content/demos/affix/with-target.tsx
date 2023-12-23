@@ -16,7 +16,7 @@ export default () => {
         }}
       >
         <div style={{ height: 100 }} />
-        <Affix offset={10} target={() => targetRef.current} targetContainer={() => window}>
+        <Affix offset={10} target={() => targetRef.current!} targetContainer={() => window}>
           <Button>Affix top 10px in container</Button>
         </Affix>
       </div>

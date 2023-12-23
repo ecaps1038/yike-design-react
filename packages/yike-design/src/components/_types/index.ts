@@ -1,3 +1,3 @@
-export type ContainerType = HTMLElement | Window;
+export type Container = HTMLElement | Window;
 
-export type ComponentContainer = () => ContainerType | null;
+export type ContainerType = () => Container;

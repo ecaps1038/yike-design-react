@@ -1,11 +1,11 @@
 import { isWindow } from './is';
-import type { ContainerType } from '../_types';
+import type { Container } from '../_types';
 
-export const getScrollTop = (container: ContainerType) => {
+export const getScrollTop = (container: Container) => {
   return container === window ? window.scrollY : (container as HTMLElement).scrollTop;
 };
 
-export const scrollContainerToY = (container: ContainerType, target: number) => {
+export const scrollContainerToY = (container: Container, target: number) => {
   if (isWindow(container)) {
     container.scrollTo(window.scrollX, target);
   } else {
@@ -17,7 +17,7 @@ interface ScrollToOptions {
   duration?: number;
 }
 
-export const scrollYTo = (container: ContainerType, target: number, options: ScrollToOptions = {}) => {
+export const scrollYTo = (container: Container, target: number, options: ScrollToOptions = {}) => {
   const { duration = 450 } = options;
   const current = getScrollTop(container);
   const offset = target - current;
@@ -39,7 +39,7 @@ export const scrollYTo = (container: ContainerType, target: number, options: Scr
   });
 };
 
-export const getOffsetTop = (element: HTMLElement, container: ContainerType) => {
+export const getOffsetTop = (element: HTMLElement, container: Container) => {
   const rect = element.getBoundingClientRect();
   if (isWindow(container)) {
     return rect.top - element.ownerDocument!.documentElement!.clientTop;
@@ -48,7 +48,7 @@ export const getOffsetTop = (element: HTMLElement, container: ContainerType) => 
   return rect.top - baseTop;
 };
 
-export const getOffsetBottom = (element: HTMLElement, container: ContainerType) => {
+export const getOffsetBottom = (element: HTMLElement, container: Container) => {
   const rect = element.getBoundingClientRect();
   if (isWindow(container)) {
     return element.ownerDocument!.documentElement!.clientHeight - rect.bottom;

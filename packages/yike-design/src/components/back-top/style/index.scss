@@ -1,0 +1,30 @@
+@import '../../../styles/tokens/color';
+@import '../../../styles/color';
+
+.yk-backtop {
+  position: fixed;
+  right: 50px;
+  bottom: 50px;
+  z-index: 999;
+  cursor: pointer;
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    color: $color-white;
+    text-align: center;
+    border-radius: 8px;
+
+    &--primary {
+      background-color: $primary-color;
+    }
+
+    &--secondary {
+      background-color: $background-color-4;
+    }
+  }
+}
