@@ -9,3 +9,4 @@ import '../components/typography/style';
 import '../components/affix/style';
 import '../components/switch/style';
 import '../components/back-top/style';
+import '../components/pagination/style';
