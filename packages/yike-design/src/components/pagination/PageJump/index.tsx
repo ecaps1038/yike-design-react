@@ -1,10 +1,13 @@
 import type React from 'react';
 import { useState } from 'react';
 import type { showjump } from './type';
+import { createCssScope } from '../../../utils/bem';
 import './index.scss';
 
 const PageJump: React.FC<showjump> = ({ onInputBlur }) => {
   const [inpValue, setInpValue] = useState<string>('');
+
+  const bem = createCssScope('pagination-pagejump');
 
   const handleInputBlur = (e: any) => {
     if (onInputBlur && inpValue) {
@@ -14,18 +17,18 @@ const PageJump: React.FC<showjump> = ({ onInputBlur }) => {
   };
 
   return (
-    <div className="pagination-show-jump">
-      <span className="pagination-show-jump-title">前往</span>
-      <div className="pagination-show-jump-container">
+    <div className={bem()}>
+      <span className={bem('title')}>前往</span>
+      <div className={bem('container')}>
         <input
           type="text"
-          className="pagination-simple-container-input"
-          onBlur={handleInputBlur}
           value={inpValue}
+          className={bem('container__input')}
+          onBlur={handleInputBlur}
           onChange={(e: any) => setInpValue(e.target.value)}
         />
       </div>
-      <span className="pagination-show-jump-title">页</span>
+      <span className={bem('title')}>页</span>
     </div>
   );
 };

@@ -1,9 +1,9 @@
-.page-size {
+.yk-pagination-pagesize {
   position: relative;
   height: 36px;
   margin-left: 10px;
 
-  &-button {
+  &__button {
     display: flex;
     align-items: center;
     height: 100%;
@@ -13,21 +13,26 @@
     border: none;
     border-radius: 8px;
 
-    &-title {
+    &__title {
       margin-right: 8px;
     }
 
-    img {
+    &__icon {
       height: 40%;
       transition: all 0.3s;
+
+      &--reversal {
+        transition: all 0.2s;
+        transform: rotate(180deg);
+      }
     }
   }
 
-  &-select-list {
+  &__dropdown {
     position: absolute;
     top: 48px;
     left: 0;
-    z-index: 100000;
+    z-index: 100;
     box-sizing: border-box;
     padding: 4px;
     border-radius: 4px;
@@ -47,7 +52,7 @@
       border-bottom: 8px solid #fff;
     }
 
-    &-item {
+    &__item {
       width: 100%;
       min-width: 100px;
       max-width: 150px;
@@ -63,15 +68,11 @@
     }
   }
 
-  &-select-list-show {
+  &__dropdown--show {
     position: absolute;
-    z-index: 100000000;
+    z-index: 100;
     opacity: 1;
     transition: all 0.2s;
     transform: translateY(5px);
   }
-}
-
-.is-reversal {
-  transform: rotate(180deg);
 }

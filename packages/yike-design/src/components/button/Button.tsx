@@ -32,6 +32,8 @@ const Button: React.FC<ButtonProps> = props => {
     disabled: disabled,
   });
 
+  console.log('-=-=-=-', className);
+
   const handleClick = (ev: React.MouseEvent<HTMLElement>) => {
     const { onClick } = props;
 

@@ -28,7 +28,6 @@ const Pagination: React.FC<PaginationType> = props => {
   } = props;
 
   const bem = createCssScope('pagination');
-  console.log(bem());
 
   // total = total == 0 ? 1 : total;
 
@@ -173,7 +172,6 @@ const Pagination: React.FC<PaginationType> = props => {
 
   const handleFileChange = (e: any) => {
     const page = parseInt(e) ? parseInt(e) : 1;
-
     if (page < 1) {
       setCurrentPage(1);
       return;
@@ -181,7 +179,6 @@ const Pagination: React.FC<PaginationType> = props => {
       setCurrentPage(totalPagination[totalPagination.length - 1].value);
       return;
     }
-
     setCurrentPage(page);
   };
 
@@ -190,24 +187,14 @@ const Pagination: React.FC<PaginationType> = props => {
     setCurrentPageSize(size);
   };
 
-  const [isNumInRange, setIsNumInRange] = useState<boolean>(false);
-
   const handleSimpleOnChange = (e: any) => {
     const value = e.target.value;
-
     setCurrentPage(value);
-
-    if ((value <= totalPagination.length && value >= 1) || value == '') {
-      setIsNumInRange(true);
-    } else {
-      setIsNumInRange(false);
-    }
   };
 
   const handleSimpleOnBlur = (e: any) => {
-    const value = parseInt(e.target.value) || 1;
-
-    if (isNumInRange) {
+    const value = parseInt(e.target.value);
+    if (value <= totalPagination.length && value >= 1) {
       setCurrentPage(value);
     } else {
       setCurrentPage(totalPagination.length);
@@ -215,43 +202,48 @@ const Pagination: React.FC<PaginationType> = props => {
   };
 
   return (
-    <div className={`pagination ${disabled ? 'is-disabled' : ''}`}>
-      {/* 数据总数 */}
-      {showTotal ? <span className="pagination-total">共 {total} 条</span> : ''}
-      {/* 左箭头 */}
+    <div className={bem({ disabled: disabled })}>
+      {showTotal ? <span className={bem('total')}>共 {total} 条</span> : ''}
+
       <span
-        className={`iconfont icon-jiantou_yemian_xiangzuo pagination-item ${
-          isLeftArrowDisabled ? 'is-disabled' : 'is-hover'
-        } pagination-pager-size-${size}`}
+        className={bem('item', {
+          [`${size}`]: size,
+          disabled: isLeftArrowDisabled,
+          hover: !isLeftArrowDisabled,
+        })}
         onClick={handleChangeCurrentPageGo}
       >
         <LeftOutlined />
       </span>
 
-      {/* 分页内部 */}
       {simple ? (
-        <div className="pagination-simple">
-          <div className="pagination-simple-container">
+        <div className={bem('simple')}>
+          <div
+            className={bem('simple__container', {
+              [`${size}`]: size,
+            })}
+          >
             <input
               type="text"
-              className="pagination-simple-container-input"
+              className={bem('simple__container__input')}
               value={currentPage}
               onChange={handleSimpleOnChange}
               onBlur={handleSimpleOnBlur}
             />
           </div>
-          <span className="pagination-simple-separator"> / </span>
-          <span className="pagination-simple-total">{totalPagination.length}</span>
+          <span className={bem('simple__separator')}> / </span>
+          <span className={bem('simple__total')}>{totalPagination.length}</span>
         </div>
       ) : (
-        <div className="pagination-routine">
-          {/* 第一页 */}
+        <div className={bem('routine')}>
           {totalPagination.length >= 1 ? (
             <span
               onClick={() => handleChangeCurrentPage(totalPagination[0])}
-              className={`pagination-item ${
-                totalPagination[0]?.isSelected ? 'is-Selected' : 'is-hover'
-              } pagination-pager-size-${size}`}
+              className={bem('item', {
+                selected: totalPagination[0]?.isSelected,
+                hover: !totalPagination[0]?.isSelected,
+                [`${size}`]: size,
+              })}
             >
               {totalPagination[0].value}
             </span>
@@ -259,52 +251,63 @@ const Pagination: React.FC<PaginationType> = props => {
             ''
           )}
 
-          {/* 范围左箭头和省略符 */}
           <span
-            className={`pagination-item-omit pagination-pager-size-${size} ${isOmittedLeftPaging() ? 'is-show' : ''}`}
+            className={bem('item', {
+              [`${size}`]: size,
+              show: isOmittedLeftPaging(),
+            })}
+            style={{ backgroundColor: 'transparent' }}
           >
-            <span className="svg-container svg-apostrophe">
+            <span className={bem('item__icon', ['apostrophe'])}>
               <MoreOutlined />
             </span>
 
-            <span className="svg-container svg-arrow" onClick={handleClickRangeLeftArrow}>
+            <span className={bem('item__icon', ['arrow'])} onClick={handleClickRangeLeftArrow}>
               <LeftOutlined />
             </span>
           </span>
 
-          {/* 除第一页和最后一页的其他页 */}
           {totalPagination.map(item => {
             return (
               <span
                 key={item.key}
                 onClick={() => handleChangeCurrentPage(item)}
-                className={`pagination-item pagination-pager-size-${size} ${
-                  item?.isSelected ? 'is-Selected' : 'is-hover'
-                } ${isHidePage(currentPage, item.value, pagerCount ? pagerCount : 7) ? 'is-show' : ''}`}
+                className={bem('item', {
+                  [`${size}`]: size,
+                  selected: item?.isSelected,
+                  hover: !item?.isSelected,
+                  show: isHidePage(currentPage, item.value, pagerCount ? pagerCount : 7),
+                })}
               >
                 {item.value}
               </span>
             );
           })}
 
-          {/*  */}
           <span
-            className={`pagination-item-omit pagination-pager-size-${size} ${isOmittedRightPaging() ? 'is-show' : ''}`}
+            className={bem('item', {
+              [`${size}`]: size,
+              show: isOmittedRightPaging(),
+            })}
+            style={{ backgroundColor: 'transparent' }}
           >
-            <span className="svg-container svg-apostrophe">
+            <span className={bem('item__icon', ['apostrophe'])}>
               <MoreOutlined />
             </span>
 
-            <span className="svg-container svg-arrow" onClick={handleClickRangeRightArrow}>
+            <span className={bem('item__icon', ['arrow'])} onClick={handleClickRangeRightArrow}>
               <RightOutlined />
             </span>
           </span>
+
           {totalPagination.length >= 2 ? (
             <span
               onClick={() => handleChangeCurrentPage(totalPagination[totalPagination.length - 1])}
-              className={`pagination-item pagination-pager-size-${size} ${
-                totalPagination[totalPagination.length - 1]?.isSelected ? 'is-Selected' : 'is-hover'
-              }`}
+              className={bem('item', {
+                [`${size}`]: size,
+                selected: totalPagination[totalPagination.length - 1]?.isSelected,
+                hover: !totalPagination[totalPagination.length - 1]?.isSelected,
+              })}
             >
               {totalPagination[totalPagination.length - 1].value}
             </span>
@@ -313,14 +316,18 @@ const Pagination: React.FC<PaginationType> = props => {
           )}
         </div>
       )}
-      {/* 右箭头 */}
+
       <span
-        className={`pagination-item pagination-pager-size-${size} ${isRightArrowDisabled ? 'is-disabled' : 'is-hover'}`}
+        className={bem('item', {
+          [`${size}`]: size,
+          disabled: isRightArrowDisabled,
+          hover: !isRightArrowDisabled,
+        })}
         onClick={handleChangeCurrentPageBack}
       >
         <RightOutlined />
       </span>
-      {/* 是否显示数据条数选择器 */}
+
       {!pageSize && showPageSize ? (
         <PageSize
           pageSizeOptions={pageSizeOptions}
@@ -332,7 +339,7 @@ const Pagination: React.FC<PaginationType> = props => {
       ) : (
         ''
       )}
-      {/* 是否显示页码跳转 */}
+
       {showJumper ? <PageJump onInputBlur={handleFileChange} /> : ''}
     </div>
   );

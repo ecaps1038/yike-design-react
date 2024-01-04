@@ -46,7 +46,7 @@ export default () => {
 ```
 
 ### 最大页码按钮数
-默认情况下。当总页数超过7页时，Pagination会折叠多余的页码按钮。通过`pager-count`属性可以设置最大页码按钮数
+默认情况下。当总页数超过7页时，Pagination会折叠多余的页码按钮。通过`pagerCount`属性可以设置最大页码按钮数
 
 ```tsx
 import { Pagination } from '@yike-design/react';
@@ -95,6 +95,24 @@ export default () => {
     <Pagination total={1000} showTotal/>
   );
 };
+```
+
+### 更改尺寸
+通过设置`size`来更改分页的大小，默认值为`l`
+
+```tsx
+import { Pagination } from '@yike-design/react';
+
+export default () => {
+  return (
+    <div>
+      <Pagination total={1000} size='m' simple/>
+      <br/><br/>
+      <Pagination total={1000} size='xl'/>
+    </div>
+  );
+};
+
 ```
 
 ### 事件
