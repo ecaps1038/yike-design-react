@@ -1,3 +1,6 @@
+@import '../../../styles/tokens/color';
+@import '../../../styles/color/color';
+
 .yk-pagination-pagejump {
   display: inline-flex;
   display: flex;
@@ -16,19 +19,19 @@
     width: 100px;
     height: 100%;
     padding: 0 12px;
-    background-color: #f0f0f0;
-    border: 1px solid #f0f0f0;
+    background-color: $background-color-4;
+    border: 1px solid $background-color-4;
     border-radius: 8px;
     transition: all 0.2s ease-in-out;
 
     &:hover {
-      background-color: #f7f7f7;
-      border-color: #2b5aed;
+      background-color: $background-color-2;
+      border-color: $color-blue;
     }
 
     &:focus-within {
-      background-color: #f7f7f7;
-      border-color: #2b5aed;
+      background-color: $background-color-2;
+      border-color: $color-blue;
     }
 
     &__input {
@@ -39,10 +42,6 @@
       border-radius: 8px;
       outline: none;
       transition: all 0.2s ease;
-
-      &:hover {
-        background-color: #f7f7f7;
-      }
     }
   }
 }
