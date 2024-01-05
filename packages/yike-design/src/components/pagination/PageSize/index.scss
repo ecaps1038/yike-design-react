@@ -1,0 +1,81 @@
+@import '../../../styles/tokens/color';
+
+.yk-pagination-pagesize {
+  position: relative;
+  height: 36px;
+  margin-left: 10px;
+
+  &__button {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 16px;
+    cursor: pointer;
+    background-color: $background-color-4;
+    border: none;
+    border-radius: 8px;
+
+    &__title {
+      margin-right: 8px;
+    }
+
+    &__icon {
+      height: 40%;
+      transition: all 0.3s;
+
+      &--reversal {
+        transition: all 0.2s;
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  &__dropdown {
+    position: absolute;
+    top: 48px;
+    left: 0;
+    z-index: 100;
+    box-sizing: border-box;
+    padding: 4px;
+    background-color: $background-color-2;
+    border-radius: 4px;
+    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 16%);
+    opacity: 0;
+    transition: all 0.2s;
+
+    &::before {
+      position: absolute;
+      top: -16px;
+      left: calc(50% - 5px);
+      display: block;
+      width: 0;
+      height: 0;
+      content: '';
+      border: 8px solid transparent;
+      border-bottom: 8px solid $background-color-2;
+    }
+
+    &__item {
+      width: 100%;
+      min-width: 100px;
+      max-width: 150px;
+      padding: 0 12px;
+      overflow: hidden;
+      line-height: 32px;
+      cursor: pointer;
+      border-radius: 4px;
+
+      &:hover {
+        background-color: $background-color-3;
+      }
+    }
+  }
+
+  &__dropdown--show {
+    position: absolute;
+    z-index: 100;
+    opacity: 1;
+    transition: all 0.2s;
+    transform: translateY(5px);
+  }
+}

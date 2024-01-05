@@ -1,0 +1,159 @@
+---
+title: 分页 Pagination
+label: Pagination 分页
+category: Navigation
+order: 1
+---
+# Pagination 分页
+
+### 基本用法
+分页的基本用法
+
+```tsx
+import { Pagination } from '@yike-design/react';
+
+export default () => {
+  return (
+    <Pagination total={100}/>
+  );
+};
+```
+
+### 简洁模式
+通过设置`simple`属性开启简洁模式
+
+```tsx
+import { Pagination } from '@yike-design/react';
+
+export default () => {
+  return (
+    <Pagination total={50} simple/>
+  );
+};
+```
+
+### 禁用组件
+通过设置`disabled`属性禁用组件
+
+```tsx
+import { Pagination } from '@yike-design/react';
+
+export default () => {
+  return (
+    <Pagination total={50} disabled/>
+  );
+};
+```
+
+### 最大页码按钮数
+默认情况下。当总页数超过7页时，Pagination会折叠多余的页码按钮。通过`pagerCount`属性可以设置最大页码按钮数
+
+```tsx
+import { Pagination } from '@yike-design/react';
+
+export default () => {
+  return (
+    <Pagination total={1000} pagerCount={13}/>
+  );
+};
+```
+
+### 页码跳转
+通过设置`showJumper`快速跳转到某一页
+
+```tsx
+import { Pagination } from '@yike-design/react';
+
+export default () => {
+  return (
+    <Pagination total={1000} showJumper/>
+  );
+};
+```
+
+### 每页条数选择器的选项列表
+通过设置`pageSizeOptions`属性，可以重新指定选择器的选项列表
+
+```tsx
+import { Pagination } from '@yike-design/react';
+
+export default () => {
+  return (
+    <Pagination total={1000} pageSizeOptions={[20, 30, 40]} showPageSize/>
+  );
+};
+```
+
+### 展示数据总量
+通过设置`showTotal`展示总共有多少数据
+
+```tsx
+import { Pagination } from '@yike-design/react';
+
+export default () => {
+  return (
+    <Pagination total={1000} showTotal/>
+  );
+};
+```
+
+### 更改尺寸
+通过设置`size`来更改分页的大小，默认值为`l`
+
+```tsx
+import { Pagination } from '@yike-design/react';
+
+export default () => {
+  return (
+    <div>
+      <Pagination total={1000} size='m' simple/>
+      <br/><br/>
+      <Pagination total={1000} size='xl'/>
+    </div>
+  );
+};
+
+```
+
+### 事件
+可以为组件的页面切换和分页大小改变添加事件监听。
+
+```tsx
+import { Pagination } from '@yike-design/react';
+
+export default () => {
+  const handleOnChange = (page:number, pageSize: number) => {
+    console.log(`current page is: ${page}`)
+    console.log(`pageSize is: ${pageSize}`)
+  }
+
+  const handlePageSizeChange = (size: number) => {
+    console.log(`current size is: ${size}`)
+  }
+
+  return (
+    <Pagination total={1000} showPageSize showTotal showJumper onChange={handleOnChange} pageSizeChange={handlePageSizeChange}/>
+  );
+};
+```
+
+
+### API
+
+| 参数                     | 描述                  | 类型                      | 默认值               |
+|--------------------------|-----------------------|--------------------------|----------------------|
+|         total      |       总数据量（必填）         |          `number`        |         -            |
+|         current          |      当前页数          |          `number`        |         -            |
+|         defaultCurrent   |      默认的页数        |          `number`        |         1            |
+|         pageSize         |   每页展示的数据条数    |          `number`        |         -            |
+|       defaultPageSize    |  默认每页展示的数据条数 |          `number`        |         10           |
+|        disabled          |       禁用组件         |          `boolean`       |        false         |
+|       pagerCount         |    最大显示页码数量     |          `number`        |         7            |
+|       pageSizeOptions    | 数据条数选择器的选项列表 |         `number[]`       | [10, 20, 30, 40, 50] |
+|          simple          |    是否为简单分页       |         `boolean`        |        false         |
+|         showJumper       |    是否显示页码跳转     |         `boolean`        |        false         |
+|         showTotal        |     是否显示总分页数    |         `boolean`        |        false         |
+|        showPageSize      |  是否显示数据条数选择器  |         `boolean`        |        false         |
+|          size            |         组件尺寸        |    `'s'｜'m'｜'l'｜'xl'` |         'l'          |
+|       onChange           |      页码改变时触发     |  `(page: number, pageSize: number) => void`  | - |
+|     pageSizeChange       |    数据条数改变时触发    |   `(size: number) => void`                  | - |
