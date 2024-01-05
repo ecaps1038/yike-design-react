@@ -140,11 +140,9 @@ export default () => {
 
 ### API
 
-##### Pagination Props
-
 | 参数                     | 描述                  | 类型                      | 默认值               |
 |--------------------------|-----------------------|--------------------------|----------------------|
-|         total(必填)      |       总数据量         |          `number`        |         -            |
+|         total      |       总数据量（必填）         |          `number`        |         -            |
 |         current          |      当前页数          |          `number`        |         -            |
 |         defaultCurrent   |      默认的页数        |          `number`        |         1            |
 |         pageSize         |   每页展示的数据条数    |          `number`        |         -            |
@@ -157,11 +155,5 @@ export default () => {
 |         showTotal        |     是否显示总分页数    |         `boolean`        |        false         |
 |        showPageSize      |  是否显示数据条数选择器  |         `boolean`        |        false         |
 |          size            |         组件尺寸        |    `'s'｜'m'｜'l'｜'xl'` |         'l'          |
-
-<br/><br/>
-
-##### Pagination Events
-|       事件名称            |      描述              |                    类型                     |
-|--------------------------|------------------------|---------------------------------------------|
-|       onChange           |      页码改变时触发     |  `(page: number, pageSize: number) => void`  |
-|     pageSizeChange       |    数据条数改变时触发    |   `(size: number) => void`                  |
+|       onChange           |      页码改变时触发     |  `(page: number, pageSize: number) => void`  | - |
+|     pageSizeChange       |    数据条数改变时触发    |   `(size: number) => void`                  | - |
